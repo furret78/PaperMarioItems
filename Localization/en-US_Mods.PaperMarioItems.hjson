@@ -1,0 +1,219 @@
+Common.Players.LuckyEvade: Lucky!
+
+Content: {
+	SyrupGroup: Syrup Item
+	FlowerGroup: Flower
+}
+
+Items: {
+	CakeMix: {
+		DisplayName: Cake Mix
+		Tooltip: An ingredient for making treats
+	}
+
+	BoosSheet: {
+		DisplayName: Boo's Sheet
+		Tooltip: Temporarily makes you invisible
+	}
+
+	FreshPasta: {
+		DisplayName: Fresh Pasta
+		Tooltip: Poshley Heights pasta delight
+	}
+
+	CourageShell: {
+		DisplayName: Courage Shell
+		Tooltip: Temporarily gives you courage to boost your Defense and reduce damage taken
+	}
+
+	Horsetail: {
+		DisplayName: Horsetail
+		Tooltip: A spring reed plant found in Petal Meadows
+	}
+
+	Mushroom: {
+		DisplayName: Mushroom
+		Tooltip: A regular, feel-good mushroom
+	}
+
+	SuperMushroom: {
+		DisplayName: Super Mushroom
+		Tooltip: A truly feel-super mushroom
+	}
+
+	UltraMushroom: {
+		DisplayName: Ultra Mushroom
+		Tooltip: An ultra-fine, feel-great mushroom
+	}
+
+	PointSwap: {
+		DisplayName: Point Swap
+		Tooltip:
+			'''
+			Swaps your current health and mana stats (Cannot exceed max)
+			Usage at 0 mana may have side effects
+			'''
+		PointSwapDeath: tried to swap zero mana for health.
+	}
+
+	TurtleyLeaf: {
+		DisplayName: Turtley Leaf
+		Tooltip: A leaf often found in Koopa Village and Petalburg
+	}
+
+	WhackaBump: {
+		DisplayName: Whacka Bump
+		Tooltip: A pastry lump from a poor Whacka
+	}
+
+	HotSauce: {
+		DisplayName: Hot Sauce
+		Tooltip: A popular sauce with a captivating spiciness that'll boost your damage output
+	}
+
+	SlowMushroom: {
+		DisplayName: Slow Mushroom
+		Tooltip: Makes you recover health gradually for a brief period
+	}
+
+	MysticEgg: {
+		DisplayName: Mystic Egg
+		Tooltip: A weird egg that someone from the Great Boggly Tree had
+	}
+
+	HoneySyrup: {
+		DisplayName: Honey Syrup
+		Tooltip: A sweet snack
+	}
+
+	MapleSyrup: {
+		DisplayName: Maple Syrup
+		Tooltip: A deliciously sweet syrup
+	}
+
+	DriedBouquet: {
+		DisplayName: Dried Bouquet
+		Tooltip: Beautiful flowers made by Bub-ulber
+	}
+
+	DriedMushroom: {
+		DisplayName: Dried Mushroom
+		Tooltip: A less-than-tasty dried mushroom
+	}
+
+	JamminJelly: {
+		DisplayName: Jammin' Jelly
+		Tooltip: A highly nutritious snack
+	}
+
+	Cookbook: {
+		DisplayName: Cookbook
+		Tooltip: A rather old cookbook penned by Maître Delish
+	}
+
+	SpitePouch: {
+		DisplayName: Spite Pouch
+		Tooltip: Temporarily returns double the damage taken to all enemies that attack directly
+	}
+
+	RepelCape: {
+		DisplayName: Repel Cape
+		Tooltip: Temporarily makes you dodgy so you are harder to hit
+	}
+
+	InnCoupon: {
+		DisplayName: Inn Coupon
+		Tooltip:
+			'''
+			A free pass!
+			Lets the local Nurse heal you one time for free
+			'''
+	}
+
+	PowerPunch: {
+		DisplayName: Power Punch
+		Tooltip: Temporarily boosts your attack power by adding hugeness
+	}
+
+	GoldenLeaf: {
+		DisplayName: Golden Leaf
+		Tooltip: A weird leaf found in Creepy Steeple
+	}
+
+	GradualSyrup: {
+		DisplayName: Gradual Syrup
+		Tooltip: Makes you recover mana gradually for a brief period
+	}
+
+	LifeMushroom: {
+		DisplayName: Life Mushroom
+		Tooltip: A life-giving Mushroom
+		RestoreText:
+			'''
+			Heals {0} life
+			At 0 health, automatically consumes the item with no cooldowns and temporarily caps minimum health at 1
+			Grants {1} {^1:minute;minutes} of invincibility and {2} {^2:minute;minutes} of regeneration when that happens
+			Does not activate if this item is inside a Void Bag
+			'''
+	}
+
+	TastyTonic: {
+		DisplayName: Tasty Tonic
+		Tooltip:
+			'''
+			A tasty medicine
+			Cures poison and other ailments
+			'''
+	}
+
+	VoltMushroom: {
+		DisplayName: Volt Mushroom
+		Tooltip:
+			'''
+			Temporarily electrifies you to damage direct-attackers
+			Also temporarily grants immunity to the Electrified debuff
+			'''
+	}
+
+	ShootingStar: {
+		DisplayName: Shooting Star
+		Tooltip: Drops shooting stars on all enemies
+	}
+}
+
+Buffs: {
+	ChargedBuff: {
+		DisplayName: Charged!
+		Description: Damage dealt boosted by {0}%
+	}
+
+	PaybackBuff: {
+		DisplayName: Payback
+		Description: Direct attacks will be countered! Enemies take twice the damage they deal
+	}
+
+	DodgyBuff: {
+		DisplayName: Dodgy
+		Description: Some attacks will automatically be dodged! 50% chance to occur
+	}
+
+	HugeBuff: {
+		DisplayName: Huge
+		Description: The amount of damage dealt is now boosted by {0}%!
+	}
+
+	SoftDebuff: {
+		DisplayName: Soft
+		Description: Defense has dropped!
+	}
+
+	RevivedBuff: {
+		DisplayName: Life Mushroom
+		Description: Granted a new lease of life thanks to a Life Mushroom
+	}
+
+	ElectrifiedBuff: {
+		DisplayName: Electrified!
+		Description: Enemies that make contact will get hurt!
+	}
+}

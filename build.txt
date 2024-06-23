@@ -1,0 +1,5 @@
+displayName = Paper Mario Items
+author = Furret78
+version = 0.1.0
+buildIgnore = *.csproj, *.user, *.sln, obj\*, bin\*, .vs\*, Old\*
+homepage = 
