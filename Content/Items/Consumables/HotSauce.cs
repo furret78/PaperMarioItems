@@ -30,23 +30,23 @@ namespace PaperMarioItems.Content.Items.Consumables
         }
         public override void AddRecipes()
 		{
-			Recipe recipe = CreateRecipe(1)
-				.AddIngredient(ItemID.SpicyPepper, 1)
-                .AddIngredient(ItemID.WrathPotion, 1)
+			Recipe recipe = CreateRecipe()
+				.AddIngredient(ItemID.SpicyPepper)
+                .AddIngredient(ItemID.WrathPotion)
                 .AddTile(TileID.WorkBenches)
 				.Register();
             recipe = CreateRecipe(3)
-                .AddIngredient(ItemID.SpicyPepper, 1)
+                .AddIngredient(ItemID.SpicyPepper)
                 .AddIngredient(ItemID.BottledWater, 3)
                 .AddTile(TileID.CookingPots)
                 .Register();
             recipe = CreateRecipe(3)
-                .AddIngredient(ItemID.SpicyPepper, 1)
+                .AddIngredient(ItemID.SpicyPepper)
                 .AddCondition(Condition.NearWater)
                 .AddTile(TileID.CookingPots)
                 .Register();
             recipe = CreateRecipe(3)
-                .AddIngredient(ItemID.SpicyPepper, 1)
+                .AddIngredient(ItemID.SpicyPepper)
                 .AddIngredient(ItemID.WaterBucket)
                 .AddTile(TileID.CookingPots)
                 .AddTile(TileID.Bottles)

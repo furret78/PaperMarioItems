@@ -31,14 +31,17 @@ namespace PaperMarioItems.Content.Items.Consumables
 			Recipe recipe = CreateRecipe(2)
 				.AddIngredient<HoneySyrup>(2)
                 .AddIngredient(ItemID.ManaRegenerationPotion)
+                .AddTile(TileID.WorkBenches)
                 .Register();
             recipe = CreateRecipe(3)
                 .AddIngredient<MapleSyrup>()
                 .AddIngredient(ItemID.ManaRegenerationPotion)
+                .AddTile(TileID.WorkBenches)
                 .Register();
             recipe = CreateRecipe(5)
                 .AddIngredient<JamminJelly>()
                 .AddIngredient(ItemID.ManaRegenerationPotion)
+                .AddTile(TileID.WorkBenches)
                 .Register();
         }
 	}

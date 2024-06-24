@@ -46,6 +46,10 @@ namespace PaperMarioItems.Content.Items.Consumables
 		{
             //furnaces
             Recipe recipe = CreateRecipe()
+                .AddRecipeGroup(nameof(ItemID.Mushroom))
+                .AddTile(TileID.Furnaces)
+                .Register();
+            recipe = CreateRecipe()
                 .AddIngredient<Mushroom>()
                 .AddTile(TileID.Furnaces)
                 .Register();
@@ -58,9 +62,8 @@ namespace PaperMarioItems.Content.Items.Consumables
                 .AddTile(TileID.Furnaces)
                 .Register();
             //campfire
-            recipe = CreateRecipe(2)
+            recipe = CreateRecipe()
                 .AddRecipeGroup(nameof(ItemID.Mushroom))
-                .AddIngredient(ItemID.LesserHealingPotion)
                 .AddTile(TileID.Campfire)
                 .Register();
             recipe = CreateRecipe()
@@ -76,9 +79,8 @@ namespace PaperMarioItems.Content.Items.Consumables
                 .AddTile(TileID.Campfire)
                 .Register();
             //near lava
-            recipe = CreateRecipe(2)
+            recipe = CreateRecipe()
                 .AddRecipeGroup(nameof(ItemID.Mushroom))
-                .AddIngredient(ItemID.LesserHealingPotion)
                 .AddCondition(Condition.NearLava)
                 .Register();
             recipe = CreateRecipe()

@@ -87,7 +87,7 @@ namespace PaperMarioItems.Content.Items.Consumables
             recipe = CreateRecipe()
                 .AddIngredient(ItemID.BottledHoney)
                 .AddCondition(Condition.NearWater)
-                .AddTile(TileID.Bottles)
+                .AddTile(TileID.WorkBenches)
                 .Register();
             recipe = CreateRecipe()
                 .AddIngredient(ItemID.BottledHoney)

@@ -53,7 +53,7 @@ namespace PaperMarioItems.Content.Items.Consumables
                 .AddIngredient(ItemID.GreaterHealingPotion)
                 .Register();
             recipe = CreateRecipe(3)
-                .AddRecipeGroup(nameof(ItemID.Mushroom), 3)
+                .AddRecipeGroup(nameof(ItemID.Mushroom), 9)
                 .AddIngredient(ItemID.SuperHealingPotion)
                 .Register();
         }

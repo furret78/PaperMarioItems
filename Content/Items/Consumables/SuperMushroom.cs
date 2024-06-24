@@ -54,8 +54,8 @@ namespace PaperMarioItems.Content.Items.Consumables
                 .AddIngredient(ItemID.HealingPotion)
                 .AddTile(TileID.WorkBenches)
                 .Register();
-            recipe = CreateRecipe(2)
-                .AddRecipeGroup(nameof(ItemID.Mushroom), 2)
+            recipe = CreateRecipe()
+                .AddRecipeGroup(nameof(ItemID.Mushroom), 3)
                 .AddIngredient(ItemID.HealingPotion)
                 .AddTile(TileID.WorkBenches)
                 .Register();
