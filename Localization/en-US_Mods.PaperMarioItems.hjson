@@ -182,7 +182,7 @@ Items: {
 
 	DizzyDial: {
 		DisplayName: Dizzy Dial
-		Tooltip: ""
+		Tooltip: Temporarily makes all enemies dizzy, decreasing their accuracy
 	}
 }
 
@@ -223,7 +223,7 @@ Buffs: {
 	}
 
 	DizzyDebuff: {
-		DisplayName: Dizzy Debuff
-		Description: Mods.PaperMarioItems.Buffs.DizzyDebuff.Description
+		DisplayName: Dizzy
+		Description: Attacks might miss half of the time!
 	}
 }

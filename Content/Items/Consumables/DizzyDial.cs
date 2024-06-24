@@ -21,8 +21,6 @@ namespace PaperMarioItems.Content.Items.Consumables
             Item.maxStack = Item.CommonMaxStack;
             Item.rare = ItemRarityID.White;
             Item.value = Item.buyPrice(copper: 25);
-            Item.buffType = ModContent.BuffType<DizzyDebuff>();
-            Item.buffTime = 3600;
         }
 
         public override bool? UseItem(Player player)
