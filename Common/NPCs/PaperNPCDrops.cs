@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace PaperMarioItems.Common.NPCs
 {
-    public class PaperNPCDrops : GlobalNPC
+    public partial class PaperNPC : GlobalNPC
     {
         public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
         {

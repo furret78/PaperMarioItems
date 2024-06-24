@@ -4,3 +4,4 @@ Paper Mario Items 0.1.1 -- Update notes
 - Crafting Honey Syrup from only Bottled Honey while near water now requires a Workbench instead of a Placed Bottle
 - Super Mushroom recipe adjustments => At a Workbench, 3 Any Mushroom + 1 Healing Potion = 1 Super Mushroom
 - Crafting an Ultra Mushroom from 9 Any Mushroom + 1 Super Healing Potion now gives 3 Ultra Mushroom
+- Added Dizzy Dial and the Dizzy debuff

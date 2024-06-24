@@ -20,6 +20,7 @@ namespace PaperMarioItems.Common.Players
         public bool softEffect;
         public bool electrifiedEffect;
         public bool lifeShroomRevive;
+        public bool dizzyDebuff;
         public int shootingStar = 0;
         public bool shootingStarActive;
         private int shootingStarMaxDelay = 0; //for internal use
@@ -38,6 +39,7 @@ namespace PaperMarioItems.Common.Players
             softEffect = false;
             electrifiedEffect = false;
             lifeShroomRevive = false;
+            dizzyDebuff = false;
             if (electrifiedEffect == false) Player.buffImmune[BuffID.Electrified] = false;
         }
         //detours
@@ -77,6 +79,7 @@ namespace PaperMarioItems.Common.Players
         //shooting star
         public override void PreUpdate()
         {
+            //shooting star timer
             if (shootingStar > 0)
             {
                 shootingStarMaxDelay = (int)(shootingStar * 3.5f + 1);
@@ -117,6 +120,17 @@ namespace PaperMarioItems.Common.Players
                 }
             }
         }
+        //inflict dizzy
+        public void InflictDizzyOnEnemies(Player player)
+        {
+            foreach (var npc in Main.ActiveNPCs)
+            {
+                if (Main.myPlayer == player.whoAmI && !npc.friendly)
+                {
+                    npc.AddBuff(ModContent.BuffType<DizzyDebuff>(), 10800);
+                }
+            }
+        }
         //soft debuff
         public override void DrawEffects(PlayerDrawSet drawInfo, ref float r, ref float g, ref float b, ref float a, ref bool fullBright)
         {
@@ -153,11 +167,11 @@ namespace PaperMarioItems.Common.Players
         }
         public void RepelDodge()
         {
+            if (Player.whoAmI != Main.myPlayer) return;
             Player.NinjaDodge();
             SoundEngine.PlaySound(PaperMarioItems.luckyPM);
             Rectangle currentLocation = Player.getRect();
             CombatText.NewText(currentLocation, LuckyTextColor, LuckyEvade);
-            if (Player.whoAmI != Main.myPlayer) return;
         }
         public static void HandleDodgeMessage(BinaryReader reader, int whoAmI)
         {
@@ -184,12 +198,23 @@ namespace PaperMarioItems.Common.Players
         //on hit electrified
         public override void ModifyHitByNPC(NPC npc, ref Player.HurtModifiers modifiers)
         {
-            if(electrifiedEffect)
+            if (electrifiedEffect)
             {
                 ref StatModifier knockback = ref modifiers.Knockback;
                 knockback *= 0f;
                 ref StatModifier finalDamage = ref modifiers.FinalDamage;
                 finalDamage *= 0f;
+            }
+        }
+        //dizzy status
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
+        {
+            if (dizzyDebuff)
+            {
+                ref StatModifier finalDamage = ref modifiers.FinalDamage;
+                finalDamage *= 0f;
+                ref StatModifier knockback = ref modifiers.Knockback;
+                knockback *= 0f;
             }
         }
     }

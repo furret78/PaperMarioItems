@@ -179,6 +179,11 @@ Items: {
 		DisplayName: Shooting Star
 		Tooltip: Drops shooting stars on all enemies
 	}
+
+	DizzyDial: {
+		DisplayName: Dizzy Dial
+		Tooltip: ""
+	}
 }
 
 Buffs: {
@@ -215,5 +220,10 @@ Buffs: {
 	ElectrifiedBuff: {
 		DisplayName: Electrified!
 		Description: Enemies that make contact will get hurt!
+	}
+
+	DizzyDebuff: {
+		DisplayName: Dizzy Debuff
+		Description: Mods.PaperMarioItems.Buffs.DizzyDebuff.Description
 	}
 }

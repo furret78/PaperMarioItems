@@ -1,12 +1,71 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\reimu\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\PaperMarioItems\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{AD6250CC-A1FD-4159-841E-8B9702AD2860}|PaperMarioItems.csproj|c:\\users\\reimu\\documents\\my games\\terraria\\tmodloader\\modsources\\papermarioitems\\common\\npcs\\papernpc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AD6250CC-A1FD-4159-841E-8B9702AD2860}|PaperMarioItems.csproj|solutionrelative:common\\npcs\\papernpc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AD6250CC-A1FD-4159-841E-8B9702AD2860}|PaperMarioItems.csproj|c:\\users\\reimu\\documents\\my games\\terraria\\tmodloader\\modsources\\papermarioitems\\common\\players\\paperplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AD6250CC-A1FD-4159-841E-8B9702AD2860}|PaperMarioItems.csproj|solutionrelative:common\\players\\paperplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AD6250CC-A1FD-4159-841E-8B9702AD2860}|PaperMarioItems.csproj|c:\\users\\reimu\\documents\\my games\\terraria\\tmodloader\\modsources\\papermarioitems\\content\\items\\consumables\\dizzydial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AD6250CC-A1FD-4159-841E-8B9702AD2860}|PaperMarioItems.csproj|solutionrelative:content\\items\\consumables\\dizzydial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DizzyDial.cs",
+              "DocumentMoniker": "C:\\Users\\reimu\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\PaperMarioItems\\Content\\Items\\Consumables\\DizzyDial.cs",
+              "RelativeDocumentMoniker": "Content\\Items\\Consumables\\DizzyDial.cs",
+              "ToolTip": "C:\\Users\\reimu\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\PaperMarioItems\\Content\\Items\\Consumables\\DizzyDial.cs",
+              "RelativeToolTip": "Content\\Items\\Consumables\\DizzyDial.cs",
+              "ViewState": "AQIAABEAAAAAAAAAAAAQwBgAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-24T04:41:43.901Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PaperPlayer.cs",
+              "DocumentMoniker": "C:\\Users\\reimu\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\PaperMarioItems\\Common\\Players\\PaperPlayer.cs",
+              "RelativeDocumentMoniker": "Common\\Players\\PaperPlayer.cs",
+              "ToolTip": "C:\\Users\\reimu\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\PaperMarioItems\\Common\\Players\\PaperPlayer.cs",
+              "RelativeToolTip": "Common\\Players\\PaperPlayer.cs",
+              "ViewState": "AQIAACQAAAAAAAAAAAAowGgAAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-24T03:55:11.791Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PaperNPC.cs",
+              "DocumentMoniker": "C:\\Users\\reimu\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\PaperMarioItems\\Common\\NPCs\\PaperNPC.cs",
+              "RelativeDocumentMoniker": "Common\\NPCs\\PaperNPC.cs",
+              "ToolTip": "C:\\Users\\reimu\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\PaperMarioItems\\Common\\NPCs\\PaperNPC.cs",
+              "RelativeToolTip": "Common\\NPCs\\PaperNPC.cs",
+              "ViewState": "AQIAACMAAAAAAAAAAAAuwC0AAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-24T02:44:33.335Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }
