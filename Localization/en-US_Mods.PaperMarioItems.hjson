@@ -151,7 +151,7 @@ Items: {
 		RestoreText:
 			'''
 			Heals {0} life
-			At 0 health, automatically consumes the item with no cooldowns and temporarily caps minimum health at 1
+			At 0 health, automatically consumes the item with no cooldowns and clears all buffs
 			Grants {1} {^1:minute;minutes} of invincibility and {2} {^2:minute;minutes} of regeneration when that happens
 			Does not activate if this item is inside a Void Bag
 			'''

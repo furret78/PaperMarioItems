@@ -14,6 +14,7 @@ namespace PaperMarioItems.Content.Buffs
         public override void SetStaticDefaults()
         {
             Main.pvpBuff[Type] = true;
+            Main.debuff[Type] = true;
         }
         public override void Update(NPC npc, ref int buffIndex)
         {

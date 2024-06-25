@@ -1,12 +1,1 @@
-Paper Mario Items 0.1.1 -- Update notes
-- Added 1 extra crafting recipe for Dried Mushroom: 1 Any Mushroom while at a Furnace
-- Crafting Gradual Syrup now requires a Workbench to be present
-- Crafting Honey Syrup from only Bottled Honey while near water now requires a Workbench instead of a Placed Bottle
-- Super Mushroom recipe adjustments: At a Workbench, 3 Any Mushroom + 1 Healing Potion = 1 Super Mushroom
-- Crafting an Ultra Mushroom from 9 Any Mushroom + 1 Super Healing Potion now gives 3 Ultra Mushroom
-- Added Dizzy Dial and the Dizzy debuff (debuff currently not finalized)
-- Fixed 2 debuffs and Revived status disappearing on right click
-- Adjusted drop rates of certain enemy-exclusive items (notably, Repel Cape rates are slightly boosted)
-- Mystic Egg drop rates are boosted for Harpy enemies
-- Shooting Star now requires 10 Meteorite instead of 1
-- Nerfed Shooting Star damage against Eater of Worlds and The Destroyer
+Paper Mario Items 0.1.2 -- Update notes

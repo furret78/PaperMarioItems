@@ -55,6 +55,15 @@ namespace PaperMarioItems.Common.Players
             int num2 = postReviveRegen * 60 * 60;
             if (!self.creativeGodMode && !self.dead && self.HasItem(ModContent.ItemType<LifeMushroom>()))
             {
+                for (int l = 0; l < Player.MaxBuffs; l++)
+                {
+                    int num25 = self.buffType[l];
+                    if (self.buffTime[l] > 0)
+                    {
+                        self.DelBuff(l);
+                        l = -1;
+                    }
+                }
                 lifeShroomRevive = true;
                 self.statLife = 1;
                 self.AddBuff(ModContent.BuffType<RevivedBuff>(), num1);
