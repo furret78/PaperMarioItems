@@ -2,20 +2,23 @@ using Microsoft.Xna.Framework;
 using Mono.Cecil;
 using PaperMarioItems.Common.Players;
 using PaperMarioItems.Content.Buffs;
+using PaperMarioItems.Content.Dusts;
 using System.Drawing.Imaging;
 using Terraria;
 using Terraria.Audio;
+using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.WorldBuilding;
 
 namespace PaperMarioItems.Common.NPCs
 {
-    public partial class PaperNPC : GlobalNPC
+    public class PaperNPC : GlobalNPC
     {
         public override bool InstancePerEntity => true;
         public bool softDebuff;
         public bool dizzyDebuff;
+        private int waitTimeDizzy = 0;
         public static readonly Color LuckyTextColor = new Color(255, 255, 0, 255);
         public readonly string LuckyEvade = Language.GetTextValue($"Mods.PaperMarioItems.Common.Players.LuckyEvade");
         public override void ResetEffects(NPC npc)
@@ -30,12 +33,25 @@ namespace PaperMarioItems.Common.NPCs
         public override void DrawEffects(NPC npc, ref Color drawColor)
         {
             if (softDebuff) drawColor.G = 0;
+            if (dizzyDebuff)
+            {
+                if (waitTimeDizzy == 0)
+                {
+                    Dust.NewDust(npc.Center, 0, 0, DustID.BlueFairy);
+                    waitTimeDizzy++;
+                }
+                else
+                {
+                    if (waitTimeDizzy == 5) waitTimeDizzy = 0;
+                    else waitTimeDizzy++;
+                }
+            }
         }
         public override void OnHitNPC(NPC npc, NPC target, NPC.HitInfo hit)
         {
             if (dizzyDebuff && Main.rand.NextBool(2) == false)
             {
-                npc.justHit = false;
+                npc.damage = 0;
                 hit.Damage = 0;
                 hit.Knockback = 0;
                 SuccessfulDodgeEffect(target);
@@ -45,7 +61,7 @@ namespace PaperMarioItems.Common.NPCs
         {
             if (dizzyDebuff && Main.rand.NextBool(2) == false)
             {
-                npc.justHit = false;
+                npc.damage = 0;
                 hurtInfo.Damage = 0;
                 hurtInfo.Knockback = 0;
                 target.GetModPlayer<PaperPlayer>().RepelDodge();

@@ -3,8 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\reimu\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\PaperMarioItems\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{AD6250CC-A1FD-4159-841E-8B9702AD2860}|PaperMarioItems.csproj|c:\\users\\reimu\\documents\\my games\\terraria\\tmodloader\\modsources\\papermarioitems\\common\\buffs\\paperbuffs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AD6250CC-A1FD-4159-841E-8B9702AD2860}|PaperMarioItems.csproj|solutionrelative:common\\buffs\\paperbuffs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AD6250CC-A1FD-4159-841E-8B9702AD2860}|PaperMarioItems.csproj|c:\\users\\reimu\\documents\\my games\\terraria\\tmodloader\\modsources\\papermarioitems\\common\\npcs\\papernpc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AD6250CC-A1FD-4159-841E-8B9702AD2860}|PaperMarioItems.csproj|solutionrelative:common\\npcs\\papernpc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AD6250CC-A1FD-4159-841E-8B9702AD2860}|PaperMarioItems.csproj|c:\\users\\reimu\\documents\\my games\\terraria\\tmodloader\\modsources\\papermarioitems\\common\\players\\paperplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AD6250CC-A1FD-4159-841E-8B9702AD2860}|PaperMarioItems.csproj|solutionrelative:common\\players\\paperplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AD6250CC-A1FD-4159-841E-8B9702AD2860}|PaperMarioItems.csproj|c:\\users\\reimu\\documents\\my games\\terraria\\tmodloader\\modsources\\papermarioitems\\content\\items\\consumables\\dizzydial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AD6250CC-A1FD-4159-841E-8B9702AD2860}|PaperMarioItems.csproj|solutionrelative:content\\items\\consumables\\dizzydial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AD6250CC-A1FD-4159-841E-8B9702AD2860}|PaperMarioItems.csproj|c:\\users\\reimu\\documents\\my games\\terraria\\tmodloader\\modsources\\papermarioitems\\content\\buffs\\dizzydebuff.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AD6250CC-A1FD-4159-841E-8B9702AD2860}|PaperMarioItems.csproj|solutionrelative:content\\buffs\\dizzydebuff.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,20 +26,56 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "PaperBuffs.cs",
-              "DocumentMoniker": "C:\\Users\\reimu\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\PaperMarioItems\\Common\\Buffs\\PaperBuffs.cs",
-              "RelativeDocumentMoniker": "Common\\Buffs\\PaperBuffs.cs",
-              "ToolTip": "C:\\Users\\reimu\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\PaperMarioItems\\Common\\Buffs\\PaperBuffs.cs",
-              "RelativeToolTip": "Common\\Buffs\\PaperBuffs.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAAAAAA",
+              "DocumentIndex": 1,
+              "Title": "PaperPlayer.cs",
+              "DocumentMoniker": "C:\\Users\\reimu\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\PaperMarioItems\\Common\\Players\\PaperPlayer.cs",
+              "RelativeDocumentMoniker": "Common\\Players\\PaperPlayer.cs",
+              "ToolTip": "C:\\Users\\reimu\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\PaperMarioItems\\Common\\Players\\PaperPlayer.cs",
+              "RelativeToolTip": "Common\\Players\\PaperPlayer.cs",
+              "ViewState": "AQIAAIQAAAAAAAAAAAAAAJoAAAAZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-24T11:38:14.351Z",
+              "WhenOpened": "2024-06-24T13:16:07.507Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DizzyDial.cs",
+              "DocumentMoniker": "C:\\Users\\reimu\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\PaperMarioItems\\Content\\Items\\Consumables\\DizzyDial.cs",
+              "RelativeDocumentMoniker": "Content\\Items\\Consumables\\DizzyDial.cs",
+              "ToolTip": "C:\\Users\\reimu\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\PaperMarioItems\\Content\\Items\\Consumables\\DizzyDial.cs",
+              "RelativeToolTip": "Content\\Items\\Consumables\\DizzyDial.cs",
+              "ViewState": "AQIAAAcAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-24T16:19:50.177Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PaperNPC.cs",
+              "DocumentMoniker": "C:\\Users\\reimu\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\PaperMarioItems\\Common\\NPCs\\PaperNPC.cs",
+              "RelativeDocumentMoniker": "Common\\NPCs\\PaperNPC.cs",
+              "ToolTip": "C:\\Users\\reimu\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\PaperMarioItems\\Common\\NPCs\\PaperNPC.cs",
+              "RelativeToolTip": "Common\\NPCs\\PaperNPC.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAKAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-24T13:10:44.765Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DizzyDebuff.cs",
+              "DocumentMoniker": "C:\\Users\\reimu\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\PaperMarioItems\\Content\\Buffs\\DizzyDebuff.cs",
+              "RelativeDocumentMoniker": "Content\\Buffs\\DizzyDebuff.cs",
+              "ToolTip": "C:\\Users\\reimu\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\PaperMarioItems\\Content\\Buffs\\DizzyDebuff.cs",
+              "RelativeToolTip": "Content\\Buffs\\DizzyDebuff.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABEAAAA8AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-24T12:59:09.796Z"
             }
           ]
         }

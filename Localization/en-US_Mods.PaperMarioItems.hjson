@@ -182,7 +182,11 @@ Items: {
 
 	DizzyDial: {
 		DisplayName: Dizzy Dial
-		Tooltip: Temporarily makes all enemies dizzy, decreasing their accuracy
+		Tooltip:
+			'''
+			Temporarily makes all enemies dizzy, decreasing their accuracy
+			When applied to players, their controls are reversed instead
+			'''
 	}
 }
 
@@ -213,7 +217,7 @@ Buffs: {
 	}
 
 	RevivedBuff: {
-		DisplayName: Life Mushroom
+		DisplayName: Revived by Life Mushroom
 		Description: Granted a new lease of life thanks to a Life Mushroom
 	}
 
@@ -224,6 +228,6 @@ Buffs: {
 
 	DizzyDebuff: {
 		DisplayName: Dizzy
-		Description: Attacks might miss half of the time!
+		Description: Controls are reversed!
 	}
 }

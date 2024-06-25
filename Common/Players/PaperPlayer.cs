@@ -20,7 +20,6 @@ namespace PaperMarioItems.Common.Players
         public bool softEffect;
         public bool electrifiedEffect;
         public bool lifeShroomRevive;
-        public bool dizzyDebuff;
         public int shootingStar = 0;
         public bool shootingStarActive;
         private int shootingStarMaxDelay = 0; //for internal use
@@ -39,7 +38,6 @@ namespace PaperMarioItems.Common.Players
             softEffect = false;
             electrifiedEffect = false;
             lifeShroomRevive = false;
-            dizzyDebuff = false;
             if (electrifiedEffect == false) Player.buffImmune[BuffID.Electrified] = false;
         }
         //detours
@@ -79,30 +77,33 @@ namespace PaperMarioItems.Common.Players
         //shooting star
         public override void PreUpdate()
         {
-            //shooting star timer
-            if (shootingStar > 0)
+            if (Main.myPlayer == Player.whoAmI)
             {
-                shootingStarMaxDelay = (int)(shootingStar * 3.5f + 1);
-                if (!shootingStarActive)
+                //shooting star timer
+                if (shootingStar > 0)
                 {
-                    shootingStarActive = true;
+                    shootingStarMaxDelay = (int)(shootingStar * 3.5f + 1);
+                    if (!shootingStarActive)
+                    {
+                        shootingStarActive = true;
+                    }
+                    else
+                    {
+                        if (shootingStarTimer == shootingStarMaxDelay)
+                        {
+                            ShootingStarAttack(Player);
+                            shootingStar--;
+                            shootingStarTimer = -1;
+                        }
+                        shootingStarTimer++;
+                    }
                 }
                 else
                 {
-                    if (shootingStarTimer == shootingStarMaxDelay)
-                    {
-                        ShootingStarAttack(Player);
-                        shootingStar--;
-                        shootingStarTimer = -1;
-                    }
-                    shootingStarTimer++;
+                    shootingStarMaxDelay = 0;
+                    shootingStarTimer = 0;
+                    shootingStarActive = false;
                 }
-            }
-            else
-            {
-                shootingStarMaxDelay = 0;
-                shootingStarTimer = 0;
-                shootingStarActive = false;
             }
         }
         public void ShootingStarAttack(Player player)
@@ -113,7 +114,7 @@ namespace PaperMarioItems.Common.Players
                 {
                     Vector2 playerPosition = new Vector2(player.Center.X + Main.rand.NextFloatDirection()*Main.rand.NextFloat(Main.screenWidth / 2), player.Center.Y - ((Main.screenHeight*2)/3));
                     if (!player.ZoneSkyHeight && !player.ZoneOverworldHeight) playerPosition.X = player.Center.X - player.direction*(Main.screenWidth / 2);
-                    Vector2 defaultVelocity = new Vector2(Main.rand.NextFloat(10) + 10f);
+                    Vector2 defaultVelocity = new Vector2(Main.rand.NextFloat(17) + 11f);
                     Vector2 homingAngle = (npc.Center - playerPosition).SafeNormalize(Vector2.UnitX);
                     SoundEngine.PlaySound(PaperMarioItems.starPM);
                     Projectile.NewProjectile(player.GetSource_FromThis(), playerPosition, defaultVelocity * homingAngle, ProjectileID.Starfury, 300, 10f, Main.myPlayer, 0, npc.Center.Y);
@@ -204,17 +205,6 @@ namespace PaperMarioItems.Common.Players
                 knockback *= 0f;
                 ref StatModifier finalDamage = ref modifiers.FinalDamage;
                 finalDamage *= 0f;
-            }
-        }
-        //dizzy status
-        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
-        {
-            if (dizzyDebuff)
-            {
-                ref StatModifier finalDamage = ref modifiers.FinalDamage;
-                finalDamage *= 0f;
-                ref StatModifier knockback = ref modifiers.Knockback;
-                knockback *= 0f;
             }
         }
     }
