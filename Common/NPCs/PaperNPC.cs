@@ -1,15 +1,11 @@
 using Microsoft.Xna.Framework;
-using Mono.Cecil;
 using PaperMarioItems.Common.Players;
 using PaperMarioItems.Content.Buffs;
-using PaperMarioItems.Content.Dusts;
-using System.Drawing.Imaging;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using Terraria.WorldBuilding;
 
 namespace PaperMarioItems.Common.NPCs
 {
@@ -37,7 +33,7 @@ namespace PaperMarioItems.Common.NPCs
             {
                 if (waitTimeDizzy == 0)
                 {
-                    Dust.NewDust(npc.Center, 0, 0, DustID.BlueFairy);
+                    Dust.NewDust(npc.Center, 0, 0, DustID.Electric);
                     waitTimeDizzy++;
                 }
                 else

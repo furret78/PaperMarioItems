@@ -1,5 +1,4 @@
 ﻿using PaperMarioItems.Common.NPCs;
-using PaperMarioItems.Common.Players;
 using Terraria;
 using Terraria.Localization;
 using Terraria.ModLoader;

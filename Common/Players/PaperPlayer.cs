@@ -9,6 +9,8 @@ using Terraria.Localization;
 using PaperMarioItems.Content.Items.Consumables;
 using PaperMarioItems.Content.Buffs;
 using PaperMarioItems.Content.Dusts;
+using Terraria.Graphics;
+using Terraria.Graphics.CameraModifiers;
 
 namespace PaperMarioItems.Common.Players
 {
@@ -20,6 +22,8 @@ namespace PaperMarioItems.Common.Players
         public bool softEffect;
         public bool electrifiedEffect;
         public bool lifeShroomRevive;
+        public bool inflictDizzyActive;
+        public int screenSpinTimer = 0;
         public int shootingStar = 0;
         public bool shootingStarActive;
         private int shootingStarMaxDelay = 0; //for internal use
@@ -104,6 +108,18 @@ namespace PaperMarioItems.Common.Players
                     shootingStarTimer = 0;
                     shootingStarActive = false;
                 }
+                //dizzy timer
+                if (inflictDizzyActive)
+                {
+                    if (screenSpinTimer <= 0)
+                    {
+                        InflictDizzyOnEnemies(Player);
+                        inflictDizzyActive = false;
+                        screenSpinTimer = 0;
+                    }
+                    
+                    screenSpinTimer--;
+                }
             }
         }
         public void ShootingStarAttack(Player player)
@@ -121,12 +137,17 @@ namespace PaperMarioItems.Common.Players
                 }
             }
         }
-        //inflict dizzy
+        //inflict dizzy on enemies
+        public void InflictDizzy(Player player)
+        {
+            inflictDizzyActive = true;
+            screenSpinTimer = 90;
+        }
         public void InflictDizzyOnEnemies(Player player)
         {
             foreach (var npc in Main.ActiveNPCs)
             {
-                if (Main.myPlayer == player.whoAmI && !npc.friendly)
+                if (Main.myPlayer == player.whoAmI && !npc.friendly && !NPCID.Sets.ShouldBeCountedAsBoss[npc.type] && !npc.boss)
                 {
                     npc.AddBuff(ModContent.BuffType<DizzyDebuff>(), 10800);
                 }

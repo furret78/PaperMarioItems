@@ -1,5 +1,4 @@
 using PaperMarioItems.Common.Players;
-using PaperMarioItems.Content.Buffs;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -25,8 +24,13 @@ namespace PaperMarioItems.Content.Items.Consumables
 
         public override bool? UseItem(Player player)
         {
-            player.GetModPlayer<PaperPlayer>().InflictDizzyOnEnemies(player);
-            return true;
+            if (!player.GetModPlayer<PaperPlayer>().inflictDizzyActive)
+            {
+                player.GetModPlayer<PaperPlayer>().InflictDizzy(player);
+                return true;
+            }
+            //player.GetModPlayer<PaperPlayer>().InflictDizzyOnEnemies(player);
+            else return false;
         }
 	}
 }

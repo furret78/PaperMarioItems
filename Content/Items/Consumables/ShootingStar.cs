@@ -35,12 +35,12 @@ namespace PaperMarioItems.Content.Items.Consumables
 		{
 			Recipe recipe = CreateRecipe()
 				.AddIngredient(ItemID.FallenStar, 10)
-                .AddIngredient(ItemID.Meteorite)
+                .AddIngredient(ItemID.Meteorite, 10)
 				.AddTile(TileID.WorkBenches)
 				.Register();
             recipe = CreateRecipe()
                 .AddIngredient(ItemID.ManaCrystal, 2)
-                .AddIngredient(ItemID.Meteorite)
+                .AddIngredient(ItemID.Meteorite, 10)
                 .AddTile(TileID.WorkBenches)
                 .Register();
         }
