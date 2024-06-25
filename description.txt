@@ -12,7 +12,5 @@ All Paper Mario assets used in the mod belongs to Intelligent Systems and Ninten
 
 Steam Workshop icon was drawn by @sumrandomstuff on Discord.
 
-Table of Contents: https://docs.google.com/spreadsheets/d/e/2PACX-1vRr_mkFrhyceAZhSAmcv5PDFXSURcuvmqjOMU_imSx-OW1W_GyIssZBqQg6FRWtRE0xNXY7iXFJUa-W/pubhtml
-
 Latest version: {ModVersion}
 Steam Workshop homepage: {ModHomepage}

@@ -9,8 +9,6 @@ using Terraria.Localization;
 using PaperMarioItems.Content.Items.Consumables;
 using PaperMarioItems.Content.Buffs;
 using PaperMarioItems.Content.Dusts;
-using Terraria.Graphics;
-using Terraria.Graphics.CameraModifiers;
 
 namespace PaperMarioItems.Common.Players
 {
@@ -132,9 +130,9 @@ namespace PaperMarioItems.Common.Players
                     if (!player.ZoneSkyHeight && !player.ZoneOverworldHeight) playerPosition.X = player.Center.X - player.direction*(Main.screenWidth / 2);
                     Vector2 defaultVelocity = new Vector2(Main.rand.NextFloat(17) + 11f);
                     Vector2 homingAngle = (npc.Center - playerPosition).SafeNormalize(Vector2.UnitX);
-                    int finalDamage = 150;
-                    if (npc.type == NPCID.TheDestroyer || npc.type == NPCID.TheDestroyerBody || npc.type == NPCID.TheDestroyerTail) finalDamage = 30;
-                    if (npc.type == NPCID.EaterofWorldsBody || npc.type == NPCID.EaterofWorldsHead || npc.type == NPCID.EaterofWorldsTail) finalDamage = 15;
+                    int finalDamage = 300;
+                    if (npc.type == NPCID.TheDestroyer || npc.type == NPCID.TheDestroyerBody || npc.type == NPCID.TheDestroyerTail) finalDamage = 15;
+                    if (npc.type == NPCID.EaterofWorldsBody || npc.type == NPCID.EaterofWorldsHead || npc.type == NPCID.EaterofWorldsTail) finalDamage = 5;
                     SoundEngine.PlaySound(PaperMarioItems.starPM);
                     Projectile.NewProjectile(player.GetSource_FromThis(), playerPosition, defaultVelocity * homingAngle, ProjectileID.Starfury, finalDamage, 10f, Main.myPlayer, 0, npc.Center.Y);
                 }
