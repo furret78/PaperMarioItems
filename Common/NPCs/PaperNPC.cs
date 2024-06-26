@@ -15,7 +15,8 @@ namespace PaperMarioItems.Common.NPCs
         public bool softDebuff;
         public bool dizzyDebuff;
         private int waitTimeDizzy = 0;
-        public static readonly Color LuckyTextColor = new Color(255, 255, 0, 255);
+        public static readonly Color LuckyTextColor = new Color(255, 255, 0);
+        public static readonly Color DizzyColor = new Color(0, 0, 255);
         public readonly string LuckyEvade = Language.GetTextValue($"Mods.PaperMarioItems.Common.Players.LuckyEvade");
         public override void ResetEffects(NPC npc)
         {
@@ -33,7 +34,7 @@ namespace PaperMarioItems.Common.NPCs
             {
                 if (waitTimeDizzy == 0)
                 {
-                    Dust.NewDust(npc.Center, 0, 0, DustID.Electric);
+                    Dust.NewDust(npc.Center, 0, 0, DustID.Electric, 0, 0, 0, DizzyColor);
                     waitTimeDizzy++;
                 }
                 else
@@ -43,38 +44,19 @@ namespace PaperMarioItems.Common.NPCs
                 }
             }
         }
-        public override void OnHitNPC(NPC npc, NPC target, NPC.HitInfo hit)
+        public override void ModifyHitNPC(NPC npc, NPC target, ref NPC.HitModifiers modifiers)
         {
-            if (dizzyDebuff && Main.rand.NextBool(2) == false)
-            {
-                npc.damage = 0;
-                hit.Damage = 0;
-                hit.Knockback = 0;
-                SuccessfulDodgeEffect(target);
-            }
+            ref StatModifier finalDamage = ref modifiers.FinalDamage;
+            finalDamage *= 0f;
+            ref StatModifier knockback = ref modifiers.Knockback;
+            knockback *= 0f;
         }
-        public override void OnHitPlayer(NPC npc, Player target, Player.HurtInfo hurtInfo)
+        public override void ModifyHitPlayer(NPC npc, Player target, ref Player.HurtModifiers modifiers)
         {
-            if (dizzyDebuff && Main.rand.NextBool(2) == false)
-            {
-                npc.damage = 0;
-                hurtInfo.Damage = 0;
-                hurtInfo.Knockback = 0;
-                target.GetModPlayer<PaperPlayer>().RepelDodge();
-                /* SoundEngine.PlaySound(PaperMarioItems.luckyPM);
-                Rectangle currentLocation = target.getRect();
-                CombatText.NewText(currentLocation, LuckyTextColor, LuckyEvade); */
-            }
-        }
-        public void SuccessfulDodgeEffect(NPC npc)
-        {
-            SoundEngine.PlaySound(PaperMarioItems.luckyPM);
-            Rectangle currentLocation = npc.getRect();
-            CombatText.NewText(currentLocation, LuckyTextColor, LuckyEvade);
-        }
-        public void DizzyDebuffImmuneTime(NPC npc)
-        {
-
+            ref StatModifier finalDamage = ref modifiers.FinalDamage;
+            finalDamage *= 0f;
+            ref StatModifier knockback = ref modifiers.Knockback;
+            knockback *= 0f;
         }
     }
 }

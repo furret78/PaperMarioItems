@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\reimu\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\PaperMarioItems\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{AD6250CC-A1FD-4159-841E-8B9702AD2860}|PaperMarioItems.csproj|c:\\users\\reimu\\documents\\my games\\terraria\\tmodloader\\modsources\\papermarioitems\\common\\players\\paperplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AD6250CC-A1FD-4159-841E-8B9702AD2860}|PaperMarioItems.csproj|solutionrelative:common\\players\\paperplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AD6250CC-A1FD-4159-841E-8B9702AD2860}|PaperMarioItems.csproj|c:\\users\\reimu\\documents\\my games\\terraria\\tmodloader\\modsources\\papermarioitems\\content\\items\\consumables\\frightmask.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AD6250CC-A1FD-4159-841E-8B9702AD2860}|PaperMarioItems.csproj|solutionrelative:content\\items\\consumables\\frightmask.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AD6250CC-A1FD-4159-841E-8B9702AD2860}|PaperMarioItems.csproj|c:\\users\\reimu\\documents\\my games\\terraria\\tmodloader\\modsources\\papermarioitems\\content\\items\\consumables\\tastytonic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AD6250CC-A1FD-4159-841E-8B9702AD2860}|PaperMarioItems.csproj|solutionrelative:content\\items\\consumables\\tastytonic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AD6250CC-A1FD-4159-841E-8B9702AD2860}|PaperMarioItems.csproj|c:\\users\\reimu\\documents\\my games\\terraria\\tmodloader\\modsources\\papermarioitems\\common\\players\\paperplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AD6250CC-A1FD-4159-841E-8B9702AD2860}|PaperMarioItems.csproj|solutionrelative:common\\players\\paperplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,32 +18,32 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "PaperPlayer.cs",
               "DocumentMoniker": "C:\\Users\\reimu\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\PaperMarioItems\\Common\\Players\\PaperPlayer.cs",
               "RelativeDocumentMoniker": "Common\\Players\\PaperPlayer.cs",
               "ToolTip": "C:\\Users\\reimu\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\PaperMarioItems\\Common\\Players\\PaperPlayer.cs",
               "RelativeToolTip": "Common\\Players\\PaperPlayer.cs",
-              "ViewState": "AQIAADAAAAAAAAAAAAAYwDgAAAANAAAA",
+              "ViewState": "AQIAACEAAAAAAAAAAAAAAPwAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-25T07:10:19.073Z",
+              "WhenOpened": "2024-06-26T11:56:34.81Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "TastyTonic.cs",
-              "DocumentMoniker": "C:\\Users\\reimu\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\PaperMarioItems\\Content\\Items\\Consumables\\TastyTonic.cs",
-              "RelativeDocumentMoniker": "Content\\Items\\Consumables\\TastyTonic.cs",
-              "ToolTip": "C:\\Users\\reimu\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\PaperMarioItems\\Content\\Items\\Consumables\\TastyTonic.cs",
-              "RelativeToolTip": "Content\\Items\\Consumables\\TastyTonic.cs",
-              "ViewState": "AQIAABMAAAAAAAAAAAAAABkAAAAJAAAA",
+              "DocumentIndex": 0,
+              "Title": "FrightMask.cs",
+              "DocumentMoniker": "C:\\Users\\reimu\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\PaperMarioItems\\Content\\Items\\Consumables\\FrightMask.cs",
+              "RelativeDocumentMoniker": "Content\\Items\\Consumables\\FrightMask.cs",
+              "ToolTip": "C:\\Users\\reimu\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\PaperMarioItems\\Content\\Items\\Consumables\\FrightMask.cs",
+              "RelativeToolTip": "Content\\Items\\Consumables\\FrightMask.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABIAAAA2AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-25T06:58:55.948Z",
+              "WhenOpened": "2024-06-26T06:19:00.821Z",
               "EditorCaption": ""
             }
           ]

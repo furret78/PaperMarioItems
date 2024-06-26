@@ -8,7 +8,7 @@ using Terraria.ModLoader;
 namespace PaperMarioItems
 {
 	partial class PaperMarioItems : Mod
-	{
+    {
         //custom sounds
         public readonly static SoundStyle useItemPM = new SoundStyle("PaperMarioItems/Assets/Sounds/useItemPM");
         public readonly static SoundStyle luckyPM = new SoundStyle("PaperMarioItems/Assets/Sounds/luckyPM");
@@ -23,11 +23,6 @@ namespace PaperMarioItems
             RecipeGroup.RegisterGroup(Language.GetTextValue($"Mods.PaperMarioItems.Content.SyrupGroup"), syrupgroup);
             RecipeGroup flowergroup = new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {Language.GetTextValue($"Mods.PaperMarioItems.Content.FlowerGroup")}", ItemID.Daybloom, ItemID.Blinkroot, ItemID.Fireblossom, ItemID.Moonglow, ItemID.Shiverthorn, ItemID.Sunflower, ItemID.SkyBlueFlower, ItemID.YellowMarigold);
             RecipeGroup.RegisterGroup(Language.GetTextValue($"Mods.PaperMarioItems.Content.FlowerGroup"), flowergroup);
-        }
-
-        public override void Load()
-        {
-
         }
     }
 }

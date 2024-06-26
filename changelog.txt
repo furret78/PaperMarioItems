@@ -1,1 +1,4 @@
 Paper Mario Items 0.1.2 -- Update notes
+- Reduced Shooting Star's search range
+- Added 5 Soul of Flight to Shooting Star's crafting recipe
+- Added Thunder Bolt, Thunder Rage, and Fright Mask

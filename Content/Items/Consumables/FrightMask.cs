@@ -5,11 +5,11 @@ using Terraria.ModLoader;
 
 namespace PaperMarioItems.Content.Items.Consumables
 { 
-	public class DizzyDial : ModItem
+	public class FrightMask : ModItem
 	{
         public override void SetDefaults()
 		{
-            Item.width = 37;
+            Item.width = 38;
             Item.height = 40;
             Item.useTurn = true;
             Item.useTime = 17;
@@ -28,9 +28,9 @@ namespace PaperMarioItems.Content.Items.Consumables
             {
                 player.GetModPlayer<PaperPlayer>().InflictDizzy();
                 return true;
-            }*/
-            player.GetModPlayer<PaperPlayer>().InflictDizzyOnEnemies(player);
-            return true;
+            }
+            player.GetModPlayer<PaperPlayer>().InflictDizzyOnEnemies(player);*/
+            return false;
         }
 	}
 }

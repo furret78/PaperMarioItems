@@ -5,12 +5,12 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace PaperMarioItems.Content.Items.Consumables
-{ 
-	public class ShootingStar : ModItem
+{
+	public class ThunderRage : ModItem
 	{
         public override void SetDefaults()
 		{
-            Item.width = 40;
+            Item.width = 28;
             Item.height = 40;
             Item.useTurn = true;
             Item.useTime = 17;
@@ -24,10 +24,10 @@ namespace PaperMarioItems.Content.Items.Consumables
 
         public override bool? UseItem(Player player)
         {
-            if (player.GetModPlayer<PaperPlayer>().shootingStar <= 0 && !player.GetModPlayer<PaperPlayer>().shootingStarActive)
+            if (!player.GetModPlayer<PaperPlayer>().thunderEffectActive && !player.GetModPlayer<PaperPlayer>().thunderAll)
             {
+                player.GetModPlayer<PaperPlayer>().thunderAll = true;
                 SoundEngine.PlaySound(PaperMarioItems.useItemPM);
-                player.GetModPlayer<PaperPlayer>().shootingStar = 18;
                 return true;
             }
             else return false;
@@ -35,14 +35,12 @@ namespace PaperMarioItems.Content.Items.Consumables
         public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe()
-				.AddIngredient(ItemID.FallenStar, 10)
-                .AddIngredient(ItemID.Meteorite, 10)
-                .AddIngredient(ItemID.SoulofFlight, 5)
+                .AddIngredient(ItemID.RainCloud, 30)
+                .AddIngredient(ItemID.SoulofFlight, 8)
 				.AddTile(TileID.WorkBenches)
 				.Register();
             recipe = CreateRecipe()
-                .AddIngredient(ItemID.ManaCrystal, 2)
-                .AddIngredient(ItemID.Meteorite, 10)
+                .AddIngredient(ModContent.ItemType<ThunderBolt>(), 3)
                 .AddIngredient(ItemID.SoulofFlight, 5)
                 .AddTile(TileID.WorkBenches)
                 .Register();

@@ -9,6 +9,10 @@ using Terraria.Localization;
 using PaperMarioItems.Content.Items.Consumables;
 using PaperMarioItems.Content.Buffs;
 using PaperMarioItems.Content.Dusts;
+using System;
+using Microsoft.Xna.Framework.Graphics;
+using Terraria.GameContent;
+using System.Transactions;
 
 namespace PaperMarioItems.Common.Players
 {
@@ -21,15 +25,22 @@ namespace PaperMarioItems.Common.Players
         public bool electrifiedEffect;
         public bool lifeShroomRevive;
         public bool inflictDizzyActive;
+        public bool thunderEffectActive;
+        public bool thunderOnce;
+        public bool thunderAll;
         public int screenSpinTimer = 0;
         public int shootingStar = 0;
         public bool shootingStarActive;
-        private int shootingStarMaxDelay = 0; //for internal use
-        private int shootingStarTimer = 0; //for internal use
+        private int shootingStarMaxDelay = 0;
+        private int shootingStarTimer = 0;
+        private int waitTimeElectric = 0;
+        private int waitTimeThunder = 0;
+        private int bgFlashTime = 0;
+        private bool bgFlash;
+        private static SoundStyle loudThunder = SoundID.Thunder with { Variants = new System.ReadOnlySpan<int>(new int[] { 0 }) };
         public static readonly Color LuckyTextColor = new Color(255, 255, 0, 255);
         public const int postReviveProtect = 1;
         public const int postReviveRegen = 2;
-        int waitTimeElectric = 0;
         //localized text
         public readonly string LuckyEvade = Language.GetTextValue($"Mods.PaperMarioItems.Common.Players.LuckyEvade");
         //reset
@@ -57,7 +68,6 @@ namespace PaperMarioItems.Common.Players
             {
                 for (int l = 0; l < Player.MaxBuffs; l++)
                 {
-                    int num25 = self.buffType[l];
                     if (self.buffTime[l] > 0)
                     {
                         self.DelBuff(l);
@@ -85,7 +95,6 @@ namespace PaperMarioItems.Common.Players
             }
             else return orig(self, price, customCurrency);
         }
-        //shooting star
         public override void PreUpdate()
         {
             if (Main.myPlayer == Player.whoAmI)
@@ -124,31 +133,70 @@ namespace PaperMarioItems.Common.Players
                         inflictDizzyActive = false;
                         screenSpinTimer = 0;
                     }
-                    
+                    //code for screen spin
                     screenSpinTimer--;
+                }
+                //thunder bolt timer
+                if (thunderOnce || thunderAll)
+                {
+                    if (waitTimeThunder <= 0) waitTimeThunder = 60;
+                    thunderEffectActive = true;
+                }
+                if (thunderEffectActive)
+                {
+                    if (waitTimeThunder == 15)
+                    {
+                        BackgroundFlash();
+                        waitTimeThunder--;
+                    }
+                    if (waitTimeThunder == 1)
+                    {
+                        if (thunderOnce && !thunderAll)
+                        {
+                            StrikeOneEnemy(Player);
+                            thunderOnce = false;
+                        }
+                        if (thunderAll)
+                        {
+                            StrikeAllEnemies(Player);
+                            thunderAll = false;
+                        }
+                        waitTimeThunder--;
+                    }
+                    else if (waitTimeThunder <= 0)
+                    {
+                        thunderAll = false;
+                        thunderOnce = false;
+                        thunderEffectActive = false;
+                        waitTimeThunder = 0;
+                    }
+                    else waitTimeThunder--;
                 }
             }
         }
-        public void ShootingStarAttack(Player player)
+        //shooting star
+        private void ShootingStarAttack(Player player)
         {
+            bool empty = true;
             foreach (var npc in Main.ActiveNPCs)
             {
-                if (Main.myPlayer == player.whoAmI && !npc.friendly)
+                if (Main.myPlayer == player.whoAmI && !npc.friendly && npc.type != NPCID.CultistDevote && !NPCID.Sets.CountsAsCritter[npc.type] && (npc.Center - player.Center).Length() < (Main.screenWidth / 2))
                 {
+                    empty = false;
                     Vector2 playerPosition = new Vector2(player.Center.X + Main.rand.NextFloatDirection()*Main.rand.NextFloat(Main.screenWidth / 2), player.Center.Y - ((Main.screenHeight*2)/3));
                     if (!player.ZoneSkyHeight && !player.ZoneOverworldHeight) playerPosition.X = player.Center.X - player.direction*(Main.screenWidth / 2);
                     Vector2 defaultVelocity = new Vector2(Main.rand.NextFloat(17) + 11f);
                     Vector2 homingAngle = (npc.Center - playerPosition).SafeNormalize(Vector2.UnitX);
                     int finalDamage = 300;
                     if (npc.type == NPCID.TheDestroyer || npc.type == NPCID.TheDestroyerBody || npc.type == NPCID.TheDestroyerTail) finalDamage = 15;
-                    if (npc.type == NPCID.EaterofWorldsBody || npc.type == NPCID.EaterofWorldsHead || npc.type == NPCID.EaterofWorldsTail) finalDamage = 5;
-                    SoundEngine.PlaySound(PaperMarioItems.starPM);
+                    if (npc.type == NPCID.EaterofWorldsBody || npc.type == NPCID.EaterofWorldsHead || npc.type == NPCID.EaterofWorldsTail) finalDamage = 8;
                     Projectile.NewProjectile(player.GetSource_FromThis(), playerPosition, defaultVelocity * homingAngle, ProjectileID.Starfury, finalDamage, 10f, Main.myPlayer, 0, npc.Center.Y);
                 }
             }
+            if (!empty) SoundEngine.PlaySound(PaperMarioItems.starPM);
         }
         //inflict dizzy on enemies
-        public void InflictDizzy(Player player)
+        public void InflictDizzy()
         {
             inflictDizzyActive = true;
             screenSpinTimer = 90;
@@ -157,11 +205,64 @@ namespace PaperMarioItems.Common.Players
         {
             foreach (var npc in Main.ActiveNPCs)
             {
-                if (Main.myPlayer == player.whoAmI && !npc.friendly && !NPCID.Sets.ShouldBeCountedAsBoss[npc.type] && !npc.boss)
+                if (Main.myPlayer == player.whoAmI && !npc.friendly && npc.type != NPCID.CultistDevote && !NPCID.Sets.CountsAsCritter[npc.type] && (npc.Center - player.Center).Length() < (Main.screenWidth / 2) && !NPCID.Sets.ShouldBeCountedAsBoss[npc.type] && !npc.boss)
                 {
                     npc.AddBuff(ModContent.BuffType<DizzyDebuff>(), 10800);
                 }
             }
+        }
+        //thunder bolt and rage
+        private void StrikeOneEnemy(Player player)
+        {
+            NPC closestNPC = null;
+            float closestDist = 0;
+            float distSq = 0;
+            foreach (var npc in Main.ActiveNPCs)
+            {
+                if (Main.myPlayer == player.whoAmI && !npc.friendly && npc.type != NPCID.CultistDevote && !NPCID.Sets.CountsAsCritter[npc.type] && (npc.Center - player.Center).Length() < (Main.screenWidth / 2))
+                {
+                    Vector2 playerToEnemy = new Vector2(player.Center.X - npc.Center.X, player.Center.Y - npc.Center.Y);
+                    distSq = (float)Math.Sqrt(playerToEnemy.LengthSquared());
+                    if (closestNPC == null || distSq < closestDist)
+                    {
+                        closestNPC = npc;
+                        closestDist = distSq;
+                    }
+                }
+            }
+            if (closestNPC != null && closestDist <= distSq)
+            {
+                SoundEngine.PlaySound(loudThunder, closestNPC.Center);
+                StrikeLightning(player, closestNPC);
+            }
+        }
+        private void StrikeAllEnemies(Player player)
+        {
+            NPC closestNPC = null;
+            foreach (var npc in Main.ActiveNPCs)
+            {
+                if (Main.myPlayer == player.whoAmI && !npc.friendly && npc.type != NPCID.CultistDevote && !NPCID.Sets.CountsAsCritter[npc.type] && (npc.Center - player.Center).Length() < (Main.screenWidth / 2))
+                {
+                    closestNPC = npc;
+                    StrikeLightning(player, npc);
+                }
+            }
+            if (closestNPC != null)
+            {
+                SoundEngine.PlaySound(loudThunder, player.Center);
+            }
+        }
+        public void StrikeLightning(Player player, NPC npc)
+        {
+            Dust.NewDustDirect(npc.Center, 2, 2, ModContent.DustType<LightningDust>());
+            npc.StrikeNPC(npc.CalculateHitInfo(100, player.direction));
+            npc.AddBuff(BuffID.Electrified, 1800);
+            NetMessage.SendStrikeNPC(npc, npc.CalculateHitInfo(100, player.direction));
+        }
+        public void BackgroundFlash()
+        {
+            bgFlashTime = 13;
+            bgFlash = true;
         }
         //soft debuff
         public override void DrawEffects(PlayerDrawSet drawInfo, ref float r, ref float g, ref float b, ref float a, ref bool fullBright)
@@ -182,9 +283,17 @@ namespace PaperMarioItems.Common.Players
                 }
                 else
                 {
-                    if (waitTimeElectric == 5) waitTimeElectric = 0;
+                    if (waitTimeElectric >= 5) waitTimeElectric = 0;
                     else waitTimeElectric++;
                 }
+            }
+            if (bgFlash && Main.gamePaused == false)
+            {
+                if (bgFlashTime <= 0) bgFlash = false;
+                Texture2D value = TextureAssets.MagicPixel.Value;
+                Color color = Color.White;
+                Main.spriteBatch.Draw(value, new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), color);
+                bgFlashTime--;
             }
         }
         //dodgy effects

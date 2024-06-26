@@ -177,16 +177,35 @@ Items: {
 
 	ShootingStar: {
 		DisplayName: Shooting Star
-		Tooltip: Drops shooting stars on all enemies
+		Tooltip:
+			'''
+			Drops shooting stars on all enemies
+			These stars are weaker against Eater of Worlds and the Destroyer
+			'''
 	}
 
 	DizzyDial: {
 		DisplayName: Dizzy Dial
 		Tooltip:
 			'''
-			Temporarily makes all enemies dizzy, decreasing their accuracy
+			Temporarily makes all enemies dizzy, minimizing their damage
 			When applied to players, their controls are reversed instead
 			'''
+	}
+
+	ThunderBolt: {
+		DisplayName: Thunder Bolt
+		Tooltip: Drops lightning on an enemy for 100 damage
+	}
+
+	ThunderRage: {
+		DisplayName: Thunder Rage
+		Tooltip: ""
+	}
+
+	FrightMask: {
+		DisplayName: Fright Mask
+		Tooltip: ""
 	}
 }
 
