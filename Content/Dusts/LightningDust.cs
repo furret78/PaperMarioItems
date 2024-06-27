@@ -30,7 +30,7 @@ namespace PaperMarioItems.Content.Dusts
         {
 			Vector2 origin = new Vector2(dust.frame.Width/2,dust.frame.Height/2);
 			Texture2D texture = (Texture2D)lightningDust;
-			Color color = new Color(255, 255, 0, 0);
+			Color color = new Color(255, 255, 0, dust.alpha);
 			Main.spriteBatch.Draw(texture, dust.position - Main.screenPosition, dust.frame, color, dust.rotation, origin, dust.scale, SpriteEffects.None, 0f);
             return false;
         }

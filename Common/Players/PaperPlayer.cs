@@ -12,7 +12,6 @@ using PaperMarioItems.Content.Dusts;
 using System;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
-using System.Transactions;
 
 namespace PaperMarioItems.Common.Players
 {
@@ -22,20 +21,22 @@ namespace PaperMarioItems.Common.Players
         public bool dodgyEffect;
         public bool hugeEffect;
         public bool softEffect;
-        public bool electrifiedEffect;
-        public bool lifeShroomRevive;
+        public bool electrifiedEffect, lifeShroomRevive;
         public bool inflictDizzyActive;
         public bool thunderEffectActive;
         public bool thunderOnce;
         public bool thunderAll;
+        public bool frightMaskActive;
         public int screenSpinTimer = 0;
         public int shootingStar = 0;
+        public int frightMaskCount = 0;
         public bool shootingStarActive;
         private int shootingStarMaxDelay = 0;
         private int shootingStarTimer = 0;
         private int waitTimeElectric = 0;
         private int waitTimeThunder = 0;
         private int bgFlashTime = 0;
+        private int frightMaskTimer = 0;
         private bool bgFlash;
         private static SoundStyle loudThunder = SoundID.Thunder with { Variants = new System.ReadOnlySpan<int>(new int[] { 0 }) };
         public static readonly Color LuckyTextColor = new Color(255, 255, 0, 255);
@@ -172,6 +173,23 @@ namespace PaperMarioItems.Common.Players
                     }
                     else waitTimeThunder--;
                 }
+                //fright mask timer
+                if (frightMaskActive)
+                {
+                    if (frightMaskTimer % 6 == 0)
+                    {
+                        Dust.NewDust(Player.Center, 1, 1, ModContent.DustType<BowserScare>());
+                        frightMaskCount--;
+                    }
+                    if (frightMaskTimer == 10) InflictFrightOnAll(Player);
+                    frightMaskTimer++;
+                    if (frightMaskCount <= 0)
+                    {
+                        frightMaskActive = false;
+                        frightMaskCount = 0;
+                        frightMaskTimer = 0;
+                    }
+                }
             }
         }
         //shooting star
@@ -210,13 +228,52 @@ namespace PaperMarioItems.Common.Players
                     npc.AddBuff(ModContent.BuffType<DizzyDebuff>(), 10800);
                 }
             }
+            foreach (var vsplayer in Main.ActivePlayers)
+            {
+                if (Main.myPlayer == player.whoAmI && vsplayer.hostile && (vsplayer.Center - player.Center).Length() < (Main.screenWidth / 2))
+                {
+                    vsplayer.AddBuff(ModContent.BuffType<DizzyDebuff>(), 10800);
+                }
+            }
+        }
+        //fright mask
+        public void InflictFrightOnAll(Player player)
+        {
+            foreach (var npc in Main.ActiveNPCs)
+            {
+                if (Main.myPlayer == player.whoAmI && !npc.friendly && npc.type != NPCID.CultistDevote && !NPCID.Sets.CountsAsCritter[npc.type] && (npc.Center - player.Center).Length() < (Main.screenWidth / 2) && !NPCID.Sets.ShouldBeCountedAsBoss[npc.type] && !npc.boss)
+                {
+                    npc.AddBuff(ModContent.BuffType<FrightDebuff>(), 10);
+                }
+            }
+            foreach (var vsplayer in Main.ActivePlayers)
+            {
+                if (Main.myPlayer == player.whoAmI && vsplayer.hostile && (vsplayer.Center - player.Center).Length() < (Main.screenWidth / 2))
+                {
+                    vsplayer.Hurt(default, 0, player.direction, true, false, 0, false, 0, 0, 10);
+                }
+            }
         }
         //thunder bolt and rage
         private void StrikeOneEnemy(Player player)
         {
             NPC closestNPC = null;
+            Player closestPlayer = null;
             float closestDist = 0;
             float distSq = 0;
+            foreach (var vsplayer in Main.ActivePlayers)
+            {
+                if (Main.myPlayer == player.whoAmI && vsplayer.hostile && (vsplayer.Center - player.Center).Length() < (Main.screenWidth / 2))
+                {
+                    Vector2 playerToEnemy = new Vector2(player.Center.X - vsplayer.Center.X, player.Center.Y - vsplayer.Center.Y);
+                    distSq = (float)Math.Sqrt(playerToEnemy.LengthSquared());
+                    if (closestNPC == null || distSq < closestDist)
+                    {
+                        closestPlayer = vsplayer;
+                        closestDist = distSq;
+                    }
+                }
+            }
             foreach (var npc in Main.ActiveNPCs)
             {
                 if (Main.myPlayer == player.whoAmI && !npc.friendly && npc.type != NPCID.CultistDevote && !NPCID.Sets.CountsAsCritter[npc.type] && (npc.Center - player.Center).Length() < (Main.screenWidth / 2))
@@ -230,10 +287,18 @@ namespace PaperMarioItems.Common.Players
                     }
                 }
             }
-            if (closestNPC != null && closestDist <= distSq)
+            if ((closestNPC != null || closestPlayer != null) && closestDist <= distSq)
             {
                 SoundEngine.PlaySound(loudThunder, closestNPC.Center);
-                StrikeLightning(player, closestNPC);
+                if (closestNPC != null && closestPlayer == null)
+                {
+                    StrikeLightning(player, closestNPC, null);
+                }
+                if (closestPlayer != null)
+                {
+
+                }
+
             }
         }
         private void StrikeAllEnemies(Player player)
@@ -244,7 +309,7 @@ namespace PaperMarioItems.Common.Players
                 if (Main.myPlayer == player.whoAmI && !npc.friendly && npc.type != NPCID.CultistDevote && !NPCID.Sets.CountsAsCritter[npc.type] && (npc.Center - player.Center).Length() < (Main.screenWidth / 2))
                 {
                     closestNPC = npc;
-                    StrikeLightning(player, npc);
+                    StrikeLightning(player, npc, null);
                 }
             }
             if (closestNPC != null)
@@ -252,7 +317,7 @@ namespace PaperMarioItems.Common.Players
                 SoundEngine.PlaySound(loudThunder, player.Center);
             }
         }
-        public void StrikeLightning(Player player, NPC npc)
+        public void StrikeLightning(Player player, NPC npc, Player vsplayer)
         {
             Dust.NewDustDirect(npc.Center, 2, 2, ModContent.DustType<LightningDust>());
             npc.StrikeNPC(npc.CalculateHitInfo(100, player.direction));

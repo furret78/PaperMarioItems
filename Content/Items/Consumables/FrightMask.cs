@@ -1,5 +1,6 @@
 using PaperMarioItems.Common.Players;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -16,7 +17,6 @@ namespace PaperMarioItems.Content.Items.Consumables
             Item.useAnimation = Item.useTime;
             Item.consumable = true;
             Item.useStyle = ItemUseStyleID.HoldUp;
-            Item.UseSound = PaperMarioItems.useItemPM;
             Item.maxStack = Item.CommonMaxStack;
             Item.rare = ItemRarityID.White;
             Item.value = Item.buyPrice(copper: 25);
@@ -24,13 +24,14 @@ namespace PaperMarioItems.Content.Items.Consumables
 
         public override bool? UseItem(Player player)
         {
-            /*if (!player.GetModPlayer<PaperPlayer>().inflictDizzyActive)
+            if (!player.GetModPlayer<PaperPlayer>().frightMaskActive && player.GetModPlayer<PaperPlayer>().frightMaskCount <= 0)
             {
-                player.GetModPlayer<PaperPlayer>().InflictDizzy();
+                player.GetModPlayer<PaperPlayer>().frightMaskActive = true;
+                player.GetModPlayer<PaperPlayer>().frightMaskCount = 6;
+                SoundEngine.PlaySound(PaperMarioItems.useItemPM);
                 return true;
             }
-            player.GetModPlayer<PaperPlayer>().InflictDizzyOnEnemies(player);*/
-            return false;
+            else return false;
         }
 	}
 }

@@ -46,17 +46,23 @@ namespace PaperMarioItems.Common.NPCs
         }
         public override void ModifyHitNPC(NPC npc, NPC target, ref NPC.HitModifiers modifiers)
         {
-            ref StatModifier finalDamage = ref modifiers.FinalDamage;
-            finalDamage *= 0f;
-            ref StatModifier knockback = ref modifiers.Knockback;
-            knockback *= 0f;
+            if (dizzyDebuff)
+            {
+                ref StatModifier finalDamage = ref modifiers.FinalDamage;
+                finalDamage *= 0f;
+                ref StatModifier knockback = ref modifiers.Knockback;
+                knockback *= 0f;
+            }
         }
         public override void ModifyHitPlayer(NPC npc, Player target, ref Player.HurtModifiers modifiers)
         {
-            ref StatModifier finalDamage = ref modifiers.FinalDamage;
-            finalDamage *= 0f;
-            ref StatModifier knockback = ref modifiers.Knockback;
-            knockback *= 0f;
+            if (dizzyDebuff)
+            {
+                ref StatModifier finalDamage = ref modifiers.FinalDamage;
+                finalDamage *= 0f;
+                ref StatModifier knockback = ref modifiers.Knockback;
+                knockback *= 0f;
+            }
         }
     }
 }

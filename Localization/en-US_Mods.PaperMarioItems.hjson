@@ -200,12 +200,16 @@ Items: {
 
 	ThunderRage: {
 		DisplayName: Thunder Rage
-		Tooltip: ""
+		Tooltip: Drops lightning on all enemies for 100 damage
 	}
 
 	FrightMask: {
 		DisplayName: Fright Mask
-		Tooltip: ""
+		Tooltip:
+			'''
+			Summons a scary spirit that may chase enemies away
+			When applied to other players, they may be pushed away
+			'''
 	}
 }
 

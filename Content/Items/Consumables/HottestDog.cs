@@ -1,19 +1,33 @@
+using PaperMarioItems.Content.Buffs;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace PaperMarioItems.Content.Items.Consumables
 { 
-	public class WhackaBump : ModItem
+	public class HottestDog : ModItem
 	{
 		public override void SetDefaults()
 		{
-            Item.DefaultToFood(37, 35, BuffID.WellFed2, 7200);
+			Item.width = 40;
+			Item.height = 40;
+			Item.useTurn = true;
+			Item.useTime = 17;
+			Item.useAnimation = Item.useTime;
+			Item.useStyle = ItemUseStyleID.HoldUp;
+			Item.UseSound = SoundID.Item3;
+			Item.consumable = true;
+			Item.maxStack = Item.CommonMaxStack;
             Item.rare = ItemRarityID.Orange;
-            Item.value = Item.buyPrice(copper: 60);
-            Item.healLife = 50;
-            Item.healMana = 50;
-            Item.potion = true;
+            Item.value = Item.buyPrice(copper: 25);
+			Item.buffType = ModContent.BuffType<ChargedBuff>();
+			Item.buffTime = 7200;
+            Item.healLife = 70;
+            Item.healMana = Item.healLife;
+        }
+        public override void OnConsumeItem(Player player)
+		{
+            player.TryToResetHungerToNeutral();
         }
         public override void Load()
         {
@@ -42,10 +56,13 @@ namespace PaperMarioItems.Content.Items.Consumables
             }
             else orig(player, sItem);
         }
-
-        public override void OnConsumeItem(Player player)
-        {
-            player.TryToResetHungerToNeutral();
+        public override void AddRecipes()
+		{
+			Recipe recipe = CreateRecipe()
+				.AddIngredient(ItemID.Hotdog)
+                .AddIngredient(ModContent.ItemType<HotSauce>())
+                .AddTile(TileID.WorkBenches)
+				.Register();
         }
-    }
+	}
 }
