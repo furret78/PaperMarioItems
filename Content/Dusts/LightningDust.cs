@@ -37,7 +37,7 @@ namespace PaperMarioItems.Content.Dusts
 
         public override bool Update(Dust dust) {
 			dust.rotation += 20f;
-			dust.scale *= 1.2f;
+			dust.scale *= 1.5f;
 
 			if (dust.scale > 1f) dust.alpha += 10;
 			if (dust.alpha >= 255) dust.active = false;

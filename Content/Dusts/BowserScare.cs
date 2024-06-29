@@ -24,7 +24,7 @@ namespace PaperMarioItems.Content.Dusts
 			dust.scale = 0.1f;
 			dust.alpha = 255;
 			dust.frame = new Rectangle(0, 0, 128, 128);
-			dust.noLight = false;
+			dust.noLight = true;
         }
 
         public override bool PreDraw(Dust dust)
@@ -48,7 +48,7 @@ namespace PaperMarioItems.Content.Dusts
 			if (dust.rotation > 0) dust.rotation -= 10;
 			//expand
 			if (selfTimer > 60 && dust.scale < 3f) dust.scale *= 1.3f;
-			if (selfTimer <= 60) dust.scale += 0.5f;
+			if (selfTimer <= 60) dust.scale += 0.2f;
 			if (selfTimer <= 0 && dust.alpha >= 255) dust.active = false;
 			selfTimer++;
 			return false;

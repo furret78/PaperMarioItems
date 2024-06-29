@@ -289,14 +289,14 @@ namespace PaperMarioItems.Common.Players
             }
             if ((closestNPC != null || closestPlayer != null) && closestDist <= distSq)
             {
-                SoundEngine.PlaySound(loudThunder, closestNPC.Center);
                 if (closestNPC != null && closestPlayer == null)
                 {
                     StrikeLightning(player, closestNPC, null);
+                    SoundEngine.PlaySound(loudThunder, closestNPC.Center);
                 }
                 if (closestPlayer != null)
                 {
-
+                    SoundEngine.PlaySound(loudThunder, closestPlayer.Center);
                 }
 
             }
@@ -304,6 +304,7 @@ namespace PaperMarioItems.Common.Players
         private void StrikeAllEnemies(Player player)
         {
             NPC closestNPC = null;
+            Player closestPlayer = null;
             foreach (var npc in Main.ActiveNPCs)
             {
                 if (Main.myPlayer == player.whoAmI && !npc.friendly && npc.type != NPCID.CultistDevote && !NPCID.Sets.CountsAsCritter[npc.type] && (npc.Center - player.Center).Length() < (Main.screenWidth / 2))
@@ -312,7 +313,15 @@ namespace PaperMarioItems.Common.Players
                     StrikeLightning(player, npc, null);
                 }
             }
-            if (closestNPC != null)
+            foreach (var vsplayer in Main.ActivePlayers)
+            {
+                if (Main.myPlayer == player.whoAmI && vsplayer.hostile && (vsplayer.Center - player.Center).Length() < (Main.screenWidth / 2))
+                {
+                    closestPlayer = vsplayer;
+                    StrikeLightning(player, null, vsplayer);
+                }
+            }
+            if (closestNPC != null || closestPlayer != null)
             {
                 SoundEngine.PlaySound(loudThunder, player.Center);
             }
@@ -320,9 +329,13 @@ namespace PaperMarioItems.Common.Players
         public void StrikeLightning(Player player, NPC npc, Player vsplayer)
         {
             Dust.NewDustDirect(npc.Center, 2, 2, ModContent.DustType<LightningDust>());
-            npc.StrikeNPC(npc.CalculateHitInfo(100, player.direction));
-            npc.AddBuff(BuffID.Electrified, 1800);
-            NetMessage.SendStrikeNPC(npc, npc.CalculateHitInfo(100, player.direction));
+            if (npc != null)
+            {
+                npc.StrikeNPC(npc.CalculateHitInfo(100, player.direction));
+                npc.AddBuff(BuffID.Electrified, 1800);
+                NetMessage.SendStrikeNPC(npc, npc.CalculateHitInfo(100, player.direction));
+            }
+            vsplayer?.Hurt(default, 100, player.direction, true);
         }
         public void BackgroundFlash()
         {

@@ -211,6 +211,11 @@ Items: {
 			When applied to other players, they may be pushed away
 			'''
 	}
+
+	HottestDog: {
+		DisplayName: Hottest Dog
+		Tooltip: ""
+	}
 }
 
 Buffs: {
@@ -252,5 +257,10 @@ Buffs: {
 	DizzyDebuff: {
 		DisplayName: Dizzy
 		Description: Controls are reversed!
+	}
+
+	FrightDebuff: {
+		DisplayName: Fright Debuff
+		Description: Mods.PaperMarioItems.Buffs.FrightDebuff.Description
 	}
 }

@@ -11,8 +11,6 @@ namespace PaperMarioItems.Content.Buffs
         {
             Main.debuff[Type] = true;
             Main.buffNoTimeDisplay[Type] = true;
-            Main.displayHeight[Type] = 0;
-            Main.displayWidth[Type] = 0;
         }
         public override void Update(NPC npc, ref int buffIndex)
         {
