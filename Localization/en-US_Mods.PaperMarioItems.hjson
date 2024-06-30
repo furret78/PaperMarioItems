@@ -214,7 +214,11 @@ Items: {
 
 	HottestDog: {
 		DisplayName: Hottest Dog
-		Tooltip: ""
+		Tooltip:
+			'''
+			A spicy dog made by Zess T
+			Temporarily boosts your damage output
+			'''
 	}
 }
 
@@ -261,6 +265,6 @@ Buffs: {
 
 	FrightDebuff: {
 		DisplayName: Fright Debuff
-		Description: Mods.PaperMarioItems.Buffs.FrightDebuff.Description
+		Description: Scared!
 	}
 }

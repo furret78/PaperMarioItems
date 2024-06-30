@@ -20,13 +20,14 @@ namespace PaperMarioItems.Content.Items.Consumables
 			Item.maxStack = Item.CommonMaxStack;
             Item.rare = ItemRarityID.Orange;
             Item.value = Item.buyPrice(copper: 25);
-			Item.buffType = ModContent.BuffType<ChargedBuff>();
-			Item.buffTime = 7200;
+			Item.buffType = BuffID.WellFed3;
+			Item.buffTime = 43200;
             Item.healLife = 70;
             Item.healMana = Item.healLife;
         }
         public override void OnConsumeItem(Player player)
 		{
+            player.AddBuff(ModContent.BuffType<ChargedBuff>(), 7200);
             player.TryToResetHungerToNeutral();
         }
         public override void Load()
