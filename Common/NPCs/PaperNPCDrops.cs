@@ -12,9 +12,10 @@ namespace PaperMarioItems.Common.NPCs
         {
             if (!NPCID.Sets.CountsAsCritter[npc.type])
             {
-                npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<PointSwap>(), 25, 23));
-                npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<SpitePouch>(), 29, 27));
-                npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<InnCoupon>(), 25, 23));
+                npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<PointSwap>(), 47, 44));
+                npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<SpitePouch>(), 47, 45));
+                npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<InnCoupon>(), 28, 25));
+                npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<FrightMask>(), 60, 55));
                 if (npc.type != NPCID.Harpy) npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<MysticEgg>(), 101, 100));
             }
             if (npc.type == NPCID.BlueSlime || npc.type == NPCID.YellowSlime || npc.type == NPCID.GoldenSlime || npc.type == NPCID.DungeonSlime)

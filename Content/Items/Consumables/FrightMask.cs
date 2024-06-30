@@ -24,10 +24,10 @@ namespace PaperMarioItems.Content.Items.Consumables
 
         public override bool? UseItem(Player player)
         {
-            if (!player.GetModPlayer<PaperPlayer>().frightMaskActive && player.GetModPlayer<PaperPlayer>().frightMaskCount <= 0)
+            if (!player.GetModPlayer<PaperPlayer>().frightMaskActive && player.GetModPlayer<PaperPlayer>().frightMaskCooldown <= 0)
             {
+                player.GetModPlayer<PaperPlayer>().frightMaskCooldown = Item.useTime*2;
                 player.GetModPlayer<PaperPlayer>().frightMaskActive = true;
-                player.GetModPlayer<PaperPlayer>().frightMaskCount = 6;
                 SoundEngine.PlaySound(PaperMarioItems.useItemPM);
                 return true;
             }

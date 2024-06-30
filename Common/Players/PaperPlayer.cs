@@ -18,25 +18,17 @@ namespace PaperMarioItems.Common.Players
     public class PaperPlayer : ModPlayer
     {
         //setup
-        public bool dodgyEffect;
-        public bool hugeEffect;
-        public bool softEffect;
-        public bool electrifiedEffect, lifeShroomRevive;
-        public bool inflictDizzyActive;
-        public bool thunderEffectActive;
-        public bool thunderOnce;
-        public bool thunderAll;
-        public bool frightMaskActive;
+        public bool dodgyEffect, hugeEffect, softEffect, electrifiedEffect, lifeShroomRevive;
+        public bool inflictDizzyActive, thunderEffectActive, frightMaskActive, shootingStarActive;
+        public bool thunderOnce, thunderAll;
         public int screenSpinTimer = 0;
         public int shootingStar = 0;
-        public int frightMaskCount = 0;
-        public bool shootingStarActive;
+        public int frightMaskCooldown = 0;
         private int shootingStarMaxDelay = 0;
         private int shootingStarTimer = 0;
         private int waitTimeElectric = 0;
         private int waitTimeThunder = 0;
         private int bgFlashTime = 0;
-        private int frightMaskTimer = 0;
         private bool bgFlash;
         private static SoundStyle loudThunder = SoundID.Thunder with { Variants = new System.ReadOnlySpan<int>(new int[] { 0 }) };
         public static readonly Color LuckyTextColor = new Color(255, 255, 0, 255);
@@ -174,20 +166,20 @@ namespace PaperMarioItems.Common.Players
                     else waitTimeThunder--;
                 }
                 //fright mask timer
-                if (frightMaskActive)
+                if (frightMaskActive && frightMaskCooldown >= -20)
                 {
-                    if (frightMaskTimer % 6 == 0)
+                    frightMaskCooldown--;
+                    if (frightMaskCooldown == 17)
                     {
-                        Dust.NewDust(Player.Center, 1, 1, ModContent.DustType<BowserScare>());
-                        frightMaskCount--;
+                        Vector2 spawnPos = new Vector2(Player.Center.X, Player.Center.Y - 10);
+                        Dust.NewDustPerfect(spawnPos, ModContent.DustType<BowserScare>(), null, Player.direction, default, 0.1f);
+                        InflictFrightOnAll(Player);
+                        SoundEngine.PlaySound(SoundID.ForceRoar, Player.Center);
                     }
-                    if (frightMaskTimer == 10) InflictFrightOnAll(Player);
-                    frightMaskTimer++;
-                    if (frightMaskCount <= 0)
+                    if (frightMaskCooldown <= -20)
                     {
                         frightMaskActive = false;
-                        frightMaskCount = 0;
-                        frightMaskTimer = 0;
+                        frightMaskCooldown = 0;
                     }
                 }
             }
@@ -225,32 +217,38 @@ namespace PaperMarioItems.Common.Players
             {
                 if (Main.myPlayer == player.whoAmI && !npc.friendly && npc.type != NPCID.CultistDevote && !NPCID.Sets.CountsAsCritter[npc.type] && (npc.Center - player.Center).Length() < (Main.screenWidth / 2) && !NPCID.Sets.ShouldBeCountedAsBoss[npc.type] && !npc.boss)
                 {
-                    npc.AddBuff(ModContent.BuffType<DizzyDebuff>(), 10800);
+                    npc?.AddBuff(ModContent.BuffType<DizzyDebuff>(), 10800);
                 }
             }
             foreach (var vsplayer in Main.ActivePlayers)
             {
                 if (Main.myPlayer == player.whoAmI && vsplayer.hostile && (vsplayer.Center - player.Center).Length() < (Main.screenWidth / 2))
                 {
-                    vsplayer.AddBuff(ModContent.BuffType<DizzyDebuff>(), 10800);
+                    vsplayer?.AddBuff(ModContent.BuffType<DizzyDebuff>(), 10800);
                 }
             }
         }
         //fright mask
         public void InflictFrightOnAll(Player player)
         {
+            int whichDirection;
             foreach (var npc in Main.ActiveNPCs)
             {
                 if (Main.myPlayer == player.whoAmI && !npc.friendly && npc.type != NPCID.CultistDevote && !NPCID.Sets.CountsAsCritter[npc.type] && (npc.Center - player.Center).Length() < (Main.screenWidth / 2) && !NPCID.Sets.ShouldBeCountedAsBoss[npc.type] && !npc.boss)
                 {
+                    if (npc.Center.X < player.Center.X) whichDirection = -1;
+                    else whichDirection = 1;
                     npc.AddBuff(ModContent.BuffType<FrightDebuff>(), 10);
+                    npc.SimpleStrikeNPC(0, whichDirection, false, 20);
                 }
             }
             foreach (var vsplayer in Main.ActivePlayers)
             {
                 if (Main.myPlayer == player.whoAmI && vsplayer.hostile && (vsplayer.Center - player.Center).Length() < (Main.screenWidth / 2))
                 {
-                    vsplayer.Hurt(default, 0, player.direction, true, false, 0, false, 0, 0, 10);
+                    if (vsplayer.Center.X < player.Center.X) whichDirection = -1;
+                    else whichDirection = 1;
+                    vsplayer.Hurt(default, 0, whichDirection, true, false, 0, false, 0, 0, 20);
                 }
             }
         }
@@ -328,14 +326,21 @@ namespace PaperMarioItems.Common.Players
         }
         public void StrikeLightning(Player player, NPC npc, Player vsplayer)
         {
+            int whichDirection;
             Dust.NewDustDirect(npc.Center, 2, 2, ModContent.DustType<LightningDust>());
             if (npc != null)
             {
-                npc.StrikeNPC(npc.CalculateHitInfo(100, player.direction));
+                if (npc.Center.X < player.Center.X) whichDirection = -1;
+                else whichDirection = 1;
+                npc.SimpleStrikeNPC(100, whichDirection);
                 npc.AddBuff(BuffID.Electrified, 1800);
-                NetMessage.SendStrikeNPC(npc, npc.CalculateHitInfo(100, player.direction));
             }
-            vsplayer?.Hurt(default, 100, player.direction, true);
+            if (vsplayer != null)
+            {
+                if (vsplayer.Center.X < player.Center.X) whichDirection = -1;
+                else whichDirection = 1;
+                vsplayer.Hurt(default, 100, player.direction);
+            }
         }
         public void BackgroundFlash()
         {
