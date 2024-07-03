@@ -180,7 +180,7 @@ Items: {
 		Tooltip:
 			'''
 			Drops shooting stars on all enemies
-			These stars are weaker against Eater of Worlds and the Destroyer
+			These stars are weakened against Eater of Worlds and the Destroyer
 			'''
 	}
 
@@ -219,6 +219,11 @@ Items: {
 			A spicy dog made by Zess T
 			Temporarily boosts your damage output
 			'''
+	}
+
+	Stopwatch: {
+		DisplayName: Stopwatch
+		Tooltip: ""
 	}
 }
 
@@ -266,5 +271,10 @@ Buffs: {
 	FrightDebuff: {
 		DisplayName: Fright Debuff
 		Description: Scared!
+	}
+
+	TimestopDebuff: {
+		DisplayName: Timestop Debuff
+		Description: Mods.PaperMarioItems.Buffs.TimestopDebuff.Description
 	}
 }

@@ -9,7 +9,6 @@ using Terraria.Localization;
 using PaperMarioItems.Content.Items.Consumables;
 using PaperMarioItems.Content.Buffs;
 using PaperMarioItems.Content.Dusts;
-using System;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
 
@@ -19,21 +18,13 @@ namespace PaperMarioItems.Common.Players
     {
         //setup
         public bool dodgyEffect, hugeEffect, softEffect, electrifiedEffect, lifeShroomRevive;
-        public bool inflictDizzyActive, thunderEffectActive, frightMaskActive, shootingStarActive;
+        public bool inflictDizzyActive, thunderEffectActive, frightMaskActive, shootingStarActive, stopwatchActive;
         public bool thunderOnce, thunderAll;
-        public int screenSpinTimer = 0;
-        public int shootingStar = 0;
-        public int frightMaskCooldown = 0;
-        private int shootingStarMaxDelay = 0;
-        private int shootingStarTimer = 0;
-        private int waitTimeElectric = 0;
-        private int waitTimeThunder = 0;
-        private int bgFlashTime = 0;
+        public int screenSpinTimer = 0, shootingStar = 0, frightMaskCooldown = 0, stopwatchCooldown = 0;
+        private int shootingStarMaxDelay, shootingStarTimer = 0, waitTimeElectric = 0, waitTimeThunder = 0, bgFlashTime = 0, stopwatchTimer = 0;
         private bool bgFlash;
-        private static SoundStyle loudThunder = SoundID.Thunder with { Variants = new System.ReadOnlySpan<int>(new int[] { 0 }) };
-        public static readonly Color LuckyTextColor = new Color(255, 255, 0, 255);
-        public const int postReviveProtect = 1;
-        public const int postReviveRegen = 2;
+        private static readonly Color LuckyTextColor = new Color(255, 255, 0, 255);
+        public const int postReviveProtect = 1, postReviveRegen = 2;
         //localized text
         public readonly string LuckyEvade = Language.GetTextValue($"Mods.PaperMarioItems.Common.Players.LuckyEvade");
         //reset
@@ -92,6 +83,19 @@ namespace PaperMarioItems.Common.Players
         {
             if (Main.myPlayer == Player.whoAmI)
             {
+                //timestop dust
+                if (Player.HasBuff<TimestopDebuff>())
+                {
+                    if (stopwatchTimer >= 60)
+                    {
+                        Color color = new(240 + Main.rand.Next(15), 240 + Main.rand.Next(15), 240 + Main.rand.Next(15));
+                        Vector2 newPos = new(Player.Center.X, Player.Center.Y);
+                        Dust.NewDustPerfect(newPos, ModContent.DustType<StopwatchDust>(), null, 0, color);
+                        stopwatchTimer = 0;
+                    }
+                    stopwatchTimer++;
+                }
+                else if (stopwatchTimer != 0) stopwatchTimer = 0;
                 //shooting star timer
                 if (shootingStar > 0)
                 {
@@ -180,6 +184,20 @@ namespace PaperMarioItems.Common.Players
                     {
                         frightMaskActive = false;
                         frightMaskCooldown = 0;
+                    }
+                }
+                //stopwatch
+                if (stopwatchActive)
+                {
+                    stopwatchCooldown--;
+                    if (stopwatchCooldown == 1)
+                    {
+                        InflictTimestop(Player);
+                    }
+                    if (stopwatchCooldown <= 0)
+                    {
+                        stopwatchActive = false;
+                        stopwatchCooldown = 0;
                     }
                 }
             }

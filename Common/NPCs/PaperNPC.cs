@@ -1,8 +1,7 @@
 using Microsoft.Xna.Framework;
-using PaperMarioItems.Common.Players;
 using PaperMarioItems.Content.Buffs;
+using PaperMarioItems.Content.Dusts;
 using Terraria;
-using Terraria.Audio;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -12,9 +11,8 @@ namespace PaperMarioItems.Common.NPCs
     public class PaperNPC : GlobalNPC
     {
         public override bool InstancePerEntity => true;
-        public bool softDebuff;
-        public bool dizzyDebuff;
-        private int waitTimeDizzy = 0;
+        public bool softDebuff, dizzyDebuff, timestopDebuff, timestopOn, hadGravity;
+        private int waitTimeDizzy = 0, timerTimestop = 0;
         public static readonly Color LuckyTextColor = new Color(255, 255, 0);
         public static readonly Color DizzyColor = new Color(0, 0, 255);
         public readonly string LuckyEvade = Language.GetTextValue($"Mods.PaperMarioItems.Common.Players.LuckyEvade");
@@ -22,6 +20,40 @@ namespace PaperMarioItems.Common.NPCs
         {
             softDebuff = false;
             dizzyDebuff = false;
+            timestopDebuff = false;
+        }
+        public override bool PreAI(NPC npc)
+        {
+            if (!timestopDebuff && timestopOn)
+            {
+                timestopOn = false;
+                if (hadGravity) npc.noGravity = false;
+            }
+            if (timestopDebuff)
+            {
+                Color color = new(240 + Main.rand.Next(15), 240 + Main.rand.Next(15), 240 + Main.rand.Next(15));
+                Vector2 newPos = new(npc.Center.X, npc.Center.Y);
+                if (timerTimestop >= 60)
+                {
+                    timerTimestop = 0;
+                    Dust.NewDustPerfect(newPos, ModContent.DustType<StopwatchDust>(), null, 0, color);
+                }
+                timerTimestop++;
+                if (!timestopOn)
+                {
+                    if (!npc.noGravity)
+                    {
+                        hadGravity = true;
+                        npc.noGravity = true;
+                    }
+                    timerTimestop = 0;
+                    timestopOn = true;
+                }
+                npc.frameCounter = 0;
+                npc.velocity = Vector2.Zero;
+                return false;
+            }
+            else return true;
         }
         public override void ModifyIncomingHit(NPC npc, ref NPC.HitModifiers modifiers)
         {

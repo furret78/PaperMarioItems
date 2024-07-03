@@ -10,10 +10,13 @@ namespace PaperMarioItems
 	partial class PaperMarioItems : Mod
     {
         //custom sounds
-        public readonly static SoundStyle useItemPM = new SoundStyle("PaperMarioItems/Assets/Sounds/useItemPM");
-        public readonly static SoundStyle luckyPM = new SoundStyle("PaperMarioItems/Assets/Sounds/luckyPM");
-        public readonly static SoundStyle healPM = new SoundStyle("PaperMarioItems/Assets/Sounds/healPM");
-        public readonly static SoundStyle starPM = new SoundStyle("PaperMarioItems/Assets/Sounds/starPM");
+        public readonly static SoundStyle useItemPM = new("PaperMarioItems/Assets/Sounds/useItemPM");
+        public readonly static SoundStyle luckyPM = new("PaperMarioItems/Assets/Sounds/luckyPM");
+        public readonly static SoundStyle healPM = new("PaperMarioItems/Assets/Sounds/healPM");
+        public readonly static SoundStyle starPM = new("PaperMarioItems/Assets/Sounds/starPM");
+        public readonly static SoundStyle thunderPM = new("PaperMarioItems/Assets/Sounds/thunderPM");
+        public readonly static SoundStyle causeStatusPM = new("PaperMarioItems/Assets/Sounds/causeStatusPM");
+        public readonly static SoundStyle watchPM = new("PaperMarioItems/Assets/Sounds/watchPM");
         //custom recipe groups
         public override void AddRecipeGroups()
         {
