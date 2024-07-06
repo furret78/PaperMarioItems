@@ -1,4 +1,9 @@
-Common.Players.LuckyEvade: Lucky!
+Common: {
+	Players: {
+		LuckyEvade: Lucky!
+		MoonLordStopwatch: Moon Lord does not bend to the whims of time...
+	}
+}
 
 Content: {
 	SyrupGroup: Syrup Item
@@ -195,7 +200,7 @@ Items: {
 
 	ThunderBolt: {
 		DisplayName: Thunder Bolt
-		Tooltip: Drops lightning on an enemy for 100 damage
+		Tooltip: Drops lightning on the closest enemy for 100 damage
 	}
 
 	ThunderRage: {
@@ -223,7 +228,27 @@ Items: {
 
 	Stopwatch: {
 		DisplayName: Stopwatch
-		Tooltip: ""
+		Tooltip:
+			'''
+			If possible, temporarily immobilizes all enemies
+			Not advised to use against Moon Lord
+			'''
+	}
+
+	FireFlower: {
+		DisplayName: Fire Flower
+		Tooltip: Attacks all enemies with fireballs that do {0} damage and burns them
+	}
+
+	MysteryBox: {
+		DisplayName: Mystery Box
+		Tooltip: Who knows what this does? Take a chance and find out!
+	}
+
+	HPDrain: {
+		HPDrainDeath: had their HP drained.
+		DisplayName: HP Drain
+		Tooltip: Does {0} damage to the nearest foe while healing you {0} health
 	}
 }
 
@@ -269,12 +294,14 @@ Buffs: {
 	}
 
 	FrightDebuff: {
-		DisplayName: Fright Debuff
+		DisplayName: Frightened
 		Description: Scared!
 	}
 
 	TimestopDebuff: {
-		DisplayName: Timestop Debuff
-		Description: Mods.PaperMarioItems.Buffs.TimestopDebuff.Description
+		DisplayName: Immobilized
+		Description: Movement will be impossible for a while!
 	}
 }
+
+Projectiles.CustomFireball.DisplayName: Fire Flower Fireball

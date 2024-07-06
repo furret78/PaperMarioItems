@@ -2,8 +2,9 @@ using PaperMarioItems.Content.Buffs;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using PaperMarioItems.Content.Items.Consumables;
 
-namespace PaperMarioItems.Content.Items.Consumables
+namespace PaperMarioItems.Content.Items.Cooking
 { 
 	public class HottestDog : ModItem
 	{

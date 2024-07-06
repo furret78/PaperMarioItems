@@ -14,19 +14,19 @@ using Terraria.GameContent;
 
 namespace PaperMarioItems.Common.Players
 {
+    // Custom functions are in the PaperPlayerCustom.cs file
     partial class PaperPlayer : ModPlayer
     {
         //setup
-        public bool dodgyEffect, hugeEffect, softEffect, electrifiedEffect, lifeShroomRevive;
-        public bool inflictDizzyActive, thunderEffectActive, frightMaskActive, shootingStarActive, stopwatchActive;
-        public bool thunderOnce, thunderAll;
-        public int screenSpinTimer = 0, shootingStar = 0, frightMaskCooldown = 0, stopwatchCooldown = 0;
-        private int shootingStarMaxDelay, shootingStarTimer = 0, waitTimeElectric = 0, waitTimeThunder = 0, bgFlashTime = 0, stopwatchTimer = 0;
+        public bool dodgyEffect, hugeEffect, softEffect, electrifiedEffect, lifeShroomRevive, thunderOnce, thunderAll, earthquakeEffect;
+        public bool shootingStarActive, inflictDizzyActive, thunderEffectActive, frightMaskActive, stopwatchActive, fireFlowerActive, causeEarthquake;
+        public int shootingStar = 0, screenSpinTimer = 0, frightMaskCooldown = 0, stopwatchCooldown = 0, fireFlower = 0;
+        private int wte = 0, ssmd, sst = 0, wtt = 0, bgFlashTime = 0, stopwatchTimer = 0, fireFlowerTimer = 0;
         private bool bgFlash;
-        private static readonly Color LuckyTextColor = new Color(255, 255, 0, 255);
-        public const int postReviveProtect = 1, postReviveRegen = 2;
+        private static readonly Color LuckyTextColor = new(255, 255, 0, 255);
+        public const int postReviveProtect = 1, postReviveRegen = 2, fireFlowerDamage = 25;
         //localized text
-        public readonly string LuckyEvade = Language.GetTextValue($"Mods.PaperMarioItems.Common.Players.LuckyEvade");
+        public readonly string LuckyEvade = Language.GetTextValue($"Mods.PaperMarioItems.Common.Players.LuckyEvade"), MoonLordStopwatch = Language.GetTextValue($"Mods.PaperMarioItems.Common.Players.MoonLordStopwatch");
         //reset
         public override void ResetEffects()
         {
@@ -48,7 +48,8 @@ namespace PaperMarioItems.Common.Players
         {
             int num1 = postReviveProtect * 60 * 60;
             int num2 = postReviveRegen * 60 * 60;
-            if (!self.creativeGodMode && !self.dead && self.HasItem(ModContent.ItemType<LifeMushroom>()))
+            if (self.creativeGodMode || self.dead || !self.HasItem(ModContent.ItemType<LifeMushroom>())) orig(self, damageSource, dmg, hitDirection, pvp);
+            else
             {
                 for (int l = 0; l < Player.MaxBuffs; l++)
                 {
@@ -67,7 +68,6 @@ namespace PaperMarioItems.Common.Players
                 self.ConsumeItem(ModContent.ItemType<LifeMushroom>(), true, true);
                 return;
             }
-            else orig(self, damageSource, dmg, hitDirection, pvp);
         }
         //npc (nurse) detour
         private static bool On_Player_BuyItem(On_Player.orig_BuyItem orig, Player self, long price, int customCurrency)
@@ -99,26 +99,23 @@ namespace PaperMarioItems.Common.Players
                 //shooting star timer
                 if (shootingStar > 0)
                 {
-                    shootingStarMaxDelay = (int)(shootingStar * 3.5f + 1);
-                    if (!shootingStarActive)
-                    {
-                        shootingStarActive = true;
-                    }
+                    ssmd = (int)(shootingStar * 3.5f + 1);
+                    if (!shootingStarActive) shootingStarActive = true;
                     else
                     {
-                        if (shootingStarTimer == shootingStarMaxDelay)
+                        if (sst == ssmd)
                         {
                             ShootingStarAttack(Player);
                             shootingStar--;
-                            shootingStarTimer = -1;
+                            sst = -1;
                         }
-                        shootingStarTimer++;
+                        sst++;
                     }
                 }
                 else
                 {
-                    shootingStarMaxDelay = 0;
-                    shootingStarTimer = 0;
+                    ssmd = 0;
+                    sst = 0;
                     shootingStarActive = false;
                 }
                 //dizzy timer
@@ -130,23 +127,19 @@ namespace PaperMarioItems.Common.Players
                         inflictDizzyActive = false;
                         screenSpinTimer = 0;
                     }
-                    //code for screen spin
+                    //insert code for screen spin
                     screenSpinTimer--;
                 }
                 //thunder bolt timer
                 if (thunderOnce || thunderAll)
                 {
-                    if (waitTimeThunder <= 0) waitTimeThunder = 60;
+                    if (wtt <= 0) wtt = 60;
                     thunderEffectActive = true;
                 }
                 if (thunderEffectActive)
                 {
-                    if (waitTimeThunder == 15)
-                    {
-                        BackgroundFlash();
-                        waitTimeThunder--;
-                    }
-                    if (waitTimeThunder == 1)
+                    if (wtt == 15) BackgroundFlash();
+                    if (wtt == 1)
                     {
                         if (thunderOnce && !thunderAll)
                         {
@@ -158,16 +151,15 @@ namespace PaperMarioItems.Common.Players
                             StrikeAllEnemies(Player);
                             thunderAll = false;
                         }
-                        waitTimeThunder--;
                     }
-                    else if (waitTimeThunder <= 0)
+                    if (wtt <= 0)
                     {
                         thunderAll = false;
                         thunderOnce = false;
                         thunderEffectActive = false;
-                        waitTimeThunder = 0;
+                        wtt = 0;
                     }
-                    else waitTimeThunder--;
+                    else wtt--;
                 }
                 //fright mask timer
                 if (frightMaskActive && frightMaskCooldown >= -20)
@@ -175,7 +167,7 @@ namespace PaperMarioItems.Common.Players
                     frightMaskCooldown--;
                     if (frightMaskCooldown == 17)
                     {
-                        Vector2 spawnPos = new Vector2(Player.Center.X, Player.Center.Y - 10);
+                        Vector2 spawnPos = new(Player.Center.X, Player.Center.Y - 10);
                         Dust.NewDustPerfect(spawnPos, ModContent.DustType<BowserScare>(), null, Player.direction, default, 0.1f);
                         InflictFrightOnAll(Player);
                         SoundEngine.PlaySound(SoundID.ForceRoar, Player.Center);
@@ -190,14 +182,27 @@ namespace PaperMarioItems.Common.Players
                 if (stopwatchActive)
                 {
                     stopwatchCooldown--;
-                    if (stopwatchCooldown == 1)
-                    {
-                        InflictTimestop(Player);
-                    }
+                    if (stopwatchCooldown == 1) InflictTimestop(Player);
                     if (stopwatchCooldown <= 0)
                     {
                         stopwatchActive = false;
                         stopwatchCooldown = 0;
+                    }
+                }
+                //fire flower shoot
+                if (fireFlower > 0)
+                {
+                    if (!fireFlowerActive) fireFlowerActive = true;
+                    else
+                    {
+                        if (fireFlowerTimer > 3)
+                        {
+                            FireFlowerAttack(Player);
+                            fireFlowerTimer = 0;
+                            if (fireFlower < 2) fireFlowerActive = false;
+                            fireFlower--;
+                        }
+                        fireFlowerTimer++;
                     }
                 }
             }
@@ -212,17 +217,17 @@ namespace PaperMarioItems.Common.Players
             }
             if (electrifiedEffect)
             {
-                if (waitTimeElectric == 0)
+                if (wte == 0)
                 {
                     Vector2 dustRotation = Main.rand.NextVector2Unit();
                     Vector2 dustPosition = Player.Center + dustRotation * Player.height;
                     Dust.NewDust(dustPosition, 0, 0, ModContent.DustType<ElectricDust>());
-                    waitTimeElectric++;
+                    wte++;
                 }
                 else
                 {
-                    if (waitTimeElectric >= 5) waitTimeElectric = 0;
-                    else waitTimeElectric++;
+                    if (wte >= 5) wte = 0;
+                    else wte++;
                 }
             }
             if (bgFlash && Main.gamePaused == false)

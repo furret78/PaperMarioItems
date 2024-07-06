@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace PaperMarioItems.Content.Dusts
 {
-	public class StopwatchDust : ModDust
+	public class HPDrainDust : ModDust
 	{
         public override void OnSpawn(Dust dust) {
 			dust.rotation = 0;
@@ -12,12 +12,12 @@ namespace PaperMarioItems.Content.Dusts
 			dust.noLight = false;
 			dust.scale = 1f;
 			dust.velocity = new(0, -30);
-			dust.frame = new Rectangle(0, 0, 36, 40);
+			dust.frame = new Rectangle(0, 0, 40, 40);
+			dust.color = Color.Red;
         }
-
-		public override bool Update(Dust dust) {
-			Vector2 offset = new(-(dust.frame.Width / 2)+4, 0);
-			if (dust.alpha <= 0) dust.position += offset;
+        public override bool Update(Dust dust) {
+            Vector2 offset = new(-(dust.frame.Width / 2)+4, 0);
+            if (dust.alpha <= 0) dust.position += offset;
             dust.position += dust.velocity;
 			dust.velocity *= 0.7f;
 			dust.alpha += 10;

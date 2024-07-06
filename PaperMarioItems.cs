@@ -17,6 +17,9 @@ namespace PaperMarioItems
         public readonly static SoundStyle thunderPM = new("PaperMarioItems/Assets/Sounds/thunderPM");
         public readonly static SoundStyle causeStatusPM = new("PaperMarioItems/Assets/Sounds/causeStatusPM");
         public readonly static SoundStyle watchPM = new("PaperMarioItems/Assets/Sounds/watchPM");
+        public readonly static SoundStyle dizzyPM = new("PaperMarioItems/Assets/Sounds/dizzyPM");
+        public readonly static SoundStyle fireFlowerPM = new("PaperMarioItems/Assets/Sounds/fireFlowerPM");
+        public readonly static SoundStyle chargedPM = new("PaperMarioItems/Assets/Sounds/chargedPM");
         //custom recipe groups
         public override void AddRecipeGroups()
         {

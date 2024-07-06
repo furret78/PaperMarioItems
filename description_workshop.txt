@@ -7,7 +7,7 @@ Made with vanilla Terraria gameplay in mind. The items included may either be to
 [h1] Obtaining Items [/h1]
 Items are either dropped as loot from enemies or crafted. Although the current release only features some items, future updates will feature cooking-related items.
 
-The mod currently features up to 35 items adapted from the Paper Mario series--specifically, Paper Mario: The Thousand-Year Door.
+The mod currently features up to 38 items adapted from the Paper Mario series--specifically, Paper Mario: The Thousand-Year Door.
 
 [hr][/hr]
 [h1] Attributes [/h1]
@@ -15,4 +15,4 @@ Massive thanks to Jopojelly and TModLoader server's #mod-development-help channe
 
 All Paper Mario assets used in the mod belongs to Intelligent Systems and Nintendo.
 
-Steam Workshop icon was drawn by @sumrandomstuff on Discord.
+In-game mod icon was drawn by @sumrandomstuff on Discord.

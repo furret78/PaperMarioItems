@@ -16,7 +16,8 @@ namespace PaperMarioItems.Common.NPCs
                 npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<SpitePouch>(), 47, 45));
                 npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<InnCoupon>(), 28, 25));
                 npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<FrightMask>(), 60, 55));
-                if (npc.type != NPCID.Harpy) npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<MysticEgg>(), 101, 100));
+                npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<MysteryBox>(), 65, 63));
+                if (npc.type != NPCID.Harpy) npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<MysticEgg>(), 151, 150));
             }
             if (npc.type == NPCID.BlueSlime || npc.type == NPCID.YellowSlime || npc.type == NPCID.GoldenSlime || npc.type == NPCID.DungeonSlime)
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<WhackaBump>(), 90));
@@ -36,6 +37,11 @@ namespace PaperMarioItems.Common.NPCs
                 npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<MysticEgg>(), 26, 23));
             if (npc.type == NPCID.StardustSoldier)
                 npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<ShootingStar>(), 12, 9));
+            if (npc.type == NPCID.CaveBat || npc.type == NPCID.GiantBat || npc.type == NPCID.IceBat || npc.type == NPCID.IlluminantBat || npc.type == NPCID.JungleBat || npc.type == NPCID.SporeBat || npc.type == NPCID.VampireBat || npc.type == NPCID.Hellbat || npc.type == NPCID.Lavabat)
+            {
+                npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<DizzyDial>(), 49, 47));
+                npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<HPDrain>(), 40, 35));
+            }
             //boss specific drops
             if (System.Array.IndexOf(new int[] { NPCID.EaterofWorldsBody, NPCID.EaterofWorldsHead, NPCID.EaterofWorldsTail }, npc.type) > -1)
             {
@@ -49,8 +55,6 @@ namespace PaperMarioItems.Common.NPCs
                 leadingConditionRule.OnSuccess(ItemDropRule.Common(ModContent.ItemType<DizzyDial>(), 2));
                 npcLoot.Add(leadingConditionRule);
             }
-            if (npc.type == NPCID.CaveBat || npc.type == NPCID.GiantBat || npc.type == NPCID.IceBat || npc.type == NPCID.IlluminantBat || npc.type == NPCID.JungleBat || npc.type == NPCID.SporeBat || npc.type == NPCID.VampireBat || npc.type == NPCID.Hellbat || npc.type == NPCID.Lavabat)
-                npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<DizzyDial>(), 35, 30));
         }
     }
 }

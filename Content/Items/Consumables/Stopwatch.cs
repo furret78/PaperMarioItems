@@ -34,5 +34,39 @@ namespace PaperMarioItems.Content.Items.Consumables
             }
             else return false;
         }
-	}
+
+        public override void AddRecipes()
+        {
+            Recipe recipe = CreateRecipe()
+                .AddRecipeGroup(RecipeGroupID.Fragment, 9)
+                .AddIngredient(ItemID.TinWatch)
+                .AddTile(TileID.Anvils)
+                .Register();
+            recipe = CreateRecipe()
+                .AddRecipeGroup(RecipeGroupID.Fragment, 9)
+                .AddIngredient(ItemID.CopperWatch)
+                .AddTile(TileID.Anvils)
+                .Register();
+            recipe = CreateRecipe(2)
+                .AddRecipeGroup(RecipeGroupID.Fragment, 6)
+                .AddIngredient(ItemID.SilverWatch)
+                .AddTile(TileID.Anvils)
+                .Register();
+            recipe = CreateRecipe(2)
+                .AddRecipeGroup(RecipeGroupID.Fragment, 6)
+                .AddIngredient(ItemID.TungstenWatch)
+                .AddTile(TileID.Anvils)
+                .Register();
+            recipe = CreateRecipe(3)
+                .AddRecipeGroup(RecipeGroupID.Fragment, 3)
+                .AddIngredient(ItemID.GoldWatch)
+                .AddTile(TileID.Anvils)
+                .Register();
+            recipe = CreateRecipe(3)
+                .AddRecipeGroup(RecipeGroupID.Fragment, 3)
+                .AddIngredient(ItemID.PlatinumWatch)
+                .AddTile(TileID.Anvils)
+                .Register();
+        }
+    }
 }
