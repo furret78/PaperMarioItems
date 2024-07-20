@@ -5,7 +5,7 @@ using PaperMarioItems.Common.Players;
 using Terraria.Localization;
 
 namespace PaperMarioItems.Content.Items.Consumables
-{ 
+{
 	public class HPDrain : ModItem
 	{
         private const int healAmount = 100;
@@ -34,7 +34,7 @@ namespace PaperMarioItems.Content.Items.Consumables
 
         public override bool? UseItem(Player player)
         {
-			player.GetModPlayer<PaperPlayer>().HPDrain(player, healAmount, (string)HPDrainDeath);
+			player.GetModPlayer<PaperPlayer>().HPDrain(player, healAmount);
             return true;
         }
 	}

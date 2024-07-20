@@ -10,16 +10,17 @@ namespace PaperMarioItems
 	partial class PaperMarioItems : Mod
     {
         //custom sounds
-        public readonly static SoundStyle useItemPM = new("PaperMarioItems/Assets/Sounds/useItemPM");
-        public readonly static SoundStyle luckyPM = new("PaperMarioItems/Assets/Sounds/luckyPM");
-        public readonly static SoundStyle healPM = new("PaperMarioItems/Assets/Sounds/healPM");
-        public readonly static SoundStyle starPM = new("PaperMarioItems/Assets/Sounds/starPM");
-        public readonly static SoundStyle thunderPM = new("PaperMarioItems/Assets/Sounds/thunderPM");
-        public readonly static SoundStyle causeStatusPM = new("PaperMarioItems/Assets/Sounds/causeStatusPM");
-        public readonly static SoundStyle watchPM = new("PaperMarioItems/Assets/Sounds/watchPM");
-        public readonly static SoundStyle dizzyPM = new("PaperMarioItems/Assets/Sounds/dizzyPM");
-        public readonly static SoundStyle fireFlowerPM = new("PaperMarioItems/Assets/Sounds/fireFlowerPM");
-        public readonly static SoundStyle chargedPM = new("PaperMarioItems/Assets/Sounds/chargedPM");
+        public readonly static SoundStyle useItemPM = new("PaperMarioItems/Assets/Sounds/useItemPM"),
+            luckyPM = new("PaperMarioItems/Assets/Sounds/luckyPM"),
+            healPM = new("PaperMarioItems/Assets/Sounds/healPM"),
+            starPM = new("PaperMarioItems/Assets/Sounds/starPM"),
+            thunderPM = new("PaperMarioItems/Assets/Sounds/thunderPM"),
+            watchPM = new("PaperMarioItems/Assets/Sounds/watchPM"),
+            dizzyPM = new("PaperMarioItems/Assets/Sounds/dizzyPM"),
+            fireFlowerPM = new("PaperMarioItems/Assets/Sounds/fireFlowerPM"),
+            causeStatusPM = new("PaperMarioItems/Assets/Sounds/causeStatusPM"),
+            chargedPM = new("PaperMarioItems/Assets/Sounds/chargedPM"),
+            damagePM = new("PaperMarioItems/Assets/Sounds/damagePM");
         //custom recipe groups
         public override void AddRecipeGroups()
         {
@@ -30,5 +31,8 @@ namespace PaperMarioItems
             RecipeGroup flowergroup = new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {Language.GetTextValue($"Mods.PaperMarioItems.Content.FlowerGroup")}", ItemID.Daybloom, ItemID.Blinkroot, ItemID.Fireblossom, ItemID.Moonglow, ItemID.Shiverthorn, ItemID.Sunflower, ItemID.SkyBlueFlower, ItemID.YellowMarigold);
             RecipeGroup.RegisterGroup(Language.GetTextValue($"Mods.PaperMarioItems.Content.FlowerGroup"), flowergroup);
         }
+        //NPCID sets
+        public static SetFactory Factory = new SetFactory(NPCID.Count);
+        public static bool[] IsGroundedBoss = Factory.CreateBoolSet(NPCID.KingSlime, NPCID.Deerclops, NPCID.WallofFlesh, NPCID.QueenSlimeBoss, NPCID.Plantera, NPCID.Golem, NPCID.DD2OgreT2, NPCID.DD2OgreT3, NPCID.MourningWood, NPCID.Everscream, NPCID.SantaNK1);
     }
 }

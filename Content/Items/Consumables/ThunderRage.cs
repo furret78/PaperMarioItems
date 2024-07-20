@@ -27,7 +27,7 @@ namespace PaperMarioItems.Content.Items.Consumables
             if (!player.GetModPlayer<PaperPlayer>().thunderEffectActive && !player.GetModPlayer<PaperPlayer>().thunderAll)
             {
                 player.GetModPlayer<PaperPlayer>().thunderAll = true;
-                SoundEngine.PlaySound(PaperMarioItems.useItemPM);
+                SoundEngine.PlaySound(PaperMarioItems.useItemPM, player.Center);
                 return true;
             }
             else return false;

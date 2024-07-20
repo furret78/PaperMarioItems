@@ -11,7 +11,8 @@ The mod currently features up to 38 items adapted from the Paper Mario series--s
 
 [hr][/hr]
 [h1] Attributes [/h1]
-Massive thanks to Jopojelly and TModLoader server's #mod-development-help channel! Couldn't have made the mod without them.
+Massive thanks to Jopojelly, Cube Root and TModLoader server's #mod-development-help channel! Couldn't have made the mod without them.
+
 
 All Paper Mario assets used in the mod belongs to Intelligent Systems and Nintendo.
 

@@ -3,7 +3,6 @@ using PaperMarioItems.Content.Buffs;
 using PaperMarioItems.Content.Dusts;
 using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace PaperMarioItems.Common.NPCs
@@ -11,11 +10,9 @@ namespace PaperMarioItems.Common.NPCs
     public class PaperNPC : GlobalNPC
     {
         public override bool InstancePerEntity => true;
-        public bool softDebuff, dizzyDebuff, timestopDebuff, timestopOn, hadGravity;
+        public bool softDebuff, dizzyDebuff, timestopDebuff, timestopOn, hadGravity = false;
         private int waitTimeDizzy = 0, timerTimestop = 0;
-        public static readonly Color LuckyTextColor = new Color(255, 255, 0);
-        public static readonly Color DizzyColor = new Color(0, 0, 255);
-        public readonly string LuckyEvade = Language.GetTextValue($"Mods.PaperMarioItems.Common.Players.LuckyEvade");
+        public static readonly Color LuckyTextColor = new(255, 255, 0), DizzyColor = new(0, 0, 255);
         public override void ResetEffects(NPC npc)
         {
             softDebuff = false;

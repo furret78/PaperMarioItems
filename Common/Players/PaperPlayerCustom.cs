@@ -1,22 +1,24 @@
+using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.DataStructures;
+using PaperMarioItems.Common.NPCs;
 using PaperMarioItems.Content.Buffs;
 using PaperMarioItems.Content.Dusts;
-using System;
 using PaperMarioItems.Content.Projectiles;
-using Terraria.DataStructures;
+using PaperMarioItems.Content.Items.Consumables;
 
 namespace PaperMarioItems.Common.Players
 {
     partial class PaperPlayer : ModPlayer
     {
         //targeting IDs
-        private const int shootingStarCase = 0, dizzyDialCase = 1, frightMaskCase = 2, thunderCase = 3, timestopCase = 4, hpDrainCase = 5;
+        private const int shootingStarCase = 0, dizzyDialCase = 1, frightMaskCase = 2, thunderCase = 3, timestopCase = 4, hpDrainCase = 5, quakeCase = 6, powCase = 7;
         //targeting conditions
-        private static bool TargetConditionCheck(Player player, NPC npc, Player vsplayer, int condition)
+        private bool TargetConditionCheck(Player player, NPC npc, Player vsplayer, int condition)
         {
             if (Main.myPlayer != player.whoAmI || player == null) return false;
             if (npc != null &&
@@ -31,6 +33,7 @@ namespace PaperMarioItems.Common.Players
                     case thunderCase:
                     case timestopCase:
                     case hpDrainCase:
+                    case powCase:
                     case shootingStarCase:
                         if (npc.type != NPCID.CultistDevote) return true;
                         else return false;
@@ -41,6 +44,15 @@ namespace PaperMarioItems.Common.Players
                     case frightMaskCase:
                         if (!(npc.type == NPCID.CultistDevote || NPCID.Sets.ShouldBeCountedAsBoss[npc.type] || npc.boss)) return true;
                         else return false;
+                    case quakeCase:
+                        if ((!npc.HasBuff<TimestopDebuff>() && npc.noGravity) || (npc.HasBuff<TimestopDebuff>() && npc.GetGlobalNPC<PaperNPC>().hadGravity)) return false;
+                        if (npc.boss && !PaperMarioItems.IsGroundedBoss[npc.type]) return false;
+                        int blockX = (int)(npc.position.X / 16), blockY = (int)(npc.position.Y / 16);
+                        for (int x = blockX - 1; x < blockX + 3; x++)
+                        {
+                            if (WorldGen.SolidTile2(x, blockY + 3) || WorldGen.SolidTile2(x, blockY - 3)) return true;
+                        }
+                        return false;
                     //no such condition
                     default: return false;
                 }
@@ -56,12 +68,52 @@ namespace PaperMarioItems.Common.Players
                     case thunderCase:
                     case timestopCase:
                     case hpDrainCase:
+                    case powCase:
                     case dizzyDialCase: return true;
+                    //special
+                    case quakeCase:
+                        int blockX = (int)(vsplayer.position.X / 16), blockY = (int)(vsplayer.position.Y / 16);
+                        for (int x = blockX - 1; x < blockX + 3; x++)
+                        {
+                            if (WorldGen.SolidTile2(x, blockY - 3) || WorldGen.SolidTile2(x, blockY + 3)) return true;
+                        }
+                        return false;
                     //no such condition
                     default: return false;
                 }
             }
             else return false;
+        }
+        public int GetDirection(Entity target, Player player)
+        {
+            if (target.position.X < player.position.X) return -1;
+            return 1;
+        }
+        private void SetShakeTime(int time)
+        {
+            if (ScreenShakeSystem.screenShakeTime < time) ScreenShakeSystem.screenShakeTime = time;
+        }
+        //life mushroom effects
+        private void LifeMushroomHeal(Player self, int num1, int num2)
+        {
+            if (self == null || !self.HasItem(ModContent.ItemType<LifeMushroom>())) return;
+            else
+            {
+                for (int l = 0; l < Player.MaxBuffs; l++)
+                {
+                    if (self.buffTime[l] > 0)
+                    {
+                        self.DelBuff(l);
+                        l = -1;
+                    }
+                }
+                self.statLife = 1;
+                self.AddBuff(ModContent.BuffType<RevivedBuff>(), num1);
+                self.SetImmuneTimeForAllTypes(num1);
+                self.AddBuff(BuffID.Regeneration, num2);
+                SoundEngine.PlaySound(PaperMarioItems.healPM, self.Center);
+                self.ConsumeItem(ModContent.ItemType<LifeMushroom>(), true, true);
+            }
         }
         //shooting star loopable
         private void ShootingStarAttack(Player player)
@@ -73,8 +125,8 @@ namespace PaperMarioItems.Common.Players
                 {
                     empty = false;
                     //calculating visual parameters
-                    Vector2 playerPosition = new(player.Center.X + Main.rand.NextFloatDirection()*Main.rand.NextFloat(Main.screenWidth / 2), player.Center.Y - ((Main.screenHeight*2)/3));
-                    if (!player.ZoneSkyHeight && !player.ZoneOverworldHeight) playerPosition.X = player.Center.X - player.direction*(Main.screenWidth / 2);
+                    Vector2 playerPosition = new(player.Center.X + Main.rand.NextFloatDirection() * Main.rand.NextFloat(Main.screenWidth / 2), player.Center.Y - ((Main.screenHeight * 2) / 3));
+                    if (!player.ZoneSkyHeight && !player.ZoneOverworldHeight) playerPosition.X = player.Center.X - player.direction * (Main.screenWidth / 2);
                     Vector2 defaultVelocity = new(Main.rand.NextFloat(17) + 11f);
                     Vector2 homingAngle = (npc.Center - playerPosition).SafeNormalize(Vector2.UnitX);
                     //calculating damage
@@ -109,7 +161,7 @@ namespace PaperMarioItems.Common.Players
                 int range = 250;
                 Vector2 position = new(player.Center.X + 10 * player.direction, player.Center.Y);
                 Vector2 velocity = new(Main.rand.NextFloat(17) + 10);
-                Vector2 target = new(player.Center.X + 100 * player.direction, player.Center.Y - ((range/2) - Main.rand.NextFloat(range)));
+                Vector2 target = new(player.Center.X + 100 * player.direction, player.Center.Y - ((range / 2) - Main.rand.NextFloat(range)));
                 Vector2 angle = (target - position).SafeNormalize(Vector2.UnitX);
                 float stopper = player.Center.Y + (Main.screenHeight / 2);
                 Projectile.NewProjectile(player.GetSource_FromThis(), position, velocity * angle, ModContent.ProjectileType<CustomFireball>(), fireFlowerDamage, 3f);
@@ -144,29 +196,24 @@ namespace PaperMarioItems.Common.Players
                     }
                 }
             }
-            if (!empty) SoundEngine.PlaySound(PaperMarioItems.causeStatusPM);
+            if (!empty) SoundEngine.PlaySound(PaperMarioItems.causeStatusPM, player.Center);
         }
         //fright mask
-        public void InflictFrightOnAll(Player player)
+        private void InflictFrightOnAll(Player player)
         {
-            int whichDirection;
             foreach (var npc in Main.ActiveNPCs)
             {
                 if (TargetConditionCheck(player, npc, null, frightMaskCase))
                 {
-                    if (npc.Center.X < player.Center.X) whichDirection = -1;
-                    else whichDirection = 1;
                     npc.AddBuff(ModContent.BuffType<FrightDebuff>(), 10);
-                    npc.SimpleStrikeNPC(0, whichDirection, false, 20);
+                    npc.SimpleStrikeNPC(0, GetDirection(npc, player), false, 20);
                 }
             }
             foreach (var vsplayer in Main.ActivePlayers)
             {
                 if (TargetConditionCheck(player, null, vsplayer, frightMaskCase))
                 {
-                    if (vsplayer.Center.X < player.Center.X) whichDirection = -1;
-                    else whichDirection = 1;
-                    vsplayer.Hurt(default, 0, whichDirection, true, false, 0, false, 0, 0, 20);
+                    vsplayer.Hurt(default, 0, GetDirection(vsplayer, player), true, false, 0, false, 0, 0, 20);
                 }
             }
         }
@@ -240,21 +287,13 @@ namespace PaperMarioItems.Common.Players
         }
         public void StrikeLightning(Player player, NPC npc, Player vsplayer)
         {
-            int whichDirection;
             Dust.NewDustDirect(npc.Center, 2, 2, ModContent.DustType<LightningDust>());
             if (npc != null)
             {
-                if (npc.Center.X < player.Center.X) whichDirection = -1;
-                else whichDirection = 1;
-                npc.SimpleStrikeNPC(100, whichDirection, Main.rand.Next(100) <= player.GetTotalCritChance(DamageClass.Generic));
+                npc.SimpleStrikeNPC(100, GetDirection(npc, player), Main.rand.Next(100) <= player.GetTotalCritChance(DamageClass.Generic));
                 npc.AddBuff(BuffID.Electrified, 1800);
             }
-            if (vsplayer != null)
-            {
-                if (vsplayer.Center.X < player.Center.X) whichDirection = -1;
-                else whichDirection = 1;
-                vsplayer.Hurt(default, 100, whichDirection, true);
-            }
+            vsplayer?.Hurt(PlayerDeathReason.ByCustomReason(vsplayer.name + " " + LightningDeath), 100, GetDirection(vsplayer, player), true);
         }
         public void BackgroundFlash()
         {
@@ -262,7 +301,7 @@ namespace PaperMarioItems.Common.Players
             bgFlash = true;
         }
         //timestop
-        public void InflictTimestop(Player player)
+        private void InflictTimestop(Player player)
         {
             bool empty = true;
             bool moonLordDetected = false;
@@ -322,12 +361,12 @@ namespace PaperMarioItems.Common.Players
             if (!empty) SoundEngine.PlaySound(PaperMarioItems.causeStatusPM);
         }
         //hp drain
-        public void HPDrain(Player player, int healAmount, string deathReason)
+        public void HPDrain(Player player, int healAmount)
         {
             NPC closestNPC = null;
             Player closestPlayer = null;
             float closestDist = 0, distSq = 0;
-            int whichDirection;
+            int finalDamage = healAmount;
             bool exist = false;
             foreach (var vsplayer in Main.ActivePlayers)
             {
@@ -347,7 +386,7 @@ namespace PaperMarioItems.Common.Players
             {
                 if (TargetConditionCheck(player, npc, null, hpDrainCase))
                 {
-                    
+
                     Vector2 playerToEnemy = new(player.Center.X - npc.Center.X, player.Center.Y - npc.Center.Y);
                     distSq = (float)Math.Sqrt(playerToEnemy.LengthSquared());
                     if (closestNPC == null || distSq < closestDist)
@@ -362,26 +401,72 @@ namespace PaperMarioItems.Common.Players
             {
                 if (closestNPC != null && closestPlayer == null)
                 {
-                    if (closestNPC.Center.X < player.Center.X) whichDirection = -1;
-                    else whichDirection = 1;
-                    closestNPC.SimpleStrikeNPC(healAmount, whichDirection);
                     Dust.NewDustPerfect(closestNPC.Center, ModContent.DustType<HPDrainDust>());
                     SoundEngine.PlaySound(SoundID.NPCDeath4, closestNPC.Center);
+                    //hit the npc and do server handling
+                    var hit = closestNPC.CalculateHitInfo(healAmount + 2, GetDirection(closestNPC, player), Main.rand.Next(100) <= player.GetTotalCritChance(DamageClass.Generic), 0, null, false);
+                    closestNPC.StrikeNPC(hit);
+                    if (Main.netMode != NetmodeID.SinglePlayer) NetMessage.SendStrikeNPC(closestNPC, hit);
+                    finalDamage = hit.Damage;
                 }
                 if (closestPlayer != null)
                 {
-                    if (closestPlayer.Center.X < player.Center.X) whichDirection = -1;
-                    else whichDirection = 1;
-                    closestPlayer.Hurt(PlayerDeathReason.ByCustomReason(closestPlayer.name + " " + deathReason), healAmount, player.direction, true, false, -1, false);
+                    closestPlayer.Hurt(PlayerDeathReason.ByCustomReason(closestPlayer.name + " " + HPDrainDeath), healAmount, GetDirection(closestPlayer, player), true, false, -1, false);
                     Dust.NewDustPerfect(closestPlayer.Center, ModContent.DustType<HPDrainDust>());
                     SoundEngine.PlaySound(SoundID.NPCDeath4, closestPlayer.Center);
                 }
             }
             if (exist)
             {
-                player.Heal(healAmount);
-                SoundEngine.PlaySound(PaperMarioItems.healPM, player.Center);
+                player.Heal(finalDamage);
+                //SoundEngine.PlaySound(PaperMarioItems.healPM, player.Center);
             }
+        }
+        //earthquake
+        private void CauseEarthquake(Player player, int damage)
+        {
+            foreach (var npc in Main.ActiveNPCs)
+            {
+                if (TargetConditionCheck(player, npc, null, quakeCase))
+                {
+                    SoundEngine.PlaySound(PaperMarioItems.damagePM, npc.Center);
+                    npc.SimpleStrikeNPC(damage, GetDirection(npc, player), Main.rand.Next(100) <= player.GetTotalCritChance(DamageClass.Generic));
+                }
+            }
+            foreach (var vsplayer in Main.ActivePlayers)
+            {
+                if (TargetConditionCheck(player, null, vsplayer, quakeCase))
+                {
+                    SoundEngine.PlaySound(PaperMarioItems.damagePM, vsplayer.Center);
+                    vsplayer.Hurt(PlayerDeathReason.ByCustomReason(vsplayer.name + " " + EarthquakeDeath), damage, GetDirection(vsplayer, player), true);
+                }
+            }
+        }
+        //pow block
+        public void PowBlock(Player player, int damage)
+        {
+            SetShakeTime(10);
+            foreach (var npc in Main.ActiveNPCs)
+            {
+                if (TargetConditionCheck(player, npc, null, powCase))
+                {
+                    SoundEngine.PlaySound(PaperMarioItems.damagePM, npc.Center);
+                    npc.SimpleStrikeNPC(damage, GetDirection(npc, player), Main.rand.Next(100) <= player.GetTotalCritChance(DamageClass.Generic));
+                }
+            }
+            foreach (var vsplayer in Main.ActivePlayers)
+            {
+                if (TargetConditionCheck(player, null, vsplayer, powCase))
+                {
+                    SoundEngine.PlaySound(PaperMarioItems.damagePM, vsplayer.Center);
+                    vsplayer.Hurt(PlayerDeathReason.ByCustomReason(vsplayer.name + " " + PowDeath), damage, GetDirection(vsplayer, player), true, false, -1, true, 0, 0, 0);
+                }
+            }
+        }
+        //ruin powder
+        public void RuinPowderEffect(Player player)
+        {
+            
         }
     }
 }

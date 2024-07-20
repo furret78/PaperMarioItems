@@ -2,6 +2,10 @@ Common: {
 	Players: {
 		LuckyEvade: Lucky!
 		MoonLordStopwatch: Moon Lord does not bend to the whims of time...
+		LightningDeath: got zapped by lightning.
+		HPDrainDeath: had their HP drained.
+		EarthquakeDeath: was struck by an earthquake.
+		PowDeath: rumbled too hard.
 	}
 }
 
@@ -246,9 +250,19 @@ Items: {
 	}
 
 	HPDrain: {
-		HPDrainDeath: had their HP drained.
 		DisplayName: HP Drain
-		Tooltip: Does {0} damage to the nearest foe while healing you {0} health
+		Tooltip: Does {0} damage to the nearest foe while healing you the same amount
+		HPDrainDeath: Mods.PaperMarioItems.Items.HPDrain.HPDrainDeath
+	}
+
+	EarthQuake: {
+		DisplayName: Earth Quake
+		Tooltip: Attacks all enemies on the ground or ceiling and does {0} damage
+	}
+
+	POWBlock: {
+		DisplayName: POW Block
+		Tooltip: Attacks all enemies and does {0} damage
 	}
 }
 

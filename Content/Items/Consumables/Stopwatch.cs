@@ -29,7 +29,7 @@ namespace PaperMarioItems.Content.Items.Consumables
                 player.GetModPlayer<PaperPlayer>().stopwatchCooldown = Item.useTime*4;
                 player.GetModPlayer<PaperPlayer>().stopwatchActive = true;
                 SoundEngine.PlaySound(PaperMarioItems.watchPM, player.Center);
-                SoundEngine.PlaySound(PaperMarioItems.useItemPM);
+                SoundEngine.PlaySound(PaperMarioItems.useItemPM, player.Center);
                 return true;
             }
             else return false;

@@ -26,7 +26,7 @@ namespace PaperMarioItems.Content.Items.Consumables
         {
             if (player.GetModPlayer<PaperPlayer>().shootingStar <= 0 && !player.GetModPlayer<PaperPlayer>().shootingStarActive)
             {
-                SoundEngine.PlaySound(PaperMarioItems.useItemPM);
+                SoundEngine.PlaySound(PaperMarioItems.useItemPM, player.Center);
                 player.GetModPlayer<PaperPlayer>().shootingStar = 18;
                 return true;
             }

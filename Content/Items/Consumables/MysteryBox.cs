@@ -17,7 +17,7 @@ namespace PaperMarioItems.Content.Items.Consumables
             Item.useAnimation = Item.useTime;
             Item.consumable = true;
             Item.useStyle = ItemUseStyleID.HoldUp;
-            Item.UseSound = PaperMarioItems.useItemPM;
+            Item.UseSound = SoundID.Grab;
             Item.maxStack = 64;
             Item.rare = ItemRarityID.White;
             Item.value = Item.sellPrice(silver: 20);
@@ -89,8 +89,9 @@ namespace PaperMarioItems.Content.Items.Consumables
                     }
                 default:
                     {
-                        PMItemID = ModContent.ItemType<Mushroom>();
+                        PMItemID = ItemID.SilverCoin;
                         if (NPC.downedBoss1) PMItemID = ItemID.GoldCoin;
+                        if (NPC.downedEmpressOfLight) PMItemID = ItemID.PlatinumCoin;
                         break;
                     }
             }

@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System.IO;
 using Terraria;
 using Terraria.Audio;
@@ -6,11 +7,10 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Localization;
+using Terraria.GameContent;
 using PaperMarioItems.Content.Items.Consumables;
 using PaperMarioItems.Content.Buffs;
 using PaperMarioItems.Content.Dusts;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria.GameContent;
 
 namespace PaperMarioItems.Common.Players
 {
@@ -19,14 +19,19 @@ namespace PaperMarioItems.Common.Players
     {
         //setup
         public bool dodgyEffect, hugeEffect, softEffect, electrifiedEffect, lifeShroomRevive, thunderOnce, thunderAll, earthquakeEffect;
-        public bool shootingStarActive, inflictDizzyActive, thunderEffectActive, frightMaskActive, stopwatchActive, fireFlowerActive, causeEarthquake;
-        public int shootingStar = 0, screenSpinTimer = 0, frightMaskCooldown = 0, stopwatchCooldown = 0, fireFlower = 0;
-        private int wte = 0, ssmd, sst = 0, wtt = 0, bgFlashTime = 0, stopwatchTimer = 0, fireFlowerTimer = 0;
+        public bool shootingStarActive, inflictDizzyActive, thunderEffectActive, frightMaskActive, stopwatchActive, fireFlowerActive, causeEarthquake, ruinPowderActive;
+        public int shootingStar = 0, screenSpinTimer = 0, frightMaskCooldown = 0, stopwatchCooldown = 0, fireFlower = 0, ruinPowderCooldown = 0;
+        private int wte = 0, ssmd, sst = 0, wtt = 0, bgFlashTime = 0, stopwatchTimer = 0, fireFlowerTimer = 0, earthquakeTimer = 0;
         private bool bgFlash;
         private static readonly Color LuckyTextColor = new(255, 255, 0, 255);
-        public const int postReviveProtect = 1, postReviveRegen = 2, fireFlowerDamage = 25;
+        public const int postReviveProtect = 1, postReviveRegen = 2, fireFlowerDamage = 25, earthquakeDamage = 75;
         //localized text
-        public readonly string LuckyEvade = Language.GetTextValue($"Mods.PaperMarioItems.Common.Players.LuckyEvade"), MoonLordStopwatch = Language.GetTextValue($"Mods.PaperMarioItems.Common.Players.MoonLordStopwatch");
+        public readonly string LuckyEvade = Language.GetTextValue($"Mods.PaperMarioItems.Common.Players.LuckyEvade"),
+            MoonLordStopwatch = Language.GetTextValue($"Mods.PaperMarioItems.Common.Players.MoonLordStopwatch"),
+            LightningDeath = Language.GetTextValue($"Mods.PaperMarioItems.Common.Players.LightningDeath"),
+            HPDrainDeath = Language.GetTextValue($"Mods.PaperMarioItems.Common.Players.HPDrainDeath"),
+            EarthquakeDeath = Language.GetTextValue($"Mods.PaperMarioItems.Common.Players.EarthquakeDeath"),
+            PowDeath = Language.GetTextValue($"Mods.PaperMarioItems.Common.Players.PowDeath");
         //reset
         public override void ResetEffects()
         {
@@ -46,26 +51,11 @@ namespace PaperMarioItems.Common.Players
         //life shroom detour
         private void On_Player_KillMe(On_Player.orig_KillMe orig, Player self, PlayerDeathReason damageSource, double dmg, int hitDirection, bool pvp)
         {
-            int num1 = postReviveProtect * 60 * 60;
-            int num2 = postReviveRegen * 60 * 60;
             if (self.creativeGodMode || self.dead || !self.HasItem(ModContent.ItemType<LifeMushroom>())) orig(self, damageSource, dmg, hitDirection, pvp);
             else
             {
-                for (int l = 0; l < Player.MaxBuffs; l++)
-                {
-                    if (self.buffTime[l] > 0)
-                    {
-                        self.DelBuff(l);
-                        l = -1;
-                    }
-                }
                 lifeShroomRevive = true;
-                self.statLife = 1;
-                self.AddBuff(ModContent.BuffType<RevivedBuff>(), num1);
-                self.SetImmuneTimeForAllTypes(num1);
-                self.AddBuff(BuffID.Regeneration, num2);
-                SoundEngine.PlaySound(PaperMarioItems.healPM);
-                self.ConsumeItem(ModContent.ItemType<LifeMushroom>(), true, true);
+                LifeMushroomHeal(self, postReviveProtect * 60 * 60, postReviveRegen * 60 * 60);
                 return;
             }
         }
@@ -128,6 +118,7 @@ namespace PaperMarioItems.Common.Players
                         screenSpinTimer = 0;
                     }
                     //insert code for screen spin
+                    SoundEngine.PlaySound(PaperMarioItems.dizzyPM, Player.Center);
                     screenSpinTimer--;
                 }
                 //thunder bolt timer
@@ -205,6 +196,30 @@ namespace PaperMarioItems.Common.Players
                         fireFlowerTimer++;
                     }
                 }
+                //earthquake
+                if (causeEarthquake)
+                {
+                    if (earthquakeTimer == 34)
+                    {
+                        SetShakeTime(90);
+                    }
+                    if (earthquakeTimer >= 124)
+                    {
+                        CauseEarthquake(Player, earthquakeDamage);
+                        earthquakeTimer = 0;
+                        causeEarthquake = false;
+                    }
+                    else earthquakeTimer++;
+                }
+                //ruin powder
+                if (ruinPowderActive && ruinPowderCooldown > 0)
+                {
+                    if (ruinPowderCooldown < 2)
+                    {
+
+                    }
+                    ruinPowderCooldown--;
+                }
             }
         }
         //soft debuff
@@ -230,13 +245,17 @@ namespace PaperMarioItems.Common.Players
                     else wte++;
                 }
             }
-            if (bgFlash && Main.gamePaused == false)
+            if (bgFlash)
             {
-                if (bgFlashTime <= 0) bgFlash = false;
                 Texture2D value = TextureAssets.MagicPixel.Value;
-                Color color = Color.White;
+                Color color = Color.LightGray;
+                if (!Main.dayTime) color = Color.Gray;
                 Main.spriteBatch.Draw(value, new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), color);
-                bgFlashTime--;
+                if (!Main.gamePaused)
+                {
+                    bgFlashTime--;
+                    if (bgFlashTime <= 0) bgFlash = false;
+                }
             }
         }
         //dodgy effects
@@ -253,21 +272,21 @@ namespace PaperMarioItems.Common.Players
         {
             if (Player.whoAmI != Main.myPlayer) return;
             Player.NinjaDodge();
-            SoundEngine.PlaySound(PaperMarioItems.luckyPM);
+            SoundEngine.PlaySound(PaperMarioItems.luckyPM, Player.Center);
             Rectangle currentLocation = Player.getRect();
             CombatText.NewText(currentLocation, LuckyTextColor, LuckyEvade);
         }
         public static void HandleDodgeMessage(BinaryReader reader, int whoAmI)
         {
             int player = reader.ReadByte();
-            if (Main.netMode == NetmodeID.Server)
+            if (Main.netMode != NetmodeID.SinglePlayer)
             {
                 player = whoAmI;
             }
 
             Main.player[player].GetModPlayer<PaperPlayer>().RepelDodge();
 
-            if (Main.netMode == NetmodeID.Server)
+            if (Main.netMode != NetmodeID.SinglePlayer)
             {
                 SendDodgeMessage(player);
             }
