@@ -79,8 +79,7 @@ namespace PaperMarioItems.Common.Players
                     if (stopwatchTimer >= 60)
                     {
                         Color color = new(240 + Main.rand.Next(15), 240 + Main.rand.Next(15), 240 + Main.rand.Next(15));
-                        Vector2 newPos = new(Player.Center.X, Player.Center.Y);
-                        Dust.NewDustPerfect(newPos, ModContent.DustType<StopwatchDust>(), null, 0, color);
+                        Dust.NewDustPerfect(new(Player.Center.X, Player.Center.Y), ModContent.DustType<StopwatchDust>(), null, 0, color);
                         stopwatchTimer = 0;
                     }
                     stopwatchTimer++;
@@ -158,8 +157,7 @@ namespace PaperMarioItems.Common.Players
                     frightMaskCooldown--;
                     if (frightMaskCooldown == 17)
                     {
-                        Vector2 spawnPos = new(Player.Center.X, Player.Center.Y - 10);
-                        Dust.NewDustPerfect(spawnPos, ModContent.DustType<BowserScare>(), null, Player.direction, default, 0.1f);
+                        Dust.NewDustPerfect(new(Player.Center.X, Player.Center.Y - 10), ModContent.DustType<BowserScare>(), null, Player.direction, default, 0.1f);
                         InflictFrightOnAll(Player);
                         SoundEngine.PlaySound(SoundID.ForceRoar, Player.Center);
                     }
@@ -216,7 +214,8 @@ namespace PaperMarioItems.Common.Players
                 {
                     if (ruinPowderCooldown < 2)
                     {
-
+                        RuinPowderEffect(Player);
+                        ruinPowderActive = false;
                     }
                     ruinPowderCooldown--;
                 }

@@ -16,7 +16,7 @@ namespace PaperMarioItems.Common.Players
     partial class PaperPlayer : ModPlayer
     {
         //targeting IDs
-        private const int shootingStarCase = 0, dizzyDialCase = 1, frightMaskCase = 2, thunderCase = 3, timestopCase = 4, hpDrainCase = 5, quakeCase = 6, powCase = 7;
+        private const int shootingStarCase = 0, dizzyDialCase = 1, frightMaskCase = 2, thunderCase = 3, timestopCase = 4, hpDrainCase = 5, quakeCase = 6, powCase = 7, ruinCase = 8;
         //targeting conditions
         private bool TargetConditionCheck(Player player, NPC npc, Player vsplayer, int condition)
         {
@@ -41,6 +41,7 @@ namespace PaperMarioItems.Common.Players
                     case dizzyDialCase:
                         if (npc.type == NPCID.CultistDevote || !(NPCID.Sets.ShouldBeCountedAsBoss[npc.type] || npc.boss)) return true;
                         else return false;
+                    case ruinCase:
                     case frightMaskCase:
                         if (!(npc.type == NPCID.CultistDevote || NPCID.Sets.ShouldBeCountedAsBoss[npc.type] || npc.boss)) return true;
                         else return false;
@@ -69,6 +70,7 @@ namespace PaperMarioItems.Common.Players
                     case timestopCase:
                     case hpDrainCase:
                     case powCase:
+                    case ruinCase:
                     case dizzyDialCase: return true;
                     //special
                     case quakeCase:
@@ -466,7 +468,24 @@ namespace PaperMarioItems.Common.Players
         //ruin powder
         public void RuinPowderEffect(Player player)
         {
-            
+            bool empty = true;
+            foreach (var npc in Main.ActiveNPCs)
+            {
+                if (TargetConditionCheck(player, npc, null, ruinCase))
+                {
+                    empty = false;
+                    npc.AddBuff(BuffID.Confused, 7200);
+                }
+            }
+            foreach (var vsplayer in Main.ActivePlayers)
+            {
+                if (TargetConditionCheck(player, null, vsplayer, ruinCase))
+                {
+                    empty = false;
+                    vsplayer.AddBuff(BuffID.Confused, 7200);
+                }
+            }
+            if (!empty) SoundEngine.PlaySound(PaperMarioItems.causeStatusPM, player.Center);
         }
     }
 }

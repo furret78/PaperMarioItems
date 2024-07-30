@@ -17,3 +17,4 @@ Massive thanks to Jopojelly, Cube Root and TModLoader server's #mod-development-
 All Paper Mario assets used in the mod belongs to Intelligent Systems and Nintendo.
 
 In-game mod icon was drawn by @sumrandomstuff on Discord.
+Playtesting is done by Cosmiikat.

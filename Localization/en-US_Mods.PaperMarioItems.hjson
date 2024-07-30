@@ -262,7 +262,12 @@ Items: {
 
 	POWBlock: {
 		DisplayName: POW Block
-		Tooltip: Attacks all enemies and does {0} damage
+		Tooltip: Deals {0} damage to all enemies
+	}
+
+	RuinPowder: {
+		DisplayName: Ruin Powder
+		Tooltip: Temporarily confuses all enemies
 	}
 }
 

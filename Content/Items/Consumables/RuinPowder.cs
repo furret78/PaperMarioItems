@@ -37,19 +37,14 @@ namespace PaperMarioItems.Content.Items.Consumables
 
         public override void AddRecipes()
 		{
-			Recipe recipe = CreateRecipe(2)
-				.AddIngredient(ItemID.ThornsPotion)
+			Recipe recipe = CreateRecipe()
+				.AddIngredient(ItemID.LeadOre, 5)
 				.AddIngredient(ItemID.VilePowder)
 				.AddTile(TileID.WorkBenches)
 				.Register();
-            recipe = CreateRecipe(2)
-                .AddIngredient(ItemID.ThornsPotion)
+            recipe = CreateRecipe()
+                .AddIngredient(ItemID.LeadOre, 5)
                 .AddIngredient(ItemID.ViciousPowder)
-                .AddTile(TileID.WorkBenches)
-                .Register();
-            recipe = CreateRecipe(4)
-                .AddIngredient(ItemID.ThornsPotion)
-                .AddIngredient(ItemID.PurificationPowder)
                 .AddTile(TileID.WorkBenches)
                 .Register();
         }
