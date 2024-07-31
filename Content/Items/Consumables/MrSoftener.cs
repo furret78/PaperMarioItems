@@ -6,11 +6,11 @@ using Terraria.ModLoader;
 
 namespace PaperMarioItems.Content.Items.Consumables
 {
-	public class RuinPowder : ModItem
+	public class MrSoftener : ModItem
 	{
 		public override void SetDefaults()
 		{
-			Item.width = 39;
+			Item.width = 32;
 			Item.height = 40;
 			Item.useTurn = true;
 			Item.useTime = 17;
@@ -20,6 +20,8 @@ namespace PaperMarioItems.Content.Items.Consumables
 			Item.maxStack = Item.CommonMaxStack;
 			Item.rare = ItemRarityID.Orange;
 			Item.value = Item.buyPrice(copper: 25);
+			Item.buffType = ModContent.BuffType<PaybackBuff>();
+			Item.buffTime = 7200;
 		}
 
         public override bool? UseItem(Player player)
@@ -31,20 +33,6 @@ namespace PaperMarioItems.Content.Items.Consumables
                 return true;
 			}
 			return false;
-        }
-
-        public override void AddRecipes()
-		{
-			Recipe recipe = CreateRecipe()
-				.AddIngredient(ItemID.LeadOre, 5)
-				.AddIngredient(ItemID.VilePowder)
-				.AddTile(TileID.WorkBenches)
-				.Register();
-            recipe = CreateRecipe()
-                .AddIngredient(ItemID.LeadOre, 5)
-                .AddIngredient(ItemID.ViciousPowder)
-                .AddTile(TileID.WorkBenches)
-                .Register();
         }
 	}
 }
