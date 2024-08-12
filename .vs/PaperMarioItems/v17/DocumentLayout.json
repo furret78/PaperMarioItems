@@ -3,16 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\reimu\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\PaperMarioItems\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{AD6250CC-A1FD-4159-841E-8B9702AD2860}|PaperMarioItems.csproj|c:\\users\\reimu\\documents\\my games\\terraria\\tmodloader\\modsources\\papermarioitems\\content\\items\\consumables\\mrsoftener.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AD6250CC-A1FD-4159-841E-8B9702AD2860}|PaperMarioItems.csproj|solutionrelative:content\\items\\consumables\\mrsoftener.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{AD6250CC-A1FD-4159-841E-8B9702AD2860}|PaperMarioItems.csproj|c:\\users\\reimu\\documents\\my games\\terraria\\tmodloader\\modsources\\papermarioitems\\common\\players\\paperplayercustom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{AD6250CC-A1FD-4159-841E-8B9702AD2860}|PaperMarioItems.csproj|solutionrelative:common\\players\\paperplayercustom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{AD6250CC-A1FD-4159-841E-8B9702AD2860}|PaperMarioItems.csproj|c:\\users\\reimu\\documents\\my games\\terraria\\tmodloader\\modsources\\papermarioitems\\common\\players\\paperplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{AD6250CC-A1FD-4159-841E-8B9702AD2860}|PaperMarioItems.csproj|solutionrelative:common\\players\\paperplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AD6250CC-A1FD-4159-841E-8B9702AD2860}|PaperMarioItems.csproj|c:\\users\\reimu\\documents\\my games\\terraria\\tmodloader\\modsources\\papermarioitems\\content\\items\\consumables\\mrsoftener.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AD6250CC-A1FD-4159-841E-8B9702AD2860}|PaperMarioItems.csproj|solutionrelative:content\\items\\consumables\\mrsoftener.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AD6250CC-A1FD-4159-841E-8B9702AD2860}|PaperMarioItems.csproj|c:\\users\\reimu\\documents\\my games\\terraria\\tmodloader\\modsources\\papermarioitems\\content\\items\\consumables\\minimrmini.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AD6250CC-A1FD-4159-841E-8B9702AD2860}|PaperMarioItems.csproj|solutionrelative:content\\items\\consumables\\minimrmini.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -27,39 +31,53 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "MrSoftener.cs",
-              "DocumentMoniker": "C:\\Users\\reimu\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\PaperMarioItems\\Content\\Items\\Consumables\\MrSoftener.cs",
-              "RelativeDocumentMoniker": "Content\\Items\\Consumables\\MrSoftener.cs",
-              "ToolTip": "C:\\Users\\reimu\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\PaperMarioItems\\Content\\Items\\Consumables\\MrSoftener.cs",
-              "RelativeToolTip": "Content\\Items\\Consumables\\MrSoftener.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAACMAAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-31T08:53:12.672Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "PaperPlayer.cs",
-              "DocumentMoniker": "C:\\Users\\reimu\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\PaperMarioItems\\Common\\Players\\PaperPlayer.cs",
-              "RelativeDocumentMoniker": "Common\\Players\\PaperPlayer.cs",
-              "ToolTip": "C:\\Users\\reimu\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\PaperMarioItems\\Common\\Players\\PaperPlayer.cs",
-              "RelativeToolTip": "Common\\Players\\PaperPlayer.cs",
-              "ViewState": "AQIAAMQAAAAAAAAAAAAAANsAAAApAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T12:32:14.169Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "PaperPlayerCustom.cs",
               "DocumentMoniker": "C:\\Users\\reimu\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\PaperMarioItems\\Common\\Players\\PaperPlayerCustom.cs",
               "RelativeDocumentMoniker": "Common\\Players\\PaperPlayerCustom.cs",
               "ToolTip": "C:\\Users\\reimu\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\PaperMarioItems\\Common\\Players\\PaperPlayerCustom.cs",
               "RelativeToolTip": "Common\\Players\\PaperPlayerCustom.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAANQBAAAzAAAA",
+              "ViewState": "AQIAAMEBAAAAAAAAAIA2wP8BAABcAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-06T12:32:12.707Z",
+              "WhenOpened": "2024-08-08T09:12:01.518Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PaperPlayer.cs",
+              "DocumentMoniker": "C:\\Users\\reimu\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\PaperMarioItems\\Common\\Players\\PaperPlayer.cs",
+              "RelativeDocumentMoniker": "Common\\Players\\PaperPlayer.cs",
+              "ToolTip": "C:\\Users\\reimu\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\PaperMarioItems\\Common\\Players\\PaperPlayer.cs",
+              "RelativeToolTip": "Common\\Players\\PaperPlayer.cs",
+              "ViewState": "AQIAAMsAAAAAAAAAAAAYwOAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-08T09:10:30.225Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MrSoftener.cs",
+              "DocumentMoniker": "C:\\Users\\reimu\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\PaperMarioItems\\Content\\Items\\Consumables\\MrSoftener.cs",
+              "RelativeDocumentMoniker": "Content\\Items\\Consumables\\MrSoftener.cs",
+              "ToolTip": "C:\\Users\\reimu\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\PaperMarioItems\\Content\\Items\\Consumables\\MrSoftener.cs",
+              "RelativeToolTip": "Content\\Items\\Consumables\\MrSoftener.cs",
+              "ViewState": "AQIAAAoAAAAAAAAAAAAzwBsAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-08T09:06:35.411Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MiniMrMini.cs",
+              "DocumentMoniker": "C:\\Users\\reimu\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\PaperMarioItems\\Content\\Items\\Consumables\\MiniMrMini.cs",
+              "RelativeDocumentMoniker": "Content\\Items\\Consumables\\MiniMrMini.cs",
+              "ToolTip": "C:\\Users\\reimu\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\PaperMarioItems\\Content\\Items\\Consumables\\MiniMrMini.cs",
+              "RelativeToolTip": "Content\\Items\\Consumables\\MiniMrMini.cs",
+              "ViewState": "AQIAAAoAAAAAAAAAAAAzwA8AAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-08T09:06:00.892Z",
               "EditorCaption": ""
             }
           ]

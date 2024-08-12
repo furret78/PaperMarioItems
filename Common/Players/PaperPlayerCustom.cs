@@ -16,7 +16,7 @@ namespace PaperMarioItems.Common.Players
     partial class PaperPlayer : ModPlayer
     {
         //targeting IDs
-        private const int shootingStarCase = 0, dizzyDialCase = 1, frightMaskCase = 2, thunderCase = 3, timestopCase = 4, hpDrainCase = 5, quakeCase = 6, powCase = 7, ruinCase = 8;
+        private const int shootingCase = 0, dizzyCase = 1, frightCase = 2, thunderCase = 3, timeCase = 4, hpCase = 5, quakeCase = 6, powCase = 7, ruinCase = 8, softCase = 9;
         //targeting conditions
         private bool TargetConditionCheck(Player player, NPC npc, Player vsplayer, int condition)
         {
@@ -31,18 +31,19 @@ namespace PaperMarioItems.Common.Players
                 {
                     //projectile targeting
                     case thunderCase:
-                    case timestopCase:
-                    case hpDrainCase:
+                    case timeCase:
+                    case hpCase:
                     case powCase:
-                    case shootingStarCase:
+                    case softCase:
+                    case shootingCase:
                         if (npc.type != NPCID.CultistDevote) return true;
                         else return false;
                     //special targeting
-                    case dizzyDialCase:
+                    case dizzyCase:
                         if (npc.type == NPCID.CultistDevote || !(NPCID.Sets.ShouldBeCountedAsBoss[npc.type] || npc.boss)) return true;
                         else return false;
                     case ruinCase:
-                    case frightMaskCase:
+                    case frightCase:
                         if (!(npc.type == NPCID.CultistDevote || NPCID.Sets.ShouldBeCountedAsBoss[npc.type] || npc.boss)) return true;
                         else return false;
                     case quakeCase:
@@ -64,14 +65,15 @@ namespace PaperMarioItems.Common.Players
             {
                 switch (condition)
                 {
-                    case shootingStarCase:
-                    case frightMaskCase:
+                    case shootingCase:
+                    case frightCase:
                     case thunderCase:
-                    case timestopCase:
-                    case hpDrainCase:
+                    case timeCase:
+                    case hpCase:
                     case powCase:
                     case ruinCase:
-                    case dizzyDialCase: return true;
+                    case softCase:
+                    case dizzyCase: return true;
                     //special
                     case quakeCase:
                         int blockX = (int)(vsplayer.position.X / 16), blockY = (int)(vsplayer.position.Y / 16);
@@ -123,7 +125,7 @@ namespace PaperMarioItems.Common.Players
             bool empty = true;
             foreach (var npc in Main.ActiveNPCs)
             {
-                if (TargetConditionCheck(player, npc, null, shootingStarCase))
+                if (TargetConditionCheck(player, npc, null, shootingCase))
                 {
                     empty = false;
                     //calculating visual parameters
@@ -141,7 +143,7 @@ namespace PaperMarioItems.Common.Players
             }
             foreach (var vsplayer in Main.ActivePlayers)
             {
-                if (TargetConditionCheck(player, null, vsplayer, shootingStarCase))
+                if (TargetConditionCheck(player, null, vsplayer, shootingCase))
                 {
                     empty = false;
                     //calculating visual parameters
@@ -183,7 +185,7 @@ namespace PaperMarioItems.Common.Players
             {
                 foreach (var npc in Main.ActiveNPCs)
                 {
-                    if (TargetConditionCheck(player, npc, null, dizzyDialCase))
+                    if (TargetConditionCheck(player, npc, null, dizzyCase))
                     {
                         empty = false;
                         npc?.AddBuff(ModContent.BuffType<DizzyDebuff>(), 10800);
@@ -191,7 +193,7 @@ namespace PaperMarioItems.Common.Players
                 }
                 foreach (var vsplayer in Main.ActivePlayers)
                 {
-                    if (TargetConditionCheck(player, null, vsplayer, dizzyDialCase))
+                    if (TargetConditionCheck(player, null, vsplayer, dizzyCase))
                     {
                         empty = false;
                         vsplayer?.AddBuff(ModContent.BuffType<DizzyDebuff>(), 10800);
@@ -205,7 +207,7 @@ namespace PaperMarioItems.Common.Players
         {
             foreach (var npc in Main.ActiveNPCs)
             {
-                if (TargetConditionCheck(player, npc, null, frightMaskCase))
+                if (TargetConditionCheck(player, npc, null, frightCase))
                 {
                     npc.AddBuff(ModContent.BuffType<FrightDebuff>(), 10);
                     npc.SimpleStrikeNPC(0, GetDirection(npc, player), false, 20);
@@ -213,7 +215,7 @@ namespace PaperMarioItems.Common.Players
             }
             foreach (var vsplayer in Main.ActivePlayers)
             {
-                if (TargetConditionCheck(player, null, vsplayer, frightMaskCase))
+                if (TargetConditionCheck(player, null, vsplayer, frightCase))
                 {
                     vsplayer.Hurt(default, 0, GetDirection(vsplayer, player), true, false, 0, false, 0, 0, 20);
                 }
@@ -311,7 +313,7 @@ namespace PaperMarioItems.Common.Players
             {
                 foreach (var npc in Main.ActiveNPCs)
                 {
-                    if (TargetConditionCheck(player, npc, null, timestopCase))
+                    if (TargetConditionCheck(player, npc, null, timeCase))
                     {
                         Color color = new(240 + Main.rand.Next(15), 240 + Main.rand.Next(15), 240 + Main.rand.Next(15));
                         Vector2 newPos = new(npc.Center.X, npc.Center.Y);
@@ -347,7 +349,7 @@ namespace PaperMarioItems.Common.Players
                 }
                 foreach (var vsplayer in Main.ActivePlayers)
                 {
-                    if (TargetConditionCheck(player, null, vsplayer, timestopCase))
+                    if (TargetConditionCheck(player, null, vsplayer, timeCase))
                     {
                         Color color = new(240 + Main.rand.Next(15), 240 + Main.rand.Next(15), 240 + Main.rand.Next(15));
                         Vector2 newPos = new(vsplayer.Center.X, vsplayer.Center.Y);
@@ -372,7 +374,7 @@ namespace PaperMarioItems.Common.Players
             bool exist = false;
             foreach (var vsplayer in Main.ActivePlayers)
             {
-                if (TargetConditionCheck(player, null, vsplayer, hpDrainCase))
+                if (TargetConditionCheck(player, null, vsplayer, hpCase))
                 {
                     Vector2 playerToEnemy = new(player.Center.X - vsplayer.Center.X, player.Center.Y - vsplayer.Center.Y);
                     distSq = (float)Math.Sqrt(playerToEnemy.LengthSquared());
@@ -386,7 +388,7 @@ namespace PaperMarioItems.Common.Players
             }
             foreach (var npc in Main.ActiveNPCs)
             {
-                if (TargetConditionCheck(player, npc, null, hpDrainCase))
+                if (TargetConditionCheck(player, npc, null, hpCase))
                 {
 
                     Vector2 playerToEnemy = new(player.Center.X - npc.Center.X, player.Center.Y - npc.Center.Y);
@@ -483,6 +485,28 @@ namespace PaperMarioItems.Common.Players
                 {
                     empty = false;
                     vsplayer.AddBuff(BuffID.Confused, 7200);
+                }
+            }
+            if (!empty) SoundEngine.PlaySound(PaperMarioItems.causeStatusPM, player.Center);
+        }
+        //mr softener
+        public void SoftenEveryone(Player player)
+        {
+            bool empty = true;
+            foreach (var npc in Main.ActiveNPCs)
+            {
+                if (TargetConditionCheck(player, npc, null, softCase))
+                {
+                    empty = false;
+                    npc.AddBuff(ModContent.BuffType<SoftDebuff>(), 7200);
+                }
+            }
+            foreach (var vsplayer in Main.ActivePlayers)
+            {
+                if (TargetConditionCheck(player, null, vsplayer, softCase))
+                {
+                    empty = false;
+                    vsplayer.AddBuff(ModContent.BuffType<SoftDebuff>(), 7200);
                 }
             }
             if (!empty) SoundEngine.PlaySound(PaperMarioItems.causeStatusPM, player.Center);

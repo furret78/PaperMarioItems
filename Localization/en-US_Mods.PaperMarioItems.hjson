@@ -294,7 +294,7 @@ Buffs: {
 
 	SoftDebuff: {
 		DisplayName: Soft
-		Description: Defense has dropped!
+		Description: Defense has dropped by {0}%!
 	}
 
 	RevivedBuff: {

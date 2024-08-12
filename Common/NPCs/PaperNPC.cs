@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 
 namespace PaperMarioItems.Common.NPCs
 {
-    public class PaperNPC : GlobalNPC
+    public partial class PaperNPC : GlobalNPC
     {
         public override bool InstancePerEntity => true;
         public bool softDebuff, dizzyDebuff, timestopDebuff, timestopOn, hadGravity = false;

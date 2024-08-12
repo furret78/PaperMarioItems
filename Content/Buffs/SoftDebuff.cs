@@ -8,9 +8,9 @@ namespace PaperMarioItems.Content.Buffs
 {
 	public class SoftDebuff : ModBuff
 	{
-		public const int ReduceDef = 20;
-		public static float DefenseAdjust = 1 - ReduceDef / 100f;
-        public override LocalizedText Description => base.Description.WithFormatArgs(ReduceDef);
+		public const int ReduceDefBy = 20;
+		public static float DefenseAdjust = 1 - ReduceDefBy / 100f;
+        public override LocalizedText Description => base.Description.WithFormatArgs(ReduceDefBy);
         public override void SetStaticDefaults()
         {
             Main.pvpBuff[Type] = true;

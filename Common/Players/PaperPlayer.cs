@@ -18,10 +18,10 @@ namespace PaperMarioItems.Common.Players
     partial class PaperPlayer : ModPlayer
     {
         //setup
-        public bool dodgyEffect, hugeEffect, softEffect, electrifiedEffect, lifeShroomRevive, thunderOnce, thunderAll, earthquakeEffect;
-        public bool shootingStarActive, inflictDizzyActive, thunderEffectActive, frightMaskActive, stopwatchActive, fireFlowerActive, causeEarthquake, ruinPowderActive;
+        public bool dodgyEffect, hugeEffect, softEffect, electrifiedEffect, lifeShroomRevive, thunderOnce, thunderAll, earthquakeEffect, causeEarthquake, causeSoften;
+        public bool shootingStarActive, inflictDizzyActive, thunderEffectActive, frightMaskActive, stopwatchActive, fireFlowerActive, ruinPowderActive;
         public int shootingStar = 0, screenSpinTimer = 0, frightMaskCooldown = 0, stopwatchCooldown = 0, fireFlower = 0, ruinPowderCooldown = 0;
-        private int wte = 0, ssmd, sst = 0, wtt = 0, bgFlashTime = 0, stopwatchTimer = 0, fireFlowerTimer = 0, earthquakeTimer = 0;
+        private int wte = 0, ssmd, sst = 0, wtt = 0, bgFlashTime = 0, swt = 0, fft = 0, eqt = 0;
         private bool bgFlash;
         private static readonly Color LuckyTextColor = new(255, 255, 0, 255);
         public const int postReviveProtect = 1, postReviveRegen = 2, fireFlowerDamage = 25, earthquakeDamage = 75;
@@ -76,15 +76,15 @@ namespace PaperMarioItems.Common.Players
                 //timestop dust
                 if (Player.HasBuff<TimestopDebuff>())
                 {
-                    if (stopwatchTimer >= 60)
+                    if (swt >= 60)
                     {
                         Color color = new(240 + Main.rand.Next(15), 240 + Main.rand.Next(15), 240 + Main.rand.Next(15));
                         Dust.NewDustPerfect(new(Player.Center.X, Player.Center.Y), ModContent.DustType<StopwatchDust>(), null, 0, color);
-                        stopwatchTimer = 0;
+                        swt = 0;
                     }
-                    stopwatchTimer++;
+                    swt++;
                 }
-                else if (stopwatchTimer != 0) stopwatchTimer = 0;
+                else if (swt != 0) swt = 0;
                 //shooting star timer
                 if (shootingStar > 0)
                 {
@@ -184,30 +184,30 @@ namespace PaperMarioItems.Common.Players
                     if (!fireFlowerActive) fireFlowerActive = true;
                     else
                     {
-                        if (fireFlowerTimer > 3)
+                        if (fft > 3)
                         {
                             FireFlowerAttack(Player);
-                            fireFlowerTimer = 0;
+                            fft = 0;
                             if (fireFlower < 2) fireFlowerActive = false;
                             fireFlower--;
                         }
-                        fireFlowerTimer++;
+                        fft++;
                     }
                 }
                 //earthquake
                 if (causeEarthquake)
                 {
-                    if (earthquakeTimer == 34)
+                    if (eqt == 34)
                     {
                         SetShakeTime(90);
                     }
-                    if (earthquakeTimer >= 124)
+                    if (eqt >= 124)
                     {
                         CauseEarthquake(Player, earthquakeDamage);
-                        earthquakeTimer = 0;
+                        eqt = 0;
                         causeEarthquake = false;
                     }
-                    else earthquakeTimer++;
+                    else eqt++;
                 }
                 //ruin powder
                 if (ruinPowderActive && ruinPowderCooldown > 0)
@@ -218,6 +218,11 @@ namespace PaperMarioItems.Common.Players
                         ruinPowderActive = false;
                     }
                     ruinPowderCooldown--;
+                }
+                //mr softener
+                if (causeSoften)
+                {
+
                 }
             }
         }

@@ -6,12 +6,12 @@ using Terraria.ModLoader;
 
 namespace PaperMarioItems.Content.Items.Consumables
 {
-	public class MrSoftener : ModItem
+	public class MiniMrMini : ModItem
 	{
 		public override void SetDefaults()
 		{
-			Item.width = 32;
-			Item.height = 40;
+			Item.width = 37;
+			Item.height = 38;
 			Item.useTurn = true;
 			Item.useTime = 17;
 			Item.useAnimation = Item.useTime;
@@ -24,9 +24,10 @@ namespace PaperMarioItems.Content.Items.Consumables
 
         public override bool? UseItem(Player player)
         {
-			if (!player.GetModPlayer<PaperPlayer>().causeSoften)
+			if (!player.GetModPlayer<PaperPlayer>().ruinPowderActive && player.GetModPlayer<PaperPlayer>().ruinPowderCooldown <= 0)
 			{
-				player.GetModPlayer<PaperPlayer>().causeSoften = true;
+				player.GetModPlayer<PaperPlayer>().ruinPowderActive = true;
+				player.GetModPlayer<PaperPlayer>().ruinPowderCooldown = Item.useTime * 2 + 1;
                 return true;
 			}
 			return false;

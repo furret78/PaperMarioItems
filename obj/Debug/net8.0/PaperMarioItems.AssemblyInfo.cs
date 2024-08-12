@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PaperMarioItems")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+84cf319494ce278aa52c630aba4d3523237de71f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+eaa8fea8c33b0b8d372c197715159ace2356886d")]
 [assembly: System.Reflection.AssemblyProductAttribute("PaperMarioItems")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PaperMarioItems")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
