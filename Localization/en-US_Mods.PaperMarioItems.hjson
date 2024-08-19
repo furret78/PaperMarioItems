@@ -269,6 +269,11 @@ Items: {
 		DisplayName: Ruin Powder
 		Tooltip: Temporarily confuses all enemies
 	}
+
+	MrSoftener: {
+		DisplayName: Mr Softener
+		Tooltip: ""
+	}
 }
 
 Buffs: {

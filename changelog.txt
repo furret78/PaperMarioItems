@@ -1,7 +1,2 @@
 Paper Mario Items 0.1.4 -- Update notes
 - Added Earth Quake, POW Block, Ruin Powder, Mr Softener
-
-Mr Softener: visual effects (not done)
-Sleepy Sheep will not be added as NPCs cannot sleep
-
-Remaining: Mini Mr. Mini

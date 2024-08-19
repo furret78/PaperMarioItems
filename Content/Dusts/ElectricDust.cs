@@ -15,13 +15,13 @@ namespace PaperMarioItems.Content.Dusts
             dust.frame = new Rectangle(0, 0, 17, 48);
         }
 
-		public override bool Update(Dust dust) { // Calls every frame the dust is active
+		public override bool Update(Dust dust) {
 			dust.position += dust.velocity;
 			dust.scale *= 0.99f;
 			float light = 1f * dust.scale;
 			Lighting.AddLight(dust.position, light, light, light);
 			if (dust.scale < 0.3f) dust.active = false;
-			return false; // Return false to prevent vanilla behavior.
+			return false;
 		}
 	}
 }

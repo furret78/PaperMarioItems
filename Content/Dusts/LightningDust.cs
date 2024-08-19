@@ -9,12 +9,12 @@ namespace PaperMarioItems.Content.Dusts
 {
 	public class LightningDust : ModDust
 	{
-		private const string LightningDustPath = "PaperMarioItems/Content/Dusts/LightningDust";
+		private const string DustPath = "PaperMarioItems/Content/Dusts/LightningDust";
 		private static Asset<Texture2D> lightningDust;
 
         public override void Load()
         {
-			lightningDust = ModContent.Request<Texture2D>(LightningDustPath);
+			lightningDust = ModContent.Request<Texture2D>(DustPath);
         }
 
         public override void OnSpawn(Dust dust) {

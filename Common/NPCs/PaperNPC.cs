@@ -10,13 +10,12 @@ namespace PaperMarioItems.Common.NPCs
     public partial class PaperNPC : GlobalNPC
     {
         public override bool InstancePerEntity => true;
-        public bool softDebuff, dizzyDebuff, timestopDebuff, timestopOn, hadGravity = false;
+        public bool timestopDebuff, timestopOn, hadGravity = false;
         private int waitTimeDizzy = 0, timerTimestop = 0;
-        public static readonly Color LuckyTextColor = new(255, 255, 0), DizzyColor = new(0, 0, 255);
+        public static readonly Color LuckyTextColor = new(255, 255, 0);
         public override void ResetEffects(NPC npc)
         {
-            softDebuff = false;
-            dizzyDebuff = false;
+            //softDebuff = false;
             timestopDebuff = false;
         }
         public override bool PreAI(NPC npc)
@@ -54,28 +53,28 @@ namespace PaperMarioItems.Common.NPCs
         }
         public override void ModifyIncomingHit(NPC npc, ref NPC.HitModifiers modifiers)
         {
-            if (softDebuff) modifiers.Defense *= SoftDebuff.DefenseAdjust;
+            if (npc.HasBuff<SoftDebuff>()) modifiers.Defense *= SoftDebuff.DefenseAdjust;
         }
         public override void DrawEffects(NPC npc, ref Color drawColor)
         {
-            if (softDebuff) drawColor.G = 0;
-            if (dizzyDebuff)
+            if (npc.HasBuff<SoftDebuff>()) drawColor.R = 10;
+            if (npc.HasBuff<DizzyDebuff>())
             {
-                if (waitTimeDizzy == 0)
+                if (waitTimeDizzy == 1)
                 {
-                    Dust.NewDust(npc.Center, 0, 0, DustID.Electric, 0, 0, 0, DizzyColor);
+                    Dust.NewDust(npc.Center, 0, 0, ModContent.DustType<DizzyDust>(), Main.rand.NextFloat(-4, 5), Main.rand.NextFloat(-4, 0));
                     waitTimeDizzy++;
                 }
                 else
                 {
-                    if (waitTimeDizzy == 5) waitTimeDizzy = 0;
-                    else waitTimeDizzy++;
+                    if (waitTimeDizzy > 10) waitTimeDizzy = 0;
+                    waitTimeDizzy++;
                 }
             }
         }
         public override void ModifyHitNPC(NPC npc, NPC target, ref NPC.HitModifiers modifiers)
         {
-            if (dizzyDebuff)
+            if (npc.HasBuff<DizzyDebuff>())
             {
                 ref StatModifier finalDamage = ref modifiers.FinalDamage;
                 finalDamage *= 0f;
@@ -85,7 +84,7 @@ namespace PaperMarioItems.Common.NPCs
         }
         public override void ModifyHitPlayer(NPC npc, Player target, ref Player.HurtModifiers modifiers)
         {
-            if (dizzyDebuff)
+            if (npc.HasBuff<DizzyDebuff>())
             {
                 ref StatModifier finalDamage = ref modifiers.FinalDamage;
                 finalDamage *= 0f;

@@ -18,10 +18,10 @@ namespace PaperMarioItems.Common.Players
     partial class PaperPlayer : ModPlayer
     {
         //setup
-        public bool dodgyEffect, hugeEffect, softEffect, electrifiedEffect, lifeShroomRevive, thunderOnce, thunderAll, earthquakeEffect, causeEarthquake, causeSoften;
-        public bool shootingStarActive, inflictDizzyActive, thunderEffectActive, frightMaskActive, stopwatchActive, fireFlowerActive, ruinPowderActive;
+        public bool dodgyEffect, hugeEffect, softEffect, electrifiedEffect, lifeShroomRevive, thunderOnce, thunderAll, earthquakeEffect, dizzyEffect;
+        public bool shootingStarActive, inflictDizzyActive, thunderEffectActive, frightMaskActive, stopwatchActive, fireFlowerActive, ruinPowderActive, causeEarthquake, causeSoften;
         public int shootingStar = 0, screenSpinTimer = 0, frightMaskCooldown = 0, stopwatchCooldown = 0, fireFlower = 0, ruinPowderCooldown = 0;
-        private int wte = 0, ssmd, sst = 0, wtt = 0, bgFlashTime = 0, swt = 0, fft = 0, eqt = 0;
+        private int wte = 0, ssmd, sst = 0, wtt = 0, bgFlashTime = 0, swt = 0, fft = 0, eqt = 0, dyt = 0;
         private bool bgFlash;
         private static readonly Color LuckyTextColor = new(255, 255, 0, 255);
         public const int postReviveProtect = 1, postReviveRegen = 2, fireFlowerDamage = 25, earthquakeDamage = 75;
@@ -40,6 +40,7 @@ namespace PaperMarioItems.Common.Players
             softEffect = false;
             electrifiedEffect = false;
             lifeShroomRevive = false;
+            dizzyEffect = false;
             if (electrifiedEffect == false) Player.buffImmune[BuffID.Electrified] = false;
         }
         //detours
@@ -73,18 +74,6 @@ namespace PaperMarioItems.Common.Players
         {
             if (Main.myPlayer == Player.whoAmI)
             {
-                //timestop dust
-                if (Player.HasBuff<TimestopDebuff>())
-                {
-                    if (swt >= 60)
-                    {
-                        Color color = new(240 + Main.rand.Next(15), 240 + Main.rand.Next(15), 240 + Main.rand.Next(15));
-                        Dust.NewDustPerfect(new(Player.Center.X, Player.Center.Y), ModContent.DustType<StopwatchDust>(), null, 0, color);
-                        swt = 0;
-                    }
-                    swt++;
-                }
-                else if (swt != 0) swt = 0;
                 //shooting star timer
                 if (shootingStar > 0)
                 {
@@ -222,33 +211,62 @@ namespace PaperMarioItems.Common.Players
                 //mr softener
                 if (causeSoften)
                 {
-
+                    SoftenEveryone(Player);
+                    causeSoften = false;
                 }
             }
         }
         //soft debuff
         public override void DrawEffects(PlayerDrawSet drawInfo, ref float r, ref float g, ref float b, ref float a, ref bool fullBright)
         {
-            if (softEffect)
+            //player effects when visible
+            if (drawInfo.shadow == 0f)
             {
-                g *= 0.5f;
-                r *= 0.75f;
-            }
-            if (electrifiedEffect)
-            {
-                if (wte == 0)
+                if (softEffect)
                 {
-                    Vector2 dustRotation = Main.rand.NextVector2Unit();
-                    Vector2 dustPosition = Player.Center + dustRotation * Player.height;
-                    Dust.NewDust(dustPosition, 0, 0, ModContent.DustType<ElectricDust>());
-                    wte++;
+                    r *= 0.20f;
                 }
-                else
+                if (electrifiedEffect)
                 {
-                    if (wte >= 5) wte = 0;
-                    else wte++;
+                    if (wte == 0)
+                    {
+                        Vector2 dustRotation = Main.rand.NextVector2Unit();
+                        Vector2 dustPosition = Player.Center + dustRotation * Player.height;
+                        Dust.NewDust(dustPosition, 0, 0, ModContent.DustType<ElectricDust>());
+                        wte++;
+                    }
+                    else
+                    {
+                        if (wte >= 5) wte = 0;
+                        else wte++;
+                    }
                 }
+                if (dizzyEffect)
+                {
+                    if (dyt == 1)
+                    {
+                        Dust.NewDust(Player.Center, 0, 0, ModContent.DustType<DizzyDust>(), Main.rand.NextFloat(-4, 5), Main.rand.NextFloat(-4, 0));
+                        dyt++;
+                    }
+                    else
+                    {
+                        if (dyt > 10) dyt = 0;
+                        dyt++;
+                    }
+                }
+                if (Player.HasBuff<TimestopDebuff>())
+                {
+                    if (swt >= 60)
+                    {
+                        Color color = new(240 + Main.rand.Next(15), 240 + Main.rand.Next(15), 240 + Main.rand.Next(15));
+                        Dust.NewDustPerfect(new(Player.Center.X, Player.Center.Y), ModContent.DustType<StopwatchDust>(), null, 0, color);
+                        swt = 0;
+                    }
+                    swt++;
+                }
+                else if (swt != 0) swt = 0;
             }
+            //bg
             if (bgFlash)
             {
                 Texture2D value = TextureAssets.MagicPixel.Value;

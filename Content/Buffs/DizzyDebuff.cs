@@ -1,4 +1,5 @@
 ﻿using PaperMarioItems.Common.NPCs;
+using PaperMarioItems.Common.Players;
 using Terraria;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -13,13 +14,14 @@ namespace PaperMarioItems.Content.Buffs
             Main.pvpBuff[Type] = true;
             Main.debuff[Type] = true;
         }
-        public override void Update(NPC npc, ref int buffIndex)
+        /* public override void Update(NPC npc, ref int buffIndex)
         {
             npc.GetGlobalNPC<PaperNPC>().dizzyDebuff = true;
-        }
+        } */
         public override void Update(Player player, ref int buffIndex)
         {
             player.confused = true;
+            player.GetModPlayer<PaperPlayer>().dizzyEffect = true;
         }
     }
 }

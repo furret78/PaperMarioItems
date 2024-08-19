@@ -16,10 +16,12 @@ namespace PaperMarioItems.Content.Buffs
             Main.pvpBuff[Type] = true;
             Main.debuff[Type] = true;
         }
+        /*
         public override void Update(NPC npc, ref int buffIndex)
         {
             npc.GetGlobalNPC<PaperNPC>().softDebuff = true;
         }
+        */
         public override void Update(Player player, ref int buffIndex)
         {
             player.GetModPlayer<PaperPlayer>().softEffect = true;
