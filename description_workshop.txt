@@ -1,13 +1,13 @@
 A mod that aims to add items from the Paper Mario series.
 
 [h1] Balance [/h1]
-Made with vanilla Terraria gameplay in mind. The items included may either be too overpowered or not powerful enough for mods which add additional content to the game.
+Created with vanilla Terraria gameplay in mind. The items included may either be too overpowered or not powerful enough for mods which add additional content to the game.
 
 [hr][/hr]
 [h1] Obtaining Items [/h1]
 Items are either dropped as loot from enemies or crafted. Although the current release only features some items, future updates will feature cooking-related items.
 
-The mod currently features up to 38 items adapted from the Paper Mario series--specifically, Paper Mario: The Thousand-Year Door.
+The mod currently features items from Paper Mario: The Thousand-Year Door.
 
 [hr][/hr]
 [h1] Attributes [/h1]
