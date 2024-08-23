@@ -34,19 +34,5 @@ namespace PaperMarioItems.Content.Items.Consumables
             }
             else return false;
         }
-
-        public override void AddRecipes()
-		{
-			Recipe recipe = CreateRecipe()
-				.AddIngredient(ItemID.Fireblossom, 3)
-                .AddIngredient(ItemID.PixieDust, 3)
-				.AddTile(TileID.WorkBenches)
-				.Register();
-            recipe = CreateRecipe(3)
-                .AddIngredient(ItemID.FlowerofFire)
-                .AddIngredient(ItemID.PixieDust, 3)
-                .AddTile(TileID.WorkBenches)
-                .Register();
-        }
 	}
 }

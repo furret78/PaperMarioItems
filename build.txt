@@ -1,5 +1,5 @@
 displayName = Paper Mario Items
 author = Furret78
-version = 0.1.4.1
+version = 0.1.4.2
 buildIgnore = *.csproj, *.user, *.sln, *.gitattributes, *.md, obj\*, bin\*, .vs\*, Old\*, .git\*
 homepage = https://steamcommunity.com/sharedfiles/filedetails/?id=3273893695

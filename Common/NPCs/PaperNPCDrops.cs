@@ -16,7 +16,8 @@ namespace PaperMarioItems.Common.NPCs
                 npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<SpitePouch>(), 47, 45));
                 npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<InnCoupon>(), 28, 25));
                 npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<FrightMask>(), 60, 55));
-                npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<MysteryBox>(), 65, 63));
+                npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<MysteryBox>(), 54, 50));
+                npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<MrSoftener>(), 60, 55));
                 if (npc.type != NPCID.Harpy) npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<MysticEgg>(), 151, 150));
             }
             if (npc.type == NPCID.BlueSlime || npc.type == NPCID.YellowSlime || npc.type == NPCID.GoldenSlime || npc.type == NPCID.DungeonSlime)
@@ -42,6 +43,8 @@ namespace PaperMarioItems.Common.NPCs
                 npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<DizzyDial>(), 49, 47));
                 npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<HPDrain>(), 40, 35));
             }
+            if (npc.type == NPCID.GraniteFlyer || npc.type == NPCID.GraniteGolem)
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<EarthQuake>(), 2, 1));
             //boss specific drops
             if (System.Array.IndexOf(new int[] { NPCID.EaterofWorldsBody, NPCID.EaterofWorldsHead, NPCID.EaterofWorldsTail }, npc.type) > -1)
             {

@@ -271,8 +271,12 @@ Items: {
 	}
 
 	MrSoftener: {
-		DisplayName: Mr Softener
-		Tooltip: ""
+		DisplayName: Mr. Softener
+		Tooltip:
+			'''
+			Temporarily softens up an enemy, decreasing their Defense
+			However, it can't drop their Defense below 0!"
+			'''
 	}
 }
 

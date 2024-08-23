@@ -1,71 +1,12 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\reimu\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\PaperMarioItems\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{AD6250CC-A1FD-4159-841E-8B9702AD2860}|PaperMarioItems.csproj|c:\\users\\reimu\\documents\\my games\\terraria\\tmodloader\\modsources\\papermarioitems\\common\\players\\paperplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AD6250CC-A1FD-4159-841E-8B9702AD2860}|PaperMarioItems.csproj|solutionrelative:common\\players\\paperplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AD6250CC-A1FD-4159-841E-8B9702AD2860}|PaperMarioItems.csproj|c:\\users\\reimu\\documents\\my games\\terraria\\tmodloader\\modsources\\papermarioitems\\common\\npcs\\papernpc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AD6250CC-A1FD-4159-841E-8B9702AD2860}|PaperMarioItems.csproj|solutionrelative:common\\npcs\\papernpc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AD6250CC-A1FD-4159-841E-8B9702AD2860}|PaperMarioItems.csproj|c:\\users\\reimu\\documents\\my games\\terraria\\tmodloader\\modsources\\papermarioitems\\content\\buffs\\softdebuff.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AD6250CC-A1FD-4159-841E-8B9702AD2860}|PaperMarioItems.csproj|solutionrelative:content\\buffs\\softdebuff.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "WorkspaceRootPath": "C:\\Users\\VICTUS\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\PaperMarioItems\\",
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "PaperPlayer.cs",
-              "DocumentMoniker": "C:\\Users\\reimu\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\PaperMarioItems\\Common\\Players\\PaperPlayer.cs",
-              "RelativeDocumentMoniker": "Common\\Players\\PaperPlayer.cs",
-              "ToolTip": "C:\\Users\\reimu\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\PaperMarioItems\\Common\\Players\\PaperPlayer.cs",
-              "RelativeToolTip": "Common\\Players\\PaperPlayer.cs",
-              "ViewState": "AQIAAPYAAAAAAAAAAAAAAN0AAAApAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-19T06:56:02.354Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "PaperNPC.cs",
-              "DocumentMoniker": "C:\\Users\\reimu\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\PaperMarioItems\\Common\\NPCs\\PaperNPC.cs",
-              "RelativeDocumentMoniker": "Common\\NPCs\\PaperNPC.cs",
-              "ToolTip": "C:\\Users\\reimu\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\PaperMarioItems\\Common\\NPCs\\PaperNPC.cs",
-              "RelativeToolTip": "Common\\NPCs\\PaperNPC.cs",
-              "ViewState": "AQIAABMAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-19T06:55:52.727Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "SoftDebuff.cs",
-              "DocumentMoniker": "C:\\Users\\reimu\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\PaperMarioItems\\Content\\Buffs\\SoftDebuff.cs",
-              "RelativeDocumentMoniker": "Content\\Buffs\\SoftDebuff.cs",
-              "ToolTip": "C:\\Users\\reimu\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\PaperMarioItems\\Content\\Buffs\\SoftDebuff.cs",
-              "RelativeToolTip": "Content\\Buffs\\SoftDebuff.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-19T06:55:37.353Z",
-              "EditorCaption": ""
-            }
-          ]
-        }
-      ]
+      "DocumentGroups": []
     }
   ]
 }

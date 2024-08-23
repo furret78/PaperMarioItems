@@ -1,2 +1,5 @@
-Paper Mario Items 0.1.4.1 -- Update notes
-- Added new dust effects to certain status effects
+Paper Mario Items 0.1.4.2 -- Update notes
+- Mr. Softener item can now naturally drop from enemies
+- Fixed missing description for the Mr. Softener item
+- Removed unnecessary crafting recipes for Earth Quake
+- Granite Elementals and Granite Golems can now drop Earth Quakes (100% drop rate in Expert and harder difficulties)

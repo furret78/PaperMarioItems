@@ -222,10 +222,7 @@ namespace PaperMarioItems.Common.Players
             //player effects when visible
             if (drawInfo.shadow == 0f)
             {
-                if (softEffect)
-                {
-                    r *= 0.20f;
-                }
+                if (softEffect) r *= 0.20f;
                 if (electrifiedEffect)
                 {
                     if (wte == 0)
