@@ -29,6 +29,13 @@ namespace PaperMarioItems.Content.Items.Consumables
 				.AddIngredient(ItemID.Silk, 2)
 				.AddTile(TileID.WorkBenches)
 				.Register();
-		}
+			//cooking
+            recipe = CreateRecipe()
+                .AddIngredient<PointSwap>()
+                .AddIngredient<RepelCape>()
+                .AddCondition(PaperMarioConditions.HasCookbook)
+                .AddTile(TileID.CookingPots)
+                .Register();
+        }
 	}
 }

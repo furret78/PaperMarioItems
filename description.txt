@@ -5,7 +5,7 @@ Created with vanilla Terraria gameplay in mind. The items included may either be
 Items are either dropped as loot from enemies or crafted. Although the current release only features some items, future updates will feature cooking-related items.
 The mod currently features items from Paper Mario: The Thousand-Year Door.
 
-Massive thanks to Jopojelly, Cube Root and TModLoader server's #mod-development-help channel! Couldn't have made the mod without them.
+Massive thanks to Jopojelly, Cube Root, Blobwin and TModLoader server's #mod-development-help channel! Couldn't have made the mod without them.
 
 All Paper Mario assets used in the mod belongs to Intelligent Systems and Nintendo.
 

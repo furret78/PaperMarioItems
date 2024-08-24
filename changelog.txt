@@ -1,5 +1,3 @@
-Paper Mario Items 0.1.4.2 -- Update notes
-- Mr. Softener item can now naturally drop from enemies
-- Fixed missing description for the Mr. Softener item
-- Removed unnecessary crafting recipes for Earth Quake
-- Granite Elementals and Granite Golems can now drop Earth Quakes (100% drop rate in Expert and harder difficulties)
+Paper Mario Items 0.1.5 -- Update notes
+- Added Cookbook to loot tables
+- Added cooking recipes for Boo's Sheet and Repel Cape

@@ -63,6 +63,7 @@ namespace PaperMarioItems.Content.Items.Cooking
 			Recipe recipe = CreateRecipe()
 				.AddIngredient(ItemID.Hotdog)
                 .AddIngredient(ModContent.ItemType<HotSauce>())
+                .AddCondition(PaperMarioConditions.HasCookbook)
                 .AddTile(TileID.WorkBenches)
 				.Register();
         }
