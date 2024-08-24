@@ -59,6 +59,25 @@ namespace PaperMarioItems.Content.Items.Consumables
                 .AddIngredient(ItemID.HealingPotion)
                 .AddTile(TileID.WorkBenches)
                 .Register();
+            //cooking
+            recipe = CreateRecipe()
+                .AddIngredient<PointSwap>()
+                .AddIngredient<LifeMushroom>()
+                .AddCondition(PaperMarioConditions.HasCookbook)
+                .AddTile(TileID.CookingPots)
+                .Register();
+            recipe = CreateRecipe()
+                .AddIngredient<PointSwap>()
+                .AddIngredient<MapleSyrup>()
+                .AddCondition(PaperMarioConditions.HasCookbook)
+                .AddTile(TileID.CookingPots)
+                .Register();
+            recipe = CreateRecipe()
+                .AddIngredient<PointSwap>()
+                .AddIngredient<VoltMushroom>()
+                .AddCondition(PaperMarioConditions.HasCookbook)
+                .AddTile(TileID.CookingPots)
+                .Register();
         }
     }
 }

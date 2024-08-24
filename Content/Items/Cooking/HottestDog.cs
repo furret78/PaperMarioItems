@@ -25,6 +25,7 @@ namespace PaperMarioItems.Content.Items.Cooking
 			Item.buffTime = 43200;
             Item.healLife = 70;
             Item.healMana = Item.healLife;
+            Item.potion = true;
         }
         public override void OnConsumeItem(Player player)
 		{
@@ -62,7 +63,7 @@ namespace PaperMarioItems.Content.Items.Cooking
 		{
 			Recipe recipe = CreateRecipe()
 				.AddIngredient(ItemID.Hotdog)
-                .AddIngredient(ModContent.ItemType<HotSauce>())
+                .AddIngredient<HotSauce>()
                 .AddCondition(PaperMarioConditions.HasCookbook)
                 .AddTile(TileID.WorkBenches)
 				.Register();

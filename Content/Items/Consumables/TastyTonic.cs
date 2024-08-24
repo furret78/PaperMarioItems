@@ -1,5 +1,6 @@
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.Map;
 using Terraria.ModLoader;
 
@@ -52,6 +53,19 @@ namespace PaperMarioItems.Content.Items.Consumables
                 .AddIngredient(RecipeGroupID.Fruit)
                 .AddCondition(Condition.NearWater)
                 .AddTile(TileID.Bottles)
+                .Register();
+            //cooking
+            recipe = CreateRecipe()
+                .AddIngredient<HotSauce>()
+                .AddIngredient(ItemID.Peach)
+                .AddCondition(PaperMarioConditions.HasCookbook)
+                .AddTile(TileID.CookingPots)
+                .Register();
+            recipe = CreateRecipe()
+                .AddIngredient<HotSauce>()
+                .AddRecipeGroup(Language.GetTextValue($"Mods.PaperMarioItems.Content.SyrupGroup"))
+                .AddCondition(PaperMarioConditions.HasCookbook)
+                .AddTile(TileID.CookingPots)
                 .Register();
         }
 	}

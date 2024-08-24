@@ -278,6 +278,105 @@ Items: {
 			However, it can't drop their Defense below 0!"
 			'''
 	}
+
+	PoisonMushroom: {
+		PoisonDeath: tried a Poison Mushroom.
+		DisplayName: Poison Mushroom
+		Tooltip:
+			'''
+			A dangerous poison mushroom
+			Eat it and it'll both poison you and cut your current health by half!
+			On rare occasions, it'll replenish all of your missing health instead
+			'''
+	}
+
+	ZessFrappe: {
+		DisplayName: Zess Frappe
+		Tooltip:
+			'''
+			A dessert made by Zess T.
+			Can sometimes freeze you when consumed
+			'''
+	}
+
+	ZessTea: {
+		DisplayName: Zess Tea
+		Tooltip: Tea brewed by Zess T.
+	}
+
+	FreshJuice: {
+		DisplayName: Fresh Juice
+		Tooltip:
+			'''
+			Juice made by Zess T.
+			Cures poison
+			'''
+	}
+
+	FriedEgg: {
+		DisplayName: Fried Egg
+		Tooltip: Sunny-side up!
+	}
+
+	InkPasta: {
+		DisplayName: Ink Pasta Dish
+		Tooltip: Dark, exotic pasta
+	}
+
+	InkySauce: {
+		DisplayName: Inky Sauce
+		Tooltip: A nasty, squiddy sauce
+	}
+
+	Koopasta: {
+		DisplayName: Koopasta Dish
+		Tooltip: Fine pan-Koopa cuisine
+	}
+
+	KoopaTea: {
+		DisplayName: Koopa Tea
+		Tooltip: Koopa... Tea? Brewed by Zess T.
+	}
+
+	MushroomBroth: {
+		DisplayName: Mushroom Broth
+		Tooltip: Tea-infused broth brewed by Zess T.
+	}
+
+	MushroomCake: {
+		DisplayName: Mushroom Cake
+		Tooltip: A shroomy slice of cake
+	}
+
+	MushroomCrepe: {
+		DisplayName: Mushroom Crêpe
+		Tooltip: A mushroom-stuffed treat
+	}
+
+	MushroomFry: {
+		DisplayName: Mushroom Fry
+		Tooltip: A basic but tasty dish
+	}
+
+	MushroomRoast: {
+		DisplayName: Mushroom Roast
+		Tooltip: A lavish mushroom dish
+	}
+
+	MushroomSteak: {
+		DisplayName: Mushroom Steak
+		Tooltip: The height of mushroom cuisine
+	}
+
+	SpaghettiPlate: {
+		DisplayName: Spaghetti Plate
+		Tooltip: Spaghetti made by Zess T.
+	}
+
+	SpicyPasta: {
+		DisplayName: Spicy Pasta Dish
+		Tooltip: Four-alarm fettuccine!
+	}
 }
 
 Buffs: {

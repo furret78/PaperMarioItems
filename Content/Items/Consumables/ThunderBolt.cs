@@ -38,6 +38,12 @@ namespace PaperMarioItems.Content.Items.Consumables
                 .AddIngredient(ItemID.RainCloud, 10)
 				.AddTile(TileID.WorkBenches)
 				.Register();
+            recipe = CreateRecipe()
+                .AddIngredient<PointSwap>()
+                .AddIngredient<EarthQuake>()
+                .AddCondition(PaperMarioConditions.HasCookbook)
+                .AddTile(TileID.CookingPots)
+                .Register();
         }
 	}
 }

@@ -40,6 +40,13 @@ namespace PaperMarioItems.Content.Items.Consumables
                 .AddIngredient(ItemID.PurificationPowder)
                 .AddTile(TileID.WorkBenches)
                 .Register();
+			//cooking
+            recipe = CreateRecipe()
+                .AddIngredient<PointSwap>()
+                .AddIngredient<RuinPowder>()
+                .AddCondition(PaperMarioConditions.HasCookbook)
+                .AddTile(TileID.CookingPots)
+                .Register();
         }
 	}
 }

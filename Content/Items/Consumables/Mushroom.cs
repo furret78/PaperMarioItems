@@ -1,3 +1,4 @@
+using PaperMarioItems.Content.Items.Cooking;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -42,7 +43,6 @@ namespace PaperMarioItems.Content.Items.Consumables
             }
             else orig(self, sItem);
         }
-        //recipe
         public override void AddRecipes()
 		{
             Recipe recipe = CreateRecipe(2)
@@ -50,6 +50,49 @@ namespace PaperMarioItems.Content.Items.Consumables
                 .AddIngredient(ItemID.LesserHealingPotion)
                 .AddTile(TileID.WorkBenches)
                 .Register();
+            //cooking
+            recipe = CreateRecipe()
+                   .AddIngredient<PointSwap>()
+                   .AddIngredient<HoneySyrup>()
+                   .AddCondition(PaperMarioConditions.HasCookbook)
+                   .AddTile(TileID.CookingPots)
+                   .Register();
+            recipe = CreateRecipe()
+                   .AddIngredient<PointSwap>()
+                   .AddIngredient(ItemID.GoldBar)
+                   .AddCondition(PaperMarioConditions.HasCookbook)
+                   .AddTile(TileID.CookingPots)
+                   .Register();
+            recipe = CreateRecipe()
+                   .AddIngredient<PointSwap>()
+                   .AddIngredient<DriedMushroom>()
+                   .AddCondition(PaperMarioConditions.HasCookbook)
+                   .AddTile(TileID.CookingPots)
+                   .Register();
+            recipe = CreateRecipe()
+                   .AddIngredient<PointSwap>()
+                   .AddIngredient<PoisonMushroom>()
+                   .AddCondition(PaperMarioConditions.HasCookbook)
+                   .AddTile(TileID.CookingPots)
+                   .Register();
+            recipe = CreateRecipe()
+                   .AddIngredient<DriedMushroom>()
+                   .AddIngredient<HotSauce>()
+                   .AddCondition(PaperMarioConditions.HasCookbook)
+                   .AddTile(TileID.CookingPots)
+                   .Register();
+            recipe = CreateRecipe()
+                   .AddIngredient<DriedMushroom>()
+                   .AddIngredient(ItemID.Peach)
+                   .AddCondition(PaperMarioConditions.HasCookbook)
+                   .AddTile(TileID.CookingPots)
+                   .Register();
+            recipe = CreateRecipe()
+                   .AddIngredient<DriedMushroom>()
+                   .AddIngredient<PowerPunch>()
+                   .AddCondition(PaperMarioConditions.HasCookbook)
+                   .AddTile(TileID.CookingPots)
+                   .Register();
         }
     }
 }

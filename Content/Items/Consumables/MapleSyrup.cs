@@ -69,6 +69,13 @@ namespace PaperMarioItems.Content.Items.Consumables
                 .AddIngredient(ItemID.GreaterManaPotion)
                 .AddTile(TileID.Bottles)
                 .Register();
+
+            recipe = CreateRecipe()
+                .AddIngredient<PointSwap>()
+                .AddIngredient<SuperMushroom>()
+                .AddCondition(PaperMarioConditions.HasCookbook)
+                .AddTile(TileID.CookingPots)
+                .Register();
         }
 	}
 }

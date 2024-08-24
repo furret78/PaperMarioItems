@@ -1,12 +1,13 @@
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace PaperMarioItems.Content.Items.Consumables
 { 
 	public class JamminJelly : ModItem
 	{
-		public override void SetDefaults()
+        public override void SetDefaults()
 		{
             Item.width = 36;
             Item.height = 40;
@@ -59,6 +60,13 @@ namespace PaperMarioItems.Content.Items.Consumables
                 .AddIngredient(ItemID.HoneyBucket)
                 .AddIngredient(ItemID.SuperManaPotion)
                 .AddTile(TileID.Bottles)
+                .Register();
+
+            recipe = CreateRecipe()
+                .AddIngredient<PointSwap>()
+                .AddIngredient<UltraMushroom>()
+                .AddCondition(PaperMarioConditions.HasCookbook)
+                .AddTile(TileID.CookingPots)
                 .Register();
         }
 	}
