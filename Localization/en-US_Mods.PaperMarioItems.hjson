@@ -377,6 +377,16 @@ Items: {
 		DisplayName: Spicy Pasta Dish
 		Tooltip: Four-alarm fettuccine!
 	}
+
+	ZessTPot: {
+		DisplayName: Zess T Pot
+		Tooltip: ""
+	}
+
+	Mistake: {
+		DisplayName: Mistake
+		Tooltip: ""
+	}
 }
 
 Buffs: {

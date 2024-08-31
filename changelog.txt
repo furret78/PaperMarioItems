@@ -1,6 +1,4 @@
-Paper Mario Items 0.1.5 -- Update notes
-- Added Cookbook to chest loot tables. Higher difficulties = better rates.
-- Added Point Swap recipes for Boo's Sheet + Repel Cape, Mushroom/Gradual Syrup + Honey Syrup, Super Mushroom + Maple Syrup, Ultra Mushroom + Jammin' Jelly, Mr. Softener + Courage Shell, Spite Pouch + Ruin Powder, Shooting Star + Thunder Rage, Thunder Bolt + Earth Quake
-- Added cooking recipes for Tasty Tonic
-- Added Zess Tea, Zess Frappe, Poison Mushroom, Mushroom Fry, Mushroom Roast, Mushroom Steak, Mushroom Crepe, Mushroom Broth, Mushroom Cake, Koopa Tea, Fried Egg, Fresh Juice, Inky Sauce, Spaghetti Plate, Koopasta, Spicy Pasta, Ink Pasta
-- Added cooking recipes for the above items
+Paper Mario Items 0.1.6 -- Update notes
+- Added Mistake (item)
+- Added rudimentary cooking UI. Any cooking that does not follow a pre-existing recipe will return a Mistake.
+- Reduced the drop rate of Inn Coupons

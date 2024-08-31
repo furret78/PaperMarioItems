@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using PaperMarioItems.Content.Items;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ModLoader;
@@ -7,21 +8,25 @@ using Terraria.UI;
 namespace PaperMarioItems.Common.UI
 {
     [Autoload(Side = ModSide.Client)]
-    public class MenuBarSystem : ModSystem
+    public class PaperCookingSystem : ModSystem
     {
         internal MenuBar MenuBar;
-        private UserInterface _menuBar;
+        private UserInterface MenuBarUserInterface;
 
         public override void Load()
         {
             MenuBar = new MenuBar();
+            MenuBarUserInterface = new UserInterface();
             MenuBar.Activate();
-            _menuBar = new UserInterface();
         }
 
         public override void UpdateUI(GameTime gameTime)
         {
-            _menuBar?.Update(gameTime);
+            if (MenuBarUserInterface?.CurrentState != null)
+            {
+                MenuBarUserInterface?.Update(gameTime);
+            }
+            if (!Main.LocalPlayer.HasItemInInventoryOrOpenVoidBag(ModContent.ItemType<Cookbook>())) HideUI();
         }
 
         public override void ModifyInterfaceLayers(List<GameInterfaceLayer> layers)
@@ -33,7 +38,7 @@ namespace PaperMarioItems.Common.UI
                     "PaperMarioItems: Description",
                     delegate
                     {
-                        _menuBar.Draw(Main.spriteBatch, new GameTime());
+                        MenuBarUserInterface.Draw(Main.spriteBatch, new GameTime());
                         return true;
                     },
                     InterfaceScaleType.UI)
@@ -43,12 +48,12 @@ namespace PaperMarioItems.Common.UI
 
         public void ShowUI()
         {
-            _menuBar?.SetState(MenuBar);
+            MenuBarUserInterface?.SetState(MenuBar);
         }
 
         public void HideUI()
         {
-            _menuBar?.SetState(null);
+            MenuBarUserInterface?.SetState(null);
         }
     }
 }

@@ -14,7 +14,7 @@ namespace PaperMarioItems.Common.NPCs
             {
                 npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<PointSwap>(), 47, 44));
                 npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<SpitePouch>(), 47, 45));
-                npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<InnCoupon>(), 28, 25));
+                npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<InnCoupon>(), 85, 78));
                 npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<FrightMask>(), 60, 55));
                 npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<MysteryBox>(), 54, 50));
                 npcLoot.Add(ItemDropRule.NormalvsExpert(ModContent.ItemType<MrSoftener>(), 60, 55));

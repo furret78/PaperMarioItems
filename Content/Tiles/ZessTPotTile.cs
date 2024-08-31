@@ -2,11 +2,10 @@ using Microsoft.Xna.Framework;
 using PaperMarioItems.Content.Items;
 using Terraria;
 using Terraria.DataStructures;
-using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
-namespace PaperMarioItems
+namespace PaperMarioItems.Content.Tiles
 {
     public class ZessTPotTile : ModTile
     {
