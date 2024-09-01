@@ -214,7 +214,7 @@ namespace PaperMarioItems.Common.UI
             if (amount2 <= 0) itemAmount = amount1;
             if (resultItem != ItemID.None)
             {
-                SoundEngine.PlaySound(SoundID.ResearchComplete);
+                if (resultItem != ModContent.ItemType<Mistake>()) SoundEngine.PlaySound(SoundID.ResearchComplete);
                 Main.LocalPlayer.QuickSpawnItem(itemSource, resultItem, itemAmount);
                 for (int i = 0; i < itemSlots.Count; i++)
                 {
