@@ -1,8 +1,2 @@
-Paper Mario Items 0.1.6 -- Update notes
-- Added Mistake
-- Added rudimentary cooking UI:
-  + Any cooking that does not follow a pre-defined recipe will return a Mistake (note: not every recipe has been added)
-  + Accessing the cooking menu requires a Cookbook present in the player's inventory
-  + Certain crafting recipes may not exist in the cooking system
-- Removed all cooking-related crafting recipes that had been added in 0.1.5. Cooking will be done via a Cooking Pot instead
-- Reduced the drop rate of Inn Coupons
+Paper Mario Items 0.1.7 -- Update notes
+- 

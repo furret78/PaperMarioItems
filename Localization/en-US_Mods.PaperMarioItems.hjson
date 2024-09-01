@@ -380,11 +380,7 @@ Items: {
 
 	Mistake: {
 		DisplayName: Mistake
-		Tooltip:
-			'''
-			A failed attempt. Send it back to the kitchen!
-			'''
-			
+		Tooltip: A failed attempt. Send it back to the kitchen!
 	}
 }
 
