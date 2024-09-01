@@ -40,7 +40,8 @@ namespace PaperMarioItems.Common.UI
                     return;
                 }
 
-                if (Main.LocalPlayer.Center.Distance((Vector2)NearestCookingPotPosition) > 320f)
+                if (Main.LocalPlayer.Center.Distance((Vector2)NearestCookingPotPosition) > 320f
+                    || !Main.LocalPlayer.HasItemInInventoryOrOpenVoidBag(ModContent.ItemType<Cookbook>()))
                 {
                     HideUI();
                     NearestCookingPotPosition = null;
@@ -62,7 +63,6 @@ namespace PaperMarioItems.Common.UI
             {
                 MenuBarUserInterface?.Update(gameTime);
             }
-            if (!Main.LocalPlayer.HasItemInInventoryOrOpenVoidBag(ModContent.ItemType<Cookbook>())) HideUI();
         }
 
         public override void ModifyInterfaceLayers(List<GameInterfaceLayer> layers)
