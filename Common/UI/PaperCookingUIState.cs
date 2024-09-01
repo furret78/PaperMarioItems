@@ -88,6 +88,7 @@ namespace PaperMarioItems.Common.UI
             int item1 = itemSlots[0].Item.type, amount1 = itemSlots[0].Item.stack, item2 = itemSlots[1].Item.type, amount2 = itemSlots[1].Item.stack;
             if (CanCook(item1, amount1, item2, amount2))
             {
+                SoundEngine.PlaySound(SoundID.MenuOpen);
                 int resultItem = CookItems(item1, amount1, item2, amount2);
                 SpawnResultItem(resultItem, amount1, amount2);
                 CloseCookingUI();
@@ -213,7 +214,7 @@ namespace PaperMarioItems.Common.UI
             if (amount2 <= 0) itemAmount = amount1;
             if (resultItem != ItemID.None)
             {
-                SoundEngine.PlaySound(SoundID.MenuOpen);
+                SoundEngine.PlaySound(SoundID.ResearchComplete);
                 Main.LocalPlayer.QuickSpawnItem(itemSource, resultItem, itemAmount);
                 for (int i = 0; i < itemSlots.Count; i++)
                 {

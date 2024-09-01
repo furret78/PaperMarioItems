@@ -275,7 +275,7 @@ Items: {
 		Tooltip:
 			'''
 			Temporarily softens up an enemy, decreasing their Defense
-			However, it can't drop their Defense below 0!"
+			However, it can't drop their Defense below 0!
 			'''
 	}
 
@@ -378,14 +378,13 @@ Items: {
 		Tooltip: Four-alarm fettuccine!
 	}
 
-	ZessTPot: {
-		DisplayName: Zess T Pot
-		Tooltip: ""
-	}
-
 	Mistake: {
 		DisplayName: Mistake
-		Tooltip: ""
+		Tooltip:
+			'''
+			A failed attempt. Send it back to the kitchen!
+			'''
+			
 	}
 }
 
