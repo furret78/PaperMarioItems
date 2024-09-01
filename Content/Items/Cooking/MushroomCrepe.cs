@@ -57,14 +57,5 @@ namespace PaperMarioItems.Content.Items.Cooking
             }
             else orig(player, sItem);
         }
-        public override void AddRecipes()
-		{
-			Recipe recipe = CreateRecipe()
-                .AddIngredient<UltraMushroom>()
-                .AddIngredient<CakeMix>()
-                .AddCondition(PaperMarioConditions.HasCookbook)
-                .AddTile(TileID.CookingPots)
-				.Register();
-        }
 	}
 }

@@ -46,50 +46,5 @@ namespace PaperMarioItems.Content.Items.Cooking
             }
             else orig(player, sItem);
         }
-        public override void AddRecipes()
-		{
-			Recipe recipe = CreateRecipe()
-                .AddIngredient<HotSauce>()
-                .AddIngredient<FreshJuice>()
-                .AddCondition(PaperMarioConditions.HasCookbook)
-                .AddTile(TileID.CookingPots)
-                .Register();
-            recipe = CreateRecipe()
-                .AddIngredient<HotSauce>()
-                .AddIngredient<KoopaTea>()
-                .AddCondition(PaperMarioConditions.HasCookbook)
-                .AddTile(TileID.CookingPots)
-                .Register();
-            recipe = CreateRecipe()
-                .AddIngredient<HotSauce>()
-                .AddIngredient(ItemID.FruitJuice)
-                .AddCondition(PaperMarioConditions.HasCookbook)
-                .AddTile(TileID.CookingPots)
-                .Register();
-            recipe = CreateRecipe()
-                .AddIngredient<HotSauce>()
-                .AddIngredient<MushroomBroth>()
-                .AddCondition(PaperMarioConditions.HasCookbook)
-                .AddTile(TileID.CookingPots)
-                .Register();
-            recipe = CreateRecipe()
-                .AddIngredient<HotSauce>()
-                .AddIngredient<TastyTonic>()
-                .AddCondition(PaperMarioConditions.HasCookbook)
-                .AddTile(TileID.CookingPots)
-                .Register();
-            recipe = CreateRecipe()
-                .AddIngredient<HotSauce>()
-                .AddIngredient<TurtleyLeaf>()
-                .AddCondition(PaperMarioConditions.HasCookbook)
-                .AddTile(TileID.CookingPots)
-                .Register();
-            recipe = CreateRecipe()
-                .AddIngredient<HotSauce>()
-                .AddIngredient<ZessTea>()
-                .AddCondition(PaperMarioConditions.HasCookbook)
-                .AddTile(TileID.CookingPots)
-                .Register();
-        }
 	}
 }

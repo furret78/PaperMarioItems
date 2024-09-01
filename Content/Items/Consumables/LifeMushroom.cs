@@ -64,7 +64,6 @@ namespace PaperMarioItems.Content.Items.Consumables
             }
             else orig(self, sItem);
         }
-        //recipe
         public override void AddRecipes()
 		{
             //with life crystals

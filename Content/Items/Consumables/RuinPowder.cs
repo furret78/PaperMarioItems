@@ -45,13 +45,6 @@ namespace PaperMarioItems.Content.Items.Consumables
                 .AddIngredient(ItemID.ViciousPowder)
                 .AddTile(TileID.WorkBenches)
                 .Register();
-			//cooking
-            recipe = CreateRecipe()
-                .AddIngredient<PointSwap>()
-                .AddIngredient<SpitePouch>()
-                .AddCondition(PaperMarioConditions.HasCookbook)
-                .AddTile(TileID.CookingPots)
-                .Register();
         }
 	}
 }

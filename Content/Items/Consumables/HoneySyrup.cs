@@ -99,19 +99,6 @@ namespace PaperMarioItems.Content.Items.Consumables
                 .AddIngredient(ItemID.ManaPotion)
                 .AddTile(TileID.WorkBenches)
                 .Register();
-
-            recipe = CreateRecipe()
-                .AddIngredient<PointSwap>()
-                .AddIngredient<Mushroom>()
-                .AddCondition(PaperMarioConditions.HasCookbook)
-                .AddTile(TileID.CookingPots)
-                .Register();
-            recipe = CreateRecipe()
-                .AddIngredient<PointSwap>()
-                .AddIngredient<GradualSyrup>()
-                .AddCondition(PaperMarioConditions.HasCookbook)
-                .AddTile(TileID.CookingPots)
-                .Register();
         }
 	}
 }

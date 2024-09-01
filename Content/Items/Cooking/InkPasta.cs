@@ -57,32 +57,5 @@ namespace PaperMarioItems.Content.Items.Cooking
             }
             else orig(player, sItem);
         }
-        public override void AddRecipes()
-		{
-			Recipe recipe = CreateRecipe()
-                .AddIngredient<FreshPasta>()
-                .AddIngredient<InkySauce>()
-                .AddCondition(PaperMarioConditions.HasCookbook)
-                .AddTile(TileID.CookingPots)
-				.Register();
-            recipe = CreateRecipe()
-                .AddIngredient<SpaghettiPlate>()
-                .AddIngredient<InkySauce>()
-                .AddCondition(PaperMarioConditions.HasCookbook)
-                .AddTile(TileID.CookingPots)
-                .Register();
-            recipe = CreateRecipe()
-                .AddIngredient<Koopasta>()
-                .AddIngredient<InkySauce>()
-                .AddCondition(PaperMarioConditions.HasCookbook)
-                .AddTile(TileID.CookingPots)
-                .Register();
-            recipe = CreateRecipe()
-                .AddIngredient<SpicyPasta>()
-                .AddIngredient<InkySauce>()
-                .AddCondition(PaperMarioConditions.HasCookbook)
-                .AddTile(TileID.CookingPots)
-                .Register();
-        }
 	}
 }

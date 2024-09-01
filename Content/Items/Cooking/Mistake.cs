@@ -35,7 +35,11 @@ namespace PaperMarioItems.Content.Items.Cooking
 
         private void On_Player_ApplyPotionDelay(On_Player.orig_ApplyPotionDelay orig, Player player, Item sItem)
         {
-            if (sItem.type == Type) return;
+            if (sItem.type == Type)
+            {
+                player.AddBuff(BuffID.PotionSickness, 300);
+                return;
+            }
             else orig(player, sItem);
         }
         private void On_Player_ApplyLifeAndOrMana(On_Player.orig_ApplyLifeAndOrMana orig, Player player, Item sItem)

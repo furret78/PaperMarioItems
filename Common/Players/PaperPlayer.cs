@@ -11,6 +11,7 @@ using Terraria.GameContent;
 using PaperMarioItems.Content.Items.Consumables;
 using PaperMarioItems.Content.Buffs;
 using PaperMarioItems.Content.Dusts;
+using PaperMarioItems.Common.UI;
 
 namespace PaperMarioItems.Common.Players
 {
@@ -42,6 +43,18 @@ namespace PaperMarioItems.Common.Players
             lifeShroomRevive = false;
             dizzyEffect = false;
             if (electrifiedEffect == false) Player.buffImmune[BuffID.Electrified] = false;
+        }
+        //on enter world
+        public override void OnEnterWorld()
+        {
+            base.OnEnterWorld();
+            if (Main.dedServ)
+            {
+                return;
+            }
+
+            ModContent.GetInstance<PaperCookingSystem>().HideUI();
+            ModContent.GetInstance<PaperCookingSystem>().NearestCookingPotPosition = Vector2.Zero;
         }
         //detours
         public override void Load()

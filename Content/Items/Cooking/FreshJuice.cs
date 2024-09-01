@@ -51,19 +51,6 @@ namespace PaperMarioItems.Content.Items.Cooking
         public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe()
-                .AddIngredient(ItemID.Coconut)
-                .AddIngredient(ItemID.Peach)
-                .AddCondition(PaperMarioConditions.HasCookbook)
-                .AddTile(TileID.CookingPots)
-                .Register();
-            recipe = CreateRecipe()
-                .AddIngredient(ItemID.Coconut)
-                .AddIngredient(ItemID.Mango)
-                .AddCondition(PaperMarioConditions.HasCookbook)
-                .AddTile(TileID.CookingPots)
-                .Register();
-            //non-cooking
-            recipe = CreateRecipe()
                 .AddIngredient(ItemID.Peach)
                 .AddTile(TileID.CookingPots)
                 .Register();

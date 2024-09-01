@@ -10,14 +10,50 @@ namespace PaperMarioItems.Common.UI
     [Autoload(Side = ModSide.Client)]
     public class PaperCookingSystem : ModSystem
     {
+        public Vector2? NearestCookingPotPosition;
         internal MenuBar MenuBar;
         private UserInterface MenuBarUserInterface;
 
         public override void Load()
         {
+            if (Main.dedServ) return;
             MenuBar = new MenuBar();
             MenuBarUserInterface = new UserInterface();
             MenuBar.Activate();
+        }
+
+        public override void Unload()
+        {
+            base.Unload();
+            MenuBar = null;
+        }
+
+        public override void PostUpdatePlayers()
+        {
+            base.PostUpdatePlayers();
+            if (NearestCookingPotPosition != null)
+            {
+                if (MenuBarUserInterface.CurrentState == null)
+                {
+                    ShowUI();
+                    //Main.NewText($"UI is now shown; CurrentCrockpotPosition: {NearestCookingPotPosition}; Player position: {Main.LocalPlayer.Center}");
+                    return;
+                }
+
+                if (Main.LocalPlayer.Center.Distance((Vector2)NearestCookingPotPosition) > 320f)
+                {
+                    HideUI();
+                    NearestCookingPotPosition = null;
+                    //Main.NewText("UI is now hidden");
+                }
+            }
+            else if (MenuBarUserInterface != null)
+            {
+                if (MenuBarUserInterface.CurrentState is MenuBar)
+                {
+                    HideUI();
+                }
+            }
         }
 
         public override void UpdateUI(GameTime gameTime)

@@ -44,19 +44,6 @@ namespace PaperMarioItems.Content.Items.Consumables
                 .AddIngredient(ItemID.SoulofFlight, 5)
                 .AddTile(TileID.WorkBenches)
                 .Register();
-            //cooking
-            recipe = CreateRecipe()
-                .AddIngredient<PointSwap>()
-                .AddIngredient<ShootingStar>()
-                .AddCondition(PaperMarioConditions.HasCookbook)
-                .AddTile(TileID.CookingPots)
-                .Register();
-            recipe = CreateRecipe()
-                .AddIngredient<VoltMushroom>()
-                .AddIngredient<DriedBouquet>()
-                .AddCondition(PaperMarioConditions.HasCookbook)
-                .AddTile(TileID.CookingPots)
-                .Register();
         }
 	}
 }

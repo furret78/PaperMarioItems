@@ -56,13 +56,6 @@ namespace PaperMarioItems.Content.Items.Consumables
                 .AddRecipeGroup(nameof(ItemID.Mushroom), 9)
                 .AddIngredient(ItemID.SuperHealingPotion)
                 .Register();
-
-            recipe = CreateRecipe()
-                .AddIngredient<PointSwap>()
-                .AddIngredient<JamminJelly>()
-                .AddCondition(PaperMarioConditions.HasCookbook)
-                .AddTile(TileID.CookingPots)
-                .Register();
         }
     }
 }

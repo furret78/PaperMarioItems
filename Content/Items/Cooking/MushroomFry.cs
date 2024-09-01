@@ -60,37 +60,6 @@ namespace PaperMarioItems.Content.Items.Cooking
         public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe()
-                .AddIngredient<DriedMushroom>()
-                .AddIngredient<Mushroom>()
-                .AddCondition(PaperMarioConditions.HasCookbook)
-                .AddTile(TileID.CookingPots)
-				.Register();
-            recipe = CreateRecipe()
-                .AddIngredient<DriedMushroom>()
-                .AddIngredient<FireFlower>()
-                .AddCondition(PaperMarioConditions.HasCookbook)
-                .AddTile(TileID.CookingPots)
-                .Register();
-            recipe = CreateRecipe()
-                .AddIngredient<DriedMushroom>()
-                .AddIngredient<VoltMushroom>()
-                .AddCondition(PaperMarioConditions.HasCookbook)
-                .AddTile(TileID.CookingPots)
-                .Register();
-            recipe = CreateRecipe()
-                .AddIngredient<Mushroom>()
-                .AddIngredient<GoldenLeaf>()
-                .AddCondition(PaperMarioConditions.HasCookbook)
-                .AddTile(TileID.CookingPots)
-                .Register();
-            recipe = CreateRecipe()
-                .AddIngredient<Mushroom>()
-                .AddIngredient<TurtleyLeaf>()
-                .AddCondition(PaperMarioConditions.HasCookbook)
-                .AddTile(TileID.CookingPots)
-                .Register();
-            //non-cookbook
-            recipe = CreateRecipe()
                 .AddIngredient<Mushroom>()
                 .AddTile(TileID.CookingPots)
                 .Register();

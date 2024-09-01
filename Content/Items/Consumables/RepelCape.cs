@@ -23,16 +23,5 @@ namespace PaperMarioItems.Content.Items.Consumables
 			Item.buffType = ModContent.BuffType<DodgyBuff>();
 			Item.buffTime = 18000;
         }
-
-        public override void AddRecipes()
-        {
-			//cooking recipe
-			Recipe recipe = CreateRecipe()
-				.AddIngredient<PointSwap>()
-				.AddIngredient<BoosSheet>()
-				.AddCondition(PaperMarioConditions.HasCookbook)
-				.AddTile(TileID.CookingPots)
-				.Register();
-        }
     }
 }

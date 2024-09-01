@@ -48,15 +48,5 @@ namespace PaperMarioItems.Content.Items.Cooking
 			}
 			return true;
         }
-        public override void AddRecipes()
-		{
-			//cooking
-			Recipe recipe = CreateRecipe()
-                .AddIngredient<PointSwap>()
-                .AddIngredient<SlowMushroom>()
-                .AddCondition(PaperMarioConditions.HasCookbook)
-                .AddTile(TileID.CookingPots)
-                .Register();
-        }
 	}
 }

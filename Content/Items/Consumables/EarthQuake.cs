@@ -34,15 +34,5 @@ namespace PaperMarioItems.Content.Items.Consumables
             }
             else return false;
         }
-
-        public override void AddRecipes()
-        {
-            Recipe recipe = CreateRecipe()
-                .AddIngredient<PointSwap>()
-                .AddIngredient<ThunderBolt>()
-                .AddCondition(PaperMarioConditions.HasCookbook)
-                .AddTile(TileID.CookingPots)
-                .Register();
-        }
     }
 }

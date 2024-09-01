@@ -49,20 +49,5 @@ namespace PaperMarioItems.Content.Items.Cooking
             }
             else orig(player, sItem);
         }
-        public override void AddRecipes()
-		{
-			Recipe recipe = CreateRecipe()
-				.AddIngredient<JamminJelly>()
-                .AddIngredient(ItemID.IceBlock, 5)
-                .AddCondition(PaperMarioConditions.HasCookbook)
-                .AddTile(TileID.CookingPots)
-				.Register();
-            recipe = CreateRecipe()
-                .AddIngredient<MapleSyrup>()
-                .AddIngredient(ItemID.IceBlock, 5)
-                .AddCondition(PaperMarioConditions.HasCookbook)
-                .AddTile(TileID.CookingPots)
-                .Register();
-        }
 	}
 }

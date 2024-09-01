@@ -52,12 +52,6 @@ namespace PaperMarioItems.Content.Items.Cooking
 				.AddIngredient<GoldenLeaf>()
                 .AddTile(TileID.CookingPots)
 				.Register();
-            recipe = CreateRecipe()
-                .AddIngredient<JamminJelly>()
-                .AddIngredient<MapleSyrup>()
-                .AddCondition(PaperMarioConditions.HasCookbook)
-                .AddTile(TileID.CookingPots)
-                .Register();
         }
 	}
 }

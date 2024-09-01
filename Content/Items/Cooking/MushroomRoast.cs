@@ -60,67 +60,6 @@ namespace PaperMarioItems.Content.Items.Cooking
         public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe()
-                .AddIngredient<VoltMushroom>()
-                .AddIngredient<Mushroom>()
-                .AddCondition(PaperMarioConditions.HasCookbook)
-                .AddTile(TileID.CookingPots)
-				.Register();
-            recipe = CreateRecipe()
-                .AddIngredient<VoltMushroom>()
-                .AddIngredient<SuperMushroom>()
-                .AddCondition(PaperMarioConditions.HasCookbook)
-                .AddTile(TileID.CookingPots)
-                .Register();
-            recipe = CreateRecipe()
-                .AddIngredient<VoltMushroom>()
-                .AddIngredient<SlowMushroom>()
-                .AddCondition(PaperMarioConditions.HasCookbook)
-                .AddTile(TileID.CookingPots)
-                .Register();
-            recipe = CreateRecipe()
-                .AddIngredient<VoltMushroom>()
-                .AddIngredient<LifeMushroom>()
-                .AddCondition(PaperMarioConditions.HasCookbook)
-                .AddTile(TileID.CookingPots)
-                .Register();
-            recipe = CreateRecipe()
-                .AddIngredient<SuperMushroom>()
-                .AddIngredient<TurtleyLeaf>()
-                .AddCondition(PaperMarioConditions.HasCookbook)
-                .AddTile(TileID.CookingPots)
-                .Register();
-            recipe = CreateRecipe()
-                .AddIngredient<SuperMushroom>()
-                .AddIngredient<GoldenLeaf>()
-                .AddCondition(PaperMarioConditions.HasCookbook)
-                .AddTile(TileID.CookingPots)
-                .Register();
-            recipe = CreateRecipe()
-                .AddIngredient<Mushroom>()
-                .AddIngredient<SuperMushroom>()
-                .AddCondition(PaperMarioConditions.HasCookbook)
-                .AddTile(TileID.CookingPots)
-                .Register();
-            recipe = CreateRecipe()
-                .AddIngredient<Mushroom>()
-                .AddIngredient<FireFlower>()
-                .AddCondition(PaperMarioConditions.HasCookbook)
-                .AddTile(TileID.CookingPots)
-                .Register();
-            recipe = CreateRecipe()
-                .AddIngredient<Mushroom>()
-                .AddIngredient<GradualSyrup>()
-                .AddCondition(PaperMarioConditions.HasCookbook)
-                .AddTile(TileID.CookingPots)
-                .Register();
-            recipe = CreateRecipe()
-                .AddIngredient<SuperMushroom>()
-                .AddIngredient<DriedMushroom>()
-                .AddCondition(PaperMarioConditions.HasCookbook)
-                .AddTile(TileID.CookingPots)
-                .Register();
-            //non-cookbook
-            recipe = CreateRecipe()
                 .AddIngredient<LifeMushroom>()
                 .AddTile(TileID.CookingPots)
                 .Register();

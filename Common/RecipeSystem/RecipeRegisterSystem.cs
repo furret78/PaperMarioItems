@@ -1,4 +1,3 @@
-using PaperMarioItems.Content.Items;
 using System.Collections.Generic;
 using Terraria.ModLoader;
 
