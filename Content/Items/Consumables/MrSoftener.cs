@@ -1,5 +1,4 @@
 using PaperMarioItems.Common.Players;
-using PaperMarioItems.Content.Buffs;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;

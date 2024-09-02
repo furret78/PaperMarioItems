@@ -10,6 +10,7 @@ using PaperMarioItems.Content.Buffs;
 using PaperMarioItems.Content.Dusts;
 using PaperMarioItems.Content.Projectiles;
 using PaperMarioItems.Content.Items.Consumables;
+using PaperMarioItems.Content;
 
 namespace PaperMarioItems.Common.Players
 {
@@ -100,7 +101,7 @@ namespace PaperMarioItems.Common.Players
         //life mushroom effects
         private void LifeMushroomHeal(Player self, int num1, int num2)
         {
-            if (self == null || !self.HasItem(ModContent.ItemType<LifeMushroom>())) return;
+            if (self == null || !self.HasItem(PMItemID.LifeMushroom)) return;
             else
             {
                 for (int l = 0; l < Player.MaxBuffs; l++)
@@ -112,11 +113,11 @@ namespace PaperMarioItems.Common.Players
                     }
                 }
                 self.statLife = 1;
-                self.AddBuff(ModContent.BuffType<RevivedBuff>(), num1);
+                self.AddBuff(PMBuffID.Revived, num1);
                 self.SetImmuneTimeForAllTypes(num1);
                 self.AddBuff(BuffID.Regeneration, num2);
                 SoundEngine.PlaySound(PaperMarioItems.healPM, self.Center);
-                self.ConsumeItem(ModContent.ItemType<LifeMushroom>(), true, true);
+                self.ConsumeItem(PMItemID.LifeMushroom, true, true);
             }
         }
         //shooting star loopable
@@ -188,7 +189,7 @@ namespace PaperMarioItems.Common.Players
                     if (TargetConditionCheck(player, npc, null, dizzyCase))
                     {
                         empty = false;
-                        npc?.AddBuff(ModContent.BuffType<DizzyDebuff>(), 10800);
+                        npc?.AddBuff(PMBuffID.Dizzy, 10800);
                     }
                 }
                 foreach (var vsplayer in Main.ActivePlayers)
@@ -196,7 +197,7 @@ namespace PaperMarioItems.Common.Players
                     if (TargetConditionCheck(player, null, vsplayer, dizzyCase))
                     {
                         empty = false;
-                        vsplayer?.AddBuff(ModContent.BuffType<DizzyDebuff>(), 10800);
+                        vsplayer?.AddBuff(PMBuffID.Dizzy, 10800);
                     }
                 }
             }
@@ -209,7 +210,7 @@ namespace PaperMarioItems.Common.Players
             {
                 if (TargetConditionCheck(player, npc, null, frightCase))
                 {
-                    npc.AddBuff(ModContent.BuffType<FrightDebuff>(), 10);
+                    npc.AddBuff(PMBuffID.Fright, 10);
                     npc.SimpleStrikeNPC(0, GetDirection(npc, player), false, 20);
                 }
             }
@@ -321,7 +322,7 @@ namespace PaperMarioItems.Common.Players
                         {
                             empty = false;
                             if (!npc.HasBuff<TimestopDebuff>()) Dust.NewDustPerfect(newPos, ModContent.DustType<StopwatchDust>(), null, 0, color);
-                            npc.AddBuff(ModContent.BuffType<TimestopDebuff>(), 10800);
+                            npc.AddBuff(PMBuffID.Timestop, 10800);
                         }
                         else
                         {
@@ -341,7 +342,7 @@ namespace PaperMarioItems.Common.Players
                                 {
                                     empty = false;
                                     if (!npc.HasBuff<TimestopDebuff>()) Dust.NewDustPerfect(newPos, ModContent.DustType<StopwatchDust>(), null, 0, color);
-                                    npc.AddBuff(ModContent.BuffType<TimestopDebuff>(), 3600);
+                                    npc.AddBuff(PMBuffID.Timestop, 3600);
                                 }
                             }
                         }
@@ -357,7 +358,7 @@ namespace PaperMarioItems.Common.Players
                         {
                             empty = false;
                             if (vsplayer.HasBuff<TimestopDebuff>()) Dust.NewDustPerfect(newPos, ModContent.DustType<StopwatchDust>(), null, 0, color);
-                            vsplayer.AddBuff(ModContent.BuffType<TimestopDebuff>(), 10800);
+                            vsplayer.AddBuff(PMBuffID.Timestop, 10800);
                         }
                     }
                 }
@@ -498,7 +499,7 @@ namespace PaperMarioItems.Common.Players
                 if (TargetConditionCheck(player, npc, null, softCase))
                 {
                     empty = false;
-                    npc.AddBuff(ModContent.BuffType<SoftDebuff>(), 7200);
+                    npc.AddBuff(PMBuffID.Soft, 7200);
                 }
             }
             foreach (var vsplayer in Main.ActivePlayers)
@@ -506,7 +507,7 @@ namespace PaperMarioItems.Common.Players
                 if (TargetConditionCheck(player, null, vsplayer, softCase))
                 {
                     empty = false;
-                    vsplayer.AddBuff(ModContent.BuffType<SoftDebuff>(), 7200);
+                    vsplayer.AddBuff(PMBuffID.Soft, 7200);
                 }
             }
             if (!empty) SoundEngine.PlaySound(PaperMarioItems.causeStatusPM, player.Center);

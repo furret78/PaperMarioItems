@@ -1,30 +1,31 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Localization;
 
 namespace PaperMarioItems.Content.Items.Cooking
 { 
-	public class FreshJuice : ModItem
+	public class ElectroPop : ModItem
 	{
-		public override void SetDefaults()
+        public override void SetDefaults()
 		{
-			Item.width = 39;
-			Item.height = 40;
+			Item.width = 40;
+			Item.height = 39;
 			Item.useTurn = true;
 			Item.useTime = 17;
 			Item.useAnimation = Item.useTime;
-			Item.useStyle = ItemUseStyleID.DrinkLiquid;
-			Item.UseSound = SoundID.Item3;
+			Item.useStyle = ItemUseStyleID.EatFood;
+			Item.UseSound = SoundID.Item2;
 			Item.consumable = true;
 			Item.maxStack = Item.CommonMaxStack;
             Item.rare = ItemRarityID.Orange;
             Item.value = Item.buyPrice(copper: 25);
-            Item.healMana = 25;
+            Item.buffType = BuffID.WellFed;
+            Item.buffTime = 3600;
+            Item.healMana = 75;
         }
         public override void OnConsumeItem(Player player)
 		{
-            if (player.HasBuff(BuffID.Poisoned)) player.ClearBuff(BuffID.Poisoned);
+            player.AddBuff(PMBuffID.Electrified, 10800);
             player.TryToResetHungerToNeutral();
         }
         public override void Load()
@@ -46,25 +47,6 @@ namespace PaperMarioItems.Content.Items.Cooking
                 }
             }
             else orig(player, sItem);
-        }
-        public override void AddRecipes()
-		{
-			Recipe recipe = CreateRecipe()
-                .AddIngredient(ItemID.Peach)
-                .AddTile(TileID.CookingPots)
-                .Register();
-            recipe = CreateRecipe()
-                .AddIngredient(ItemID.Mango)
-                .AddTile(TileID.CookingPots)
-                .Register();
-            recipe = CreateRecipe()
-                .AddRecipeGroup(Language.GetTextValue($"Mods.PaperMarioItems.Content.SyrupGroup"))
-                .AddTile(TileID.CookingPots)
-                .Register();
-            recipe = CreateRecipe()
-                .AddIngredient(PMItemID.GradualSyrup)
-                .AddTile(TileID.CookingPots)
-                .Register();
         }
 	}
 }

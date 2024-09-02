@@ -20,7 +20,7 @@ namespace PaperMarioItems.Content.Items.Consumables
 			Item.maxStack = Item.CommonMaxStack;
             Item.rare = ItemRarityID.Blue;
             Item.value = Item.buyPrice(copper: 25);
-			Item.buffType = ModContent.BuffType<ElectrifiedBuff>();
+			Item.buffType = PMBuffID.Electrified;
 			Item.buffTime = 10800;
         }
         public override void OnConsumeItem(Player player)

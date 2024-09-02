@@ -1,3 +1,4 @@
+using PaperMarioItems.Content;
 using PaperMarioItems.Content.Items;
 using Terraria;
 using Terraria.ID;
@@ -34,7 +35,7 @@ namespace PaperMarioItems.Common
                     {
                         if (chest.item[inventoryIndex].type == ItemID.None)
                         {
-                            chest.item[inventoryIndex].SetDefaults(ModContent.ItemType<Cookbook>());
+                            chest.item[inventoryIndex].SetDefaults(PMItemID.Cookbook);
                             itemsPlaced++;
                             break;
                         }

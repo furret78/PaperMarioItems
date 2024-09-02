@@ -1,4 +1,4 @@
-using PaperMarioItems.Content.Items;
+using PaperMarioItems.Content;
 using System.Collections.Generic;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -37,6 +37,8 @@ namespace PaperMarioItems.Common.RecipeSystem
                 new(PMItemID.SuperMushroom, PMItemID.PointSwap, PMItemID.MapleSyrup),
                 new(PMItemID.SuperMushroom, PMItemID.PointSwap, PMItemID.LifeMushroom),
                 new(PMItemID.SuperMushroom, PMItemID.PointSwap, PMItemID.VoltMushroom),
+                new(ItemID.FlowerofFrost, PMItemID.PointSwap, PMItemID.FireFlower),
+                new(ItemID.FlowerofFrost, PMItemID.PointSwap, ItemID.FlowerofFire),
                 //unique cooking (non-cookbook)
                 new(PMItemID.FreshJuice, ItemID.Peach, ItemID.None),
                 new(PMItemID.FreshJuice, ItemID.Mango, ItemID.None),
@@ -45,6 +47,10 @@ namespace PaperMarioItems.Common.RecipeSystem
                 new(PMItemID.FreshJuice, PMItemID.JamminJelly, ItemID.None),
                 new(PMItemID.FreshJuice, PMItemID.GradualSyrup, ItemID.None),
                 //unique cooking
+                new(PMItemID.DriedMushroom, PMItemID.MrSoftener, PMItemID.Mushroom),
+                new(PMItemID.DriedMushroom, PMItemID.MrSoftener, PMItemID.SuperMushroom),
+                new(PMItemID.DriedMushroom, PMItemID.MrSoftener, PMItemID.UltraMushroom),
+                new(PMItemID.DriedMushroom, PMItemID.MrSoftener, PMItemID.LifeMushroom),
                 new(PMItemID.FreshJuice, ItemID.Coconut, ItemID.Peach),
                 new(PMItemID.FreshJuice, ItemID.Coconut, ItemID.Mango),
                 new(PMItemID.FreshJuice, ItemID.Coconut, PMItemID.TurtleyLeaf),
@@ -57,6 +63,13 @@ namespace PaperMarioItems.Common.RecipeSystem
                 new(PMItemID.FreshJuice, PMItemID.HoneySyrup, PMItemID.TurtleyLeaf),
                 new(PMItemID.FreshJuice, PMItemID.TurtleyLeaf, PMItemID.JamminJelly),
                 new(PMItemID.FreshJuice, PMItemID.TurtleyLeaf, PMItemID.MapleSyrup),
+                new(PMItemID.FirePop, PMItemID.CakeMix, PMItemID.FireFlower),
+                new(PMItemID.FirePop, PMItemID.CakeMix, ItemID.FlowerofFire),
+                new(PMItemID.FirePop, PMItemID.CakeMix, PMItemID.HotSauce),
+                new(PMItemID.ElectroPop, PMItemID.CakeMix, PMItemID.VoltMushroom),
+                new(PMItemID.ChocoCake, PMItemID.InkySauce, PMItemID.CakeMix),
+                new(PMItemID.ChocoCake, PMItemID.InkySauce, PMItemID.MousseCake),
+                new(PMItemID.CocoCandy, PMItemID.CakeMix, ItemID.Coconut),
                 new(PMItemID.FriedEgg, PMItemID.MysticEgg, ItemID.None),
                 new(PMItemID.KoopaTea, PMItemID.TurtleyLeaf, ItemID.None),
                 new(PMItemID.HottestDog, PMItemID.HotSauce, ItemID.Hotdog),
@@ -70,6 +83,7 @@ namespace PaperMarioItems.Common.RecipeSystem
                 new(PMItemID.InkPasta, PMItemID.FreshPasta, PMItemID.InkySauce),
                 new(PMItemID.InkPasta, PMItemID.SpicyPasta, PMItemID.InkySauce),
                 new(PMItemID.InkPasta, PMItemID.Spaghetti, PMItemID.InkySauce),
+                new(PMItemID.MousseCake, PMItemID.CakeMix, ItemID.None),
                 new(PMItemID.MushroomBroth, PMItemID.TurtleyLeaf, PMItemID.PoisonMushroom),
                 new(PMItemID.MushroomBroth, PMItemID.TurtleyLeaf, PMItemID.SlowMushroom),
                 new(PMItemID.MushroomBroth, PMItemID.GoldenLeaf, PMItemID.PoisonMushroom),
@@ -107,9 +121,15 @@ namespace PaperMarioItems.Common.RecipeSystem
                 new(PMItemID.PoisonMushroom, PMItemID.InkySauce, PMItemID.SlowMushroom),
                 //new(PMItemID.PoisonMushroom, PMItemID.DriedBouquet, PMItemID.TrialStew), implement later when there is Trial Stew
                 new(PMItemID.ZessFrappe, PMItemID.MapleSyrup, ItemID.IceBlock),
-                new(PMItemID.ZessFrappe, PMItemID.JamminJelly, ItemID.IceBlock),
                 new(PMItemID.ZessFrappe, PMItemID.MapleSyrup, ItemID.IceBrick),
+                new(PMItemID.ZessFrappe, PMItemID.MapleSyrup, ItemID.FlowerofFrost),
+                new(PMItemID.ZessFrappe, PMItemID.MapleSyrup, ItemID.SnowBlock),
+                new(PMItemID.ZessFrappe, PMItemID.MapleSyrup, ItemID.Shiverthorn),
+                new(PMItemID.ZessFrappe, PMItemID.JamminJelly, ItemID.IceBlock),
                 new(PMItemID.ZessFrappe, PMItemID.JamminJelly, ItemID.IceBrick),
+                new(PMItemID.ZessFrappe, PMItemID.JamminJelly, ItemID.FlowerofFrost),
+                new(PMItemID.ZessFrappe, PMItemID.JamminJelly, ItemID.SnowBlock),
+                new(PMItemID.ZessFrappe, PMItemID.JamminJelly, ItemID.Shiverthorn),
                 new(PMItemID.ZessTea, PMItemID.GoldenLeaf, ItemID.None),
                 new(PMItemID.ZessTea, PMItemID.MapleSyrup, PMItemID.JamminJelly),
                 new(PMItemID.InkySauce, PMItemID.HotSauce, PMItemID.FreshJuice),

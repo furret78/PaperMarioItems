@@ -1,35 +1,42 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Localization;
 
 namespace PaperMarioItems.Content.Items.Cooking
 { 
-	public class FreshJuice : ModItem
+	public class CocoCandy : ModItem
 	{
 		public override void SetDefaults()
 		{
-			Item.width = 39;
+			Item.width = 40;
 			Item.height = 40;
 			Item.useTurn = true;
 			Item.useTime = 17;
 			Item.useAnimation = Item.useTime;
-			Item.useStyle = ItemUseStyleID.DrinkLiquid;
-			Item.UseSound = SoundID.Item3;
+			Item.useStyle = ItemUseStyleID.EatFood;
+			Item.UseSound = SoundID.Item2;
 			Item.consumable = true;
 			Item.maxStack = Item.CommonMaxStack;
             Item.rare = ItemRarityID.Orange;
             Item.value = Item.buyPrice(copper: 25);
-            Item.healMana = 25;
+            Item.healLife = 15;
+            Item.healMana = 75;
+            Item.potion = true;
         }
         public override void OnConsumeItem(Player player)
 		{
-            if (player.HasBuff(BuffID.Poisoned)) player.ClearBuff(BuffID.Poisoned);
             player.TryToResetHungerToNeutral();
         }
         public override void Load()
         {
+            On_Player.ApplyPotionDelay += On_Player_ApplyPotionDelay;
             On_Player.ApplyLifeAndOrMana += On_Player_ApplyLifeAndOrMana;
+        }
+
+        private void On_Player_ApplyPotionDelay(On_Player.orig_ApplyPotionDelay orig, Player player, Item sItem)
+        {
+            if (sItem.type == Type) return;
+            else orig(player, sItem);
         }
         private void On_Player_ApplyLifeAndOrMana(On_Player.orig_ApplyLifeAndOrMana orig, Player player, Item sItem)
         {
@@ -46,25 +53,6 @@ namespace PaperMarioItems.Content.Items.Cooking
                 }
             }
             else orig(player, sItem);
-        }
-        public override void AddRecipes()
-		{
-			Recipe recipe = CreateRecipe()
-                .AddIngredient(ItemID.Peach)
-                .AddTile(TileID.CookingPots)
-                .Register();
-            recipe = CreateRecipe()
-                .AddIngredient(ItemID.Mango)
-                .AddTile(TileID.CookingPots)
-                .Register();
-            recipe = CreateRecipe()
-                .AddRecipeGroup(Language.GetTextValue($"Mods.PaperMarioItems.Content.SyrupGroup"))
-                .AddTile(TileID.CookingPots)
-                .Register();
-            recipe = CreateRecipe()
-                .AddIngredient(PMItemID.GradualSyrup)
-                .AddTile(TileID.CookingPots)
-                .Register();
         }
 	}
 }

@@ -1,4 +1,3 @@
-using PaperMarioItems.Content.Items.Consumables;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;

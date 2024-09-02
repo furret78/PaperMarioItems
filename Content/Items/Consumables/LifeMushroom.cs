@@ -73,17 +73,17 @@ namespace PaperMarioItems.Content.Items.Consumables
                 .AddTile(TileID.WorkBenches)
 				.Register();
             recipe = CreateRecipe()
-                .AddIngredient(ModContent.ItemType<Mushroom>(), 5)
+                .AddIngredient(PMItemID.Mushroom, 5)
                 .AddIngredient(ItemID.LifeCrystal, 3)
                 .AddTile(TileID.WorkBenches)
                 .Register();
             recipe = CreateRecipe()
-                .AddIngredient(ModContent.ItemType<SuperMushroom>(), 3)
+                .AddIngredient(PMItemID.SuperMushroom, 3)
                 .AddIngredient(ItemID.LifeCrystal, 2)
                 .AddTile(TileID.WorkBenches)
                 .Register();
             recipe = CreateRecipe()
-                .AddIngredient(ModContent.ItemType<UltraMushroom>())
+                .AddIngredient(PMItemID.UltraMushroom)
                 .AddIngredient(ItemID.LifeCrystal)
                 .AddTile(TileID.WorkBenches)
                 .Register();
@@ -94,17 +94,17 @@ namespace PaperMarioItems.Content.Items.Consumables
                 .AddTile(TileID.WorkBenches)
                 .Register();
             recipe = CreateRecipe()
-                .AddIngredient(ModContent.ItemType<Mushroom>(), 4)
+                .AddIngredient(PMItemID.Mushroom, 4)
                 .AddIngredient(ItemID.LifeFruit)
                 .AddTile(TileID.WorkBenches)
                 .Register();
             recipe = CreateRecipe()
-                .AddIngredient(ModContent.ItemType<SuperMushroom>(), 2)
+                .AddIngredient(PMItemID.SuperMushroom, 2)
                 .AddIngredient(ItemID.LifeFruit)
                 .AddTile(TileID.WorkBenches)
                 .Register();
             recipe = CreateRecipe()
-                .AddIngredient(ModContent.ItemType<UltraMushroom>())
+                .AddIngredient(PMItemID.UltraMushroom)
                 .AddIngredient(ItemID.LifeFruit)
                 .AddTile(TileID.WorkBenches)
                 .Register();

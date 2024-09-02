@@ -20,7 +20,7 @@ namespace PaperMarioItems.Content.Items.Consumables
 			Item.maxStack = Item.CommonMaxStack;
             Item.rare = ItemRarityID.Orange;
             Item.value = Item.buyPrice(copper: 25);
-			Item.buffType = ModContent.BuffType<HugeBuff>();
+			Item.buffType = PMBuffID.Huge;
 			Item.buffTime = 14400;
         }
 

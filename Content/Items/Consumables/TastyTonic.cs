@@ -54,19 +54,6 @@ namespace PaperMarioItems.Content.Items.Consumables
                 .AddCondition(Condition.NearWater)
                 .AddTile(TileID.Bottles)
                 .Register();
-            /*cooking
-            recipe = CreateRecipe()
-                .AddIngredient<HotSauce>()
-                .AddIngredient(ItemID.Peach)
-                .AddCondition(PaperMarioConditions.HasCookbook)
-                .AddTile(TileID.CookingPots)
-                .Register();
-            recipe = CreateRecipe()
-                .AddIngredient<HotSauce>()
-                .AddRecipeGroup(Language.GetTextValue($"Mods.PaperMarioItems.Content.SyrupGroup"))
-                .AddCondition(PaperMarioConditions.HasCookbook)
-                .AddTile(TileID.CookingPots)
-                .Register();*/
         }
 	}
 }

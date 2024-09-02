@@ -1,10 +1,12 @@
+using PaperMarioItems.Content.Buffs;
+using PaperMarioItems.Content.Items;
 using PaperMarioItems.Content.Items.Consumables;
 using PaperMarioItems.Content.Items.Cooking;
-using System.Collections.Generic;
 using Terraria.ModLoader;
 
-namespace PaperMarioItems.Content.Items
+namespace PaperMarioItems.Content
 {
+    //items
     public class PMItemID : ModSystem
     {
         public static readonly int BoosSheet = ModContent.ItemType<BoosSheet>(),
@@ -48,9 +50,14 @@ namespace PaperMarioItems.Content.Items
             VoltMushroom = ModContent.ItemType<VoltMushroom>(),
             WhackaBump = ModContent.ItemType<WhackaBump>(),
             CakeMix = ModContent.ItemType<CakeMix>(),
+            Cookbook = ModContent.ItemType<Cookbook>(),
 
+            ChocoCake = ModContent.ItemType<ChocoCake>(),
+            CocoCandy = ModContent.ItemType<CocoCandy>(),
             FreshJuice = ModContent.ItemType<FreshJuice>(),
             FriedEgg = ModContent.ItemType<FriedEgg>(),
+            FirePop = ModContent.ItemType<FirePop>(),
+            ElectroPop = ModContent.ItemType<ElectroPop>(),
             HottestDog = ModContent.ItemType<HottestDog>(),
             InkPasta = ModContent.ItemType<InkPasta>(),
             InkySauce = ModContent.ItemType<InkySauce>(),
@@ -62,11 +69,26 @@ namespace PaperMarioItems.Content.Items
             MushroomFry = ModContent.ItemType<MushroomFry>(),
             MushroomRoast = ModContent.ItemType<MushroomRoast>(),
             MushroomSteak = ModContent.ItemType<MushroomSteak>(),
+            MousseCake = ModContent.ItemType<MousseCake>(),
             PoisonMushroom = ModContent.ItemType<PoisonMushroom>(),
             Spaghetti = ModContent.ItemType<SpaghettiPlate>(),
             SpicyPasta = ModContent.ItemType<SpicyPasta>(),
             ZessFrappe = ModContent.ItemType<ZessFrappe>(),
             ZessTea = ModContent.ItemType<ZessTea>(),
             Mistake = ModContent.ItemType<Mistake>();
+    }
+    //buffs
+    public class PMBuffID : ModSystem
+    {
+        public static readonly int Charged = ModContent.BuffType<ChargedBuff>(),
+            Dizzy = ModContent.BuffType<DizzyDebuff>(),
+            Dodgy = ModContent.BuffType<DodgyBuff>(),
+            Huge = ModContent.BuffType<HugeBuff>(),
+            Fright = ModContent.BuffType<FrightDebuff>(),
+            Payback = ModContent.BuffType<PaybackBuff>(),
+            Revived = ModContent.BuffType<RevivedBuff>(),
+            Timestop = ModContent.BuffType<TimestopDebuff>(),
+            Soft = ModContent.BuffType<SoftDebuff>(),
+            Electrified = ModContent.BuffType<ElectrifiedBuff>();
     }
 }

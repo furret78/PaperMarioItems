@@ -382,6 +382,26 @@ Items: {
 		DisplayName: Mistake
 		Tooltip: A failed attempt. Send it back to the kitchen!
 	}
+
+	ChocoCake: {
+		DisplayName: Choco Cake
+		Tooltip: ""
+	}
+
+	CocoCandy: {
+		DisplayName: Coco Candy
+		Tooltip: ""
+	}
+
+	ElectroPop: {
+		DisplayName: Electro Pop
+		Tooltip: ""
+	}
+
+	MousseCake: {
+		DisplayName: Mousse Cake
+		Tooltip: ""
+	}
 }
 
 Buffs: {

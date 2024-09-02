@@ -29,7 +29,7 @@ namespace PaperMarioItems.Content.Items.Cooking
         }
         public override void OnConsumeItem(Player player)
 		{
-            player.AddBuff(ModContent.BuffType<ChargedBuff>(), 7200);
+            player.AddBuff(PMBuffID.Charged, 7200);
             player.TryToResetHungerToNeutral();
         }
         public override void Load()

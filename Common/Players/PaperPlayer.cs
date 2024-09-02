@@ -12,6 +12,7 @@ using PaperMarioItems.Content.Items.Consumables;
 using PaperMarioItems.Content.Buffs;
 using PaperMarioItems.Content.Dusts;
 using PaperMarioItems.Common.UI;
+using PaperMarioItems.Content;
 
 namespace PaperMarioItems.Common.Players
 {
@@ -76,9 +77,9 @@ namespace PaperMarioItems.Common.Players
         //npc (nurse) detour
         private static bool On_Player_BuyItem(On_Player.orig_BuyItem orig, Player self, long price, int customCurrency)
         {
-            if (self.HasItemInInventoryOrOpenVoidBag(ModContent.ItemType<InnCoupon>()) && Main.npc[self.talkNPC].type == NPCID.Nurse)
+            if (self.HasItemInInventoryOrOpenVoidBag(PMItemID.InnCoupon) && Main.npc[self.talkNPC].type == NPCID.Nurse)
             {
-                self.ConsumeItem(ModContent.ItemType<InnCoupon>(), true, true);
+                self.ConsumeItem(PMItemID.InnCoupon, true, true);
                 return true;
             }
             else return orig(self, price, customCurrency);

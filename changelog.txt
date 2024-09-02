@@ -1,2 +1,3 @@
 Paper Mario Items 0.1.7 -- Update notes
-- 
+- Added Mousse Cake, Choco Cake, Electro Pop, Fire Pop
+- Added cooking recipes for the above items

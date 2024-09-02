@@ -1,3 +1,4 @@
+using PaperMarioItems.Content;
 using PaperMarioItems.Content.Items.Consumables;
 using Terraria;
 using Terraria.Audio;
@@ -26,7 +27,7 @@ namespace PaperMarioItems
         {
             RecipeGroup mushgroup = new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {Lang.GetItemNameValue(ItemID.Mushroom)}", ItemID.Mushroom, ItemID.TealMushroom, ItemID.GlowingMushroom, ItemID.GreenMushroom);
             RecipeGroup.RegisterGroup(nameof(ItemID.Mushroom), mushgroup);
-            RecipeGroup syrupgroup = new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {Language.GetTextValue($"Mods.PaperMarioItems.Content.SyrupGroup")}", ModContent.ItemType<HoneySyrup>(), ModContent.ItemType<MapleSyrup>(), ModContent.ItemType<JamminJelly>());
+            RecipeGroup syrupgroup = new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {Language.GetTextValue($"Mods.PaperMarioItems.Content.SyrupGroup")}", PMItemID.HoneySyrup, PMItemID.MapleSyrup, PMItemID.JamminJelly);
             RecipeGroup.RegisterGroup(Language.GetTextValue($"Mods.PaperMarioItems.Content.SyrupGroup"), syrupgroup);
             RecipeGroup flowergroup = new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {Language.GetTextValue($"Mods.PaperMarioItems.Content.FlowerGroup")}", ItemID.Daybloom, ItemID.Blinkroot, ItemID.Fireblossom, ItemID.Moonglow, ItemID.Shiverthorn, ItemID.Sunflower, ItemID.SkyBlueFlower, ItemID.YellowMarigold);
             RecipeGroup.RegisterGroup(Language.GetTextValue($"Mods.PaperMarioItems.Content.FlowerGroup"), flowergroup);

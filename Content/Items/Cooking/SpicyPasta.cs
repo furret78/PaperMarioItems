@@ -1,8 +1,6 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using PaperMarioItems.Content.Items.Consumables;
-using PaperMarioItems.Content.Buffs;
 
 namespace PaperMarioItems.Content.Items.Cooking
 { 
@@ -29,7 +27,7 @@ namespace PaperMarioItems.Content.Items.Cooking
         }
         public override void OnConsumeItem(Player player)
 		{
-            player.AddBuff(ModContent.BuffType<ChargedBuff>(), 7200);
+            player.AddBuff(PMBuffID.Charged, 7200);
             player.TryToResetHungerToNeutral();
         }
         public override void Load()
