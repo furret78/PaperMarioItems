@@ -18,8 +18,8 @@ namespace PaperMarioItems.Content.Items.Consumables
 			Item.UseSound = SoundID.Item2;
 			Item.consumable = true;
 			Item.maxStack = Item.CommonMaxStack;
-            Item.rare = ItemRarityID.Blue;
-            Item.value = Item.buyPrice(copper: 25);
+            Item.rare = ItemRarityID.White;
+            Item.value = Item.buyPrice(silver: 10);
 			Item.buffType = PMBuffID.Electrified;
 			Item.buffTime = 10800;
         }

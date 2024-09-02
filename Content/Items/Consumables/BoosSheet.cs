@@ -18,7 +18,7 @@ namespace PaperMarioItems.Content.Items.Consumables
 			Item.consumable = true;
 			Item.maxStack = Item.CommonMaxStack;
             Item.rare = ItemRarityID.Blue;
-            Item.value = Item.buyPrice(copper: 25);
+            Item.value = Item.buyPrice(silver: 20);
 			Item.buffType = BuffID.Invisibility;
 			Item.buffTime = 7200;
         }

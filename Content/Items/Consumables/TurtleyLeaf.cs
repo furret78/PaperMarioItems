@@ -18,7 +18,7 @@ namespace PaperMarioItems.Content.Items.Consumables
             Item.useStyle = ItemUseStyleID.EatFood;
             Item.maxStack = Item.CommonMaxStack;
             Item.rare = ItemRarityID.White;
-            Item.value = Item.buyPrice(copper: 20);
+            Item.value = Item.sellPrice(silver: 2);
             Item.healMana = 15;
         }
 

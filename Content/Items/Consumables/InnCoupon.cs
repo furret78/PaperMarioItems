@@ -1,6 +1,4 @@
 using Terraria;
-using Terraria.Audio;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -17,13 +15,13 @@ namespace PaperMarioItems.Content.Items.Consumables
 			Item.useAnimation = Item.useTime;
 			Item.consumable = false;
 			Item.maxStack = 1;
-            Item.rare = ItemRarityID.Blue;
-            Item.value = Item.buyPrice(gold: 30);
+            Item.rare = ItemRarityID.White;
+            Item.value = Item.sellPrice(silver: 5);
         }
         public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe()
-				.AddIngredient(ItemID.GoldCoin, 30)
+				.AddIngredient(ItemID.GoldCoin, 60)
 				.AddRecipeGroup(RecipeGroupID.Wood)
 				.AddTile(TileID.WorkBenches)
 				.Register();

@@ -1,7 +1,5 @@
 using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
-using Terraria.Map;
 using Terraria.ModLoader;
 
 namespace PaperMarioItems.Content.Items.Consumables
@@ -20,7 +18,7 @@ namespace PaperMarioItems.Content.Items.Consumables
             Item.UseSound = SoundID.Item3;
             Item.maxStack = Item.CommonMaxStack;
             Item.rare = ItemRarityID.White;
-            Item.value = Item.buyPrice(copper: 25);
+            Item.value = Item.sellPrice(silver: 1);
         }
 
         public override bool? UseItem(Player player)

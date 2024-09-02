@@ -18,7 +18,7 @@ namespace PaperMarioItems.Content.Items.Consumables
             Item.UseSound = SoundID.Grab;
             Item.maxStack = 64;
             Item.rare = ItemRarityID.White;
-            Item.value = Item.sellPrice(silver: 20);
+            Item.value = Item.buyPrice(silver: 3);
         }
 
         public override bool? UseItem(Player player)

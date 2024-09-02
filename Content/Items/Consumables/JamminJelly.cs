@@ -1,6 +1,5 @@
 using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace PaperMarioItems.Content.Items.Consumables
@@ -18,8 +17,8 @@ namespace PaperMarioItems.Content.Items.Consumables
             Item.UseSound = SoundID.Item3;
             Item.useStyle = ItemUseStyleID.DrinkLiquid;
             Item.maxStack = Item.CommonMaxStack;
-            Item.rare = ItemRarityID.White;
-            Item.value = Item.buyPrice(copper: 20);
+            Item.rare = ItemRarityID.Orange;
+            Item.value = Item.buyPrice(gold: 2);
             Item.healMana = 75;
         }
 

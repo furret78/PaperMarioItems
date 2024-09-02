@@ -2,7 +2,6 @@ using PaperMarioItems.Content.Buffs;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using PaperMarioItems.Content.Items.Consumables;
 using Terraria.Localization;
 
 namespace PaperMarioItems.Content.Items.Cooking
@@ -23,7 +22,7 @@ namespace PaperMarioItems.Content.Items.Cooking
 			Item.consumable = true;
 			Item.maxStack = Item.CommonMaxStack;
             Item.rare = ItemRarityID.Orange;
-            Item.value = Item.buyPrice(copper: 25);
+            Item.value = Item.sellPrice(silver: 26);
             Item.buffType = BuffID.WellFed;
             Item.buffTime = 3600;
         }

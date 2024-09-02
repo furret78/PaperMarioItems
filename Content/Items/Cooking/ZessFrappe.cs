@@ -17,8 +17,8 @@ namespace PaperMarioItems.Content.Items.Cooking
 			Item.UseSound = SoundID.Item2;
 			Item.consumable = true;
 			Item.maxStack = Item.CommonMaxStack;
-            Item.rare = ItemRarityID.Orange;
-            Item.value = Item.buyPrice(copper: 25);
+            Item.rare = ItemRarityID.Blue;
+            Item.value = Item.sellPrice(silver: 30);
             Item.buffType = BuffID.WellFed;
             Item.buffTime = 3600;
             Item.healMana = 100;

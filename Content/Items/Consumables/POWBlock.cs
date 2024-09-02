@@ -22,28 +22,14 @@ namespace PaperMarioItems.Content.Items.Consumables
             Item.useStyle = ItemUseStyleID.HoldUp;
             Item.UseSound = PaperMarioItems.useItemPM;
             Item.maxStack = Item.CommonMaxStack;
-            Item.rare = ItemRarityID.White;
-            Item.value = Item.buyPrice(copper: 25);
+            Item.rare = ItemRarityID.LightRed;
+            Item.value = Item.buyPrice(silver: 5);
         }
 
         public override bool? UseItem(Player player)
         {
             player.GetModPlayer<PaperPlayer>().PowBlock(player, powDamage);
             return true;
-        }
-
-        public override void AddRecipes()
-		{
-			Recipe recipe = CreateRecipe()
-				.AddIngredient(ItemID.Fireblossom, 3)
-                .AddIngredient(ItemID.PixieDust, 3)
-				.AddTile(TileID.WorkBenches)
-				.Register();
-            recipe = CreateRecipe(3)
-                .AddIngredient(ItemID.FlowerofFire)
-                .AddIngredient(ItemID.PixieDust, 3)
-                .AddTile(TileID.WorkBenches)
-                .Register();
         }
 	}
 }

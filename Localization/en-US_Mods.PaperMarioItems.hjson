@@ -402,6 +402,11 @@ Items: {
 		DisplayName: Mousse Cake
 		Tooltip: ""
 	}
+
+	FirePop: {
+		DisplayName: Fire Pop
+		Tooltip: ""
+	}
 }
 
 Buffs: {

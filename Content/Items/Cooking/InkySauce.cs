@@ -1,7 +1,6 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using PaperMarioItems.Content.Items.Consumables;
 
 namespace PaperMarioItems.Content.Items.Cooking
 { 
@@ -19,7 +18,7 @@ namespace PaperMarioItems.Content.Items.Cooking
 			Item.consumable = true;
 			Item.maxStack = Item.CommonMaxStack;
             Item.rare = ItemRarityID.Orange;
-            Item.value = Item.buyPrice(copper: 25);
+            Item.value = Item.sellPrice(silver: 10);
             Item.healMana = 150;
         }
         public override void OnConsumeItem(Player player)

@@ -1,4 +1,3 @@
-using PaperMarioItems.Content.Items.Cooking;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -19,7 +18,7 @@ namespace PaperMarioItems.Content.Items.Consumables
             Item.UseSound = SoundID.Item2;
             Item.maxStack = Item.CommonMaxStack;
             Item.rare = ItemRarityID.White;
-            Item.value = Item.buyPrice(silver: 1);
+            Item.value = Item.buyPrice(silver: 5);
             Item.healLife = 25;
             Item.potion = true;
         }

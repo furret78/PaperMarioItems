@@ -26,8 +26,8 @@ namespace PaperMarioItems.Content.Items.Cooking
 			Item.UseSound = SoundID.Item2;
 			Item.consumable = true;
 			Item.maxStack = Item.CommonMaxStack;
-            Item.rare = ItemRarityID.Blue;
-            Item.value = Item.buyPrice(copper: 25);
+            Item.rare = ItemRarityID.Green;
+            Item.value = Item.sellPrice(silver: 20);
         }
         public override bool? UseItem(Player player)
         {

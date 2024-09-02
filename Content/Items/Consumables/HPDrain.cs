@@ -29,7 +29,7 @@ namespace PaperMarioItems.Content.Items.Consumables
 			Item.UseSound = PaperMarioItems.useItemPM;
 			Item.maxStack = Item.CommonMaxStack;
             Item.rare = ItemRarityID.Orange;
-            Item.value = Item.buyPrice(copper: 25);
+            Item.value = Item.buyPrice(silver: 10);
         }
 
         public override bool? UseItem(Player player)

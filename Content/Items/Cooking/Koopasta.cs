@@ -1,7 +1,6 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using PaperMarioItems.Content.Items.Consumables;
 
 namespace PaperMarioItems.Content.Items.Cooking
 { 
@@ -18,8 +17,8 @@ namespace PaperMarioItems.Content.Items.Cooking
 			Item.UseSound = SoundID.Item2;
 			Item.consumable = true;
 			Item.maxStack = Item.CommonMaxStack;
-            Item.rare = ItemRarityID.Orange;
-            Item.value = Item.buyPrice(copper: 25);
+            Item.rare = ItemRarityID.Green;
+            Item.value = Item.sellPrice(silver: 30, copper: 50);
 			Item.buffType = BuffID.WellFed2;
 			Item.buffTime = 7200;
             Item.healLife = 35;

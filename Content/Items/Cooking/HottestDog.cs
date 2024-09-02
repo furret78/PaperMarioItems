@@ -1,4 +1,3 @@
-using PaperMarioItems.Content.Buffs;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -20,8 +19,8 @@ namespace PaperMarioItems.Content.Items.Cooking
 			Item.consumable = true;
 			Item.maxStack = Item.CommonMaxStack;
             Item.rare = ItemRarityID.Orange;
-            Item.value = Item.buyPrice(copper: 25);
-			Item.buffType = BuffID.WellFed3;
+            Item.value = ContentSamples.ItemsByType[ItemID.Hotdog].value + Item.sellPrice(silver: 5);
+            Item.buffType = BuffID.WellFed3;
 			Item.buffTime = 43200;
             Item.healLife = 70;
             Item.healMana = Item.healLife;

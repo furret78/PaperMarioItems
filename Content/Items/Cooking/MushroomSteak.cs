@@ -19,7 +19,7 @@ namespace PaperMarioItems.Content.Items.Cooking
 			Item.consumable = true;
 			Item.maxStack = Item.CommonMaxStack;
             Item.rare = ItemRarityID.Orange;
-            Item.value = Item.buyPrice(copper: 25);
+            Item.value = Item.sellPrice(silver: 45);
 			Item.buffType = BuffID.WellFed3;
 			Item.buffTime = 21600;
             Item.healLife = 150;

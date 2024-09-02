@@ -17,7 +17,7 @@ namespace PaperMarioItems.Content.Items.Consumables
             Item.useStyle = ItemUseStyleID.EatFood;
             Item.UseSound = SoundID.Item2;
             Item.maxStack = Item.CommonMaxStack;
-            Item.rare = ItemRarityID.White;
+            Item.rare = ItemRarityID.Green;
             Item.value = Item.buyPrice(gold: 2);
             Item.healLife = 75;
             Item.potion = true;

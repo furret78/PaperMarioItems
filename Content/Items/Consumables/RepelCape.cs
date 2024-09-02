@@ -1,4 +1,3 @@
-using PaperMarioItems.Content.Buffs;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -18,8 +17,8 @@ namespace PaperMarioItems.Content.Items.Consumables
 			Item.UseSound = PaperMarioItems.useItemPM;
 			Item.consumable = true;
 			Item.maxStack = Item.CommonMaxStack;
-            Item.rare = ItemRarityID.Orange;
-            Item.value = Item.buyPrice(copper: 25);
+            Item.rare = ItemRarityID.Blue;
+            Item.value = Item.buyPrice(silver: 15);
 			Item.buffType = PMBuffID.Dodgy;
 			Item.buffTime = 18000;
         }

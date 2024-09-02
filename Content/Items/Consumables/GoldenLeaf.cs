@@ -18,8 +18,8 @@ namespace PaperMarioItems.Content.Items.Consumables
             Item.useStyle = ItemUseStyleID.EatFood;
             Item.maxStack = Item.CommonMaxStack;
             Item.rare = ItemRarityID.White;
-            Item.value = Item.buyPrice(copper: 20);
-            Item.healMana = 50;
+            Item.value = Item.buyPrice(silver: 3);
+            Item.healMana = 25;
         }
 
         public override void OnConsumeItem(Player player)

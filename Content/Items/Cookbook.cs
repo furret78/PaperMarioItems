@@ -10,7 +10,7 @@ namespace PaperMarioItems.Content.Items
 		{
 			Item.width = 40;
 			Item.height = 30;
-			Item.value = Item.buyPrice(silver: 1);
+			Item.value = Item.buyPrice(gold: 1);
 			Item.rare = ItemRarityID.Orange;
 		}
 	}

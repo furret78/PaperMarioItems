@@ -17,8 +17,8 @@ namespace PaperMarioItems.Content.Items.Consumables
 			Item.UseSound = SoundID.Item3;
 			Item.consumable = true;
 			Item.maxStack = Item.CommonMaxStack;
-            Item.rare = ItemRarityID.Blue;
-            Item.value = Item.buyPrice(copper: 25);
+            Item.rare = ItemRarityID.White;
+            Item.value = Item.buyPrice(silver: 15);
 			Item.buffType = BuffID.ManaRegeneration;
 			Item.buffTime = 36000;
         }

@@ -18,7 +18,7 @@ namespace PaperMarioItems.Content.Items.Consumables
             Item.UseSound = SoundID.Item2;
             Item.maxStack = Item.CommonMaxStack;
             Item.rare = ItemRarityID.White;
-            Item.value = Item.buyPrice(copper: 25);
+            Item.value = Item.buyPrice(silver: 2, copper: 50);
             Item.healMana = 5;
         }
 

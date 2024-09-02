@@ -1,4 +1,3 @@
-using PaperMarioItems.Content.Buffs;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -19,7 +18,7 @@ namespace PaperMarioItems.Content.Items.Consumables
 			Item.consumable = true;
 			Item.maxStack = Item.CommonMaxStack;
 			Item.rare = ItemRarityID.Orange;
-			Item.value = Item.buyPrice(copper: 25);
+			Item.value = Item.buyPrice(silver: 20);
 			Item.buffType = PMBuffID.Payback;
 			Item.buffTime = 7200;
 		}

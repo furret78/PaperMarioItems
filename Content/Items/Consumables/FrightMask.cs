@@ -18,8 +18,8 @@ namespace PaperMarioItems.Content.Items.Consumables
             Item.consumable = true;
             Item.useStyle = ItemUseStyleID.HoldUp;
             Item.maxStack = Item.CommonMaxStack;
-            Item.rare = ItemRarityID.White;
-            Item.value = Item.buyPrice(copper: 25);
+            Item.rare = ItemRarityID.Orange;
+            Item.value = Item.buyPrice(silver: 5);
         }
 
         public override bool? UseItem(Player player)
