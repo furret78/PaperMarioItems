@@ -1,26 +1,25 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using PaperMarioItems.Content.Items.Consumables;
 
 namespace PaperMarioItems.Content.Items.Cooking
 { 
-	public class KoopaTea : ModItem
+	public class KoopaBun : ModItem
 	{
 		public override void SetDefaults()
 		{
-			Item.width = 38;
-			Item.height = 39;
+			Item.width = 40;
+			Item.height = 40;
 			Item.useTurn = true;
 			Item.useTime = 17;
 			Item.useAnimation = Item.useTime;
-			Item.useStyle = ItemUseStyleID.DrinkLiquid;
-			Item.UseSound = SoundID.Item3;
+			Item.useStyle = ItemUseStyleID.EatFood;
+			Item.UseSound = SoundID.Item2;
 			Item.consumable = true;
 			Item.maxStack = Item.CommonMaxStack;
             Item.rare = ItemRarityID.Green;
-            Item.value = Item.sellPrice(silver: 3);
-            Item.healMana = 35;
+            Item.value = Item.sellPrice(silver: 7);
+            Item.healMana = 75;
         }
         public override void OnConsumeItem(Player player)
 		{
@@ -45,13 +44,6 @@ namespace PaperMarioItems.Content.Items.Cooking
                 }
             }
             else orig(player, sItem);
-        }
-        public override void AddRecipes()
-		{
-			Recipe recipe = CreateRecipe()
-                .AddIngredient<TurtleyLeaf>()
-                .AddTile(TileID.CookingPots)
-                .Register();
         }
 	}
 }
