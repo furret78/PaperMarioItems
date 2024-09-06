@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace PaperMarioItems.Content.Items.Cooking
 { 
-	public class JellyMushroom : ModItem
+	public class MapleSuper : ModItem
 	{
 		public override void SetDefaults()
 		{
@@ -17,12 +17,12 @@ namespace PaperMarioItems.Content.Items.Cooking
 			Item.UseSound = SoundID.Item2;
 			Item.consumable = true;
 			Item.maxStack = Item.CommonMaxStack;
-            Item.rare = ItemRarityID.Orange;
-            Item.value = Item.sellPrice(silver: 75);
+            Item.rare = ItemRarityID.Blue;
+            Item.value = Item.sellPrice(silver: 35);
 			Item.buffType = BuffID.WellFed;
 			Item.buffTime = 3600;
-            Item.healLife = 25;
-            Item.healMana = 75;
+            Item.healLife = 50;
+            Item.healMana = 50;
             Item.potion = true;
         }
         public override void OnConsumeItem(Player player)

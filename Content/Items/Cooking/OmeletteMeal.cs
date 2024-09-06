@@ -4,12 +4,12 @@ using Terraria.ModLoader;
 
 namespace PaperMarioItems.Content.Items.Cooking
 { 
-	public class JellyMushroom : ModItem
+	public class OmeletteMeal : ModItem
 	{
 		public override void SetDefaults()
 		{
-			Item.width = 33;
-			Item.height = 39;
+			Item.width = 40;
+			Item.height = 33;
 			Item.useTurn = true;
 			Item.useTime = 17;
 			Item.useAnimation = Item.useTime;
@@ -18,11 +18,11 @@ namespace PaperMarioItems.Content.Items.Cooking
 			Item.consumable = true;
 			Item.maxStack = Item.CommonMaxStack;
             Item.rare = ItemRarityID.Orange;
-            Item.value = Item.sellPrice(silver: 75);
-			Item.buffType = BuffID.WellFed;
-			Item.buffTime = 3600;
+            Item.value = Item.sellPrice(silver: 10);
+			Item.buffType = BuffID.WellFed2;
+			Item.buffTime = 10800;
             Item.healLife = 25;
-            Item.healMana = 75;
+            Item.healMana = 25;
             Item.potion = true;
         }
         public override void OnConsumeItem(Player player)

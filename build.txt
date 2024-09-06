@@ -2,4 +2,5 @@ displayName = Paper Mario Items
 author = Furret78
 version = 0.1.8
 buildIgnore = *.csproj, *.user, *.sln, *.gitattributes, *.md, obj\*, bin\*, .vs\*, Old\*, .git\*, *.gitignore
+includeSource = true
 homepage = https://steamcommunity.com/sharedfiles/filedetails/?id=3273893695

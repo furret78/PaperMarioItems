@@ -1,5 +1,4 @@
 using PaperMarioItems.Content;
-using PaperMarioItems.Content.Items;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;

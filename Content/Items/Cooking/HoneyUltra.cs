@@ -21,8 +21,8 @@ namespace PaperMarioItems.Content.Items.Cooking
             Item.value = Item.sellPrice(silver: 75);
 			Item.buffType = BuffID.WellFed;
 			Item.buffTime = 3600;
-            Item.healLife = ContentSamples.ItemsByType[PMItemID.UltraMushroom].healLife;
-            Item.healMana = ContentSamples.ItemsByType[PMItemID.HoneySyrup].healMana;
+            Item.healLife = 75;
+            Item.healMana = 25;
             Item.potion = true;
         }
         public override void OnConsumeItem(Player player)

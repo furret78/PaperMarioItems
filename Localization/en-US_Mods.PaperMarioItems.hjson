@@ -412,6 +412,111 @@ Items: {
 		DisplayName: Fire Pop
 		Tooltip: Candy made by Zess T.
 	}
+
+	FruitParfait: {
+		DisplayName: Fruit Parfait
+		Tooltip: ""
+	}
+
+	HealthySalad: {
+		DisplayName: Healthy Salad
+		Tooltip: ""
+	}
+
+	HeartfulCake: {
+		DisplayName: Heartful Cake
+		Tooltip: ""
+	}
+
+	HoneyCandy: {
+		DisplayName: Honey Candy
+		Tooltip: ""
+	}
+
+	HoneyMushroom: {
+		DisplayName: Honey Mushroom
+		Tooltip: ""
+	}
+
+	HoneySuper: {
+		DisplayName: Honey Super
+		Tooltip: ""
+	}
+
+	HoneyUltra: {
+		DisplayName: Honey Ultra
+		Tooltip: ""
+	}
+
+	IciclePop: {
+		DisplayName: Icicle Pop
+		Tooltip: ""
+	}
+
+	JellyCandy: {
+		DisplayName: Jelly Candy
+		Tooltip: ""
+	}
+
+	JellyMushroom: {
+		DisplayName: Jelly Mushroom
+		Tooltip: ""
+	}
+
+	JellySuper: {
+		DisplayName: Jelly Super
+		Tooltip: ""
+	}
+
+	JellyUltra: {
+		DisplayName: Jelly Ultra
+		Tooltip: ""
+	}
+
+	KoopaBun: {
+		DisplayName: Koopa Bun
+		Tooltip: ""
+	}
+
+	LovePudding: {
+		DisplayName: Love Pudding
+		Tooltip: ""
+	}
+
+	MangoDelight: {
+		DisplayName: Mango Delight
+		Tooltip: ""
+	}
+
+	MapleMushroom: {
+		DisplayName: Maple Mushroom
+		Tooltip: ""
+	}
+
+	MapleSuper: {
+		DisplayName: Maple Super
+		Tooltip: ""
+	}
+
+	MapleUltra: {
+		DisplayName: Maple Ultra
+		Tooltip: ""
+	}
+
+	MeteorMeal: {
+		DisplayName: Meteor Meal
+		Tooltip: ""
+	}
+
+	OmeletteMeal: {
+		DisplayName: Omelette Meal
+		Tooltip: ""
+	}
+
+	PeachTart: {
+		DisplayName: Peach Tart
+		Tooltip: ""
+	}
 }
 
 Buffs: {

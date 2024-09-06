@@ -1,7 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using PaperMarioItems.Common.RecipeSystem;
-using PaperMarioItems.Content.Items.Cooking;
+using PaperMarioItems.Content;
 using ReLogic.Content;
 using System.Collections.Generic;
 using Terraria;
@@ -18,16 +18,12 @@ namespace PaperMarioItems.Common.UI
     class MenuBar : UIState
     {
         public PanelUI DraggablePanel;
-        private UIText plusSign;
-        public Vector2 CookingPotPosition;
+        private UIText plusSign = new("+");
         private List<ItemSlotWrapper> itemSlots;
         private readonly float itemSlotSize = 52 * 0.65f;
         private readonly int[] itemSlotsL = { 20, 20 + (int)(2.5f * (52 * 0.65f)) };
         public override void OnInitialize()
         {
-            CookingPotPosition.X = (int)Main.LocalPlayer.Center.X;
-            CookingPotPosition.Y = (int)Main.LocalPlayer.Center.Y;
-            plusSign = new("+");
 
             DraggablePanel = new PanelUI();
             DraggablePanel.SetPadding(0);
@@ -70,8 +66,9 @@ namespace PaperMarioItems.Common.UI
             for (int i = 0; i < itemSlots.Count; i++)
             {
                 var item = itemSlots[i].Item;
-                Main.LocalPlayer.QuickSpawnItem(new EntitySource_Misc("Closed cooking UI"), item, itemSlots[i].Item.stack);
-                itemSlots[i].Item.TurnToAir();
+                if (item.type != ItemID.None && item.stack > 0)
+                    Main.LocalPlayer.QuickSpawnItem(new EntitySource_Misc("Closed cooking UI"), item, item.stack);
+                item.TurnToAir();
             }
         }
 
@@ -88,10 +85,10 @@ namespace PaperMarioItems.Common.UI
             int item1 = itemSlots[0].Item.type, amount1 = itemSlots[0].Item.stack, item2 = itemSlots[1].Item.type, amount2 = itemSlots[1].Item.stack;
             if (CanCook(item1, amount1, item2, amount2))
             {
-                SoundEngine.PlaySound(SoundID.MenuOpen);
                 int resultItem = CookItems(item1, amount1, item2, amount2);
                 SpawnResultItem(resultItem, amount1, amount2);
-                CloseCookingUI();
+                if (item1 == ItemID.None || amount1 <= 0) itemSlots[0].Item.TurnToAir();
+                if (item2 == ItemID.None || amount2 <= 0) itemSlots[1].Item.TurnToAir();
             }
         }
 
@@ -102,7 +99,6 @@ namespace PaperMarioItems.Common.UI
 
         private void CloseCookingUI()
         {
-            SoundEngine.PlaySound(SoundID.MenuClose);
             ModContent.GetInstance<PaperCookingSystem>().NearestCookingPotPosition = null;
             ModContent.GetInstance<PaperCookingSystem>().HideUI();
         }
@@ -118,9 +114,6 @@ namespace PaperMarioItems.Common.UI
         private int CookItems(int item1, int amount1, int item2, int amount2)
         {
             int resultItem = ItemID.None;
-            //slot 1 has 0 stack, slot 2 has >0 stack
-            //if (amount1 <= 0 && amount2 > 0) resultItem = BeginCooking(item2, ItemID.None);
-            //if (amount1 > 0 && amount2 <= 0) resultItem = BeginCooking(item1, ItemID.None);
             resultItem = BeginCooking(item1, item2);
             if (amount1 <= 0 && amount2 <= 0) resultItem = ItemID.None;
             return resultItem;
@@ -128,7 +121,7 @@ namespace PaperMarioItems.Common.UI
 
         private int BeginCooking(int itemslot1, int itemslot2)
         {
-            int result = ModContent.ItemType<Mistake>();
+            int result = PMItemID.Mistake;
             var FirstRoundChosenList = new List<PMRecipe>();
             var SecondRoundChosenList = new List<PMRecipe>();
             //first scan
@@ -159,7 +152,7 @@ namespace PaperMarioItems.Common.UI
                     if (SecondRoundChosenList.Exists(x => x.Ingredient1 == itemslot2))
                     {
                         var searchResult = SecondRoundChosenList.Find(x => x.Ingredient1 == itemslot2);
-                        if (IsLegalResult(searchResult.ResultingItem, searchResult.Hardmode))
+                        if (IsLegalResult(searchResult.ResultingItem, searchResult.Hardmode, searchResult.Prehard))
                         {
                             return result = searchResult.ResultingItem;
                         };
@@ -172,7 +165,7 @@ namespace PaperMarioItems.Common.UI
                 if (FirstRoundChosenList.Exists(x => x.Ingredient2 == itemslot2))
                 {
                     var searchResult = FirstRoundChosenList.Find(x => x.Ingredient2 == itemslot2);
-                    if (IsLegalResult(searchResult.ResultingItem, searchResult.Hardmode))
+                    if (IsLegalResult(searchResult.ResultingItem, searchResult.Hardmode, searchResult.Prehard))
                     {
                         return result = searchResult.ResultingItem;
                     };
@@ -194,7 +187,7 @@ namespace PaperMarioItems.Common.UI
                     if (SecondRoundChosenList.Exists(x => x.Ingredient1 == itemslot2))
                     {
                         var searchResult = SecondRoundChosenList.Find(x => x.Ingredient1 == itemslot2);
-                        if (IsLegalResult(searchResult.ResultingItem, searchResult.Hardmode))
+                        if (IsLegalResult(searchResult.ResultingItem, searchResult.Hardmode, searchResult.Prehard))
                         {
                             return result = searchResult.ResultingItem;
                         };
@@ -205,24 +198,25 @@ namespace PaperMarioItems.Common.UI
             return result;
         }
 
-        private bool IsLegalResult(int result, bool hardmode = false)
+        private bool IsLegalResult(int result, bool hardmode = false, bool prehard = false)
         {
             if (result != ItemID.None &&
-                (!hardmode || (hardmode && Main.hardMode))) return true;
+                ((!hardmode && prehard && !Main.hardMode) ||
+                (hardmode && Main.hardMode) ||
+                (!hardmode && !prehard))) return true;
             else return false;
         }
 
         private void SpawnResultItem(int resultItem, int amount1, int amount2)
         {
-            IEntitySource itemSource = Main.LocalPlayer.GetSource_TileInteraction((int)CookingPotPosition.X, (int)CookingPotPosition.Y);
             int itemAmount = amount1;
             if (amount1 > amount2) itemAmount = amount2;
             if (amount1 <= 0) itemAmount = amount2;
             if (amount2 <= 0) itemAmount = amount1;
             if (resultItem != ItemID.None)
             {
-                if (resultItem != ModContent.ItemType<Mistake>()) SoundEngine.PlaySound(SoundID.ResearchComplete);
-                Main.LocalPlayer.QuickSpawnItem(itemSource, resultItem, itemAmount);
+                if (resultItem != PMItemID.Mistake) SoundEngine.PlaySound(SoundID.ResearchComplete);
+                Main.LocalPlayer.QuickSpawnItem(new EntitySource_Misc("Finished cooking"), resultItem, itemAmount);
                 for (int i = 0; i < itemSlots.Count; i++)
                 {
                     itemSlots[i].Item.stack -= itemAmount;
