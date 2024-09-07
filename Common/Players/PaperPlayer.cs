@@ -230,7 +230,7 @@ namespace PaperMarioItems.Common.Players
                 }
             }
         }
-        //soft debuff
+
         public override void DrawEffects(PlayerDrawSet drawInfo, ref float r, ref float g, ref float b, ref float a, ref bool fullBright)
         {
             //player effects when visible

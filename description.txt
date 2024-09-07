@@ -7,7 +7,7 @@ The mod currently features items from Paper Mario: The Thousand-Year Door. Futur
 
 The cooking system is inspired by Taco's Cooking Delight mod.
 
-To see which recipes correspond to which item, see the list of recipes in TTYD. Any recipes that require items resembling vanilla Terraria ones will use the vanilla counterparts instead (e.g. Mango in place of Keel Mango).
+To see which recipes correspond to which item, reference the list of recipes in TTYD on MarioWiki. Any recipes that require items resembling vanilla Terraria ones will use vanilla counterparts instead (e.g. Mango in place of Keel Mango).
 
 Massive thanks to Jopojelly, Cube Root, Blobwin and TModLoader server's #mod-development-help channel! Couldn't have made the mod without them.
 

@@ -18,21 +18,20 @@ namespace PaperMarioItems.Common.UI
     class MenuBar : UIState
     {
         public PanelUI DraggablePanel;
-        private UIText plusSign = new("+");
+        private readonly UIText plusSign = new("+");
         private List<ItemSlotWrapper> itemSlots;
         private readonly float itemSlotSize = 52 * 0.65f;
-        private readonly int[] itemSlotsL = { 20, 20 + (int)(2.5f * (52 * 0.65f)) };
+        private readonly int[] itemSlotsL = [20, 20 + (int)(2.5f * (52 * 0.65f))];
         public override void OnInitialize()
         {
-
             DraggablePanel = new PanelUI();
             DraggablePanel.SetPadding(0);
             float panelWidth = itemSlotsL[itemSlotsL.Length - 1] + itemSlotSize + 30f;
             Vector2 InitPos = new((Main.screenWidth / 2) - (panelWidth / 2), Main.screenHeight / 5);
             SetRect(DraggablePanel, InitPos.X, InitPos.Y, panelWidth, 96f);
-            DraggablePanel.BackgroundColor = new Color(73, 94, 171);
+            DraggablePanel.BackgroundColor = new(73, 94, 171, 200);
 
-            itemSlots = new List<ItemSlotWrapper>() {new(scale: 0.75f), new(scale: 0.75f)};
+            itemSlots = [new(scale: 0.75f), new(scale: 0.75f)];
 
             for (int index = 0; index < itemSlots.Count; index++)
             {
@@ -41,7 +40,7 @@ namespace PaperMarioItems.Common.UI
                 if (index < itemSlots.Count - 1)
                 {
                     plusSign.VAlign = 0.5f;
-                    plusSign.Left.Set(itemSlotsL[index] + ((itemSlotsL[index + 1] - itemSlotsL[index]) /2), 0f);
+                    plusSign.Left.Set(itemSlotsL[index] + ((itemSlotsL[index + 1] - itemSlotsL[index]) / 2) - 6, 0f);
                     itemSlots[index].Append(plusSign);
                 }
             }
@@ -72,7 +71,7 @@ namespace PaperMarioItems.Common.UI
             }
         }
 
-        private void SetRect(UIElement uiElement, float left, float top, float width, float height)
+        private static void SetRect(UIElement uiElement, float left, float top, float width, float height)
         {
             uiElement.Left.Set(left, 0f);
             uiElement.Top.Set(top, 0f);
@@ -87,8 +86,10 @@ namespace PaperMarioItems.Common.UI
             {
                 int resultItem = CookItems(item1, amount1, item2, amount2);
                 SpawnResultItem(resultItem, amount1, amount2);
-                if (item1 == ItemID.None || amount1 <= 0) itemSlots[0].Item.TurnToAir();
-                if (item2 == ItemID.None || amount2 <= 0) itemSlots[1].Item.TurnToAir();
+                for (int i = 0; i < itemSlots.Count; i++) { 
+                    if (itemSlots[i].Item.type == ItemID.None || itemSlots[i].Item.stack <= 0)
+                        itemSlots[i].Item.TurnToAir();
+                }
             }
         }
 
@@ -103,7 +104,7 @@ namespace PaperMarioItems.Common.UI
             ModContent.GetInstance<PaperCookingSystem>().HideUI();
         }
 
-        private bool CanCook(int item1, int amount1, int item2, int amount2)
+        private static bool CanCook(int item1, int amount1, int item2, int amount2)
         {
             if (!(item1 == ItemID.None && item2 == ItemID.None)
                 && (amount1 > 0 || amount2 > 0)
@@ -111,94 +112,108 @@ namespace PaperMarioItems.Common.UI
             else return false;
         }
 
-        private int CookItems(int item1, int amount1, int item2, int amount2)
+        private static int CookItems(int item1, int amount1, int item2, int amount2)
         {
-            int resultItem = ItemID.None;
+            int resultItem;
             resultItem = BeginCooking(item1, item2);
             if (amount1 <= 0 && amount2 <= 0) resultItem = ItemID.None;
             return resultItem;
         }
 
-        private int BeginCooking(int itemslot1, int itemslot2)
+        private static int BeginCooking(int itemslot1, int itemslot2)
         {
             int result = PMItemID.Mistake;
             var FirstRoundChosenList = new List<PMRecipe>();
             var SecondRoundChosenList = new List<PMRecipe>();
-            //first scan
-            for (int i = 0; i < RecipeRegister.MainRecipeDictionary.Count; i++)
+            if ((itemslot1 == PMItemID.MysteryBox && itemslot2 == ItemID.None) ||
+                (itemslot1 == ItemID.None && itemslot2 == PMItemID.MysteryBox) ||
+                (itemslot1 == PMItemID.MysteryBox && itemslot2 == PMItemID.MysteryBox))
             {
-                PMRecipe CurrentSelect = RecipeRegister.MainRecipeDictionary.GetValueOrDefault(i);
-                if (CurrentSelect.Ingredient1 == itemslot1)
+                if (Main.rand.NextBool(2))
                 {
-                    FirstRoundChosenList.Add(CurrentSelect);
+                    result = RecipeRegister.MysteryBoxRecipeList[Main.rand.Next(0, RecipeRegister.MysteryBoxRecipeList.Count)];
                 }
-            }
-            //slot #1 item finds nothing in recipe slot #1
-            if (FirstRoundChosenList.Count <= 0)
-            {
-                //initiate second round
-                for (int i = 0; i < RecipeRegister.MainRecipeDictionary.Count; i++)
-                {
-                    PMRecipe CurrentSelect = RecipeRegister.MainRecipeDictionary.GetValueOrDefault(i);
-                    if (CurrentSelect.Ingredient2 == itemslot1)
-                    {
-                        SecondRoundChosenList.Add(CurrentSelect);
-                    }
-                }
-                if (SecondRoundChosenList.Count > 0)
-                {
-                    //found something (slot #1 item found in recipe slot #2)
-                    //look for slot #2 item in recipe slot #1
-                    if (SecondRoundChosenList.Exists(x => x.Ingredient1 == itemslot2))
-                    {
-                        var searchResult = SecondRoundChosenList.Find(x => x.Ingredient1 == itemslot2);
-                        if (IsLegalResult(searchResult.ResultingItem, searchResult.Hardmode, searchResult.Prehard))
-                        {
-                            return result = searchResult.ResultingItem;
-                        };
-                    }
-                }
+                return result;
             }
             else
             {
-                //found something (slot #1 item in recipe slot #1, now find slot #2 item in recipe slot #2)
-                if (FirstRoundChosenList.Exists(x => x.Ingredient2 == itemslot2))
-                {
-                    var searchResult = FirstRoundChosenList.Find(x => x.Ingredient2 == itemslot2);
-                    if (IsLegalResult(searchResult.ResultingItem, searchResult.Hardmode, searchResult.Prehard))
-                    {
-                        return result = searchResult.ResultingItem;
-                    };
-                }
-                //scan failed (cannot find matching slot #2 items)
-                //find slot #1 item in recipe slot #2 instead
+                //first scan
                 for (int i = 0; i < RecipeRegister.MainRecipeDictionary.Count; i++)
                 {
                     PMRecipe CurrentSelect = RecipeRegister.MainRecipeDictionary.GetValueOrDefault(i);
-                    if (CurrentSelect.Ingredient2 == itemslot1)
+                    if (CurrentSelect.Ingredient1 == itemslot1)
                     {
-                        SecondRoundChosenList.Add(CurrentSelect);
+                        FirstRoundChosenList.Add(CurrentSelect);
                     }
                 }
-                if (SecondRoundChosenList.Count > 0)
+                //slot #1 item finds nothing in recipe slot #1
+                if (FirstRoundChosenList.Count <= 0)
                 {
-                    //found something (slot #1 item found in recipe slot #2)
-                    //look for slot #2 item in recipe slot #1
-                    if (SecondRoundChosenList.Exists(x => x.Ingredient1 == itemslot2))
+                    //initiate second round
+                    for (int i = 0; i < RecipeRegister.MainRecipeDictionary.Count; i++)
                     {
-                        var searchResult = SecondRoundChosenList.Find(x => x.Ingredient1 == itemslot2);
+                        PMRecipe CurrentSelect = RecipeRegister.MainRecipeDictionary.GetValueOrDefault(i);
+                        if (CurrentSelect.Ingredient2 == itemslot1)
+                        {
+                            SecondRoundChosenList.Add(CurrentSelect);
+                        }
+                    }
+                    if (SecondRoundChosenList.Count > 0)
+                    {
+                        //found something (slot #1 item found in recipe slot #2)
+                        //look for slot #2 item in recipe slot #1
+                        if (SecondRoundChosenList.Exists(x => x.Ingredient1 == itemslot2))
+                        {
+                            var searchResult = SecondRoundChosenList.Find(x => x.Ingredient1 == itemslot2);
+                            if (IsLegalResult(searchResult.ResultingItem, searchResult.Hardmode, searchResult.Prehard))
+                            {
+                                return result = searchResult.ResultingItem;
+                            };
+                        }
+                    }
+                }
+                else
+                {
+                    //found something (slot #1 item in recipe slot #1, now find slot #2 item in recipe slot #2)
+                    if (FirstRoundChosenList.Exists(x => x.Ingredient2 == itemslot2))
+                    {
+                        var searchResult = FirstRoundChosenList.Find(x => x.Ingredient2 == itemslot2);
                         if (IsLegalResult(searchResult.ResultingItem, searchResult.Hardmode, searchResult.Prehard))
                         {
                             return result = searchResult.ResultingItem;
                         };
                     }
+                    //scan failed (cannot find matching slot #2 items)
+                    //find slot #1 item in recipe slot #2 instead
+                    for (int i = 0; i < RecipeRegister.MainRecipeDictionary.Count; i++)
+                    {
+                        PMRecipe CurrentSelect = RecipeRegister.MainRecipeDictionary.GetValueOrDefault(i);
+                        if (CurrentSelect.Ingredient2 == itemslot1)
+                        {
+                            SecondRoundChosenList.Add(CurrentSelect);
+                        }
+                    }
+                    if (SecondRoundChosenList.Count > 0)
+                    {
+                        //found something (slot #1 item found in recipe slot #2)
+                        //look for slot #2 item in recipe slot #1
+                        if (SecondRoundChosenList.Exists(x => x.Ingredient1 == itemslot2))
+                        {
+                            var searchResult = SecondRoundChosenList.Find(x => x.Ingredient1 == itemslot2);
+                            if (IsLegalResult(searchResult.ResultingItem, searchResult.Hardmode, searchResult.Prehard))
+                            {
+                                return result = searchResult.ResultingItem;
+                            };
+                        }
+                    }
                 }
+                //if all fails, return a Mistake
+                return result;
             }
-            //if all fails, return a Mistake
-            return result;
+
         }
 
-        private bool IsLegalResult(int result, bool hardmode = false, bool prehard = false)
+        private static bool IsLegalResult(int result, bool hardmode = false, bool prehard = false)
         {
             if (result != ItemID.None &&
                 ((!hardmode && prehard && !Main.hardMode) ||
@@ -215,12 +230,16 @@ namespace PaperMarioItems.Common.UI
             if (amount2 <= 0) itemAmount = amount1;
             if (resultItem != ItemID.None)
             {
-                if (resultItem != PMItemID.Mistake) SoundEngine.PlaySound(SoundID.ResearchComplete);
+                if (resultItem != PMItemID.Mistake)
+                {
+                    SoundEngine.PlaySound(SoundID.MenuOpen);
+                    SoundEngine.PlaySound(SoundID.ResearchComplete);
+                }
+                else SoundEngine.PlaySound(SoundID.MenuClose);
                 Main.LocalPlayer.QuickSpawnItem(new EntitySource_Misc("Finished cooking"), resultItem, itemAmount);
                 for (int i = 0; i < itemSlots.Count; i++)
                 {
                     itemSlots[i].Item.stack -= itemAmount;
-                    if (itemSlots[i].Item.stack <= 0) itemSlots[i].Item.type = ItemID.None;
                 }
             }
         }

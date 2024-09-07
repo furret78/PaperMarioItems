@@ -93,9 +93,43 @@ namespace PaperMarioItems.Common.Players
             if (target.position.X < player.position.X) return -1;
             return 1;
         }
-        private void SetShakeTime(int time)
+        public void SetShakeTime(int time)
         {
             if (ScreenShakeSystem.screenShakeTime < time) ScreenShakeSystem.screenShakeTime = time;
+        }
+        //search for other players + couple's cake
+        public bool SearchTeammate(Player player)
+        {
+            if (Main.myPlayer != player.whoAmI || player == null) return false;
+            else foreach (var teammate in Main.ActivePlayers)
+                {
+                    if (!teammate.hostile && teammate != player) return true;
+                }
+            return false;
+        }
+        public void AddBuffCouplesCake(Player player)
+        {
+            if (Main.myPlayer != player.whoAmI || player == null) return;
+            else
+            {
+                Player closestPlayer = null;
+                float closestDist = 0;
+                float distSq = 0;
+                foreach (var teammate in Main.ActivePlayers)
+                {
+                    Vector2 playerToPlayer = new(player.Center.X - teammate.Center.X, player.Center.Y - teammate.Center.Y);
+                    distSq = (float)Math.Sqrt(playerToPlayer.LengthSquared());
+                    if (closestPlayer == null || distSq < closestDist)
+                    {
+                        closestPlayer = teammate;
+                        closestDist = distSq;
+                    }
+                }
+                if (closestPlayer != null)
+                {
+                    closestPlayer.AddBuff(BuffID.Regeneration, 54000);
+                }
+            }
         }
         //life mushroom effects
         private void LifeMushroomHeal(Player self, int num1, int num2)

@@ -1,26 +1,29 @@
+using PaperMarioItems.Content.Items.Consumables;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace PaperMarioItems.Content.Items.Cooking
 { 
-	public class Mistake : ModItem
+	public class SpicySoup : ModItem
 	{
 		public override void SetDefaults()
 		{
 			Item.width = 40;
-			Item.height = 39;
+			Item.height = 29;
 			Item.useTurn = true;
 			Item.useTime = 17;
 			Item.useAnimation = Item.useTime;
-			Item.useStyle = ItemUseStyleID.EatFood;
-			Item.UseSound = SoundID.Item2;
+			Item.useStyle = ItemUseStyleID.DrinkLiquid;
+			Item.UseSound = SoundID.Item3;
 			Item.consumable = true;
 			Item.maxStack = Item.CommonMaxStack;
-            Item.rare = ItemRarityID.Gray;
-            Item.value = Item.sellPrice(copper: 15);
-            Item.healLife = 5;
-            Item.healMana = 5;
+            Item.rare = ItemRarityID.Orange;
+            Item.value = Item.sellPrice(silver: 5);
+			Item.buffType = BuffID.WellFed;
+			Item.buffTime = 7200;
+            Item.healLife = 20;
+            Item.healMana = 20;
             Item.potion = true;
         }
         public override void OnConsumeItem(Player player)
@@ -35,11 +38,7 @@ namespace PaperMarioItems.Content.Items.Cooking
 
         private void On_Player_ApplyPotionDelay(On_Player.orig_ApplyPotionDelay orig, Player player, Item sItem)
         {
-            if (sItem.type == Type)
-            {
-                player.AddBuff(BuffID.PotionSickness, 600);
-                return;
-            }
+            if (sItem.type == Type) return;
             else orig(player, sItem);
         }
         private void On_Player_ApplyLifeAndOrMana(On_Player.orig_ApplyLifeAndOrMana orig, Player player, Item sItem)
@@ -58,5 +57,31 @@ namespace PaperMarioItems.Content.Items.Cooking
             }
             else orig(player, sItem);
         }
-	}
+
+        public override void AddRecipes()
+        {
+            Recipe recipe = CreateRecipe()
+                .AddIngredient<FireFlower>()
+                .AddTile(TileID.CookingPots)
+                .Register();
+            recipe = CreateRecipe()
+                .AddIngredient<Horsetail>()
+                .AddCondition(PaperMarioConditions.HasCookbook)
+                .AddCondition(Condition.Hardmode)
+                .AddTile(TileID.CookingPots)
+                .Register();
+            recipe = CreateRecipe()
+                .AddIngredient<DriedBouquet>()
+                .AddCondition(PaperMarioConditions.HasCookbook)
+                .AddCondition(Condition.Hardmode)
+                .AddTile(TileID.CookingPots)
+                .Register();
+            recipe = CreateRecipe()
+                .AddIngredient<SnowBunny>()
+                .AddCondition(PaperMarioConditions.HasCookbook)
+                .AddCondition(Condition.Hardmode)
+                .AddTile(TileID.CookingPots)
+                .Register();
+        }
+    }
 }
