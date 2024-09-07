@@ -2,14 +2,15 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.DataStructures;
 using Terraria.Localization;
 using PaperMarioItems.Common.Players;
 
 namespace PaperMarioItems.Content.Items.Cooking
-{ 
+{
 	public class CouplesCake : ModItem
 	{
+        private int effectTime = 15;
+        public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(effectTime);
         public override void SetDefaults()
 		{
 			Item.width = 39;
@@ -29,7 +30,7 @@ namespace PaperMarioItems.Content.Items.Cooking
 			if (player.GetModPlayer<PaperPlayer>().SearchTeammate(player))
 			{
                 SoundEngine.PlaySound(PaperMarioItems.useItemPM, player.Center);
-                player.GetModPlayer<PaperPlayer>().AddBuffCouplesCake(player);
+                player.GetModPlayer<PaperPlayer>().AddBuffCouplesCake(player, effectTime*60*60);
                 return true;
 			}
 			else return false;

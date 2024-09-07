@@ -101,34 +101,31 @@ namespace PaperMarioItems.Common.Players
         public bool SearchTeammate(Player player)
         {
             if (Main.myPlayer != player.whoAmI || player == null) return false;
-            else foreach (var teammate in Main.ActivePlayers)
+            else foreach (var vsplayer in Main.ActivePlayers)
                 {
-                    if (!teammate.hostile && teammate != player) return true;
+                    if (!vsplayer.hostile && vsplayer != player) return true;
                 }
             return false;
         }
-        public void AddBuffCouplesCake(Player player)
+        public void AddBuffCouplesCake(Player player, int time = 300)
         {
             if (Main.myPlayer != player.whoAmI || player == null) return;
             else
             {
-                Player closestPlayer = null;
+                Player closestTeammate = null;
                 float closestDist = 0;
                 float distSq = 0;
                 foreach (var teammate in Main.ActivePlayers)
                 {
                     Vector2 playerToPlayer = new(player.Center.X - teammate.Center.X, player.Center.Y - teammate.Center.Y);
                     distSq = (float)Math.Sqrt(playerToPlayer.LengthSquared());
-                    if (closestPlayer == null || distSq < closestDist)
+                    if ((closestTeammate == null || distSq < closestDist) && !teammate.hostile && teammate != player)
                     {
-                        closestPlayer = teammate;
+                        closestTeammate = teammate;
                         closestDist = distSq;
                     }
                 }
-                if (closestPlayer != null)
-                {
-                    closestPlayer.AddBuff(BuffID.Regeneration, 54000);
-                }
+                closestTeammate?.AddBuff(BuffID.Regeneration, time);
             }
         }
         //life mushroom effects

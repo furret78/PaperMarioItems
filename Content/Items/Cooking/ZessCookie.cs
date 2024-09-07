@@ -1,16 +1,12 @@
-using PaperMarioItems.Common.Players;
 using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace PaperMarioItems.Content.Items.Cooking
 { 
-	public class MeteorMeal : ModItem
+	public class ZessCookie : ModItem
 	{
-        private int effectTime = 2;
-        public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(effectTime);
-        public override void SetDefaults()
+		public override void SetDefaults()
 		{
 			Item.width = 40;
 			Item.height = 40;
@@ -22,19 +18,27 @@ namespace PaperMarioItems.Content.Items.Cooking
 			Item.consumable = true;
 			Item.maxStack = Item.CommonMaxStack;
             Item.rare = ItemRarityID.Orange;
-            Item.value = Item.sellPrice(silver: 30);
-            Item.buffType = BuffID.WellFed;
-            Item.buffTime = 3600;
-            Item.healMana = 35;
+            Item.value = Item.sellPrice(silver: 10);
+			Item.buffType = BuffID.WellFed;
+			Item.buffTime = 3600;
+            Item.healLife = 75;
+            Item.healMana = 75;
+            Item.potion = true;
         }
         public override void OnConsumeItem(Player player)
 		{
-            player.AddBuff(BuffID.Regeneration, effectTime*60*60);
             player.TryToResetHungerToNeutral();
         }
         public override void Load()
         {
+            On_Player.ApplyPotionDelay += On_Player_ApplyPotionDelay;
             On_Player.ApplyLifeAndOrMana += On_Player_ApplyLifeAndOrMana;
+        }
+
+        private void On_Player_ApplyPotionDelay(On_Player.orig_ApplyPotionDelay orig, Player player, Item sItem)
+        {
+            if (sItem.type == Type) return;
+            else orig(player, sItem);
         }
         private void On_Player_ApplyLifeAndOrMana(On_Player.orig_ApplyLifeAndOrMana orig, Player player, Item sItem)
         {

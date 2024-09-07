@@ -127,7 +127,7 @@ Items: {
 
 	RepelCape: {
 		DisplayName: Repel Cape
-		Tooltip: Temporarily makes you dodgy so you are harder to hit
+		Tooltip: Makes you dodgy for {0} {^1:minute;minutes} so that you are harder to hit
 	}
 
 	InnCoupon: {
@@ -179,7 +179,7 @@ Items: {
 		DisplayName: Volt Mushroom
 		Tooltip:
 			'''
-			Temporarily electrifies you to damage direct-attackers
+			Electrifies you to damage direct-attackers for {0} {^1:minute;minutes}
 			Also temporarily grants immunity to the Electrified debuff
 			'''
 	}
@@ -217,7 +217,7 @@ Items: {
 		Tooltip:
 			'''
 			Summons a scary spirit that may chase enemies away
-			When applied to other players, they may be pushed away
+			May push other players away if they enabled PvP
 			'''
 	}
 
@@ -225,7 +225,7 @@ Items: {
 		DisplayName: Hottest Dog
 		Tooltip:
 			'''
-			A spicy dog made by Zess T
+			A spicy dog made by Zess T.
 			Temporarily boosts your damage output
 			'''
 	}
@@ -285,7 +285,7 @@ Items: {
 		Tooltip:
 			'''
 			A dangerous poison mushroom
-			Eat it and it'll both poison you and cut your current health by half!
+			Eat it and it'll both poison you AND cut your current health by half!
 			On rare occasions, it'll replenish all of your missing health instead
 			'''
 	}
@@ -295,7 +295,7 @@ Items: {
 		Tooltip:
 			'''
 			A dessert made by Zess T.
-			Can sometimes freeze you when consumed
+			Can sometimes temporarily freeze you when consumed
 			'''
 	}
 
@@ -398,7 +398,7 @@ Items: {
 		Tooltip:
 			'''
 			Candy made by Zess T.
-			Temporarily electrifies you to damage direct-attackers
+			Electrifies you to damage direct-attackers for {0} {^1:minute;minutes}
 			Also temporarily grants immunity to the Electrified debuff
 			'''
 	}
@@ -415,107 +415,155 @@ Items: {
 
 	FruitParfait: {
 		DisplayName: Fruit Parfait
-		Tooltip: ""
+		Tooltip: A fruity ice cream dessert made by Zess T.
 	}
 
 	HealthySalad: {
 		DisplayName: Healthy Salad
-		Tooltip: ""
+		Tooltip: A Zess T. salad
 	}
 
 	HeartfulCake: {
 		DisplayName: Heartful Cake
-		Tooltip: ""
+		Tooltip:
+			'''
+			A sweet cake made by Zess T.
+			Also softens you when consumed		
+			'''
 	}
 
 	HoneyCandy: {
 		DisplayName: Honey Candy
-		Tooltip: ""
+		Tooltip: Candy that's the bee's knees!
 	}
 
 	HoneyMushroom: {
 		DisplayName: Honey Mushroom
-		Tooltip: ""
+		Tooltip: A sweet mushroom dessert
 	}
 
 	HoneySuper: {
 		DisplayName: Honey Super
-		Tooltip: ""
+		Tooltip: A fancy mushroom dessert
 	}
 
 	HoneyUltra: {
 		DisplayName: Honey Ultra
-		Tooltip: ""
+		Tooltip: An exquisite mushroom dessert
 	}
 
 	IciclePop: {
 		DisplayName: Icicle Pop
-		Tooltip: ""
+		Tooltip:
+			'''
+			An ice cream dessert made by Zess T.
+			Can sometimes temporarily freeze you when consumed
+			'''
 	}
 
 	JellyCandy: {
 		DisplayName: Jelly Candy
-		Tooltip: ""
+		Tooltip: Sweet candy made by Zess T.
 	}
 
 	JellyMushroom: {
 		DisplayName: Jelly Mushroom
-		Tooltip: ""
+		Tooltip: An extremely sweet mushroom dessert
 	}
 
 	JellySuper: {
 		DisplayName: Jelly Super
-		Tooltip: ""
+		Tooltip: An extremely fancy mushroom dessert
 	}
 
 	JellyUltra: {
 		DisplayName: Jelly Ultra
-		Tooltip: ""
+		Tooltip: An extremely exquisite mushroom dessert
 	}
 
 	KoopaBun: {
 		DisplayName: Koopa Bun
-		Tooltip: ""
+		Tooltip: A turtle-shaped dumpling
 	}
 
 	LovePudding: {
 		DisplayName: Love Pudding
-		Tooltip: ""
+		Tooltip:
+			'''
+			A very bittersweet pudding
+			Makes you invisible, electrified, or briefly confused when consumed
+			'''
 	}
 
 	MangoDelight: {
 		DisplayName: Mango Delight
-		Tooltip: ""
+		Tooltip: Light and fruity pudding
 	}
 
 	MapleMushroom: {
 		DisplayName: Maple Mushroom
-		Tooltip: ""
+		Tooltip: A very sweet mushroom dessert
 	}
 
 	MapleSuper: {
 		DisplayName: Maple Super
-		Tooltip: ""
+		Tooltip: A very fancy mushroom dessert
 	}
 
 	MapleUltra: {
 		DisplayName: Maple Ultra
-		Tooltip: ""
+		Tooltip: A rather exquisite mushroom dessert
 	}
 
 	MeteorMeal: {
 		DisplayName: Meteor Meal
-		Tooltip: ""
+		Tooltip:
+			'''
+			Food that's out of this world
+			Grants regeneration for {0} when consumed
+			'''
 	}
 
 	OmeletteMeal: {
 		DisplayName: Omelette Meal
-		Tooltip: ""
+		Tooltip: Breakfast... for dinner!
 	}
 
 	PeachTart: {
 		DisplayName: Peach Tart
-		Tooltip: ""
+		Tooltip:
+			'''
+			A peachy slice of pie
+			Makes you dodgy, electrified, or briefly confused when consumed
+			'''
+	}
+
+	CouplesCake: {
+		DisplayName: Couple's Cake
+		Tooltip:
+			'''
+			A heartwarming dessert that brings back fond memories
+			Grants regeneration for {0} when consumed
+			Can only be used on other players
+			'''
+	}
+
+	SnowBunny: {
+		DisplayName: Snow Bunny
+		Tooltip:
+			'''
+			A chilly treat that temporarily freezes you when consumed
+			'''
+	}
+
+	SpicySoup: {
+		DisplayName: Spicy Soup
+		Tooltip: A hot, yummy soup. Sip with a flameproof spoon!
+	}
+
+	ZessCookie: {
+		DisplayName: Zess Cookie
+		Tooltip: Sweet cookie snacks made by Zess T.
 	}
 }
 
