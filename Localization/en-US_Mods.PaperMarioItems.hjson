@@ -385,162 +385,192 @@ Items: {
 
 	ChocoCake: {
 		DisplayName: Choco Cake
-		Tooltip: ""
+		Tooltip: Decadent cake baked by Zess T.
 	}
 
 	CocoCandy: {
 		DisplayName: Coco Candy
-		Tooltip: ""
+		Tooltip: A sweet candy made by Zess T.
 	}
 
 	ElectroPop: {
 		DisplayName: Electro Pop
-		Tooltip: ""
+		Tooltip:
+			'''
+			Candy made by Zess T.
+			Temporarily electrifies you to damage direct-attackers
+			Also temporarily grants immunity to the Electrified debuff
+			'''
 	}
 
 	MousseCake: {
 		DisplayName: Mousse Cake
-		Tooltip: ""
+		Tooltip: A fluffy confection
 	}
 
 	FirePop: {
 		DisplayName: Fire Pop
-		Tooltip: ""
+		Tooltip: Candy made by Zess T.
 	}
 
 	CouplesCake: {
-		DisplayName: Couples Cake
-		Tooltip: ""
+		DisplayName: Couple's Cake
+		Tooltip:
+			'''
+			A heartwarming dessert that brings back fond memories
+			Grants regeneration for 15 minutes when consumed
+			Can only be used on other players
+			'''
 	}
 
 	DeliciousCake: {
 		DisplayName: Delicious Cake
-		Tooltip: ""
+		Tooltip: Cake from a Glitz Pit fan
 	}
 
 	FruitParfait: {
 		DisplayName: Fruit Parfait
-		Tooltip: ""
+		Tooltip: A fruity ice cream dessert made by Zess T.
 	}
 
 	HealthySalad: {
 		DisplayName: Healthy Salad
-		Tooltip: ""
+		Tooltip: A Zess T. salad
 	}
 
 	HeartfulCake: {
 		DisplayName: Heartful Cake
-		Tooltip: ""
+		Tooltip:
+			'''
+			A sweet cake made by Zess T.
+			Also softens you when consumed
+			'''
 	}
 
 	HoneyCandy: {
 		DisplayName: Honey Candy
-		Tooltip: ""
+		Tooltip: Candy that's the bee's knees
 	}
 
 	HoneyMushroom: {
 		DisplayName: Honey Mushroom
-		Tooltip: ""
+		Tooltip: A sweet mushroom dessert
 	}
 
 	HoneySuper: {
 		DisplayName: Honey Super
-		Tooltip: ""
+		Tooltip: A fancy mushroom dessert
 	}
 
 	HoneyUltra: {
 		DisplayName: Honey Ultra
-		Tooltip: ""
+		Tooltip: An exquisite mushroom dessert
 	}
 
 	IciclePop: {
 		DisplayName: Icicle Pop
-		Tooltip: ""
+		Tooltip:
+			'''
+			An ice cream dessert made by Zess T.
+			Can sometimes temporarily freeze you when consumed
+			'''
 	}
 
 	JellyCandy: {
 		DisplayName: Jelly Candy
-		Tooltip: ""
+		Tooltip: Sweet candy made by Zess T.
 	}
 
 	JellyMushroom: {
 		DisplayName: Jelly Mushroom
-		Tooltip: ""
+		Tooltip: An extremely sweet mushroom dessert
 	}
 
 	JellySuper: {
 		DisplayName: Jelly Super
-		Tooltip: ""
+		Tooltip: An extremely fancy mushroom dessert
 	}
 
 	JellyUltra: {
 		DisplayName: Jelly Ultra
-		Tooltip: ""
+		Tooltip: An extremely exquisite mushroom dessert
 	}
 
 	KoopaBun: {
 		DisplayName: Koopa Bun
-		Tooltip: ""
+		Tooltip: A turtle-shaped dumpling
 	}
 
 	LovePudding: {
 		DisplayName: Love Pudding
-		Tooltip: ""
+		Tooltip:
+			'''
+			A very bittersweet pudding
+			Makes you invisible, electrified, or briefly confused when consumed
+			'''
 	}
 
 	MangoDelight: {
 		DisplayName: Mango Delight
-		Tooltip: ""
+		Tooltip: Light and fruity pudding
 	}
 
 	MapleMushroom: {
 		DisplayName: Maple Mushroom
-		Tooltip: ""
+		Tooltip: A very sweet mushroom dessert
 	}
 
 	MapleSuper: {
 		DisplayName: Maple Super
-		Tooltip: ""
+		Tooltip: A very fancy mushroom dessert
 	}
 
 	MapleUltra: {
 		DisplayName: Maple Ultra
-		Tooltip: ""
+		Tooltip: A rather exquisite mushroom dessert
 	}
 
 	MeteorMeal: {
 		DisplayName: Meteor Meal
-		Tooltip: ""
+		Tooltip:
+			'''
+			Food that's out of this world
+			Grants regeneration for {0} when consumed
+			'''
 	}
 
 	OmeletteMeal: {
 		DisplayName: Omelette Meal
-		Tooltip: ""
+		Tooltip: Breakfast... for dinner!
 	}
 
 	PeachTart: {
 		DisplayName: Peach Tart
-		Tooltip: ""
+		Tooltip:
+			'''
+			A peachy slice of pie
+			Makes you dodgy, electrified, or briefly confused when consumed
+			'''
 	}
 
 	PoisonedCake: {
-		DisplayName: Poisoned Cake
-		Tooltip: ""
+		DisplayName: Delicious Cake
+		Tooltip: Cake from a Glitz Pit fan
 	}
 
 	SnowBunny: {
 		DisplayName: Snow Bunny
-		Tooltip: ""
+		Tooltip: A chilly treat that temporarily freezes you when consumed
 	}
 
 	SpicySoup: {
 		DisplayName: Spicy Soup
-		Tooltip: ""
+		Tooltip: A hot, yummy soup. Sip with a flameproof spoon!
 	}
 
 	ZessCookie: {
 		DisplayName: Zess Cookie
-		Tooltip: ""
+		Tooltip: Sweet cookie snacks made by Zess T.
 	}
 }
 
