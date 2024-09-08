@@ -31,7 +31,7 @@ namespace PaperMarioItems.Content.Items.Consumables
             Item.UseSound = SoundID.Item2;
             Item.maxStack = 1;
             Item.rare = ItemRarityID.Pink;
-            Item.value = Item.buyPrice(silver: 30);
+            Item.value = Item.buyPrice(silver: 40);
             Item.healLife = 10;
             Item.potion = true;
         }

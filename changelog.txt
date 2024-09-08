@@ -1,4 +1,13 @@
-Paper Mario Items 0.1.8 -- Update notes
-- Added Fruit Parfait, Healthy Salad, Heartful Cake, Honey Candy, Honey Mushroom, Honey Super, Honey Ultra, Icicle Pop, Jelly Candy, Jelly Mushroom, Jelly Super, Jelly Ultra, Koopa Bun, Mango Delight, Love Pudding
+Paper Mario Items 0.1.7 -- Update notes
+ADDED
+- Added Mousse Cake, Choco Cake, Electro Pop, Fire Pop
 - Added cooking recipes for the above items
-- Fixed 2 incorrect cooking recipes for Mushroom Roast
+- Added POW Block drop rates
+
+FIXED/CHANGED
+- Fixed Earth Quake always having a 1/2 drop chance from Granite Golems and Granite Elementals (Expert and above is guaranteed to drop at least 1 Earth Quake)
+- Readjusted the purchase price and rarity of most consumables
+- Reduced Golden Leaf's mana heal amount
+
+REMOVED
+- Removed unnecessary POW Block crafting recipes

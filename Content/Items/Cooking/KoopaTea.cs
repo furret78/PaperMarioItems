@@ -19,7 +19,7 @@ namespace PaperMarioItems.Content.Items.Cooking
 			Item.consumable = true;
 			Item.maxStack = Item.CommonMaxStack;
             Item.rare = ItemRarityID.Green;
-            Item.value = Item.sellPrice(silver: 3);
+            Item.value = Item.sellPrice(silver: 5);
             Item.healMana = 35;
         }
         public override void OnConsumeItem(Player player)

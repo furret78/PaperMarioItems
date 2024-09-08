@@ -384,33 +384,28 @@ Items: {
 	}
 
 	ChocoCake: {
-		DisplayName: Chocolate Cake
-		Tooltip: Decadent cake baked by Zess T.
+		DisplayName: Choco Cake
+		Tooltip: ""
 	}
 
 	CocoCandy: {
 		DisplayName: Coco Candy
-		Tooltip: A sweet candy made by Zess T.
+		Tooltip: ""
 	}
 
 	ElectroPop: {
 		DisplayName: Electro Pop
-		Tooltip:
-			'''
-			Candy made by Zess T.
-			Temporarily electrifies you to damage direct-attackers
-			Also temporarily grants immunity to the Electrified debuff
-			'''
+		Tooltip: ""
 	}
 
 	MousseCake: {
 		DisplayName: Mousse Cake
-		Tooltip: A fluffy confection
+		Tooltip: ""
 	}
 
 	FirePop: {
 		DisplayName: Fire Pop
-		Tooltip: Candy made by Zess T.
+		Tooltip: ""
 	}
 }
 

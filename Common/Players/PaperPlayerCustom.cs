@@ -9,6 +9,7 @@ using PaperMarioItems.Common.NPCs;
 using PaperMarioItems.Content.Buffs;
 using PaperMarioItems.Content.Dusts;
 using PaperMarioItems.Content.Projectiles;
+using PaperMarioItems.Content.Items.Consumables;
 using PaperMarioItems.Content;
 
 namespace PaperMarioItems.Common.Players
