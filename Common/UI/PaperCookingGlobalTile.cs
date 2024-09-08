@@ -1,3 +1,4 @@
+using PaperMarioItems.Common.Players;
 using PaperMarioItems.Content;
 using Terraria;
 using Terraria.DataStructures;

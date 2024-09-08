@@ -42,8 +42,7 @@ namespace PaperMarioItems.Common.UI
                 }
 
                 if (Main.LocalPlayer.Center.Distance((Vector2)NearestCookingPotPosition) > 320f
-                    || !Main.LocalPlayer.HasItemInInventoryOrOpenVoidBag(PMItemID.Cookbook)
-                    || !Main.playerInventory)
+                    || !Main.LocalPlayer.HasItemInInventoryOrOpenVoidBag(PMItemID.Cookbook))
                 {
                     HideUI();
                     NearestCookingPotPosition = null;
@@ -87,10 +86,6 @@ namespace PaperMarioItems.Common.UI
         {
             MenuBarUserInterface?.SetState(MenuBar);
             SoundEngine.PlaySound(SoundID.MenuOpen);
-            if (!Main.playerInventory)
-            {
-                Main.playerInventory = true;
-            }
         }
 
         public void HideUI()

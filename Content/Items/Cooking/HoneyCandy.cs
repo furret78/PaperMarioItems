@@ -13,8 +13,8 @@ namespace PaperMarioItems.Content.Items.Cooking
 			Item.useTurn = true;
 			Item.useTime = 17;
 			Item.useAnimation = Item.useTime;
-			Item.useStyle = ItemUseStyleID.EatFood;
-			Item.UseSound = SoundID.Item2;
+			Item.useStyle = ItemUseStyleID.DrinkLiquid;
+			Item.UseSound = SoundID.Item3;
 			Item.consumable = true;
 			Item.maxStack = Item.CommonMaxStack;
             Item.rare = ItemRarityID.Orange;

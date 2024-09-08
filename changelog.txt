@@ -1,14 +1,12 @@
-Paper Mario Items 0.2.0 -- Update notes
+Paper Mario Items 0.1.8 -- Update notes
 COOKING CHANGES
-- Added Fruit Parfait, Healthy Salad, Heartful Cake, Honey Candy, Honey Mushroom, Honey Super, Honey Ultra, Icicle Pop, Jelly Candy, Jelly Mushroom, Jelly Super, Jelly Ultra, Koopa Bun, Mango Delight, Love Pudding, Maple Mushroom, Maple Super, Maple Ultra, Meteor Meal, Omelette Meal, Peach Tart, Spicy Soup, Snow Bunny, Couple's Cake
+- Added Fruit Parfait, Healthy Salad, Heartful Cake, Honey Candy, Honey Mushroom, Honey Super, Honey Ultra, Icicle Pop, Jelly Candy, Jelly Mushroom, Jelly Super, Jelly Ultra, Koopa Bun, Mango Delight, Love Pudding, Maple Mushroom, Maple Super, Maple Ultra, Meteor Meal, Omelette Meal, Peach Tart
 - Added cooking recipes for the above items
 - Cooking recipe for Fried Egg (Paper Mario) is now Pre-Hardmode exclusive
 - Added Hardmode-exclusive cooking recipe for Fried Egg (vanilla Terraria)
 - Added additional cooking recipes for Thunder Rage (Dried Bouquet + Volt Mushroom) and Volt Mushroom
 - Fixed 2 incorrect cooking recipes for Mushroom Roast
 - Made minor adjustments to the feel of the cooking menu
-- Fixed wrong item use animations and according sound effects assigned to Honey Candy and Jelly Candy
-- Increased Mistake's Potion Sickness time to 10 seconds
 
 CRAFTING CHANGES
 - Added 2 crafting recipes for Shooting Star that uses Lunar Event Fragments as a substitute for Souls of Flight

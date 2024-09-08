@@ -24,6 +24,7 @@ namespace PaperMarioItems.Common.RecipeSystem
                 new(PMItemID.UltraMushroom, PMItemID.PointSwap, PMItemID.JamminJelly),
                 new(PMItemID.UltraMushroom, PMItemID.PointSwap, PMItemID.PoisonMushroom),
                 new(PMItemID.MapleSyrup, PMItemID.PointSwap, PMItemID.SuperMushroom),
+                new(PMItemID.SuperMushroom, PMItemID.PointSwap, PMItemID.MapleSyrup),
                 new(PMItemID.Mushroom, PMItemID.PointSwap, PMItemID.DriedMushroom),
                 new(PMItemID.Mushroom, PMItemID.PointSwap, ItemID.GoldBar),
                 new(PMItemID.Mushroom, PMItemID.PointSwap, PMItemID.HoneySyrup),
@@ -83,7 +84,6 @@ namespace PaperMarioItems.Common.RecipeSystem
                 new(PMItemID.ChocoCake, PMItemID.InkySauce, PMItemID.CakeMix),
                 new(PMItemID.ChocoCake, PMItemID.InkySauce, PMItemID.MousseCake),
                 new(PMItemID.CocoCandy, PMItemID.CakeMix, ItemID.Coconut),
-                new(PMItemID.CouplesCake, PMItemID.SnowBunny, PMItemID.SpicySoup),
                 new(ItemID.FriedEgg, PMItemID.MysticEgg, ItemID.None, true),
                 new(PMItemID.FriedEgg, PMItemID.MysticEgg, ItemID.None, false, true),
                 new(PMItemID.KoopaTea, PMItemID.TurtleyLeaf),
@@ -182,17 +182,6 @@ namespace PaperMarioItems.Common.RecipeSystem
                 //new(PMItemID.PoisonMushroom, PMItemID.DriedBouquet, PMItemID.TrialStew), implement later when there is Trial Stew
                 new(PMItemID.PeachTart, PMItemID.CakeMix, ItemID.Peach),
                 new(PMItemID.ThunderRage, PMItemID.DriedBouquet, PMItemID.VoltMushroom),
-                new(PMItemID.SpicySoup, PMItemID.FireFlower),
-                new(PMItemID.SpicySoup, PMItemID.Horsetail, ItemID.None, true),
-                //new(PMItemID.SpicySoup, PMItemID.SnowBunny),
-                new(PMItemID.SpicySoup, PMItemID.DriedBouquet, ItemID.None, true),
-                new(PMItemID.SpicySoup, PMItemID.FireFlower, PMItemID.HotSauce),
-                new(PMItemID.SpicySoup, PMItemID.FireFlower, PMItemID.DriedBouquet),
-                new(PMItemID.SnowBunny, PMItemID.GoldenLeaf, ItemID.IceBlock),
-                new(PMItemID.SnowBunny, PMItemID.GoldenLeaf, ItemID.IceBrick),
-                new(PMItemID.SnowBunny, PMItemID.GoldenLeaf, ItemID.FlowerofFrost),
-                new(PMItemID.SnowBunny, PMItemID.GoldenLeaf, ItemID.SnowBlock),
-                new(PMItemID.SnowBunny, PMItemID.GoldenLeaf, ItemID.Shiverthorn),
                 new(PMItemID.IciclePop, PMItemID.HoneySyrup, ItemID.IceBlock),
                 new(PMItemID.IciclePop, PMItemID.HoneySyrup, ItemID.IceBrick),
                 new(PMItemID.IciclePop, PMItemID.HoneySyrup, ItemID.FlowerofFrost),
@@ -231,19 +220,9 @@ namespace PaperMarioItems.Common.RecipeSystem
                 new(PMItemID.HottestDog, PMItemID.HotSauce, ItemID.Hotdog)
             };
 
-            var MysteryItemList = new List<int>()
-            {
-                PMItemID.Spaghetti, PMItemID.TastyTonic
-            };
-
             for (int i = 0; i < IngredientList.Count; i++)
             {
                 RecipeRegister.MainRecipeDictionary.Add(i, IngredientList[i]);
-            }
-
-            for (int i = 0; i < MysteryItemList.Count; i++)
-            {
-                RecipeRegister.MysteryBoxRecipeList.Add(i);
             }
         }
     }

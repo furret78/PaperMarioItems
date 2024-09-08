@@ -37,7 +37,7 @@ namespace PaperMarioItems.Content.Items.Cooking
         {
             if (sItem.type == Type)
             {
-                player.AddBuff(BuffID.PotionSickness, 600);
+                player.AddBuff(BuffID.PotionSickness, 300);
                 return;
             }
             else orig(player, sItem);

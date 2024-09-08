@@ -55,7 +55,6 @@ namespace PaperMarioItems.Content
 
             ChocoCake = ModContent.ItemType<ChocoCake>(),
             CocoCandy = ModContent.ItemType<CocoCandy>(),
-            CouplesCake = ModContent.ItemType<CouplesCake>(),
             FreshJuice = ModContent.ItemType<FreshJuice>(),
             FriedEgg = ModContent.ItemType<FriedEgg>(),
             FirePop = ModContent.ItemType<FirePop>(),
@@ -94,8 +93,6 @@ namespace PaperMarioItems.Content
             OmeletteMeal = ModContent.ItemType<OmeletteMeal>(),
             PoisonMushroom = ModContent.ItemType<PoisonMushroom>(),
             PeachTart = ModContent.ItemType<PeachTart>(),
-            SnowBunny = ModContent.ItemType<SnowBunny>(),
-            SpicySoup = ModContent.ItemType<SpicySoup>(),
             Spaghetti = ModContent.ItemType<SpaghettiPlate>(),
             SpicyPasta = ModContent.ItemType<SpicyPasta>(),
             ZessFrappe = ModContent.ItemType<ZessFrappe>(),

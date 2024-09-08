@@ -18,7 +18,7 @@ namespace PaperMarioItems.Content.Items.Cooking
 			Item.UseSound = SoundID.Item2;
 			Item.consumable = true;
 			Item.maxStack = Item.CommonMaxStack;
-            Item.rare = ItemRarityID.Pink;
+            Item.rare = ItemRarityID.Orange;
             Item.value = Item.buyPrice(silver: 10);
         }
 
