@@ -1,26 +1,29 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using PaperMarioItems.Content.Items.Consumables;
 
 namespace PaperMarioItems.Content.Items.Cooking
 { 
-	public class KoopaTea : ModItem
+	public class MangoDelight : ModItem
 	{
 		public override void SetDefaults()
 		{
-			Item.width = 38;
+			Item.width = 40;
 			Item.height = 39;
 			Item.useTurn = true;
 			Item.useTime = 17;
 			Item.useAnimation = Item.useTime;
-			Item.useStyle = ItemUseStyleID.DrinkLiquid;
-			Item.UseSound = SoundID.Item3;
+			Item.useStyle = ItemUseStyleID.EatFood;
+			Item.UseSound = SoundID.Item2;
 			Item.consumable = true;
 			Item.maxStack = Item.CommonMaxStack;
-            Item.rare = ItemRarityID.Green;
-            Item.value = Item.sellPrice(silver: 3);
-            Item.healMana = 35;
+            Item.rare = ItemRarityID.Orange;
+            Item.value = Item.sellPrice(silver: 10);
+			Item.buffType = BuffID.WellFed;
+			Item.buffTime = 7200;
+            Item.healLife = 50;
+            Item.healMana = 15;
+            Item.potion = true;
         }
         public override void OnConsumeItem(Player player)
 		{
@@ -28,7 +31,14 @@ namespace PaperMarioItems.Content.Items.Cooking
         }
         public override void Load()
         {
+            On_Player.ApplyPotionDelay += On_Player_ApplyPotionDelay;
             On_Player.ApplyLifeAndOrMana += On_Player_ApplyLifeAndOrMana;
+        }
+
+        private void On_Player_ApplyPotionDelay(On_Player.orig_ApplyPotionDelay orig, Player player, Item sItem)
+        {
+            if (sItem.type == Type) return;
+            else orig(player, sItem);
         }
         private void On_Player_ApplyLifeAndOrMana(On_Player.orig_ApplyLifeAndOrMana orig, Player player, Item sItem)
         {
@@ -45,13 +55,6 @@ namespace PaperMarioItems.Content.Items.Cooking
                 }
             }
             else orig(player, sItem);
-        }
-        public override void AddRecipes()
-		{
-			Recipe recipe = CreateRecipe()
-                .AddIngredient<TurtleyLeaf>()
-                .AddTile(TileID.CookingPots)
-                .Register();
         }
 	}
 }

@@ -158,10 +158,10 @@ namespace PaperMarioItems.Common.UI
                     //look for slot #2 item in recipe slot #1
                     if (SecondRoundChosenList.Exists(x => x.Ingredient1 == itemslot2))
                     {
-                        int resultingItem = SecondRoundChosenList.Find(x => x.Ingredient1 == itemslot2).ResultingItem;
-                        if (resultingItem != ItemID.None)
+                        var searchResult = SecondRoundChosenList.Find(x => x.Ingredient1 == itemslot2);
+                        if (IsLegalResult(searchResult.ResultingItem, searchResult.Hardmode))
                         {
-                            return result = resultingItem;
+                            return result = searchResult.ResultingItem;
                         };
                     }
                 }
@@ -171,10 +171,10 @@ namespace PaperMarioItems.Common.UI
                 //found something (slot #1 item in recipe slot #1, now find slot #2 item in recipe slot #2)
                 if (FirstRoundChosenList.Exists(x => x.Ingredient2 == itemslot2))
                 {
-                    int resultingItem = FirstRoundChosenList.Find(x => x.Ingredient2 == itemslot2).ResultingItem;
-                    if (resultingItem != ItemID.None)
+                    var searchResult = FirstRoundChosenList.Find(x => x.Ingredient2 == itemslot2);
+                    if (IsLegalResult(searchResult.ResultingItem, searchResult.Hardmode))
                     {
-                        return result = resultingItem;
+                        return result = searchResult.ResultingItem;
                     };
                 }
                 //scan failed (cannot find matching slot #2 items)
@@ -193,16 +193,23 @@ namespace PaperMarioItems.Common.UI
                     //look for slot #2 item in recipe slot #1
                     if (SecondRoundChosenList.Exists(x => x.Ingredient1 == itemslot2))
                     {
-                        int resultingItem = SecondRoundChosenList.Find(x => x.Ingredient1 == itemslot2).ResultingItem;
-                        if (resultingItem != ItemID.None)
+                        var searchResult = SecondRoundChosenList.Find(x => x.Ingredient1 == itemslot2);
+                        if (IsLegalResult(searchResult.ResultingItem, searchResult.Hardmode))
                         {
-                            return result = resultingItem;
+                            return result = searchResult.ResultingItem;
                         };
                     }
                 }
             }
             //if all fails, return a Mistake
             return result;
+        }
+
+        private bool IsLegalResult(int result, bool hardmode = false)
+        {
+            if (result != ItemID.None &&
+                (!hardmode || (hardmode && Main.hardMode))) return true;
+            else return false;
         }
 
         private void SpawnResultItem(int resultItem, int amount1, int amount2)
