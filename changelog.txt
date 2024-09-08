@@ -20,3 +20,5 @@ DROP RATE CHANGES
 - Greatly nerfed the drop rate for Mystic Egg when killing any other enemy
 - Nerfed the drop rate of Dizzy Dial when killing Bats
 - Greatly nerfed the drop rate for Whacka Bump when killing non-Shimmer and non-Pinky Slimes
+
+BUG FIXES
