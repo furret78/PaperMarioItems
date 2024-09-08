@@ -4,12 +4,12 @@ using Terraria.ModLoader;
 
 namespace PaperMarioItems.Content.Items.Cooking
 { 
-	public class Mistake : ModItem
+	public class JellyCandy : ModItem
 	{
 		public override void SetDefaults()
 		{
 			Item.width = 40;
-			Item.height = 39;
+			Item.height = 40;
 			Item.useTurn = true;
 			Item.useTime = 17;
 			Item.useAnimation = Item.useTime;
@@ -17,11 +17,9 @@ namespace PaperMarioItems.Content.Items.Cooking
 			Item.UseSound = SoundID.Item2;
 			Item.consumable = true;
 			Item.maxStack = Item.CommonMaxStack;
-            Item.rare = ItemRarityID.Gray;
-            Item.value = Item.sellPrice(copper: 15);
-            Item.healLife = 5;
-            Item.healMana = 5;
-            Item.potion = true;
+            Item.rare = ItemRarityID.Orange;
+            Item.value = Item.sellPrice(gold: 1);
+            Item.healMana = 320;
         }
         public override void OnConsumeItem(Player player)
 		{
@@ -29,18 +27,7 @@ namespace PaperMarioItems.Content.Items.Cooking
         }
         public override void Load()
         {
-            On_Player.ApplyPotionDelay += On_Player_ApplyPotionDelay;
             On_Player.ApplyLifeAndOrMana += On_Player_ApplyLifeAndOrMana;
-        }
-
-        private void On_Player_ApplyPotionDelay(On_Player.orig_ApplyPotionDelay orig, Player player, Item sItem)
-        {
-            if (sItem.type == Type)
-            {
-                player.AddBuff(BuffID.PotionSickness, 600);
-                return;
-            }
-            else orig(player, sItem);
         }
         private void On_Player_ApplyLifeAndOrMana(On_Player.orig_ApplyLifeAndOrMana orig, Player player, Item sItem)
         {

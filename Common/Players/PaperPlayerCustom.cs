@@ -9,7 +9,6 @@ using PaperMarioItems.Common.NPCs;
 using PaperMarioItems.Content.Buffs;
 using PaperMarioItems.Content.Dusts;
 using PaperMarioItems.Content.Projectiles;
-using PaperMarioItems.Content.Items.Consumables;
 using PaperMarioItems.Content;
 
 namespace PaperMarioItems.Common.Players
@@ -94,9 +93,40 @@ namespace PaperMarioItems.Common.Players
             if (target.position.X < player.position.X) return -1;
             return 1;
         }
-        private void SetShakeTime(int time)
+        public void SetShakeTime(int time)
         {
             if (ScreenShakeSystem.screenShakeTime < time) ScreenShakeSystem.screenShakeTime = time;
+        }
+        //search for other players + couple's cake
+        public bool SearchTeammate(Player player)
+        {
+            if (Main.myPlayer != player.whoAmI || player == null) return false;
+            else foreach (var vsplayer in Main.ActivePlayers)
+                {
+                    if (!vsplayer.hostile && vsplayer != player) return true;
+                }
+            return false;
+        }
+        public void AddBuffCouplesCake(Player player, int time = 300)
+        {
+            if (Main.myPlayer != player.whoAmI || player == null) return;
+            else
+            {
+                Player closestTeammate = null;
+                float closestDist = 0;
+                float distSq = 0;
+                foreach (var teammate in Main.ActivePlayers)
+                {
+                    Vector2 playerToPlayer = new(player.Center.X - teammate.Center.X, player.Center.Y - teammate.Center.Y);
+                    distSq = (float)Math.Sqrt(playerToPlayer.LengthSquared());
+                    if ((closestTeammate == null || distSq < closestDist) && !teammate.hostile && teammate != player)
+                    {
+                        closestTeammate = teammate;
+                        closestDist = distSq;
+                    }
+                }
+                closestTeammate?.AddBuff(BuffID.Regeneration, time);
+            }
         }
         //life mushroom effects
         private void LifeMushroomHeal(Player self, int num1, int num2)
