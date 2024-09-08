@@ -1,9 +1,7 @@
 using Microsoft.Xna.Framework;
-using PaperMarioItems.Content;
+using PaperMarioItems.Content.Items;
 using System.Collections.Generic;
 using Terraria;
-using Terraria.Audio;
-using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.UI;
 
@@ -38,14 +36,16 @@ namespace PaperMarioItems.Common.UI
                 if (MenuBarUserInterface.CurrentState == null)
                 {
                     ShowUI();
+                    //Main.NewText($"UI is now shown; CurrentCrockpotPosition: {NearestCookingPotPosition}; Player position: {Main.LocalPlayer.Center}");
                     return;
                 }
 
                 if (Main.LocalPlayer.Center.Distance((Vector2)NearestCookingPotPosition) > 320f
-                    || !Main.LocalPlayer.HasItemInInventoryOrOpenVoidBag(PMItemID.Cookbook))
+                    || !Main.LocalPlayer.HasItemInInventoryOrOpenVoidBag(ModContent.ItemType<Cookbook>()))
                 {
                     HideUI();
                     NearestCookingPotPosition = null;
+                    //Main.NewText("UI is now hidden");
                 }
             }
             else if (MenuBarUserInterface != null)
@@ -85,13 +85,11 @@ namespace PaperMarioItems.Common.UI
         public void ShowUI()
         {
             MenuBarUserInterface?.SetState(MenuBar);
-            SoundEngine.PlaySound(SoundID.MenuOpen);
         }
 
         public void HideUI()
         {
             MenuBarUserInterface?.SetState(null);
-            SoundEngine.PlaySound(SoundID.MenuClose);
         }
     }
 }

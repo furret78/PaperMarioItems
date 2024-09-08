@@ -9,8 +9,7 @@ namespace PaperMarioItems.Content
     //items
     public class PMItemID : ModSystem
     {
-        public static readonly int Mistake = ModContent.ItemType<Mistake>(),
-            BoosSheet = ModContent.ItemType<BoosSheet>(),
+        public static readonly int BoosSheet = ModContent.ItemType<BoosSheet>(),
             RepelCape = ModContent.ItemType<RepelCape>(),
             PointSwap = ModContent.ItemType<PointSwap>(),
             CourageShell = ModContent.ItemType<CourageShell>(),
@@ -86,17 +85,12 @@ namespace PaperMarioItems.Content
             MushroomRoast = ModContent.ItemType<MushroomRoast>(),
             MushroomSteak = ModContent.ItemType<MushroomSteak>(),
             MousseCake = ModContent.ItemType<MousseCake>(),
-            MapleMushroom = ModContent.ItemType<MapleMushroom>(),
-            MapleSuper = ModContent.ItemType<MapleSuper>(),
-            MapleUltra = ModContent.ItemType<MapleUltra>(),
-            MeteorMeal = ModContent.ItemType<MeteorMeal>(),
-            OmeletteMeal = ModContent.ItemType<OmeletteMeal>(),
             PoisonMushroom = ModContent.ItemType<PoisonMushroom>(),
-            PeachTart = ModContent.ItemType<PeachTart>(),
             Spaghetti = ModContent.ItemType<SpaghettiPlate>(),
             SpicyPasta = ModContent.ItemType<SpicyPasta>(),
             ZessFrappe = ModContent.ItemType<ZessFrappe>(),
-            ZessTea = ModContent.ItemType<ZessTea>();
+            ZessTea = ModContent.ItemType<ZessTea>(),
+            Mistake = ModContent.ItemType<Mistake>();
     }
     //buffs
     public class PMBuffID : ModSystem

@@ -19,14 +19,10 @@ namespace PaperMarioItems.Common.NPCs
                 npcLoot.Add(ItemDropRule.NormalvsExpert(PMItemID.MysteryBox, 54, 50));
                 npcLoot.Add(ItemDropRule.NormalvsExpert(PMItemID.MrSoftener, 64, 60));
                 npcLoot.Add(ItemDropRule.NormalvsExpert(PMItemID.POWBlock, 100, 98));
-                if (npc.type != NPCID.Harpy && npc.type != NPCID.Vulture && npc.type != NPCID.Raven)
-                    npcLoot.Add(ItemDropRule.NormalvsExpert(PMItemID.MysticEgg, 580, 480));
+                if (npc.type != NPCID.Harpy) npcLoot.Add(ItemDropRule.NormalvsExpert(PMItemID.MysticEgg, 151, 150));
             }
-            if (npc.type == NPCID.Harpy) npcLoot.Add(ItemDropRule.NormalvsExpert(PMItemID.MysticEgg, 36, 33));
-            if (npc.type == NPCID.Vulture) npcLoot.Add(ItemDropRule.NormalvsExpert(PMItemID.MysticEgg, 110, 108));
-            if (npc.type == NPCID.Raven) npcLoot.Add(ItemDropRule.NormalvsExpert(PMItemID.MysticEgg, 80, 76));
             if (npc.type == NPCID.BlueSlime || npc.type == NPCID.YellowSlime || npc.type == NPCID.GoldenSlime || npc.type == NPCID.DungeonSlime)
-                npcLoot.Add(ItemDropRule.Common(PMItemID.WhackaBump, 177));
+                npcLoot.Add(ItemDropRule.Common(PMItemID.WhackaBump, 90));
             if (npc.type == NPCID.Pinky || npc.type == NPCID.ShimmerSlime)
                 npcLoot.Add(ItemDropRule.NormalvsExpert(PMItemID.WhackaBump, 45, 40));
             if (npc.type == NPCID.Ghost || npc.type == NPCID.Wraith)
@@ -39,11 +35,13 @@ namespace PaperMarioItems.Common.NPCs
                 npcLoot.Add(ItemDropRule.NormalvsExpert(PMItemID.BoosSheet, 9, 8));
                 npcLoot.Add(ItemDropRule.NormalvsExpert(PMItemID.RepelCape, 11, 9));
             }
+            if (npc.type == NPCID.Harpy)
+                npcLoot.Add(ItemDropRule.NormalvsExpert(PMItemID.MysticEgg, 26, 23));
             if (npc.type == NPCID.StardustSoldier)
                 npcLoot.Add(ItemDropRule.NormalvsExpert(PMItemID.ShootingStar, 12, 9));
             if (npc.type == NPCID.CaveBat || npc.type == NPCID.GiantBat || npc.type == NPCID.IceBat || npc.type == NPCID.IlluminantBat || npc.type == NPCID.JungleBat || npc.type == NPCID.SporeBat || npc.type == NPCID.VampireBat || npc.type == NPCID.Hellbat || npc.type == NPCID.Lavabat)
             {
-                npcLoot.Add(ItemDropRule.NormalvsExpert(PMItemID.DizzyDial, 59, 57));
+                npcLoot.Add(ItemDropRule.NormalvsExpert(PMItemID.DizzyDial, 49, 47));
                 npcLoot.Add(ItemDropRule.NormalvsExpert(PMItemID.HPDrain, 40, 35));
             }
             if (npc.type == NPCID.GraniteFlyer || npc.type == NPCID.GraniteGolem)

@@ -46,18 +46,6 @@ namespace PaperMarioItems.Content.Items.Consumables
                 .AddIngredient(ItemID.SoulofFlight, 5)
                 .AddTile(TileID.WorkBenches)
                 .Register();
-            recipe = CreateRecipe()
-                .AddIngredient(ItemID.FallenStar, 10)
-                .AddIngredient(ItemID.Meteorite, 10)
-                .AddIngredient(RecipeGroupID.Fragment, 4)
-                .AddTile(TileID.WorkBenches)
-                .Register();
-            recipe = CreateRecipe()
-                .AddIngredient(ItemID.ManaCrystal, 2)
-                .AddIngredient(ItemID.Meteorite, 10)
-                .AddRecipeGroup(RecipeGroupID.Fragment, 4)
-                .AddTile(TileID.WorkBenches)
-                .Register();
         }
 	}
 }
