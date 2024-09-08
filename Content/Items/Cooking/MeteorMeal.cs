@@ -1,15 +1,11 @@
-using PaperMarioItems.Common.Players;
 using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace PaperMarioItems.Content.Items.Cooking
 { 
 	public class MeteorMeal : ModItem
 	{
-        private int effectTime = 2;
-        public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(effectTime);
         public override void SetDefaults()
 		{
 			Item.width = 40;
@@ -29,7 +25,7 @@ namespace PaperMarioItems.Content.Items.Cooking
         }
         public override void OnConsumeItem(Player player)
 		{
-            player.AddBuff(BuffID.Regeneration, effectTime*60*60);
+            player.AddBuff(BuffID.Regeneration, 7200);
             player.TryToResetHungerToNeutral();
         }
         public override void Load()

@@ -26,7 +26,7 @@ namespace PaperMarioItems.Content.Items.Cooking
         }
         public override void OnConsumeItem(Player player)
 		{
-            player.AddBuff(BuffID.Frozen, 300);
+            if (Main.rand.NextBool(10)) player.AddBuff(BuffID.Frozen, 300);
             player.TryToResetHungerToNeutral();
         }
         public override void Load()

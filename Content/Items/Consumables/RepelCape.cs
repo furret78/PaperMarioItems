@@ -1,15 +1,12 @@
 using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace PaperMarioItems.Content.Items.Consumables
 { 
 	public class RepelCape : ModItem
 	{
-        private int effectTime = 5;
-        public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(effectTime);
-        public override void SetDefaults()
+		public override void SetDefaults()
 		{
 			Item.width = 40;
 			Item.height = 36;
@@ -23,7 +20,7 @@ namespace PaperMarioItems.Content.Items.Consumables
             Item.rare = ItemRarityID.Blue;
             Item.value = Item.buyPrice(silver: 15);
 			Item.buffType = PMBuffID.Dodgy;
-			Item.buffTime = effectTime*60*60;
+			Item.buffTime = 18000;
         }
     }
 }

@@ -21,15 +21,8 @@ namespace PaperMarioItems.Common.RecipeSystem
 
     public class RecipeRegister : ModSystem
 	{
-        /// <summary>
-        /// A recipe Dictionary that stores all item combinations except for Mystery Boxes
-        /// </summary>
         public static Dictionary<int, PMRecipe> MainRecipeDictionary = new();
-
-        /// <summary>
-        /// A recipe Dictionary exclusively dedicated to the cooking of Mystery Boxes
-        /// </summary>
-        public static Dictionary<int, int> MysteryBoxRecipeDictionary = new();
+        public static List<int> MysteryBoxRecipeList = new();
 
         public override void Unload()
         {

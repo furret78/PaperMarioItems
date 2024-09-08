@@ -1,4 +1,3 @@
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using PaperMarioItems.Common.RecipeSystem;
@@ -85,22 +84,9 @@ namespace PaperMarioItems.Common.UI
             int item1 = itemSlots[0].Item.type, amount1 = itemSlots[0].Item.stack, item2 = itemSlots[1].Item.type, amount2 = itemSlots[1].Item.stack;
             if (CanCook(item1, amount1, item2, amount2))
             {
-                int maxDeduction = ItemAmountFinalize(amount1, amount2);
-                if (!MysteryBoxCheck(item1, item2))
-                {
-                    int resultItem = CookItems(item1, amount1, item2, amount2);
-                    SpawnResultItem(resultItem, maxDeduction);
-                }
-                else
-                {
-                    for (int j = 0; j < maxDeduction; j++)
-                    {
-                        int resultItem = CookItems(item1, amount1, item2, amount2);
-                        SpawnResultItem(resultItem, 1);
-                    }
-                }
-                for (int i = 0; i < itemSlots.Count; i++)
-                {
+                int resultItem = CookItems(item1, amount1, item2, amount2);
+                SpawnResultItem(resultItem, amount1, amount2);
+                for (int i = 0; i < itemSlots.Count; i++) { 
                     if (itemSlots[i].Item.type == ItemID.None || itemSlots[i].Item.stack <= 0)
                         itemSlots[i].Item.TurnToAir();
                 }
@@ -126,23 +112,6 @@ namespace PaperMarioItems.Common.UI
             else return false;
         }
 
-        private static bool MysteryBoxCheck(int item1, int item2)
-        {
-            if ((item1 == PMItemID.MysteryBox && item2 == ItemID.None) ||
-                (item1 == ItemID.None && item2 == PMItemID.MysteryBox) ||
-                (item1 == PMItemID.MysteryBox && item2 == PMItemID.MysteryBox)) return true;
-            else return false;
-        }
-
-        private int ItemAmountFinalize(int amount1, int amount2 = 0)
-        {
-            int itemAmount = amount1;
-            if (amount1 > amount2) itemAmount = amount2;
-            if (amount1 <= 0) itemAmount = amount2;
-            if (amount2 <= 0) itemAmount = amount1;
-            return itemAmount;
-        }
-
         private static int CookItems(int item1, int amount1, int item2, int amount2)
         {
             int resultItem;
@@ -156,11 +125,13 @@ namespace PaperMarioItems.Common.UI
             int result = PMItemID.Mistake;
             var FirstRoundChosenList = new List<PMRecipe>();
             var SecondRoundChosenList = new List<PMRecipe>();
-            if (MysteryBoxCheck(itemslot1, itemslot2))
+            if ((itemslot1 == PMItemID.MysteryBox && itemslot2 == ItemID.None) ||
+                (itemslot1 == ItemID.None && itemslot2 == PMItemID.MysteryBox) ||
+                (itemslot1 == PMItemID.MysteryBox && itemslot2 == PMItemID.MysteryBox))
             {
                 if (Main.rand.NextBool(2))
                 {
-                    result = RecipeRegister.MysteryBoxRecipeDictionary.GetValueOrDefault(Main.rand.Next(0, RecipeRegister.MysteryBoxRecipeDictionary.Count));
+                    result = RecipeRegister.MysteryBoxRecipeList[Main.rand.Next(0, RecipeRegister.MysteryBoxRecipeList.Count)];
                 }
                 return result;
             }
@@ -251,8 +222,12 @@ namespace PaperMarioItems.Common.UI
             else return false;
         }
 
-        private void SpawnResultItem(int resultItem, int amount)
+        private void SpawnResultItem(int resultItem, int amount1, int amount2)
         {
+            int itemAmount = amount1;
+            if (amount1 > amount2) itemAmount = amount2;
+            if (amount1 <= 0) itemAmount = amount2;
+            if (amount2 <= 0) itemAmount = amount1;
             if (resultItem != ItemID.None)
             {
                 if (resultItem != PMItemID.Mistake)
@@ -261,10 +236,10 @@ namespace PaperMarioItems.Common.UI
                     SoundEngine.PlaySound(SoundID.ResearchComplete);
                 }
                 else SoundEngine.PlaySound(SoundID.MenuClose);
-                Main.LocalPlayer.QuickSpawnItem(new EntitySource_Misc("Finished cooking"), resultItem, amount);
+                Main.LocalPlayer.QuickSpawnItem(new EntitySource_Misc("Finished cooking"), resultItem, itemAmount);
                 for (int i = 0; i < itemSlots.Count; i++)
                 {
-                    itemSlots[i].Item.stack -= amount;
+                    itemSlots[i].Item.stack -= itemAmount;
                 }
             }
         }

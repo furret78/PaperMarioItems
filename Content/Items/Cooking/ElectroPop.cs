@@ -1,14 +1,11 @@
 using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace PaperMarioItems.Content.Items.Cooking
 { 
 	public class ElectroPop : ModItem
 	{
-        private int effectTime = 3;
-        public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(effectTime);
         public override void SetDefaults()
 		{
 			Item.width = 40;
@@ -28,7 +25,7 @@ namespace PaperMarioItems.Content.Items.Cooking
         }
         public override void OnConsumeItem(Player player)
 		{
-            player.AddBuff(PMBuffID.Electrified, effectTime*60*60);
+            player.AddBuff(PMBuffID.Electrified, 10800);
             player.TryToResetHungerToNeutral();
         }
         public override void Load()

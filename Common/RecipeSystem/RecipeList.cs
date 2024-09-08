@@ -51,14 +51,6 @@ namespace PaperMarioItems.Common.RecipeSystem
                 new(PMItemID.FreshJuice, PMItemID.JamminJelly),
                 new(PMItemID.FreshJuice, PMItemID.GradualSyrup),
                 //unique cooking
-                new(PMItemID.VoltMushroom, PMItemID.ThunderBolt, PMItemID.Mushroom),
-                new(PMItemID.VoltMushroom, PMItemID.ThunderBolt, PMItemID.SuperMushroom),
-                new(PMItemID.VoltMushroom, PMItemID.ThunderBolt, PMItemID.UltraMushroom),
-                new(PMItemID.VoltMushroom, PMItemID.ThunderBolt, PMItemID.LifeMushroom),
-                new(PMItemID.VoltMushroom, PMItemID.ThunderRage, PMItemID.Mushroom),
-                new(PMItemID.VoltMushroom, PMItemID.ThunderRage, PMItemID.SuperMushroom),
-                new(PMItemID.VoltMushroom, PMItemID.ThunderRage, PMItemID.UltraMushroom),
-                new(PMItemID.VoltMushroom, PMItemID.ThunderRage, PMItemID.LifeMushroom),
                 new(PMItemID.DriedMushroom, PMItemID.MrSoftener, PMItemID.Mushroom),
                 new(PMItemID.DriedMushroom, PMItemID.MrSoftener, PMItemID.SuperMushroom),
                 new(PMItemID.DriedMushroom, PMItemID.MrSoftener, PMItemID.UltraMushroom),
@@ -117,12 +109,6 @@ namespace PaperMarioItems.Common.RecipeSystem
                 new(PMItemID.InkPasta, PMItemID.FreshPasta, PMItemID.InkySauce),
                 new(PMItemID.InkPasta, PMItemID.SpicyPasta, PMItemID.InkySauce),
                 new(PMItemID.InkPasta, PMItemID.Spaghetti, PMItemID.InkySauce),
-                new(PMItemID.InkySauce, PMItemID.HotSauce, PMItemID.FreshJuice),
-                new(PMItemID.InkySauce, PMItemID.HotSauce, PMItemID.KoopaTea),
-                new(PMItemID.InkySauce, PMItemID.HotSauce, PMItemID.MushroomBroth),
-                new(PMItemID.InkySauce, PMItemID.HotSauce, PMItemID.TurtleyLeaf),
-                new(PMItemID.InkySauce, PMItemID.HotSauce, PMItemID.ZessTea),
-                new(PMItemID.InkySauce, PMItemID.HotSauce, PMItemID.TastyTonic),
                 new(PMItemID.JellyCandy, PMItemID.JamminJelly, PMItemID.CakeMix),
                 new(PMItemID.JellyMushroom, PMItemID.JamminJelly, PMItemID.VoltMushroom),
                 new(PMItemID.JellyMushroom, PMItemID.JamminJelly, PMItemID.Mushroom),
@@ -224,9 +210,20 @@ namespace PaperMarioItems.Common.RecipeSystem
                 new(PMItemID.ZessFrappe, PMItemID.JamminJelly, ItemID.Shiverthorn),
                 new(PMItemID.ZessTea, PMItemID.GoldenLeaf),
                 new(PMItemID.ZessTea, PMItemID.MapleSyrup, PMItemID.JamminJelly),
-                new(PMItemID.ZessCookie, PMItemID.CakeMix, PMItemID.GradualSyrup),
-                new(PMItemID.ZessCookie, PMItemID.CakeMix, PMItemID.MapleSyrup),
-                new(PMItemID.ZessCookie, PMItemID.CakeMix, PMItemID.MysticEgg),
+                new(PMItemID.VoltMushroom, PMItemID.ThunderBolt, PMItemID.Mushroom),
+                new(PMItemID.VoltMushroom, PMItemID.ThunderBolt, PMItemID.SuperMushroom),
+                new(PMItemID.VoltMushroom, PMItemID.ThunderBolt, PMItemID.UltraMushroom),
+                new(PMItemID.VoltMushroom, PMItemID.ThunderBolt, PMItemID.LifeMushroom),
+                new(PMItemID.VoltMushroom, PMItemID.ThunderRage, PMItemID.Mushroom),
+                new(PMItemID.VoltMushroom, PMItemID.ThunderRage, PMItemID.SuperMushroom),
+                new(PMItemID.VoltMushroom, PMItemID.ThunderRage, PMItemID.UltraMushroom),
+                new(PMItemID.VoltMushroom, PMItemID.ThunderRage, PMItemID.LifeMushroom),
+                new(PMItemID.InkySauce, PMItemID.HotSauce, PMItemID.FreshJuice),
+                new(PMItemID.InkySauce, PMItemID.HotSauce, PMItemID.KoopaTea),
+                new(PMItemID.InkySauce, PMItemID.HotSauce, PMItemID.MushroomBroth),
+                new(PMItemID.InkySauce, PMItemID.HotSauce, PMItemID.TurtleyLeaf),
+                new(PMItemID.InkySauce, PMItemID.HotSauce, PMItemID.ZessTea),
+                new(PMItemID.InkySauce, PMItemID.HotSauce, PMItemID.TastyTonic),
                 //original recipes
                 new(PMItemID.ShootingStar, ItemID.FragmentNebula, ItemID.FragmentStardust),
                 new(PMItemID.FreshJuice, ItemID.SpicyPepper, ItemID.BottledWater),
@@ -236,7 +233,7 @@ namespace PaperMarioItems.Common.RecipeSystem
 
             var MysteryItemList = new List<int>()
             {
-                PMItemID.Spaghetti, PMItemID.TastyTonic, PMItemID.SpicySoup
+                PMItemID.Spaghetti, PMItemID.TastyTonic
             };
 
             for (int i = 0; i < IngredientList.Count; i++)
@@ -244,9 +241,9 @@ namespace PaperMarioItems.Common.RecipeSystem
                 RecipeRegister.MainRecipeDictionary.Add(i, IngredientList[i]);
             }
 
-            for (int j = 0; j < MysteryItemList.Count; j++)
+            for (int i = 0; i < MysteryItemList.Count; i++)
             {
-                RecipeRegister.MysteryBoxRecipeDictionary.Add(j, MysteryItemList[j]);
+                RecipeRegister.MysteryBoxRecipeList.Add(i);
             }
         }
     }

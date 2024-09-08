@@ -1,16 +1,13 @@
 using PaperMarioItems.Content.Buffs;
 using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace PaperMarioItems.Content.Items.Consumables
 { 
 	public class VoltMushroom : ModItem
 	{
-        private int effectTime = 3;
-        public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(effectTime);
-        public override void SetDefaults()
+		public override void SetDefaults()
 		{
 			Item.width = 40;
 			Item.height = 40;
@@ -24,7 +21,7 @@ namespace PaperMarioItems.Content.Items.Consumables
             Item.rare = ItemRarityID.Orange;
             Item.value = Item.buyPrice(silver: 10);
 			Item.buffType = PMBuffID.Electrified;
-			Item.buffTime = effectTime*60*60;
+			Item.buffTime = 10800;
         }
         public override void OnConsumeItem(Player player)
         {
