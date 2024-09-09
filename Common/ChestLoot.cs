@@ -11,10 +11,18 @@ namespace PaperMarioItems.Common
         public override void PostWorldGen()
         {
             int itemsPlaced = 0;
-            int maxItems = 5;
-            int spawnRate = 20;
-            if (Main.expertMode) spawnRate = 15;
-            if (Main.masterMode) spawnRate = 10;
+            float maxItems = 80;
+            float spawnRate = 20;
+            if (Main.expertMode && !Main.masterMode)
+            {
+                maxItems *= 0.5f;
+                spawnRate *= 0.7f;
+            }
+            if (Main.masterMode)
+            {
+                maxItems *= 0.2f;
+                spawnRate *= 0.3f;
+            }
             for (int chestIndex = 0; chestIndex < Main.maxChests; chestIndex++)
             {
                 Chest chest = Main.chest[chestIndex];
@@ -27,9 +35,10 @@ namespace PaperMarioItems.Common
                     (chestTile.TileFrameX == 16 * 36 ||
                     chestTile.TileFrameX == 13 * 36 ||
                     chestTile.TileFrameX == 17 * 36 ||
-                    chestTile.TileFrameX == 12 * 36))
+                    chestTile.TileFrameX == 12 * 36 ||
+                    chestTile.TileFrameX == 3 * 36))
                 {
-                    if (WorldGen.genRand.NextBool(spawnRate))
+                    if (WorldGen.genRand.NextBool((int)spawnRate))
                         continue;
                     for (int inventoryIndex = 0; inventoryIndex < Chest.maxItems; inventoryIndex++)
                     {
@@ -41,7 +50,7 @@ namespace PaperMarioItems.Common
                         }
                     }
                 }
-                if (itemsPlaced >= maxItems)
+                if (itemsPlaced >= (int)maxItems)
                 {
                     break;
                 }

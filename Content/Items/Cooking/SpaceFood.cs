@@ -26,13 +26,17 @@ namespace PaperMarioItems.Content.Items.Cooking
             Item.value = Item.sellPrice(silver: 10);
             Item.buffType = PMBuffID.Allergic;
             Item.buffTime = 18000;
-            Item.healLife = 25;
+            Item.healLife = 5;
             Item.potion = true;
         }
 
         public override bool? UseItem(Player player)
         {
-            if (player.ZoneNormalSpace) player.Heal(25);
+            int extraHeal = 0;
+            if (Main.hardMode) extraHeal += 10;
+            if (NPC.downedMoonlord) extraHeal += 10;
+            if (player.ZoneNormalSpace) extraHeal *= 2;
+            if (extraHeal > 0) player.Heal(extraHeal);
             return true;
         }
 
