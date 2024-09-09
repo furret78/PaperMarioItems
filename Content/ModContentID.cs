@@ -98,6 +98,7 @@ namespace PaperMarioItems.Content
             SpicySoup = ModContent.ItemType<SpicySoup>(),
             Spaghetti = ModContent.ItemType<SpaghettiPlate>(),
             SpicyPasta = ModContent.ItemType<SpicyPasta>(),
+            TrialStew = ModContent.ItemType<TrialStew>(),
             ZessCookie = ModContent.ItemType<ZessCookie>(),
             ZessDeluxe = ModContent.ItemType<ZessDeluxe>(),
             ZessDinner = ModContent.ItemType<ZessDinner>(),

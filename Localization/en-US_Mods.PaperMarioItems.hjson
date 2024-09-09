@@ -587,6 +587,12 @@ Items: {
 		DisplayName: Zess Special
 		Tooltip: ""
 	}
+
+	TrialStew: {
+		PoisonDeath: Mods.PaperMarioItems.Items.TrialStew.PoisonDeath
+		DisplayName: Trial Stew
+		Tooltip: ""
+	}
 }
 
 Buffs: {
