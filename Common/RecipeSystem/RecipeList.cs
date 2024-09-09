@@ -280,7 +280,10 @@ namespace PaperMarioItems.Common.RecipeSystem
 
             var MysteryItemList = new List<int>()
             {
-                PMItemID.Spaghetti, PMItemID.TastyTonic, PMItemID.SpicySoup
+                PMItemID.FreshJuice, PMItemID.FireFlower, PMItemID.Spaghetti, PMItemID.TastyTonic,
+                PMItemID.SpicySoup, PMItemID.FriedEgg, PMItemID.HoneyMushroom, PMItemID.Koopasta,
+                PMItemID.KoopaTea, PMItemID.MushroomFry, PMItemID.ThunderRage, PMItemID.VoltMushroom,
+                PMItemID.ZessCookie, PMItemID.ZessDinner, PMItemID.ZessTea
             };
 
             for (int i = 0; i < IngredientList.Count; i++)

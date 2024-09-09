@@ -9,12 +9,6 @@ namespace PaperMarioItems.Content.Items.Cooking
 { 
 	public class TrialStew : ModItem
     {
-        public static LocalizedText PoisonDeath { get; private set; }
-        public override void SetStaticDefaults()
-        {
-            PoisonDeath = this.GetLocalization(nameof(PoisonDeath));
-            Item.ResearchUnlockCount = 1;
-        }
         public override void SetDefaults()
 		{
 			Item.width = 36;
@@ -35,7 +29,7 @@ namespace PaperMarioItems.Content.Items.Cooking
             {
                 SoundEngine.PlaySound(PaperMarioItems.useItemPM, player.Center);
                 player.statLife = 1;
-                player.statMana = player.statManaMax2*(-1);
+                player.statMana = (player.statManaMax2/2)*(-1);
                 return true;
             }
         }

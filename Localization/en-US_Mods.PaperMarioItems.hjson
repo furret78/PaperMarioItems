@@ -575,23 +575,22 @@ Items: {
 
 	ZessDeluxe: {
 		DisplayName: Zess Deluxe
-		Tooltip: A tasty meal made by Zess T.
+		Tooltip: A delicious meal made by Zess T.
 	}
 
 	ZessDinner: {
 		DisplayName: Zess Dinner
-		Tooltip: ""
+		Tooltip: A good meal made by Zess T.
 	}
 
 	ZessSpecial: {
 		DisplayName: Zess Special
-		Tooltip: ""
+		Tooltip: A tasty meal made by Zess T.
 	}
 
 	TrialStew: {
-		PoisonDeath: Mods.PaperMarioItems.Items.TrialStew.PoisonDeath
 		DisplayName: Trial Stew
-		Tooltip: ""
+		Tooltip: Amazing food made by Zess T. Yields incredible results
 	}
 }
 
