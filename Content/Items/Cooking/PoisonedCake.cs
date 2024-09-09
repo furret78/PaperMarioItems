@@ -38,6 +38,11 @@ namespace PaperMarioItems.Content.Items.Cooking
             player.AddBuff(BuffID.Suffocation, 216000);
             player.AddBuff(BuffID.ManaSickness, 216000);
             player.AddBuff(BuffID.PotionSickness, 216000);
+            player.AddBuff(BuffID.Chilled, 216000);
+            player.AddBuff(BuffID.Frostburn, 216000);
+            player.AddBuff(BuffID.Frostburn2, 216000);
+            player.AddBuff(BuffID.Electrified, 216000);
+            player.AddBuff(BuffID.Blackout, 216000);
             player.AddBuff(PMBuffID.Dizzy, 216000);
             player.AddBuff(PMBuffID.Soft, 216000);
             return true;

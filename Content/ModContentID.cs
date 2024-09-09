@@ -99,8 +99,13 @@ namespace PaperMarioItems.Content
             Spaghetti = ModContent.ItemType<SpaghettiPlate>(),
             SpicyPasta = ModContent.ItemType<SpicyPasta>(),
             ZessCookie = ModContent.ItemType<ZessCookie>(),
+            ZessDeluxe = ModContent.ItemType<ZessDeluxe>(),
+            ZessDinner = ModContent.ItemType<ZessDinner>(),
             ZessFrappe = ModContent.ItemType<ZessFrappe>(),
-            ZessTea = ModContent.ItemType<ZessTea>();
+            ZessTea = ModContent.ItemType<ZessTea>(),
+            
+            DeliciousCake = ModContent.ItemType<DeliciousCake>(),
+            PoisonedCake = ModContent.ItemType<PoisonedCake>();
     }
     //buffs
     public class PMBuffID : ModSystem

@@ -572,6 +572,16 @@ Items: {
 		DisplayName: Zess Cookie
 		Tooltip: Sweet cookie snacks made by Zess T.
 	}
+
+	ZessDeluxe: {
+		DisplayName: Zess Deluxe
+		Tooltip: A tasty meal made by Zess T.
+	}
+
+	ZessDinner: {
+		DisplayName: Zess Dinner
+		Tooltip: ""
+	}
 }
 
 Buffs: {
