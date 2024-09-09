@@ -7,11 +7,11 @@ Created with vanilla Terraria gameplay in mind. The items included may either be
 [h1] Obtaining Items [/h1]
 Items are either dropped as loot from enemies or crafted. Certain items will require the presence of a Cookbook and a suitable cooking environment in order to craft.
 
-The cooking system is inspired by Taco's Cooking Delight mod.
+The cooking system is inspired by Taco's [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3162050553] Cooking Delight [/url] mod.
 
 The mod currently features items from Paper Mario: The Thousand-Year Door. Future updates may introduce Paper Mario (N64) and Super Paper Mario variations and exclusives.
 
-To see which recipes correspond to which item in TTYD, see the list of recipes in TTYD.
+To see which recipes correspond to which item in TTYD, please reference the [url=https://www.mariowiki.com/List_of_recipes_in_Paper_Mario:_The_Thousand-Year_Door] list of recipes [/url] in TTYD.
 
 [hr][/hr]
 [h1] Attributes [/h1]
@@ -20,5 +20,5 @@ Massive thanks to Jopojelly, Cube Root, Blobwin and TModLoader server's #mod-dev
 
 All Paper Mario assets used in the mod belongs to Intelligent Systems and Nintendo.
 
-In-game mod icon was drawn by @sumrandomstuff on Discord.
-Playtesting is done by Cosmiikat.
+In-game mod icon was drawn by [url=https://steamcommunity.com/profiles/76561199495639784] TheRandomPlayer [/url].
+Playtesting is done by [url=https://steamcommunity.com/profiles/76561199690057166] Cosmiikat [/url].

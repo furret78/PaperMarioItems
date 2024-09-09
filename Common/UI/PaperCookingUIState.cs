@@ -118,7 +118,7 @@ namespace PaperMarioItems.Common.UI
             ModContent.GetInstance<PaperCookingSystem>().HideUI();
         }
 
-        private static bool CanCook(int item1, int amount1, int item2, int amount2)
+        private static bool CanCook(int item1 = ItemID.None, int amount1 = 0, int item2 = ItemID.None, int amount2 = 0)
         {
             if (!(item1 == ItemID.None && item2 == ItemID.None)
                 && (amount1 > 0 || amount2 > 0)
@@ -126,7 +126,7 @@ namespace PaperMarioItems.Common.UI
             else return false;
         }
 
-        private static bool MysteryBoxCheck(int item1, int item2)
+        private static bool MysteryBoxCheck(int item1 = ItemID.None, int item2 = ItemID.None)
         {
             if ((item1 == PMItemID.MysteryBox && item2 == ItemID.None) ||
                 (item1 == ItemID.None && item2 == PMItemID.MysteryBox) ||
@@ -134,7 +134,7 @@ namespace PaperMarioItems.Common.UI
             else return false;
         }
 
-        private int ItemAmountFinalize(int amount1, int amount2 = 0)
+        private int ItemAmountFinalize(int amount1 = 0, int amount2 = 0)
         {
             int itemAmount = amount1;
             if (amount1 > amount2) itemAmount = amount2;
@@ -143,7 +143,7 @@ namespace PaperMarioItems.Common.UI
             return itemAmount;
         }
 
-        private static int CookItems(int item1, int amount1, int item2, int amount2)
+        private static int CookItems(int item1 = ItemID.None, int amount1 = 0, int item2 = ItemID.None, int amount2 = 0)
         {
             int resultItem;
             resultItem = BeginCooking(item1, item2);
@@ -151,7 +151,7 @@ namespace PaperMarioItems.Common.UI
             return resultItem;
         }
 
-        private static int BeginCooking(int itemslot1, int itemslot2)
+        private static int BeginCooking(int itemslot1 = ItemID.None, int itemslot2 = ItemID.None)
         {
             int result = PMItemID.Mistake;
             var FirstRoundChosenList = new List<PMRecipe>();
@@ -255,12 +255,12 @@ namespace PaperMarioItems.Common.UI
         {
             if (resultItem != ItemID.None)
             {
-                if (resultItem != PMItemID.Mistake)
+                if (resultItem == PMItemID.Mistake) SoundEngine.PlaySound(SoundID.MenuClose);
+                else
                 {
                     SoundEngine.PlaySound(SoundID.MenuOpen);
                     SoundEngine.PlaySound(SoundID.ResearchComplete);
                 }
-                else SoundEngine.PlaySound(SoundID.MenuClose);
                 Main.LocalPlayer.QuickSpawnItem(new EntitySource_Misc("Finished cooking"), resultItem, amount);
                 for (int i = 0; i < itemSlots.Count; i++)
                 {
