@@ -4,12 +4,12 @@ using Terraria.ModLoader;
 
 namespace PaperMarioItems.Content.Items.Cooking
 { 
-	public class HoneyMushroom : ModItem
+	public class ZessSpecial : ModItem
 	{
 		public override void SetDefaults()
 		{
-			Item.width = 33;
-			Item.height = 39;
+			Item.width = 40;
+			Item.height = 40;
 			Item.useTurn = true;
 			Item.useTime = 17;
 			Item.useAnimation = Item.useTime;
@@ -17,12 +17,12 @@ namespace PaperMarioItems.Content.Items.Cooking
 			Item.UseSound = SoundID.Item2;
 			Item.consumable = true;
 			Item.maxStack = Item.CommonMaxStack;
-            Item.rare = ItemRarityID.White;
-            Item.value = Item.sellPrice(silver: 10);
-			Item.buffType = BuffID.WellFed;
-			Item.buffTime = 3600;
-            Item.healLife = 25;
-            Item.healMana = 25;
+            Item.rare = ItemRarityID.Orange;
+            Item.value = Item.sellPrice(silver: 15);
+			Item.buffType = BuffID.WellFed2;
+			Item.buffTime = 25200;
+            Item.healLife = 100;
+            Item.healMana = 100;
             Item.potion = true;
         }
         public override void OnConsumeItem(Player player)

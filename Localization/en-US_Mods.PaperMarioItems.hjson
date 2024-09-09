@@ -582,6 +582,11 @@ Items: {
 		DisplayName: Zess Dinner
 		Tooltip: ""
 	}
+
+	ZessSpecial: {
+		DisplayName: Zess Special
+		Tooltip: ""
+	}
 }
 
 Buffs: {

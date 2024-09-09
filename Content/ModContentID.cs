@@ -101,6 +101,7 @@ namespace PaperMarioItems.Content
             ZessCookie = ModContent.ItemType<ZessCookie>(),
             ZessDeluxe = ModContent.ItemType<ZessDeluxe>(),
             ZessDinner = ModContent.ItemType<ZessDinner>(),
+            ZessSpecial = ModContent.ItemType<ZessSpecial>(),
             ZessFrappe = ModContent.ItemType<ZessFrappe>(),
             ZessTea = ModContent.ItemType<ZessTea>(),
             
