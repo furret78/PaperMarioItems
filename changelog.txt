@@ -1,1 +1,4 @@
-Paper Mario Items 0.2.1 -- Update notes
+Paper Mario Items 0.3.0 -- Update notes
+- Added Space Food
+- Added Allergic status effect
+  + A select few status effects will still be applied even when the player has this effect

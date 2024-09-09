@@ -22,14 +22,24 @@ namespace PaperMarioItems.Common.RecipeSystem
     public class RecipeRegister : ModSystem
 	{
         /// <summary>
-        /// A recipe Dictionary that stores all item combinations except for Mystery Boxes
+        /// A recipe Dictionary that stores all item combinations except for Mystery Box or Space Food combinations
         /// </summary>
         public static Dictionary<int, PMRecipe> MainRecipeDictionary = new();
 
         /// <summary>
-        /// A recipe Dictionary exclusively dedicated to the cooking of Mystery Boxes
+        /// A recipe List exclusively dedicated to Mystery Box cooking
         /// </summary>
-        public static Dictionary<int, int> MysteryBoxRecipeDictionary = new();
+        public static List<int> MysteryBoxRecipeList = new();
+
+        /// <summary>
+        /// A recipe List specifying what items should make Space Food when combined with Dried Bouquet
+        /// </summary>
+        public static List<int> SpaceFoodList = new();
+
+        /// <summary>
+        /// A recipe List specifying what items will NOT make Space Food when combined with Dried Bouquet (takes precedent over the whitelist)
+        /// </summary>
+        public static List<int> SpaceFoodBlacklist = new();
 
         public override void Unload()
         {

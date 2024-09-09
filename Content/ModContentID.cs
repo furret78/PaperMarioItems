@@ -98,6 +98,7 @@ namespace PaperMarioItems.Content
             SpicySoup = ModContent.ItemType<SpicySoup>(),
             Spaghetti = ModContent.ItemType<SpaghettiPlate>(),
             SpicyPasta = ModContent.ItemType<SpicyPasta>(),
+            SpaceFood = ModContent.ItemType<SpaceFood>(),
             TrialStew = ModContent.ItemType<TrialStew>(),
             ZessCookie = ModContent.ItemType<ZessCookie>(),
             ZessDeluxe = ModContent.ItemType<ZessDeluxe>(),
@@ -121,6 +122,7 @@ namespace PaperMarioItems.Content
             Revived = ModContent.BuffType<RevivedBuff>(),
             Timestop = ModContent.BuffType<TimestopDebuff>(),
             Soft = ModContent.BuffType<SoftDebuff>(),
+            Allergic = ModContent.BuffType<AllergicBuff>(),
             Electrified = ModContent.BuffType<ElectrifiedBuff>();
     }
 }

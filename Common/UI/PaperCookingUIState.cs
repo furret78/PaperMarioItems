@@ -1,4 +1,3 @@
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using PaperMarioItems.Common.RecipeSystem;
@@ -134,6 +133,12 @@ namespace PaperMarioItems.Common.UI
             else return false;
         }
 
+        private static bool SpaceFoodCheck(int item1 = ItemID.None, int item2 = ItemID.None)
+        {
+            if (item1 == PMItemID.DriedBouquet || item2 == PMItemID.DriedBouquet) return true;
+            return false;
+        }
+
         private int ItemAmountFinalize(int amount1 = 0, int amount2 = 0)
         {
             int itemAmount = amount1;
@@ -151,6 +156,12 @@ namespace PaperMarioItems.Common.UI
             return resultItem;
         }
 
+        /// <summary>
+        /// This method handles the cooking part. Mystery Box check comes first, followed by Space Food check, then the standard recipe table last.
+        /// </summary>
+        /// <param name="itemslot1"></param>
+        /// <param name="itemslot2"></param>
+        /// <returns></returns>
         private static int BeginCooking(int itemslot1 = ItemID.None, int itemslot2 = ItemID.None)
         {
             int result = PMItemID.Mistake;
@@ -160,86 +171,91 @@ namespace PaperMarioItems.Common.UI
             {
                 if (Main.rand.NextBool(2))
                 {
-                    result = RecipeRegister.MysteryBoxRecipeDictionary.GetValueOrDefault(Main.rand.Next(0, RecipeRegister.MysteryBoxRecipeDictionary.Count));
+                    result = RecipeRegister.MysteryBoxRecipeList[Main.rand.Next(0, RecipeRegister.MysteryBoxRecipeList.Count)];
                 }
                 return result;
             }
-            else
+            if (SpaceFoodCheck(itemslot1, itemslot2))
             {
-                //first scan
+                for (int i = 0; i < RecipeRegister.SpaceFoodList.Count; i++)
+                {
+                    int currentItem = RecipeRegister.SpaceFoodList[i];
+                    if (!RecipeRegister.SpaceFoodBlacklist.Contains(currentItem) &&
+                        ((itemslot1 == currentItem && itemslot2 == PMItemID.DriedBouquet) ||
+                        (itemslot1 == PMItemID.DriedBouquet && itemslot2 == currentItem))) result = PMItemID.SpaceFood;
+                }
+            }
+            for (int i = 0; i < RecipeRegister.MainRecipeDictionary.Count; i++)
+            {
+                PMRecipe CurrentSelect = RecipeRegister.MainRecipeDictionary.GetValueOrDefault(i);
+                if (CurrentSelect.Ingredient1 == itemslot1)
+                {
+                    FirstRoundChosenList.Add(CurrentSelect);
+                }
+            }
+            //slot #1 item finds nothing in recipe slot #1
+            if (FirstRoundChosenList.Count <= 0)
+            {
+                //initiate second round
                 for (int i = 0; i < RecipeRegister.MainRecipeDictionary.Count; i++)
                 {
                     PMRecipe CurrentSelect = RecipeRegister.MainRecipeDictionary.GetValueOrDefault(i);
-                    if (CurrentSelect.Ingredient1 == itemslot1)
+                    if (CurrentSelect.Ingredient2 == itemslot1)
                     {
-                        FirstRoundChosenList.Add(CurrentSelect);
+                        SecondRoundChosenList.Add(CurrentSelect);
                     }
                 }
-                //slot #1 item finds nothing in recipe slot #1
-                if (FirstRoundChosenList.Count <= 0)
+                if (SecondRoundChosenList.Count > 0)
                 {
-                    //initiate second round
-                    for (int i = 0; i < RecipeRegister.MainRecipeDictionary.Count; i++)
+                    //found something (slot #1 item found in recipe slot #2)
+                    //look for slot #2 item in recipe slot #1
+                    if (SecondRoundChosenList.Exists(x => x.Ingredient1 == itemslot2))
                     {
-                        PMRecipe CurrentSelect = RecipeRegister.MainRecipeDictionary.GetValueOrDefault(i);
-                        if (CurrentSelect.Ingredient2 == itemslot1)
-                        {
-                            SecondRoundChosenList.Add(CurrentSelect);
-                        }
-                    }
-                    if (SecondRoundChosenList.Count > 0)
-                    {
-                        //found something (slot #1 item found in recipe slot #2)
-                        //look for slot #2 item in recipe slot #1
-                        if (SecondRoundChosenList.Exists(x => x.Ingredient1 == itemslot2))
-                        {
-                            var searchResult = SecondRoundChosenList.Find(x => x.Ingredient1 == itemslot2);
-                            if (IsLegalResult(searchResult.ResultingItem, searchResult.Hardmode, searchResult.Prehard))
-                            {
-                                return result = searchResult.ResultingItem;
-                            };
-                        }
-                    }
-                }
-                else
-                {
-                    //found something (slot #1 item in recipe slot #1, now find slot #2 item in recipe slot #2)
-                    if (FirstRoundChosenList.Exists(x => x.Ingredient2 == itemslot2))
-                    {
-                        var searchResult = FirstRoundChosenList.Find(x => x.Ingredient2 == itemslot2);
+                        var searchResult = SecondRoundChosenList.Find(x => x.Ingredient1 == itemslot2);
                         if (IsLegalResult(searchResult.ResultingItem, searchResult.Hardmode, searchResult.Prehard))
                         {
                             return result = searchResult.ResultingItem;
                         };
                     }
-                    //scan failed (cannot find matching slot #2 items)
-                    //find slot #1 item in recipe slot #2 instead
-                    for (int i = 0; i < RecipeRegister.MainRecipeDictionary.Count; i++)
+                }
+            }
+            else
+            {
+                //found something (slot #1 item in recipe slot #1, now find slot #2 item in recipe slot #2)
+                if (FirstRoundChosenList.Exists(x => x.Ingredient2 == itemslot2))
+                {
+                    var searchResult = FirstRoundChosenList.Find(x => x.Ingredient2 == itemslot2);
+                    if (IsLegalResult(searchResult.ResultingItem, searchResult.Hardmode, searchResult.Prehard))
                     {
-                        PMRecipe CurrentSelect = RecipeRegister.MainRecipeDictionary.GetValueOrDefault(i);
-                        if (CurrentSelect.Ingredient2 == itemslot1)
-                        {
-                            SecondRoundChosenList.Add(CurrentSelect);
-                        }
-                    }
-                    if (SecondRoundChosenList.Count > 0)
+                        return result = searchResult.ResultingItem;
+                    };
+                }
+                //scan failed (cannot find matching slot #2 items)
+                //find slot #1 item in recipe slot #2 instead
+                for (int i = 0; i < RecipeRegister.MainRecipeDictionary.Count; i++) 
+                {
+                    PMRecipe CurrentSelect = RecipeRegister.MainRecipeDictionary.GetValueOrDefault(i);
+                    if (CurrentSelect.Ingredient2 == itemslot1)
                     {
-                        //found something (slot #1 item found in recipe slot #2)
-                        //look for slot #2 item in recipe slot #1
-                        if (SecondRoundChosenList.Exists(x => x.Ingredient1 == itemslot2))
-                        {
-                            var searchResult = SecondRoundChosenList.Find(x => x.Ingredient1 == itemslot2);
-                            if (IsLegalResult(searchResult.ResultingItem, searchResult.Hardmode, searchResult.Prehard))
-                            {
-                                return result = searchResult.ResultingItem;
-                            };
-                        }
+                        SecondRoundChosenList.Add(CurrentSelect);
                     }
                 }
-                //if all fails, return a Mistake
-                return result;
+                if (SecondRoundChosenList.Count > 0)
+                {
+                    //found something (slot #1 item found in recipe slot #2)
+                    //look for slot #2 item in recipe slot #1
+                    if (SecondRoundChosenList.Exists(x => x.Ingredient1 == itemslot2))
+                    {
+                        var searchResult = SecondRoundChosenList.Find(x => x.Ingredient1 == itemslot2);
+                        if (IsLegalResult(searchResult.ResultingItem, searchResult.Hardmode, searchResult.Prehard))
+                        {
+                            return result = searchResult.ResultingItem;
+                        };
+                    }
+                }
             }
-
+            //if all fails, return a Mistake
+            return result;
         }
 
         private static bool IsLegalResult(int result, bool hardmode = false, bool prehard = false)

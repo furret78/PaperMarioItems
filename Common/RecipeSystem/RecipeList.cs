@@ -1,5 +1,6 @@
 using PaperMarioItems.Content;
 using System.Collections.Generic;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -92,8 +93,10 @@ namespace PaperMarioItems.Common.RecipeSystem
                 new(PMItemID.ChocoCake, PMItemID.InkySauce, PMItemID.MousseCake),
                 new(PMItemID.CocoCandy, PMItemID.CakeMix, ItemID.Coconut),
                 new(PMItemID.CouplesCake, PMItemID.SnowBunny, PMItemID.SpicySoup),
-                new(ItemID.FriedEgg, PMItemID.MysticEgg, ItemID.None, true),
+
                 new(PMItemID.FriedEgg, PMItemID.MysticEgg, ItemID.None, false, true),
+                new(ItemID.FriedEgg, PMItemID.MysticEgg, ItemID.None, true),
+                
                 new(PMItemID.KoopaTea, PMItemID.TurtleyLeaf),
                 new(PMItemID.HottestDog, PMItemID.HotSauce, ItemID.Hotdog),
                 new(PMItemID.HealthySalad, PMItemID.TurtleyLeaf, PMItemID.GoldenLeaf),
@@ -274,6 +277,7 @@ namespace PaperMarioItems.Common.RecipeSystem
                 new(PMItemID.PoisonedCake, PMItemID.CakeMix, ItemID.RedPotion),
                 new(PMItemID.PoisonedCake, PMItemID.PoisonMushroom, PMItemID.MousseCake),
                 new(PMItemID.PoisonedCake, PMItemID.PoisonMushroom, PMItemID.CakeMix),
+                new(PMItemID.TrialStew, PMItemID.PoisonMushroom, ItemID.StrangeBrew),
                 //switch item
                 new(PMItemID.HottestDog, PMItemID.HotSauce, ItemID.Hotdog)
             };
@@ -286,6 +290,20 @@ namespace PaperMarioItems.Common.RecipeSystem
                 PMItemID.ZessCookie, PMItemID.ZessDinner, PMItemID.ZessTea
             };
 
+            var SpaceFoodBlacklist = new List<int>()
+            {
+                ItemID.None, ItemID.LesserHealingPotion, ItemID.Mushroom, ItemID.LesserRestorationPotion, ItemID.BottledWater
+            };
+
+            var SpaceFoodList = new List<int>()
+            {
+                ItemID.Coconut, PMItemID.CouplesCake, PMItemID.ElectroPop, PMItemID.FirePop,
+                PMItemID.HeartfulCake, PMItemID.GoldenLeaf, PMItemID.HealthySalad, PMItemID.HoneyCandy,
+                ItemID.Hotdog, PMItemID.JellyCandy, ItemID.Mango, PMItemID.KoopaBun, PMItemID.LovePudding,
+                PMItemID.MeteorMeal, PMItemID.MousseCake, PMItemID.PeachTart, ItemID.Peach,
+                PMItemID.PoisonMushroom, PMItemID.TurtleyLeaf
+            };
+
             for (int i = 0; i < IngredientList.Count; i++)
             {
                 RecipeRegister.MainRecipeDictionary.Add(i, IngredientList[i]);
@@ -293,7 +311,30 @@ namespace PaperMarioItems.Common.RecipeSystem
 
             for (int j = 0; j < MysteryItemList.Count; j++)
             {
-                RecipeRegister.MysteryBoxRecipeDictionary.Add(j, MysteryItemList[j]);
+                RecipeRegister.MysteryBoxRecipeList.Add(MysteryItemList[j]);
+            }
+
+            //Space Food stuff
+            for (int k = 0; k < SpaceFoodBlacklist.Count; k++)
+            {
+                RecipeRegister.SpaceFoodBlacklist.Add(SpaceFoodBlacklist[k]);
+            }
+
+            for (int l = 0; l < SpaceFoodList.Count; l++)
+            {
+                RecipeRegister.SpaceFoodList.Add(SpaceFoodList[l]);
+            }
+        }
+
+        public override void PostSetupContent()
+        {
+            for (int m = 0; m < ContentSamples.ItemsByType.Count; m++)
+            {
+                Item item = ContentSamples.ItemsByType[m];
+                if (item.healLife > 0 || (item.buffType == BuffID.Regeneration && item.buffTime > 0))
+                {
+                    RecipeRegister.SpaceFoodList.Add(item.type);
+                }
             }
         }
     }

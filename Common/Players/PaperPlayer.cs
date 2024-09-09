@@ -62,7 +62,15 @@ namespace PaperMarioItems.Common.Players
         {
             On_Player.BuyItem += On_Player_BuyItem;
             On_Player.KillMe += On_Player_KillMe;
+            On_Player.AddBuff += On_Player_AddBuff;
         }
+        //space food detour
+        private void On_Player_AddBuff(On_Player.orig_AddBuff orig, Player self, int type, int timeToAdd, bool quiet, bool foodHack)
+        {
+            if (self.HasBuff(PMBuffID.Allergic) && !NotAllergicToBuffs.notAllergicToBuffs.Contains(type)) return;
+            else orig(self, type, timeToAdd, quiet, foodHack);
+        }
+
         //life shroom detour
         private void On_Player_KillMe(On_Player.orig_KillMe orig, Player self, PlayerDeathReason damageSource, double dmg, int hitDirection, bool pvp)
         {

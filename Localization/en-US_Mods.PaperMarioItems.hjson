@@ -592,6 +592,15 @@ Items: {
 		DisplayName: Trial Stew
 		Tooltip: Amazing food made by Zess T. Yields incredible results
 	}
+
+	SpaceFood: {
+		DisplayName: Space Food
+		Tooltip:
+			'''
+			Space food made by Zess T.
+			Eating it can sometimes make you impervious to status changes
+			'''
+	}
 }
 
 Buffs: {
@@ -643,6 +652,11 @@ Buffs: {
 	TimestopDebuff: {
 		DisplayName: Immobilized
 		Description: Movement will be impossible for a while!
+	}
+
+	AllergicBuff: {
+		DisplayName: Allergic
+		Description: Can't be affected by status changes!
 	}
 }
 
