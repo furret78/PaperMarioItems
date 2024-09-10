@@ -1,2 +1,3 @@
 Paper Mario Items 0.3.1 -- Update notes
 - Minor update to the chest loot generation algorithm to spread Cookbook out more
+- Cookbook can now spawn in Shadow Chests and Gold Chests when playing on Expert difficulty and above
