@@ -1,3 +1,6 @@
-Paper Mario Items 0.3.1 -- Update notes
-- Minor update to the chest loot generation algorithm to spread Cookbook out more
-- Cookbook can now spawn in Shadow Chests and Gold Chests when playing on Expert difficulty and above
+Paper Mario Items 0.4.0 -- Update notes
+CHANGES
+- Adjusted Space Food's functionality so that Allergic is only inflicted at a chance so as to match its item tooltip
+- Added Potion Sickness to Space Food
+- Fixed Mistake's Potion Sickness application being incompatible with Philosopher's Stone
+- Added Happy!, Cozy Fire, Heart Lamp, Shimmering, Banner, Shadow Candle, and Water Candle status effects to the list of Allergic exceptions as these effects are caused by environmental factors instead of weapons, NPCs, enemies, equipment, collectibles, or projectiles

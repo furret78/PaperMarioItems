@@ -16,8 +16,9 @@ namespace PaperMarioItems.Common.Players
             var buffList = new List<int>()
             {
                 PMBuffID.Allergic, PMBuffID.Revived, BuffID.CoolWhipPlayerBuff, BuffID.WindPushed,
-                //specific
-                BuffID.Horrified, BuffID.TheTongue, BuffID.BallistaPanic,
+                BuffID.Sunflower, BuffID.WaterCandle, BuffID.ShadowCandle, BuffID.MonsterBanner,
+                BuffID.Horrified, BuffID.TheTongue, BuffID.BallistaPanic, BuffID.Shimmer,
+                BuffID.Campfire, BuffID.HeartLamp,
                 //summons
                 BuffID.AbigailMinion, BuffID.BabyBird, BuffID.BabySlime, BuffID.DeadlySphere, BuffID.StormTiger,
                 BuffID.Smolstar, BuffID.FlinxMinion, BuffID.HornetMinion, BuffID.ImpMinion, BuffID.PirateMinion,

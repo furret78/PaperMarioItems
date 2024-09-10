@@ -27,7 +27,6 @@ namespace PaperMarioItems.Content.Items.Consumables
         {
             player.TryToResetHungerToNeutral();
         }
-        readonly int customPotionTime = 2;
         public override void Load()
         {
             On_Player.ApplyPotionDelay += On_Player_ApplyPotionDelay;
@@ -37,7 +36,7 @@ namespace PaperMarioItems.Content.Items.Consumables
         {
             if (sItem.type == Type)
             {
-                int delay = customPotionTime * 60; // see customPotionTime above (seconds)
+                int delay = 120;
                 if (self.pStone) delay = (int)((float)delay * Player.PhilosopherStoneDurationMultiplier);
                 self.AddBuff(21, delay);
             }

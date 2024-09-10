@@ -67,8 +67,15 @@ namespace PaperMarioItems.Common.Players
         //space food detour
         private void On_Player_AddBuff(On_Player.orig_AddBuff orig, Player self, int type, int timeToAdd, bool quiet, bool foodHack)
         {
-            if (self.HasBuff(PMBuffID.Allergic) && !NotAllergicToBuffs.notAllergicToBuffs.Contains(type)) return;
-            else orig(self, type, timeToAdd, quiet, foodHack);
+            int buffType = type;
+            int buffTime = timeToAdd;
+            if (self.HasBuff(PMBuffID.Allergic) && !NotAllergicToBuffs.notAllergicToBuffs.Contains(type))
+            {
+                buffType = 0;
+                buffTime = 0;
+                //return;
+            }
+            orig(self, buffType, buffTime, quiet, foodHack);
         }
 
         //life shroom detour

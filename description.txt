@@ -19,5 +19,3 @@ Author: {ModAuthor}
 Steam Workshop homepage: {ModHomepage}
 
 LATEST CHANGELOG
-Paper Mario Items 0.3.1 -- Update notes
-- Minor update to the chest loot generation algorithm to spread Cookbook out more

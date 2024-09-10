@@ -24,19 +24,13 @@ namespace PaperMarioItems.Content.Items.Cooking
 			Item.maxStack = Item.CommonMaxStack;
             Item.rare = ItemRarityID.Orange;
             Item.value = Item.sellPrice(silver: 10);
-            Item.buffType = PMBuffID.Allergic;
-            Item.buffTime = 18000;
-            Item.healLife = 5;
+            Item.healLife = 25;
             Item.potion = true;
         }
 
         public override bool? UseItem(Player player)
         {
-            int extraHeal = 0;
-            if (Main.hardMode) extraHeal += 10;
-            if (NPC.downedMoonlord) extraHeal += 10;
-            if (player.ZoneNormalSpace) extraHeal *= 2;
-            if (extraHeal > 0) player.Heal(extraHeal);
+            if (Main.rand.NextBool(2)) player.AddBuff(PMBuffID.Allergic, 18000);
             return true;
         }
 
@@ -45,10 +39,10 @@ namespace PaperMarioItems.Content.Items.Cooking
             On_Player.ApplyPotionDelay += On_Player_ApplyPotionDelay;
         }
 
-        private void On_Player_ApplyPotionDelay(On_Player.orig_ApplyPotionDelay orig, Player player, Item sItem)
+        private void On_Player_ApplyPotionDelay(On_Player.orig_ApplyPotionDelay orig, Player self, Item sItem)
         {
             if (sItem.type == Type) return;
-            else orig(player, sItem);
+            else orig(self, sItem);
         }
     }
 }

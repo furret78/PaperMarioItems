@@ -57,9 +57,10 @@ namespace PaperMarioItems.Content.Items.Consumables
             if (sItem.type == Type)
             {
                 int delay = customPotionTime * 60;
-                if (self.pStone) delay = (int)((float)delay * Player.PhilosopherStoneDurationMultiplier);
+                if (self.pStone) delay = (int)(delay * Player.PhilosopherStoneDurationMultiplier);
                 //do not apply the 5-sec cooldown if revived by life shroom
-                if (self.GetModPlayer<PaperPlayer>().lifeShroomRevive) self.GetModPlayer<PaperPlayer>().lifeShroomRevive = false;
+                if (self.GetModPlayer<PaperPlayer>().lifeShroomRevive)
+                    self.GetModPlayer<PaperPlayer>().lifeShroomRevive = false;
                 else self.AddBuff(21, delay);
             }
             else orig(self, sItem);

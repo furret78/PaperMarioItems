@@ -23,8 +23,6 @@ namespace PaperMarioItems.Content.Items.Consumables
             Item.healLife = 25;
             Item.healMana = 20;
         }
-
-        readonly int customPotionTime = 2;
         public override void Load()
         {
             On_Player.ApplyPotionDelay += On_Player_ApplyPotionDelay;
@@ -35,7 +33,7 @@ namespace PaperMarioItems.Content.Items.Consumables
         {
             if (sItem.type == Type)
             {
-                int delay = customPotionTime * 60;
+                int delay = 120;
                 if (self.pStone) delay = (int)((float)delay * Player.PhilosopherStoneDurationMultiplier);
                 self.AddBuff(21, delay);
             }

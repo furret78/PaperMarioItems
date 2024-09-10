@@ -33,14 +33,16 @@ namespace PaperMarioItems.Content.Items.Cooking
             On_Player.ApplyLifeAndOrMana += On_Player_ApplyLifeAndOrMana;
         }
 
-        private void On_Player_ApplyPotionDelay(On_Player.orig_ApplyPotionDelay orig, Player player, Item sItem)
+        private void On_Player_ApplyPotionDelay(On_Player.orig_ApplyPotionDelay orig, Player self, Item sItem)
         {
             if (sItem.type == Type)
             {
-                player.AddBuff(BuffID.PotionSickness, 600);
+                int delay = 600;
+                if (self.pStone) delay = (int)(delay * Player.PhilosopherStoneDurationMultiplier);
+                self.AddBuff(21, delay);
                 return;
             }
-            else orig(player, sItem);
+            else orig(self, sItem);
         }
         private void On_Player_ApplyLifeAndOrMana(On_Player.orig_ApplyLifeAndOrMana orig, Player player, Item sItem)
         {
