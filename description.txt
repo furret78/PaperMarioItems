@@ -19,9 +19,5 @@ Author: {ModAuthor}
 Steam Workshop homepage: {ModHomepage}
 
 LATEST CHANGELOG
-Paper Mario Items 0.3.0 -- Update notes
-- Added Space Food
-- Added Allergic status effect
-  + A select few status effects will still be applied even when the player has this effect
-- Adjusted the spawn rate of Cookbook in natural chests
-- Added Shadow Chests as candidates for spawning a Cookbook (there were formerly only Living Wood Chests, Skyware Chests, and Lihzahrd Chests as candidates)
+Paper Mario Items 0.3.1 -- Update notes
+- Minor update to the chest loot generation algorithm to spread Cookbook out more

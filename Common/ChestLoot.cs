@@ -1,5 +1,4 @@
 using PaperMarioItems.Content;
-using PaperMarioItems.Content.Items;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -12,16 +11,16 @@ namespace PaperMarioItems.Common
         {
             int itemsPlaced = 0;
             float maxItems = 80;
-            float spawnRate = 20;
+            float spawnRate = 10;
             if (Main.expertMode && !Main.masterMode)
             {
                 maxItems *= 0.5f;
-                spawnRate *= 0.7f;
+                spawnRate *= 0.5f;
             }
             if (Main.masterMode)
             {
                 maxItems *= 0.2f;
-                spawnRate *= 0.3f;
+                spawnRate *= 0.2f;
             }
             for (int chestIndex = 0; chestIndex < Main.maxChests; chestIndex++)
             {
@@ -38,9 +37,9 @@ namespace PaperMarioItems.Common
                     chestTile.TileFrameX == 12 * 36 ||
                     chestTile.TileFrameX == 3 * 36))
                 {
-                    if (WorldGen.genRand.NextBool((int)spawnRate))
+                    if (!WorldGen.genRand.NextBool((int)spawnRate))
                         continue;
-                    for (int inventoryIndex = 0; inventoryIndex < Chest.maxItems; inventoryIndex++)
+                    else for (int inventoryIndex = 0; inventoryIndex < Chest.maxItems; inventoryIndex++)
                     {
                         if (chest.item[inventoryIndex].type == ItemID.None)
                         {
