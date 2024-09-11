@@ -4,3 +4,4 @@ CHANGES
 - Added Potion Sickness to Space Food
 - Fixed Mistake's Potion Sickness application being incompatible with Philosopher's Stone
 - Added Happy!, Cozy Fire, Heart Lamp, Shimmering, Banner, Shadow Candle, and Water Candle status effects to the list of Allergic exceptions as these effects are caused by environmental factors instead of weapons, NPCs, enemies, equipment, collectibles, or projectiles
+- Remade certain buff icons to remove mixed pixels
