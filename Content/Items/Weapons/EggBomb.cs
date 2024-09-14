@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace PaperMarioItems.Content.Items.Weapons
 { 
-	public class CoconutBomb : ModItem
+	public class EggBomb : ModItem
 	{
         public override void SetStaticDefaults()
         {
@@ -14,9 +14,9 @@ namespace PaperMarioItems.Content.Items.Weapons
         public override void SetDefaults()
 		{
             Item.useStyle = ItemUseStyleID.Swing;
-            Item.shootSpeed = 12f;
-            Item.shoot = PMProjID.CoconutBomb;
-            Item.width = 39;
+            Item.shootSpeed = 9f;
+            Item.shoot = PMProjID.EggBomb;
+            Item.width = 40;
             Item.height = 40;
             Item.maxStack = Item.CommonMaxStack;
             Item.consumable = true;
@@ -25,7 +25,7 @@ namespace PaperMarioItems.Content.Items.Weapons
             Item.useAnimation = Item.useTime;
             Item.noUseGraphic = true;
             Item.noMelee = true;
-            Item.value = Item.sellPrice(silver: 5);
+            Item.value = Item.sellPrice(silver: 10);
             Item.rare = ItemRarityID.Orange;
         }
 	}

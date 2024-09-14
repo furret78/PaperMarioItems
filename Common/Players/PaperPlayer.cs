@@ -175,7 +175,7 @@ namespace PaperMarioItems.Common.Players
                     frightMaskCooldown--;
                     if (frightMaskCooldown == 17)
                     {
-                        Dust.NewDustPerfect(new(Player.Center.X, Player.Center.Y - 10), ModContent.DustType<BowserScare>(), null, Player.direction, default, 0.1f);
+                        Dust.NewDustPerfect(new(Player.Center.X, Player.Center.Y - 10), PMDustID.BowserScare, null, Player.direction, default, 0.1f);
                         InflictFrightOnAll(Player);
                         SoundEngine.PlaySound(SoundID.ForceRoar, Player.Center);
                     }
@@ -258,7 +258,7 @@ namespace PaperMarioItems.Common.Players
                     {
                         Vector2 dustRotation = Main.rand.NextVector2Unit();
                         Vector2 dustPosition = Player.Center + dustRotation * Player.height;
-                        Dust.NewDust(dustPosition, 0, 0, ModContent.DustType<ElectricDust>());
+                        Dust.NewDust(dustPosition, 0, 0, PMDustID.ElectricDust);
                         wte++;
                     }
                     else
@@ -271,7 +271,7 @@ namespace PaperMarioItems.Common.Players
                 {
                     if (dyt == 1)
                     {
-                        Dust.NewDust(Player.Center, 0, 0, ModContent.DustType<DizzyDust>(), Main.rand.NextFloat(-4, 5), Main.rand.NextFloat(-4, 0));
+                        Dust.NewDust(Player.Center, 0, 0, PMDustID.DizzyDust, Main.rand.NextFloat(-4, 5), Main.rand.NextFloat(-4, 0));
                         dyt++;
                     }
                     else
@@ -285,7 +285,7 @@ namespace PaperMarioItems.Common.Players
                     if (swt >= 60)
                     {
                         Color color = new(240 + Main.rand.Next(15), 240 + Main.rand.Next(15), 240 + Main.rand.Next(15));
-                        Dust.NewDustPerfect(new(Player.Center.X, Player.Center.Y), ModContent.DustType<StopwatchDust>(), null, 0, color);
+                        Dust.NewDustPerfect(new(Player.Center.X, Player.Center.Y), PMDustID.StopwatchDust, null, 0, color);
                         swt = 0;
                     }
                     swt++;

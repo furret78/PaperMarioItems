@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using PaperMarioItems.Content;
 using PaperMarioItems.Content.Buffs;
 using PaperMarioItems.Content.Dusts;
 using Terraria;
@@ -32,7 +33,7 @@ namespace PaperMarioItems.Common.NPCs
                 if (timerTimestop >= 60)
                 {
                     timerTimestop = 0;
-                    Dust.NewDustPerfect(newPos, ModContent.DustType<StopwatchDust>(), null, 0, color);
+                    Dust.NewDustPerfect(newPos, PMDustID.StopwatchDust, null, 0, color);
                 }
                 timerTimestop++;
                 if (!timestopOn)
@@ -62,7 +63,7 @@ namespace PaperMarioItems.Common.NPCs
             {
                 if (waitTimeDizzy == 1)
                 {
-                    Dust.NewDust(npc.Center, 0, 0, ModContent.DustType<DizzyDust>(), Main.rand.NextFloat(-4, 5), Main.rand.NextFloat(-4, 0));
+                    Dust.NewDust(npc.Center, 0, 0, PMDustID.DizzyDust, Main.rand.NextFloat(-4, 5), Main.rand.NextFloat(-4, 0));
                     waitTimeDizzy++;
                 }
                 else

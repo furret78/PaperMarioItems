@@ -1,7 +1,10 @@
 using PaperMarioItems.Content.Buffs;
+using PaperMarioItems.Content.Dusts;
 using PaperMarioItems.Content.Items;
 using PaperMarioItems.Content.Items.Consumables;
 using PaperMarioItems.Content.Items.Cooking;
+using PaperMarioItems.Content.Items.Weapons;
+using PaperMarioItems.Content.Projectiles;
 using Terraria.ModLoader;
 
 namespace PaperMarioItems.Content
@@ -56,11 +59,13 @@ namespace PaperMarioItems.Content
             ChocoCake = ModContent.ItemType<ChocoCake>(),
             CocoCandy = ModContent.ItemType<CocoCandy>(),
             CouplesCake = ModContent.ItemType<CouplesCake>(),
+            CoconutBomb = ModContent.ItemType<CoconutBomb>(),
             FreshJuice = ModContent.ItemType<FreshJuice>(),
             FriedEgg = ModContent.ItemType<FriedEgg>(),
             FirePop = ModContent.ItemType<FirePop>(),
             FruitParfait = ModContent.ItemType<FruitParfait>(),
             ElectroPop = ModContent.ItemType<ElectroPop>(),
+            EggBomb = ModContent.ItemType<EggBomb>(),
             HottestDog = ModContent.ItemType<HottestDog>(),
             HealthySalad = ModContent.ItemType<HealthySalad>(),
             HeartfulCake = ModContent.ItemType<HeartfulCake>(),
@@ -124,5 +129,22 @@ namespace PaperMarioItems.Content
             Soft = ModContent.BuffType<SoftDebuff>(),
             Allergic = ModContent.BuffType<AllergicBuff>(),
             Electrified = ModContent.BuffType<ElectrifiedBuff>();
+    }
+    //projectiles
+    public class PMProjID : ModSystem
+    {
+        public static readonly int CoconutBomb = ModContent.ProjectileType<CoconutBombProjectile>(),
+            EggBomb = ModContent.ProjectileType<EggBombProjectile>(),
+            Fireball = ModContent.ProjectileType<CustomFireball>();
+    }
+    //dusts
+    public class PMDustID : ModSystem
+    {
+        public static readonly int BowserScare = ModContent.DustType<BowserScare>(),
+            DizzyDust = ModContent.DustType<DizzyDust>(),
+            ElectricDust = ModContent.DustType<ElectricDust>(),
+            HPDrainDust = ModContent.DustType<HPDrainDust>(),
+            LightningDust = ModContent.DustType<LightningDust>(),
+            StopwatchDust = ModContent.DustType<StopwatchDust>();
     }
 }

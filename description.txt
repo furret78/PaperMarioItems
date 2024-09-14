@@ -1,21 +1,23 @@
 A mod that aims to add items from the Paper Mario series.
 
+[c/4DBF60:Balance]
 Created with vanilla Terraria gameplay in mind. The items included may either be too overpowered or not powerful enough for mods which add additional content to the game.
 
+[c/4DBF60:Obtaining Items]
 Items are either dropped as loot from enemies or crafted. Certain items will require the presence of a Cookbook and a suitable cooking environment in order to craft. The cooking system is inspired by Taco's Cooking Delight mod's.
 The mod currently features items from Paper Mario: The Thousand-Year Door. Future updates may introduce Paper Mario (N64) and Super Paper Mario variations and exclusives.
 
 To see which recipes correspond to which item, please reference the list of recipes in TTYD. Certain ingredients may be substituted by vanilla counterparts (Mango instead of Keel Mango).
 
+[c/4DBF60:Attributes]
 Massive thanks to Jopojelly, Cube Root, Blobwin, stormytuna, direwolf420 and TModLoader server's #mod-development-help channel! Couldn't have made the mod without them.
 
 All Paper Mario assets used in the mod belongs to Intelligent Systems and Nintendo.
 
-In-game mod icon was drawn by @sumrandomstuff on Discord.
 Playtesting is done by Cosmiikat.
 
 Latest version: {ModVersion}
 Author: {ModAuthor}
 Steam Workshop homepage: {ModHomepage}
 
-LATEST CHANGELOG
+[c/FFFF83:LATEST CHANGELOG:]

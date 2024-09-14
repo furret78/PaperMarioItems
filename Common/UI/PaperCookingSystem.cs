@@ -46,7 +46,6 @@ namespace PaperMarioItems.Common.UI
                     || !Main.playerInventory)
                 {
                     HideUI();
-                    NearestCookingPotPosition = null;
                 }
             }
             else if (MenuBarUserInterface != null)
@@ -95,6 +94,7 @@ namespace PaperMarioItems.Common.UI
 
         public void HideUI()
         {
+            NearestCookingPotPosition = null;
             MenuBarUserInterface?.SetState(null);
             SoundEngine.PlaySound(SoundID.MenuClose);
         }

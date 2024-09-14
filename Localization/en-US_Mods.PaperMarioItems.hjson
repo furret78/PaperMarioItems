@@ -601,6 +601,16 @@ Items: {
 			Eating it can sometimes make you impervious to status changes
 			'''
 	}
+
+	CoconutBomb: {
+		DisplayName: Coconut Bomb
+		Tooltip: ""
+	}
+
+	EggBomb: {
+		DisplayName: Egg Bomb
+		Tooltip: ""
+	}
 }
 
 Buffs: {
@@ -660,4 +670,8 @@ Buffs: {
 	}
 }
 
-Projectiles.CustomFireball.DisplayName: Fire Flower Fireball
+Projectiles: {
+	CustomFireball.DisplayName: Fire Flower Fireball
+	CoconutBombProjectile.DisplayName: Coconut Bomb Projectile
+	EggBombProjectile.DisplayName: Egg Bomb Projectile
+}

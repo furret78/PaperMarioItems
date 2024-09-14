@@ -8,7 +8,6 @@ using Terraria.DataStructures;
 using PaperMarioItems.Common.NPCs;
 using PaperMarioItems.Content.Buffs;
 using PaperMarioItems.Content.Dusts;
-using PaperMarioItems.Content.Projectiles;
 using PaperMarioItems.Content;
 
 namespace PaperMarioItems.Common.Players
@@ -134,6 +133,7 @@ namespace PaperMarioItems.Common.Players
             if (self == null || !self.HasItem(PMItemID.LifeMushroom)) return;
             else
             {
+                if (self.HasBuff(BuffID.PotionSickness)) self.ClearBuff(BuffID.PotionSickness);
                 for (int l = 0; l < Player.MaxBuffs; l++)
                 {
                     if (self.buffTime[l] > 0)
@@ -199,7 +199,7 @@ namespace PaperMarioItems.Common.Players
                 Vector2 target = new(player.Center.X + 100 * player.direction, player.Center.Y - ((range / 2) - Main.rand.NextFloat(range)));
                 Vector2 angle = (target - position).SafeNormalize(Vector2.UnitX);
                 float stopper = player.Center.Y + (Main.screenHeight / 2);
-                Projectile.NewProjectile(player.GetSource_FromThis(), position, velocity * angle, ModContent.ProjectileType<CustomFireball>(), fireFlowerDamage, 3f);
+                Projectile.NewProjectile(player.GetSource_FromThis(), position, velocity * angle, PMProjID.Fireball, fireFlowerDamage, 3f);
                 SoundEngine.PlaySound(PaperMarioItems.fireFlowerPM, position);
             }
         }
@@ -322,7 +322,7 @@ namespace PaperMarioItems.Common.Players
         }
         public void StrikeLightning(Player player, NPC npc, Player vsplayer)
         {
-            Dust.NewDustDirect(npc.Center, 2, 2, ModContent.DustType<LightningDust>());
+            Dust.NewDustDirect(npc.Center, 2, 2, PMDustID.LightningDust);
             if (npc != null)
             {
                 npc.SimpleStrikeNPC(100, GetDirection(npc, player), Main.rand.Next(100) <= player.GetTotalCritChance(DamageClass.Generic));
@@ -351,7 +351,7 @@ namespace PaperMarioItems.Common.Players
                         if (!npc.boss && !NPCID.Sets.ShouldBeCountedAsBoss[npc.type])
                         {
                             empty = false;
-                            if (!npc.HasBuff<TimestopDebuff>()) Dust.NewDustPerfect(newPos, ModContent.DustType<StopwatchDust>(), null, 0, color);
+                            if (!npc.HasBuff<TimestopDebuff>()) Dust.NewDustPerfect(newPos, PMDustID.StopwatchDust, null, 0, color);
                             npc.AddBuff(PMBuffID.Timestop, 10800);
                         }
                         else
@@ -371,7 +371,7 @@ namespace PaperMarioItems.Common.Players
                                 if (Main.rand.NextBool(timestopChance))
                                 {
                                     empty = false;
-                                    if (!npc.HasBuff<TimestopDebuff>()) Dust.NewDustPerfect(newPos, ModContent.DustType<StopwatchDust>(), null, 0, color);
+                                    if (!npc.HasBuff<TimestopDebuff>()) Dust.NewDustPerfect(newPos, PMDustID.StopwatchDust, null, 0, color);
                                     npc.AddBuff(PMBuffID.Timestop, 3600);
                                 }
                             }
@@ -387,7 +387,7 @@ namespace PaperMarioItems.Common.Players
                         if (Main.rand.NextBool(5))
                         {
                             empty = false;
-                            if (vsplayer.HasBuff<TimestopDebuff>()) Dust.NewDustPerfect(newPos, ModContent.DustType<StopwatchDust>(), null, 0, color);
+                            if (vsplayer.HasBuff<TimestopDebuff>()) Dust.NewDustPerfect(newPos, PMDustID.StopwatchDust, null, 0, color);
                             vsplayer.AddBuff(PMBuffID.Timestop, 10800);
                         }
                     }
@@ -436,7 +436,7 @@ namespace PaperMarioItems.Common.Players
             {
                 if (closestNPC != null && closestPlayer == null)
                 {
-                    Dust.NewDustPerfect(closestNPC.Center, ModContent.DustType<HPDrainDust>());
+                    Dust.NewDustPerfect(closestNPC.Center, PMDustID.HPDrainDust);
                     SoundEngine.PlaySound(SoundID.NPCDeath4, closestNPC.Center);
                     //hit the npc and do server handling
                     var hit = closestNPC.CalculateHitInfo(healAmount + 2, GetDirection(closestNPC, player), Main.rand.Next(100) <= player.GetTotalCritChance(DamageClass.Generic), 0, null, false);
@@ -447,7 +447,7 @@ namespace PaperMarioItems.Common.Players
                 if (closestPlayer != null)
                 {
                     closestPlayer.Hurt(PlayerDeathReason.ByCustomReason(closestPlayer.name + " " + HPDrainDeath), healAmount, GetDirection(closestPlayer, player), true, false, -1, false);
-                    Dust.NewDustPerfect(closestPlayer.Center, ModContent.DustType<HPDrainDust>());
+                    Dust.NewDustPerfect(closestPlayer.Center, PMDustID.HPDrainDust);
                     SoundEngine.PlaySound(SoundID.NPCDeath4, closestPlayer.Center);
                 }
             }
