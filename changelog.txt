@@ -1,15 +1,1 @@
-Paper Mario Items 0.4.0 -- Update notes
-ADDED
-- Added Coconut Bomb, Egg Bomb, Zess Dynamite, and Courage Meal
-- Added cooking recipes for the above items
-
-CHANGES
-- Adjusted Space Food's functionality so that Allergic is only inflicted at a chance so as to match its item tooltip
-- Added Potion Sickness to Space Food
-- Fixed Mistake's Potion Sickness application being incompatible with Philosopher's Stone
-- Added Happy!, Cozy Fire, Heart Lamp, Shimmering, Banner, Shadow Candle, and Water Candle status effects to the list of Allergic exceptions as these effects are caused by environmental factors instead of weapons, NPCs, enemies, equipment, collectibles, or projectiles
-- Remade certain buff icons to remove mixed pixels
-
-WORKSHOP CHANGES
-- New Steam Workshop icon. The in-game mod icon will stay the same
-- Mod display name changed to "Paper Plumber Items". The internal name will stay the same
+Paper Mario Items 0.5.0 -- Update notes
