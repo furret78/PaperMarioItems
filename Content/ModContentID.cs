@@ -60,6 +60,7 @@ namespace PaperMarioItems.Content
             CocoCandy = ModContent.ItemType<CocoCandy>(),
             CouplesCake = ModContent.ItemType<CouplesCake>(),
             CoconutBomb = ModContent.ItemType<CoconutBomb>(),
+            CourageMeal = ModContent.ItemType<CourageMeal>(),
             FreshJuice = ModContent.ItemType<FreshJuice>(),
             FriedEgg = ModContent.ItemType<FriedEgg>(),
             FirePop = ModContent.ItemType<FirePop>(),
@@ -111,6 +112,7 @@ namespace PaperMarioItems.Content
             ZessSpecial = ModContent.ItemType<ZessSpecial>(),
             ZessFrappe = ModContent.ItemType<ZessFrappe>(),
             ZessTea = ModContent.ItemType<ZessTea>(),
+            ZessDynamite = ModContent.ItemType<ZessDynamite>(),
             
             DeliciousCake = ModContent.ItemType<DeliciousCake>(),
             PoisonedCake = ModContent.ItemType<PoisonedCake>();
@@ -135,6 +137,8 @@ namespace PaperMarioItems.Content
     {
         public static readonly int CoconutBomb = ModContent.ProjectileType<CoconutBombProjectile>(),
             EggBomb = ModContent.ProjectileType<EggBombProjectile>(),
+            CourageMeal = ModContent.ProjectileType<CourageMealProjectile>(),
+            ZessDynamite = ModContent.ProjectileType<ZessDynamiteProjectile>(),
             Fireball = ModContent.ProjectileType<CustomFireball>();
     }
     //dusts

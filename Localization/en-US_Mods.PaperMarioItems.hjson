@@ -604,12 +604,30 @@ Items: {
 
 	CoconutBomb: {
 		DisplayName: Coconut Bomb
-		Tooltip: ""
+		Tooltip: An explosive made by Zess T.
 	}
 
 	EggBomb: {
 		DisplayName: Egg Bomb
-		Tooltip: ""
+		Tooltip: An egg bomb made by Zess T.
+	}
+
+	CourageMeal: {
+		DisplayName: Courage Meal
+		Tooltip:
+			'''
+			Hard food made by Zess T.
+			Feels like a brick
+			'''
+	}
+
+	ZessDynamite: {
+		DisplayName: Zess Dynamite
+		Tooltip:
+			'''
+			Blasting powder made by Zess T.
+			Wider range than {$Mods.PaperMarioItems.Items.CoconutBomb.DisplayName} and {$Mods.PaperMarioItems.Items.EggBomb.DisplayName}
+			'''
 	}
 }
 
@@ -671,7 +689,9 @@ Buffs: {
 }
 
 Projectiles: {
-	CustomFireball.DisplayName: Fire Flower Fireball
-	CoconutBombProjectile.DisplayName: Coconut Bomb Projectile
-	EggBombProjectile.DisplayName: Egg Bomb Projectile
+	CustomFireball.DisplayName: "{$Mods.PaperMarioItems.Items.FireFlower.DisplayName} Fireball"
+	CoconutBombProjectile.DisplayName: "{$Mods.PaperMarioItems.Items.CoconutBomb.DisplayName}"
+	EggBombProjectile.DisplayName: "{$Mods.PaperMarioItems.Items.EggBomb.DisplayName}"
+	CourageMealProjectile.DisplayName: "{$Mods.PaperMarioItems.Items.CourageMeal.DisplayName}"
+	ZessDynamiteProjectile.DisplayName: "{$Mods.PaperMarioItems.Items.ZessDynamite.DisplayName}"
 }

@@ -9,7 +9,7 @@ namespace PaperMarioItems.Content.Projectiles
     public class EggBombProjectile : ModProjectile
     {
         private const int DefaultHeight = 15;
-        private const int ExplosionWidthHeight = 250;
+        private const int ExplosionWidthHeight = 200;
 
         public override void SetStaticDefaults()
         {
@@ -100,12 +100,12 @@ namespace PaperMarioItems.Content.Projectiles
             foreach (var npc in Main.ActiveNPCs)
             {
                 if (npc.friendly) continue;
-                if (Projectile.Colliding(Projectile.getRect(), npc.getRect())) InstantlyExplode();
+                if (Projectile.Colliding(Projectile.getRect(), npc.getRect())) Explode();
             }
             foreach (var vsplayer in Main.ActivePlayers)
             {
                 if (!vsplayer.hostile) continue;
-                if (Projectile.Colliding(Projectile.getRect(), vsplayer.getRect())) InstantlyExplode();
+                if (Projectile.Colliding(Projectile.getRect(), vsplayer.getRect())) Explode();
             }
         }
         public override void PrepareBombToBlow()
@@ -173,10 +173,9 @@ namespace PaperMarioItems.Content.Projectiles
             }
         }
 
-        private void InstantlyExplode()
+        private void Explode()
         {
-            Projectile.timeLeft = 0;
-            Projectile.PrepareBombToBlow();
+            if (Projectile.timeLeft > 3) Projectile.timeLeft = 3;
         }
     }
 }

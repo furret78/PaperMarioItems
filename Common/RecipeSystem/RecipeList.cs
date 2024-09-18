@@ -67,6 +67,9 @@ namespace PaperMarioItems.Common.RecipeSystem
                 new(PMItemID.SlowMushroom, PMItemID.SlowMushroom, PMItemID.GradualSyrup),
                 new(ItemID.Coconut, PMItemID.DriedBouquet, PMItemID.CoconutBomb),
                 new(PMItemID.CoconutBomb, ItemID.Coconut, PMItemID.FireFlower),
+                new(PMItemID.CourageMeal, PMItemID.CourageShell, PMItemID.ZessDeluxe),
+                new(PMItemID.CourageMeal, PMItemID.CourageShell, PMItemID.ZessDinner),
+                new(PMItemID.CourageMeal, PMItemID.CourageShell, PMItemID.ZessSpecial),
                 new(PMItemID.FreshJuice, ItemID.Coconut, ItemID.Peach),
                 new(PMItemID.FreshJuice, ItemID.Coconut, ItemID.Mango),
                 new(PMItemID.FreshJuice, ItemID.Coconut, PMItemID.TurtleyLeaf),
@@ -91,7 +94,7 @@ namespace PaperMarioItems.Common.RecipeSystem
                 new(PMItemID.FruitParfait, ItemID.Peach, PMItemID.MapleSyrup),
                 new(PMItemID.FruitParfait, ItemID.Peach, PMItemID.JamminJelly),
                 new(PMItemID.ElectroPop, PMItemID.CakeMix, PMItemID.VoltMushroom),
-                //new(PMItemID.EggBomb, PMItemID.DriedBouquet, PMItemID.ZessDynamite),
+                new(PMItemID.EggBomb, PMItemID.DriedBouquet, PMItemID.ZessDynamite),
                 new(PMItemID.EggBomb, PMItemID.MysticEgg, PMItemID.FireFlower),
                 new(PMItemID.ChocoCake, PMItemID.InkySauce, PMItemID.CakeMix),
                 new(PMItemID.ChocoCake, PMItemID.InkySauce, PMItemID.MousseCake),
@@ -272,6 +275,7 @@ namespace PaperMarioItems.Common.RecipeSystem
                 new(PMItemID.ZessSpecial, PMItemID.HealthySalad, PMItemID.InkPasta),
                 new(PMItemID.ZessSpecial, PMItemID.HealthySalad, PMItemID.SpicyPasta),
                 new(PMItemID.ZessSpecial, PMItemID.HealthySalad, PMItemID.MushroomRoast),
+                new(PMItemID.ZessDynamite, PMItemID.EggBomb, PMItemID.CoconutBomb),
                 //original recipes
                 new(PMItemID.ShootingStar, ItemID.FragmentNebula, ItemID.FragmentStardust),
                 new(PMItemID.FreshJuice, ItemID.SpicyPepper, ItemID.BottledWater),
@@ -289,7 +293,7 @@ namespace PaperMarioItems.Common.RecipeSystem
                 PMItemID.FreshJuice, PMItemID.FireFlower, PMItemID.Spaghetti, PMItemID.TastyTonic,
                 PMItemID.SpicySoup, PMItemID.FriedEgg, PMItemID.HoneyMushroom, PMItemID.Koopasta,
                 PMItemID.KoopaTea, PMItemID.MushroomFry, PMItemID.ThunderRage, PMItemID.VoltMushroom,
-                PMItemID.ZessCookie, PMItemID.ZessDinner, PMItemID.ZessTea
+                PMItemID.ZessCookie, PMItemID.ZessDinner, PMItemID.ZessTea, PMItemID.EggBomb
             };
 
             var SpaceFoodBlacklist = new List<int>()
