@@ -1,4 +1,3 @@
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.Audio;
@@ -161,7 +160,7 @@ namespace PaperMarioItems.Content.Projectiles
 
             if (Projectile.owner == Main.myPlayer)
             {
-                int explosionRadius = 6;
+                int explosionRadius = 5;
                 int minTileX = (int)(Projectile.Center.X / 16f - explosionRadius);
                 int maxTileX = (int)(Projectile.Center.X / 16f + explosionRadius);
                 int minTileY = (int)(Projectile.Center.Y / 16f - explosionRadius);

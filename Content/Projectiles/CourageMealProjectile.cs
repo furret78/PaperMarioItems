@@ -6,9 +6,9 @@ using Terraria.ModLoader;
 
 namespace PaperMarioItems.Content.Projectiles
 {
-    public class CoconutBombProjectile : ModProjectile
+    public class CourageMealProjectile : ModProjectile
     {
-        private const int DefaultWidthHeight = 15;
+        private const int DefaultHeight = 15;
         private const int ExplosionWidthHeight = 250;
 
         public override void SetStaticDefaults()
@@ -19,13 +19,13 @@ namespace PaperMarioItems.Content.Projectiles
 
         public override void SetDefaults()
         {
-            Projectile.width = DefaultWidthHeight;
-            Projectile.height = DefaultWidthHeight;
+            Projectile.width = DefaultHeight - 2;
+            Projectile.height = DefaultHeight;
             Projectile.friendly = true;
             Projectile.penetrate = -1;
             Projectile.timeLeft = 300;
-            DrawOffsetX = -2;
-            DrawOriginOffsetY = -5;
+            DrawOffsetX = -(int)(Projectile.width / 2f);
+            DrawOriginOffsetY = -(int)(Projectile.height / 2f);
         }
 
         public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
@@ -114,8 +114,8 @@ namespace PaperMarioItems.Content.Projectiles
             Projectile.alpha = 255;
             Projectile.Resize(ExplosionWidthHeight, ExplosionWidthHeight);
 
-            Projectile.damage = 300;
-            Projectile.knockBack = 10f;
+            Projectile.damage = 260;
+            Projectile.knockBack = 8f;
         }
 
         public override void OnKill(int timeLeft)
@@ -156,11 +156,11 @@ namespace PaperMarioItems.Content.Projectiles
                 gore.velocity.X -= 1.5f;
                 gore.velocity.Y -= 1.5f;
             }
-            Projectile.Resize(DefaultWidthHeight, DefaultWidthHeight);
+            Projectile.Resize(DefaultHeight - 2, DefaultHeight);
 
             if (Projectile.owner == Main.myPlayer)
             {
-                int explosionRadius = 7;
+                int explosionRadius = 5;
                 int minTileX = (int)(Projectile.Center.X / 16f - explosionRadius);
                 int maxTileX = (int)(Projectile.Center.X / 16f + explosionRadius);
                 int minTileY = (int)(Projectile.Center.Y / 16f - explosionRadius);

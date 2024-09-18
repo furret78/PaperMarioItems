@@ -17,7 +17,7 @@ All Paper Mario assets used in the mod belongs to Intelligent Systems and Ninten
 Playtesting is done by Cosmiikat.
 
 Latest version: {ModVersion}
-Author: {ModAuthor}
+Author: Furret78 / yuureiki
 Steam Workshop homepage: {ModHomepage}
 
 [c/FFFF83:LATEST CHANGELOG:]
