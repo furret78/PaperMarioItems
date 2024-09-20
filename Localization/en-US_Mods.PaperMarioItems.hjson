@@ -604,12 +604,20 @@ Items: {
 
 	CoconutBomb: {
 		DisplayName: Coconut Bomb
-		Tooltip: An explosive made by Zess T.
+		Tooltip:
+			'''
+			An explosive made by Zess T.
+			Deals 300 damage
+			'''
 	}
 
 	EggBomb: {
 		DisplayName: Egg Bomb
-		Tooltip: An egg bomb made by Zess T.
+		Tooltip:
+			'''
+			An egg bomb made by Zess T.
+			Deals 260 damage
+			'''
 	}
 
 	CourageMeal: {
@@ -617,7 +625,7 @@ Items: {
 		Tooltip:
 			'''
 			Hard food made by Zess T.
-			Feels like a brick
+			Deals 100 damage when thrown
 			'''
 	}
 
@@ -627,6 +635,7 @@ Items: {
 			'''
 			Blasting powder made by Zess T.
 			Wider range than {$Mods.PaperMarioItems.Items.CoconutBomb.DisplayName} and {$Mods.PaperMarioItems.Items.EggBomb.DisplayName}
+			Deals 450 damage
 			'''
 	}
 }

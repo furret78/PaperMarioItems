@@ -275,7 +275,7 @@ namespace PaperMarioItems.Common.RecipeSystem
                 new(PMItemID.ZessSpecial, PMItemID.HealthySalad, PMItemID.InkPasta),
                 new(PMItemID.ZessSpecial, PMItemID.HealthySalad, PMItemID.SpicyPasta),
                 new(PMItemID.ZessSpecial, PMItemID.HealthySalad, PMItemID.MushroomRoast),
-                new(PMItemID.ZessDynamite, PMItemID.EggBomb, PMItemID.CoconutBomb),
+                new(PMItemID.ZessDynamite, PMItemID.EggBomb, PMItemID.CoconutBomb, true),
                 //original recipes
                 new(PMItemID.ShootingStar, ItemID.FragmentNebula, ItemID.FragmentStardust),
                 new(PMItemID.FreshJuice, ItemID.SpicyPepper, ItemID.BottledWater),

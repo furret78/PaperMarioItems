@@ -86,10 +86,14 @@ namespace PaperMarioItems.Content.Projectiles
 
         private void CourageMealDelete()
         {
-            SoundEngine.PlaySound(PaperMarioItems.damagePM, Projectile.Center);
+            Projectile.ai[1] = 1;
             Projectile.damage = 100;
             Projectile.knockBack = 5f;
-            Projectile.timeLeft = 15;
+        }
+
+        public override void OnKill(int timeLeft)
+        {
+            if (Projectile.ai[1] == 1) SoundEngine.PlaySound(PaperMarioItems.damagePM, Projectile.Center);
         }
     }
 }

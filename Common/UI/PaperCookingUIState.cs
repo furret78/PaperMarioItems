@@ -82,7 +82,7 @@ namespace PaperMarioItems.Common.UI
         private void PlayButtonClicked(UIMouseEvent evt, UIElement listeningElement)
         {
             int item1 = itemSlots[0].Item.type, amount1 = itemSlots[0].Item.stack, item2 = itemSlots[1].Item.type, amount2 = itemSlots[1].Item.stack;
-            if (CanCook(item1, amount1, item2, amount2))
+            if (CanCook(item1, amount1, item2, amount2) && Main.LocalPlayer.HasItemInInventoryOrOpenVoidBag(PMItemID.Cookbook))
             {
                 int maxDeduction = ItemAmountFinalize(amount1, amount2);
                 if (!MysteryBoxCheck(item1, item2))
