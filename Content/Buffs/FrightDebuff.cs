@@ -9,6 +9,7 @@ namespace PaperMarioItems.Content.Buffs
         public override LocalizedText Description => base.Description;
         public override void SetStaticDefaults()
         {
+            Main.pvpBuff[Type] = true;
             Main.debuff[Type] = true;
             Main.buffNoTimeDisplay[Type] = true;
         }

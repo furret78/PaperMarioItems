@@ -44,7 +44,7 @@ namespace PaperMarioItems.Common.Players
 
         public override void PostSetupContent()
         {
-            for (int i = 0; i <= BuffLoader.BuffCount; i++)
+            for (int i = 0; i < BuffLoader.BuffCount; i++)
             {
                 if ((BuffID.Sets.BasicMountData[i] != null || Main.vanityPet[i] || Main.lightPet[i]) && !notAllergicList.Exists(x => x == i))
                 {
