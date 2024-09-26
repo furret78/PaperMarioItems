@@ -32,7 +32,7 @@ namespace PaperMarioItems.Content.Items.Consumables
 
         public override bool? UseItem(Player player)
         {
-            SoundEngine.PlaySound(PaperMarioItems.useItemPM, player.Center);
+            SoundEngine.PlaySound(PMSoundID.useItem, player.Center);
 			int TempLife = player.statLife;
 			if (player.statMana < player.statLifeMax2)
 			{

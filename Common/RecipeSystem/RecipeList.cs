@@ -36,6 +36,8 @@ namespace PaperMarioItems.Common.RecipeSystem
                 new(PMItemID.SuperMushroom, PMItemID.PointSwap, PMItemID.MapleSyrup),
                 new(PMItemID.SuperMushroom, PMItemID.PointSwap, PMItemID.LifeMushroom),
                 new(PMItemID.SuperMushroom, PMItemID.PointSwap, PMItemID.VoltMushroom),
+                new(PMItemID.TastyTonic, PMItemID.PointSwap, PMItemID.SleepySheep),
+                new(PMItemID.SleepySheep, PMItemID.PointSwap, PMItemID.TastyTonic),
                 new(ItemID.FlowerofFrost, PMItemID.PointSwap, PMItemID.FireFlower, true),
                 new(ItemID.FlowerofFrost, PMItemID.PointSwap, ItemID.FlowerofFire, true),
                 //unique cooking (non-cookbook)
@@ -334,10 +336,10 @@ namespace PaperMarioItems.Common.RecipeSystem
 
         public override void PostSetupContent()
         {
-            for (int m = 0; m < ContentSamples.ItemsByType.Count; m++)
+            foreach (var itemindex in ContentSamples.ItemsByType)
             {
-                Item item = ContentSamples.ItemsByType[m];
-                if (item.healLife > 0 || (item.buffType == BuffID.Regeneration && item.buffTime > 0))
+                Item item = itemindex.Value;
+                if ((item.healLife > 0 || (item.buffType == BuffID.Regeneration && item.buffTime > 0)) && RecipeRegister.SpaceFoodList.Exists(x => x == item.type))
                 {
                     RecipeRegister.SpaceFoodList.Add(item.type);
                 }

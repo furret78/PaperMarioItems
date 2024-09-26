@@ -35,7 +35,7 @@ namespace PaperMarioItems.Content.Items.Consumables
 
         public override void OnConsumeItem(Player player)
         {
-            SoundEngine.PlaySound(PaperMarioItems.useItemPM, player.Center);
+            SoundEngine.PlaySound(PMSoundID.useItem, player.Center);
             player.GetModPlayer<PaperPlayer>().fireFlower = 26;
         }
 

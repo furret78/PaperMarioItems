@@ -234,7 +234,8 @@ Items: {
 		DisplayName: Stopwatch
 		Tooltip:
 			'''
-			If possible, temporarily immobilizes all enemies
+			If possible, temporarily immobilizes all enemies for 3 minutes
+			1/7 chance to work against bosses for 1 minute
 			Not advised to use against Moon Lord
 			'''
 	}
@@ -419,8 +420,11 @@ Items: {
 			'''
 			A heartwarming dessert that brings back fond memories
 			Grants regeneration for 15 minutes when consumed
-			Can only be used on other players
+			Can only be used by other players
 			'''
+		PlayerNameEmpty: Not sure who made this... Finders' keepers?
+		PlayerNameOther: "{0} made this for you"
+		PlayerNameCreator: You can't eat a {$Mods.PaperMarioItems.Items.CouplesCake.DisplayName} you made yourself
 	}
 
 	DeliciousCake: {
@@ -638,6 +642,15 @@ Items: {
 			Deals 450 damage
 			'''
 	}
+
+	SleepySheep: {
+		DisplayName: Sleepy Sheep
+		Tooltip:
+			'''
+			Temporarily puts all enemies to sleep, immobilizing them
+			Does not work against bosses
+			'''
+	}
 }
 
 Buffs: {
@@ -694,6 +707,11 @@ Buffs: {
 	AllergicBuff: {
 		DisplayName: Allergic
 		Description: Can't be affected by status changes!
+	}
+
+	SleepDebuff: {
+		DisplayName: Sleepy
+		Description: It'll take time for the sleepiness to wear off!
 	}
 }
 

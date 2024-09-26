@@ -25,9 +25,3 @@ Author: Furret78 / yuureiki
 Steam Workshop homepage: {ModHomepage}
 
 [c/FFFF83:LATEST CHANGELOG:]
-Paper Mario Items 0.4.1 -- Update notes
-CHANGES
-- Fixed missing damage estimation in the tooltips of Coconut Bomb, Egg Bomb, Zess Dynamite, and Courage Meal
-- The cooking recipe for Zess Dynamite is now Hardmode exclusive
-- Disabled the use of the Cook button in the cooking UI when the player does not have a Cookbook
-- Fixed Courage Meal projectile sometimes playing a hit sound even when not dealing damage

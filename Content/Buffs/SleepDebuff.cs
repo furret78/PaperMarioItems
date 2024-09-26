@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace PaperMarioItems.Content.Buffs
 {
-	public class TimestopDebuff : ModBuff
+	public class SleepDebuff : ModBuff
 	{
         public override LocalizedText Description => base.Description;
         public override void SetStaticDefaults()
@@ -15,19 +15,11 @@ namespace PaperMarioItems.Content.Buffs
         }
         public override void Update(NPC npc, ref int buffIndex)
         {
-            //npc.GetGlobalNPC<PaperNPC>().timestopDebuff = true;
+            //npc.GetGlobalNPC<PaperNPC>().sleepDebuff = true;
         }
         public override void Update(Player player, ref int buffIndex)
         {
-            if (player.velocity.Y != 0f)
-            {
-                player.velocity = new Vector2(0f, 1E-06f);
-            }
-            else
-            {
-                player.velocity = Vector2.Zero;
-            }
-            player.gravity = 0f;
+            if (!player.sleeping.isSleeping) player.sleeping.StartSleeping(player, (int)player.position.X, (int)(player.position.Y + player.height));
             player.moveSpeed = 0f;
             player.dash = 0;
             player.dashType = 0;

@@ -29,7 +29,7 @@ namespace PaperMarioItems.Content.Items.Consumables
             if (!player.GetModPlayer<PaperPlayer>().causeEarthquake)
             {
                 player.GetModPlayer<PaperPlayer>().causeEarthquake = true;
-                SoundEngine.PlaySound(PaperMarioItems.useItemPM, player.Center);
+                SoundEngine.PlaySound(PMSoundID.useItem, player.Center);
                 return true;
             }
             else return false;

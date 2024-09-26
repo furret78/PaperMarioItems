@@ -26,10 +26,10 @@ namespace PaperMarioItems.Content.Items.Consumables
         {
             if (!player.GetModPlayer<PaperPlayer>().stopwatchActive && player.GetModPlayer<PaperPlayer>().stopwatchCooldown <= 0)
             {
-                player.GetModPlayer<PaperPlayer>().stopwatchCooldown = Item.useTime*4;
+                player.GetModPlayer<PaperPlayer>().stopwatchCooldown = Item.useTime+1;
                 player.GetModPlayer<PaperPlayer>().stopwatchActive = true;
-                SoundEngine.PlaySound(PaperMarioItems.watchPM, player.Center);
-                SoundEngine.PlaySound(PaperMarioItems.useItemPM, player.Center);
+                //SoundEngine.PlaySound(PMSoundID.stopwatch, player.Center);
+                SoundEngine.PlaySound(PMSoundID.useItem, player.Center);
                 return true;
             }
             else return false;

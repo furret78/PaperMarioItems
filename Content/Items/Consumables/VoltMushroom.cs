@@ -1,4 +1,4 @@
-using PaperMarioItems.Content.Buffs;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -30,10 +30,16 @@ namespace PaperMarioItems.Content.Items.Consumables
         {
             player.TryToResetHungerToNeutral();
         }
+
+        public override void PostUpdate()
+        {
+            Lighting.AddLight(Item.Center, Color.LightYellow.ToVector3() * 0.55f * Main.essScale);
+        }
+
         public override void AddRecipes()
 		{
             Recipe recipe = CreateRecipe()
-				.AddRecipeGroup(nameof(ItemID.Mushroom), 3)
+               	.AddRecipeGroup(nameof(ItemID.Mushroom), 3)
                 .AddIngredient(ItemID.Wire, 3)
 				.AddTile(TileID.WorkBenches)
 				.Register();

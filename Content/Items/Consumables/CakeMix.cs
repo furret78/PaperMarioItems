@@ -48,11 +48,13 @@ namespace PaperMarioItems.Content.Items.Consumables
 				.AddIngredient(ItemID.Hay, 3)
                 .AddIngredient(RecipeGroupID.Fruit)
 				.AddTile(TileID.WorkBenches)
+                .DisableDecraft()
 				.Register();
             recipe = CreateRecipe(5)
                 .AddIngredient(ItemID.Hay, 3)
                 .AddIngredient(ItemID.EucaluptusSap)
                 .AddTile(TileID.WorkBenches)
+                .DisableDecraft()
                 .Register();
             recipe = CreateRecipe()
                 .AddIngredient(ItemID.Hay, 6)

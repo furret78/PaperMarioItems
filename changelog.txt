@@ -1,6 +1,15 @@
-Paper Mario Items 0.4.1 -- Update notes
-CHANGES
-- Fixed missing damage estimation in the tooltips of Coconut Bomb, Egg Bomb, Zess Dynamite, and Courage Meal
-- The cooking recipe for Zess Dynamite is now Hardmode exclusive
-- Disabled the use of the Cook button in the cooking UI when the player does not have a Cookbook
-- Fixed Courage Meal projectile sometimes playing a hit sound even when not dealing damage
+Paper Mario Items 0.5.0 -- Update notes
+ADDED
+- Added Sleepy Sheep
+- Added crafting recipes using the above item
+- Added Sleep debuff
+- Added glowing effects to certain items when they are outside of the player's inventory
+- Added lighting effects to the player when the Electrified! buff is present
+
+CHANGED
+- Reduced the volume of all custom sounds by half
+- Changed the rarity of Dizzy Dial to Blue
+- Reduced the time between item use and effect application of Stopwatch
+- Fixed PvP-only and enemy-only buffs and debuffs applying to self on use
+- Fixed PvP-only buffs not applying properly
+- Readjusted Couple's Cake functionality

@@ -16,8 +16,6 @@ namespace PaperMarioItems.Content.Dusts
         }
 
 		public override bool Update(Dust dust) {
-			Vector2 offset = new(-(dust.frame.Width / 2)+4, 0);
-			if (dust.alpha <= 0) dust.position += offset;
             dust.position += dust.velocity;
 			dust.velocity *= 0.7f;
 			dust.alpha += 10;

@@ -8,9 +8,6 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Localization;
 using Terraria.GameContent;
-using PaperMarioItems.Content.Items.Consumables;
-using PaperMarioItems.Content.Buffs;
-using PaperMarioItems.Content.Dusts;
 using PaperMarioItems.Common.UI;
 using PaperMarioItems.Content;
 
@@ -20,10 +17,10 @@ namespace PaperMarioItems.Common.Players
     partial class PaperPlayer : ModPlayer
     {
         //setup
-        public bool dodgyEffect, hugeEffect, softEffect, electrifiedEffect, lifeShroomRevive, thunderOnce, thunderAll, earthquakeEffect, dizzyEffect;
-        public bool shootingStarActive, inflictDizzyActive, thunderEffectActive, frightMaskActive, stopwatchActive, fireFlowerActive, ruinPowderActive, causeEarthquake, causeSoften;
-        public int shootingStar = 0, screenSpinTimer = 0, frightMaskCooldown = 0, stopwatchCooldown = 0, fireFlower = 0, ruinPowderCooldown = 0;
-        private int wte = 0, ssmd, sst = 0, wtt = 0, bgFlashTime = 0, swt = 0, fft = 0, eqt = 0, dyt = 0;
+        public bool dodgyEffect, hugeEffect, softEffect, electrifiedEffect, lifeShroomRevive, thunderOnce, thunderAll, earthquakeEffect, dizzyEffect, causeSoften, causeEarthquake;
+        public bool shootingStarActive, inflictDizzyActive, thunderEffectActive, frightMaskActive, stopwatchActive, fireFlowerActive, ruinPowderActive, sleepySheepActive;
+        public int shootingStar = 0, screenSpinTimer = 0, frightMaskCooldown = 0, stopwatchCooldown = 0, fireFlower = 0, ruinPowderCooldown = 0, sleepySheepCooldown = 0;
+        private int wte = 0, ssmd, sst = 0, wtt = 0, bgFlashTime = 0, swt = 0, fft = 0, eqt = 0, dyt = 0, sleept = 0;
         private bool bgFlash;
         private static readonly Color LuckyTextColor = new(255, 255, 0, 255);
         public const int postReviveProtect = 1, postReviveRegen = 2, fireFlowerDamage = 25, earthquakeDamage = 75;
@@ -81,7 +78,7 @@ namespace PaperMarioItems.Common.Players
         //life shroom detour
         private void On_Player_KillMe(On_Player.orig_KillMe orig, Player self, PlayerDeathReason damageSource, double dmg, int hitDirection, bool pvp)
         {
-            if (self.creativeGodMode || self.dead || !self.HasItem(ModContent.ItemType<LifeMushroom>())) orig(self, damageSource, dmg, hitDirection, pvp);
+            if (self.creativeGodMode || self.dead || !self.HasItem(PMItemID.LifeMushroom)) orig(self, damageSource, dmg, hitDirection, pvp);
             else
             {
                 lifeShroomRevive = true;
@@ -135,7 +132,7 @@ namespace PaperMarioItems.Common.Players
                         screenSpinTimer = 0;
                     }
                     //insert code for screen spin
-                    SoundEngine.PlaySound(PaperMarioItems.dizzyPM, Player.Center);
+                    SoundEngine.PlaySound(PMSoundID.dizzy, Player.Center);
                     screenSpinTimer--;
                 }
                 //thunder bolt timer
@@ -243,6 +240,17 @@ namespace PaperMarioItems.Common.Players
                     SoftenEveryone(Player);
                     causeSoften = false;
                 }
+                //stopwatch
+                if (sleepySheepActive)
+                {
+                    sleepySheepCooldown--;
+                    if (sleepySheepCooldown == 1) EveryoneSleepNow(Player);
+                    if (sleepySheepCooldown <= 0)
+                    {
+                        sleepySheepActive = false;
+                        sleepySheepCooldown = 0;
+                    }
+                }
             }
         }
 
@@ -254,6 +262,7 @@ namespace PaperMarioItems.Common.Players
                 if (softEffect) r *= 0.20f;
                 if (electrifiedEffect)
                 {
+                    Lighting.AddLight(Player.Center, Color.WhiteSmoke.ToVector3() * 0.9f * Main.essScale);
                     if (wte == 0)
                     {
                         Vector2 dustRotation = Main.rand.NextVector2Unit();
@@ -280,17 +289,28 @@ namespace PaperMarioItems.Common.Players
                         dyt++;
                     }
                 }
-                if (Player.HasBuff<TimestopDebuff>())
+                if (Player.HasBuff(PMBuffID.Timestop))
                 {
                     if (swt >= 60)
                     {
                         Color color = new(240 + Main.rand.Next(15), 240 + Main.rand.Next(15), 240 + Main.rand.Next(15));
-                        Dust.NewDustPerfect(new(Player.Center.X, Player.Center.Y), PMDustID.StopwatchDust, null, 0, color);
+                        Vector2 newPos = new(Player.Center.X - (36 / 2) + 4, Player.Center.Y - (40 / 2));
+                        Dust.NewDustPerfect(newPos, PMDustID.StopwatchDust, null, 0, color);
                         swt = 0;
                     }
                     swt++;
                 }
                 else if (swt != 0) swt = 0;
+                if (Player.HasBuff(PMBuffID.Sleep))
+                {
+                    if (sleept >= 30)
+                    {
+                        Rectangle currentLocation = Player.getRect();
+                        CombatText.NewText(currentLocation, Color.White, "Z");
+                        sleept = 0;
+                    }
+                    sleept++;
+                }
             }
             //bg
             if (bgFlash)
@@ -320,9 +340,8 @@ namespace PaperMarioItems.Common.Players
         {
             if (Player.whoAmI != Main.myPlayer) return;
             Player.NinjaDodge();
-            SoundEngine.PlaySound(PaperMarioItems.luckyPM, Player.Center);
-            Rectangle currentLocation = Player.getRect();
-            CombatText.NewText(currentLocation, LuckyTextColor, LuckyEvade);
+            SoundEngine.PlaySound(PMSoundID.lucky, Player.Center);
+            CombatText.NewText(Player.getRect(), LuckyTextColor, LuckyEvade);
         }
         public static void HandleDodgeMessage(BinaryReader reader, int whoAmI)
         {

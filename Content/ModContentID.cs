@@ -5,6 +5,7 @@ using PaperMarioItems.Content.Items.Consumables;
 using PaperMarioItems.Content.Items.Cooking;
 using PaperMarioItems.Content.Items.Weapons;
 using PaperMarioItems.Content.Projectiles;
+using Terraria.Audio;
 using Terraria.ModLoader;
 
 namespace PaperMarioItems.Content
@@ -45,6 +46,7 @@ namespace PaperMarioItems.Content
             SpitePouch = ModContent.ItemType<SpitePouch>(),
             ShootingStar = ModContent.ItemType<ShootingStar>(),
             SlowMushroom = ModContent.ItemType<SlowMushroom>(),
+            SleepySheep = ModContent.ItemType<SleepySheep>(),
             RuinPowder = ModContent.ItemType<RuinPowder>(),
             TastyTonic = ModContent.ItemType<TastyTonic>(),
             ThunderBolt = ModContent.ItemType<ThunderBolt>(),
@@ -130,6 +132,7 @@ namespace PaperMarioItems.Content
             Timestop = ModContent.BuffType<TimestopDebuff>(),
             Soft = ModContent.BuffType<SoftDebuff>(),
             Allergic = ModContent.BuffType<AllergicBuff>(),
+            Sleep = ModContent.BuffType<SleepDebuff>(),
             Electrified = ModContent.BuffType<ElectrifiedBuff>();
     }
     //projectiles
@@ -150,5 +153,21 @@ namespace PaperMarioItems.Content
             HPDrainDust = ModContent.DustType<HPDrainDust>(),
             LightningDust = ModContent.DustType<LightningDust>(),
             StopwatchDust = ModContent.DustType<StopwatchDust>();
+    }
+    //sounds
+    public class PMSoundID : ModSystem
+    {
+        private const float soundVolume = 0.5f;
+        public static readonly SoundStyle causeStatus = PaperMarioItems.causeStatusPM with { Volume = soundVolume },
+            damage = PaperMarioItems.damagePM with { Volume = soundVolume },
+            dizzy = PaperMarioItems.dizzyPM with { Volume = soundVolume },
+            fireFlower = PaperMarioItems.fireFlowerPM with { Volume = soundVolume },
+            heal = PaperMarioItems.healPM with { Volume = soundVolume },
+            lucky = PaperMarioItems.luckyPM with { Volume = soundVolume },
+            star = PaperMarioItems.starPM with { Volume = soundVolume },
+            thunder = PaperMarioItems.thunderPM with { Volume = soundVolume },
+            useItem = PaperMarioItems.useItemPM with { Volume = soundVolume },
+            stopwatch = PaperMarioItems.watchPM with { Volume = soundVolume },
+            charged = PaperMarioItems.chargedPM with { Volume = soundVolume };
     }
 }

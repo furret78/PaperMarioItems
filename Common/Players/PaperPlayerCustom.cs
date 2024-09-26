@@ -6,16 +6,15 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.DataStructures;
 using PaperMarioItems.Common.NPCs;
-using PaperMarioItems.Content.Buffs;
-using PaperMarioItems.Content.Dusts;
 using PaperMarioItems.Content;
+using Terraria.Enums;
 
 namespace PaperMarioItems.Common.Players
 {
     partial class PaperPlayer : ModPlayer
     {
         //targeting IDs
-        private const int shootingCase = 0, dizzyCase = 1, frightCase = 2, thunderCase = 3, timeCase = 4, hpCase = 5, quakeCase = 6, powCase = 7, ruinCase = 8, softCase = 9;
+        private const int shootingCase = 0, dizzyCase = 1, frightCase = 2, thunderCase = 3, timeCase = 4, hpCase = 5, quakeCase = 6, powCase = 7, ruinCase = 8, softCase = 9, sleepyCase = 10;
         //targeting conditions
         private bool TargetConditionCheck(Player player, NPC npc, Player vsplayer, int condition)
         {
@@ -24,7 +23,7 @@ namespace PaperMarioItems.Common.Players
                 !npc.friendly &&
                 !NPCID.Sets.CountsAsCritter[npc.type] &&
                 npc.type != NPCID.CultistTablet &&
-                (npc.Center - player.Center).Length() < (Main.screenWidth / 2))
+                IsWithinScreenRange(player, npc))
             {
                 switch (condition)
                 {
@@ -42,11 +41,12 @@ namespace PaperMarioItems.Common.Players
                         if (npc.type == NPCID.CultistDevote || !(NPCID.Sets.ShouldBeCountedAsBoss[npc.type] || npc.boss)) return true;
                         else return false;
                     case ruinCase:
+                    case sleepyCase:
                     case frightCase:
                         if (!(npc.type == NPCID.CultistDevote || NPCID.Sets.ShouldBeCountedAsBoss[npc.type] || npc.boss)) return true;
                         else return false;
                     case quakeCase:
-                        if ((!npc.HasBuff<TimestopDebuff>() && npc.noGravity) || (npc.HasBuff<TimestopDebuff>() && npc.GetGlobalNPC<PaperNPC>().hadGravity)) return false;
+                        if ((!npc.HasBuff(PMBuffID.Timestop) && npc.noGravity) || (npc.HasBuff(PMBuffID.Timestop) && npc.GetGlobalNPC<PaperNPC>().hadGravity)) return false;
                         if (npc.boss && !PaperMarioItems.IsGroundedBoss[npc.type]) return false;
                         int blockX = (int)(npc.position.X / 16), blockY = (int)(npc.position.Y / 16);
                         for (int x = blockX - 1; x < blockX + 3; x++)
@@ -59,20 +59,12 @@ namespace PaperMarioItems.Common.Players
                 }
             }
             if (vsplayer != null &&
-                vsplayer.hostile &&
-                (vsplayer.Center - player.Center).Length() < (Main.screenWidth / 2))
+                vsplayer.hostile && DifferentTeamCheck(player, vsplayer) &&
+                IsWithinScreenRange(player, vsplayer) &&
+                vsplayer != player)
             {
                 switch (condition)
                 {
-                    case shootingCase:
-                    case frightCase:
-                    case thunderCase:
-                    case timeCase:
-                    case hpCase:
-                    case powCase:
-                    case ruinCase:
-                    case softCase:
-                    case dizzyCase: return true;
                     //special
                     case quakeCase:
                         int blockX = (int)(vsplayer.position.X / 16), blockY = (int)(vsplayer.position.Y / 16);
@@ -81,51 +73,26 @@ namespace PaperMarioItems.Common.Players
                             if (WorldGen.SolidTile2(x, blockY - 3) || WorldGen.SolidTile2(x, blockY + 3)) return true;
                         }
                         return false;
-                    //no such condition
-                    default: return false;
+                    //default
+                    default: return true;
                 }
             }
             else return false;
         }
-        public int GetDirection(Entity target, Player player)
+        private int GetDirection(Entity target, Player player)
         {
             if (target.position.X < player.position.X) return -1;
             return 1;
         }
+        private bool DifferentTeamCheck(Player player, Player otherplayer)
+        {
+            if (player.team == (int)Team.None || otherplayer.team == (int)Team.None) return true;
+            return player.team == otherplayer.team;
+        }
+        private bool IsWithinScreenRange(Player player, Entity target) => (target.Center - player.Center).Length() < (Main.screenWidth / 2);
         public void SetShakeTime(int time)
         {
             if (ScreenShakeSystem.screenShakeTime < time) ScreenShakeSystem.screenShakeTime = time;
-        }
-        //search for other players + couple's cake
-        public bool SearchTeammate(Player player)
-        {
-            if (Main.myPlayer != player.whoAmI || player == null) return false;
-            else foreach (var vsplayer in Main.ActivePlayers)
-                {
-                    if (!vsplayer.hostile && vsplayer != player) return true;
-                }
-            return false;
-        }
-        public void AddBuffCouplesCake(Player player, int time = 300)
-        {
-            if (Main.myPlayer != player.whoAmI || player == null) return;
-            else
-            {
-                Player closestTeammate = null;
-                float closestDist = 0;
-                float distSq = 0;
-                foreach (var teammate in Main.ActivePlayers)
-                {
-                    Vector2 playerToPlayer = new(player.Center.X - teammate.Center.X, player.Center.Y - teammate.Center.Y);
-                    distSq = (float)Math.Sqrt(playerToPlayer.LengthSquared());
-                    if ((closestTeammate == null || distSq < closestDist) && !teammate.hostile && teammate != player)
-                    {
-                        closestTeammate = teammate;
-                        closestDist = distSq;
-                    }
-                }
-                closestTeammate?.AddBuff(BuffID.Regeneration, time);
-            }
         }
         //life mushroom effects
         private void LifeMushroomHeal(Player self, int num1, int num2)
@@ -146,7 +113,7 @@ namespace PaperMarioItems.Common.Players
                 self.AddBuff(PMBuffID.Revived, num1);
                 self.SetImmuneTimeForAllTypes(num1);
                 self.AddBuff(BuffID.Regeneration, num2);
-                SoundEngine.PlaySound(PaperMarioItems.healPM, self.Center);
+                SoundEngine.PlaySound(PMSoundID.heal, self.Center);
                 self.ConsumeItem(PMItemID.LifeMushroom, true, true);
             }
         }
@@ -186,7 +153,7 @@ namespace PaperMarioItems.Common.Players
                     Projectile.NewProjectile(player.GetSource_FromThis(), playerPosition, defaultVelocity * homingAngle, ProjectileID.Starfury, 100, 10f, Main.myPlayer, 0, vsplayer.Center.Y);
                 }
             }
-            if (!empty) SoundEngine.PlaySound(PaperMarioItems.starPM, player.Center);
+            if (!empty) SoundEngine.PlaySound(PMSoundID.star, player.Center);
         }
         //fire flower shooting
         private void FireFlowerAttack(Player player)
@@ -200,7 +167,7 @@ namespace PaperMarioItems.Common.Players
                 Vector2 angle = (target - position).SafeNormalize(Vector2.UnitX);
                 float stopper = player.Center.Y + (Main.screenHeight / 2);
                 Projectile.NewProjectile(player.GetSource_FromThis(), position, velocity * angle, PMProjID.Fireball, fireFlowerDamage, 3f);
-                SoundEngine.PlaySound(PaperMarioItems.fireFlowerPM, position);
+                SoundEngine.PlaySound(PMSoundID.fireFlower, position);
             }
         }
         //inflict dizzy on enemies
@@ -231,7 +198,7 @@ namespace PaperMarioItems.Common.Players
                     }
                 }
             }
-            if (!empty) SoundEngine.PlaySound(PaperMarioItems.causeStatusPM, player.Center);
+            if (!empty) SoundEngine.PlaySound(PMSoundID.causeStatus, player.Center);
         }
         //fright mask
         private void InflictFrightOnAll(Player player)
@@ -290,12 +257,12 @@ namespace PaperMarioItems.Common.Players
                 if (closestNPC != null && closestPlayer == null)
                 {
                     StrikeLightning(player, closestNPC, null);
-                    SoundEngine.PlaySound(PaperMarioItems.thunderPM, closestNPC.Center);
+                    SoundEngine.PlaySound(PMSoundID.thunder, closestNPC.Center);
                 }
                 if (closestPlayer != null)
                 {
                     StrikeLightning(player, null, closestPlayer);
-                    SoundEngine.PlaySound(PaperMarioItems.thunderPM, closestPlayer.Center);
+                    SoundEngine.PlaySound(PMSoundID.thunder, closestPlayer.Center);
                 }
             }
         }
@@ -318,7 +285,7 @@ namespace PaperMarioItems.Common.Players
                     StrikeLightning(player, null, vsplayer);
                 }
             }
-            if (!empty) SoundEngine.PlaySound(PaperMarioItems.thunderPM, player.Center);
+            if (!empty) SoundEngine.PlaySound(PMSoundID.thunder, player.Center);
         }
         public void StrikeLightning(Player player, NPC npc, Player vsplayer)
         {
@@ -339,6 +306,7 @@ namespace PaperMarioItems.Common.Players
         private void InflictTimestop(Player player)
         {
             bool empty = true;
+            bool inflictedOnBoss = Main.rand.NextBool(7);
             bool moonLordDetected = false;
             if (Main.myPlayer == player.whoAmI)
             {
@@ -346,17 +314,17 @@ namespace PaperMarioItems.Common.Players
                 {
                     if (TargetConditionCheck(player, npc, null, timeCase))
                     {
-                        Color color = new(240 + Main.rand.Next(15), 240 + Main.rand.Next(15), 240 + Main.rand.Next(15));
-                        Vector2 newPos = new(npc.Center.X, npc.Center.Y);
+                        Color color = new(220 + Main.rand.Next(35), 240 + Main.rand.Next(35), 240 + Main.rand.Next(35));
+                        Vector2 newPos = new(npc.Center.X - (36 / 2) + 4, npc.Center.Y - (40 / 2));
                         if (!npc.boss && !NPCID.Sets.ShouldBeCountedAsBoss[npc.type])
                         {
                             empty = false;
-                            if (!npc.HasBuff<TimestopDebuff>()) Dust.NewDustPerfect(newPos, PMDustID.StopwatchDust, null, 0, color);
+                            if (!npc.HasBuff(PMBuffID.Timestop)) Dust.NewDustPerfect(newPos, PMDustID.StopwatchDust, null, 0, color);
                             npc.AddBuff(PMBuffID.Timestop, 10800);
                         }
                         else
                         {
-                            if ((npc.type == NPCID.MoonLordCore || npc.type == NPCID.MoonLordHand || npc.type == NPCID.MoonLordHead))
+                            if (npc.type >= NPCID.MoonLordHead && npc.type <= NPCID.MoonLordCore)
                             {
                                 if (!moonLordDetected)
                                 {
@@ -364,16 +332,11 @@ namespace PaperMarioItems.Common.Players
                                     moonLordDetected = true;
                                 }
                             }
-                            else
+                            else if (inflictedOnBoss)
                             {
-                                int timestopChance = 7;
-                                if (npc.type == NPCID.MoonLordFreeEye || npc.type == NPCID.MoonLordLeechBlob) timestopChance = 16;
-                                if (Main.rand.NextBool(timestopChance))
-                                {
-                                    empty = false;
-                                    if (!npc.HasBuff<TimestopDebuff>()) Dust.NewDustPerfect(newPos, PMDustID.StopwatchDust, null, 0, color);
-                                    npc.AddBuff(PMBuffID.Timestop, 3600);
-                                }
+                                empty = false;
+                                if (!npc.HasBuff(PMBuffID.Timestop)) Dust.NewDustPerfect(newPos, PMDustID.StopwatchDust, null, 0, color);
+                                npc.AddBuff(PMBuffID.Timestop, 3600);
                             }
                         }
                     }
@@ -387,13 +350,13 @@ namespace PaperMarioItems.Common.Players
                         if (Main.rand.NextBool(5))
                         {
                             empty = false;
-                            if (vsplayer.HasBuff<TimestopDebuff>()) Dust.NewDustPerfect(newPos, PMDustID.StopwatchDust, null, 0, color);
-                            vsplayer.AddBuff(PMBuffID.Timestop, 10800);
+                            if (!vsplayer.HasBuff(PMBuffID.Timestop)) Dust.NewDustPerfect(newPos, PMDustID.StopwatchDust, null, 0, color);
+                            vsplayer.AddBuff(PMBuffID.Timestop, 10800, false);
                         }
                     }
                 }
             }
-            if (!empty) SoundEngine.PlaySound(PaperMarioItems.causeStatusPM);
+            if (!empty) SoundEngine.PlaySound(PMSoundID.stopwatch);
         }
         //hp drain
         public void HPDrain(Player player, int healAmount)
@@ -454,7 +417,7 @@ namespace PaperMarioItems.Common.Players
             if (exist)
             {
                 player.Heal(finalDamage);
-                //SoundEngine.PlaySound(PaperMarioItems.healPM, player.Center);
+                //SoundEngine.PlaySound(PMSoundID.heal, player.Center);
             }
         }
         //earthquake
@@ -464,7 +427,7 @@ namespace PaperMarioItems.Common.Players
             {
                 if (TargetConditionCheck(player, npc, null, quakeCase))
                 {
-                    SoundEngine.PlaySound(PaperMarioItems.damagePM, npc.Center);
+                    SoundEngine.PlaySound(PMSoundID.damage, npc.Center);
                     npc.SimpleStrikeNPC(damage, GetDirection(npc, player), Main.rand.Next(100) <= player.GetTotalCritChance(DamageClass.Generic));
                 }
             }
@@ -472,7 +435,7 @@ namespace PaperMarioItems.Common.Players
             {
                 if (TargetConditionCheck(player, null, vsplayer, quakeCase))
                 {
-                    SoundEngine.PlaySound(PaperMarioItems.damagePM, vsplayer.Center);
+                    SoundEngine.PlaySound(PMSoundID.damage, vsplayer.Center);
                     vsplayer.Hurt(PlayerDeathReason.ByCustomReason(vsplayer.name + " " + EarthquakeDeath), damage, GetDirection(vsplayer, player), true);
                 }
             }
@@ -485,7 +448,7 @@ namespace PaperMarioItems.Common.Players
             {
                 if (TargetConditionCheck(player, npc, null, powCase))
                 {
-                    SoundEngine.PlaySound(PaperMarioItems.damagePM, npc.Center);
+                    SoundEngine.PlaySound(PMSoundID.damage, npc.Center);
                     npc.SimpleStrikeNPC(damage, GetDirection(npc, player), Main.rand.Next(100) <= player.GetTotalCritChance(DamageClass.Generic));
                 }
             }
@@ -493,7 +456,7 @@ namespace PaperMarioItems.Common.Players
             {
                 if (TargetConditionCheck(player, null, vsplayer, powCase))
                 {
-                    SoundEngine.PlaySound(PaperMarioItems.damagePM, vsplayer.Center);
+                    SoundEngine.PlaySound(PMSoundID.damage, vsplayer.Center);
                     vsplayer.Hurt(PlayerDeathReason.ByCustomReason(vsplayer.name + " " + PowDeath), damage, GetDirection(vsplayer, player), true, false, -1, true, 0, 0, 0);
                 }
             }
@@ -515,10 +478,10 @@ namespace PaperMarioItems.Common.Players
                 if (TargetConditionCheck(player, null, vsplayer, ruinCase))
                 {
                     empty = false;
-                    vsplayer.AddBuff(BuffID.Confused, 7200);
+                    vsplayer.AddBuff(BuffID.Confused, 7200, false);
                 }
             }
-            if (!empty) SoundEngine.PlaySound(PaperMarioItems.causeStatusPM, player.Center);
+            if (!empty) SoundEngine.PlaySound(PMSoundID.causeStatus, player.Center);
         }
         //mr softener
         public void SoftenEveryone(Player player)
@@ -537,10 +500,31 @@ namespace PaperMarioItems.Common.Players
                 if (TargetConditionCheck(player, null, vsplayer, softCase))
                 {
                     empty = false;
-                    vsplayer.AddBuff(PMBuffID.Soft, 7200);
+                    vsplayer.AddBuff(PMBuffID.Soft, 7200, false);
                 }
             }
-            if (!empty) SoundEngine.PlaySound(PaperMarioItems.causeStatusPM, player.Center);
+        }
+        //sleepy sheep
+        private void EveryoneSleepNow(Player player)
+        {
+            bool empty = true;
+            foreach (var npc in Main.ActiveNPCs)
+            {
+                if (TargetConditionCheck(player, npc, null, sleepyCase))
+                {
+                    empty = false;
+                    npc.AddBuff(PMBuffID.Sleep, 1200);
+                }
+            }
+            foreach (var vsplayer in Main.ActivePlayers)
+            {
+                if (TargetConditionCheck(player, null, vsplayer, sleepyCase))
+                {
+                    empty = false;
+                    vsplayer.AddBuff(PMBuffID.Sleep, 600, false);
+                }
+            }
+            if (!empty) SoundEngine.PlaySound(PMSoundID.causeStatus, player.Center);
         }
     }
 }

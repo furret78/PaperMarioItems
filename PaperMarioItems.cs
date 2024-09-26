@@ -1,5 +1,6 @@
 using PaperMarioItems.Content;
 using PaperMarioItems.Content.Items.Consumables;
+using Steamworks;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;

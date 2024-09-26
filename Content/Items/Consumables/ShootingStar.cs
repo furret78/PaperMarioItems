@@ -1,3 +1,4 @@
+using Microsoft.Xna.Framework;
 using PaperMarioItems.Common.Players;
 using Terraria;
 using Terraria.Audio;
@@ -26,12 +27,18 @@ namespace PaperMarioItems.Content.Items.Consumables
         {
             if (player.GetModPlayer<PaperPlayer>().shootingStar <= 0 && !player.GetModPlayer<PaperPlayer>().shootingStarActive)
             {
-                SoundEngine.PlaySound(PaperMarioItems.useItemPM, player.Center);
+                SoundEngine.PlaySound(PMSoundID.useItem, player.Center);
                 player.GetModPlayer<PaperPlayer>().shootingStar = 18;
                 return true;
             }
             else return false;
         }
+
+        public override void PostUpdate()
+        {
+            Lighting.AddLight(Item.Center, Color.WhiteSmoke.ToVector3() * 0.55f * Main.essScale);
+        }
+
         public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe()

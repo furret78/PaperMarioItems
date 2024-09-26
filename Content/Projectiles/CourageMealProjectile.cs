@@ -93,7 +93,7 @@ namespace PaperMarioItems.Content.Projectiles
 
         public override void OnKill(int timeLeft)
         {
-            if (Projectile.ai[1] == 1) SoundEngine.PlaySound(PaperMarioItems.damagePM, Projectile.Center);
+            if (Projectile.ai[1] == 1) SoundEngine.PlaySound(PMSoundID.damage, Projectile.Center);
         }
     }
 }

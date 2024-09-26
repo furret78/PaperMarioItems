@@ -16,9 +16,9 @@ namespace PaperMarioItems.Content.Items.Consumables
             Item.useAnimation = Item.useTime;
             Item.consumable = true;
             Item.useStyle = ItemUseStyleID.HoldUp;
-            Item.UseSound = PaperMarioItems.useItemPM;
+            Item.UseSound = PMSoundID.useItem;
             Item.maxStack = Item.CommonMaxStack;
-            Item.rare = ItemRarityID.White;
+            Item.rare = ItemRarityID.Blue;
             Item.value = Item.buyPrice(silver: 8);
         }
 

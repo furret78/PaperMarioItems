@@ -27,7 +27,7 @@ namespace PaperMarioItems.Content.Items.Cooking
             if (player.statLife == 0 && player.statMana == 0) return false;
             else
             {
-                SoundEngine.PlaySound(PaperMarioItems.useItemPM, player.Center);
+                SoundEngine.PlaySound(PMSoundID.useItem, player.Center);
                 player.statLife = 1;
                 player.statMana = (player.statManaMax2/2)*(-1);
                 return true;

@@ -14,7 +14,7 @@ namespace PaperMarioItems.Content.Items.Consumables
 			Item.useTime = 17;
 			Item.useAnimation = Item.useTime;
 			Item.useStyle = ItemUseStyleID.HoldUp;
-			Item.UseSound = PaperMarioItems.useItemPM;
+			Item.UseSound = PMSoundID.useItem;
 			Item.consumable = true;
 			Item.maxStack = Item.CommonMaxStack;
             Item.rare = ItemRarityID.Blue;
@@ -28,6 +28,7 @@ namespace PaperMarioItems.Content.Items.Consumables
 				.AddIngredient(ItemID.InvisibilityPotion)
 				.AddIngredient(ItemID.Silk, 2)
 				.AddTile(TileID.WorkBenches)
+				.DisableDecraft()
 				.Register();
         }
 	}

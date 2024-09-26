@@ -28,7 +28,7 @@ namespace PaperMarioItems.Content.Items.Consumables
             {
                 player.GetModPlayer<PaperPlayer>().frightMaskCooldown = Item.useTime*2;
                 player.GetModPlayer<PaperPlayer>().frightMaskActive = true;
-                SoundEngine.PlaySound(PaperMarioItems.useItemPM, player.Center);
+                SoundEngine.PlaySound(PMSoundID.useItem, player.Center);
                 return true;
             }
             else return false;
