@@ -117,6 +117,14 @@ namespace PaperMarioItems.Common.Players
                 self.ConsumeItem(PMItemID.LifeMushroom, true, true);
             }
         }
+        //dodge
+        private void RepelDodge()
+        {
+            if (Player.whoAmI != Main.myPlayer) return;
+            Player.NinjaDodge();
+            SoundEngine.PlaySound(PMSoundID.lucky, Player.Center);
+            CombatText.NewText(Player.getRect(), LuckyTextColor, LuckyEvade);
+        }
         //shooting star loopable
         private void ShootingStarAttack(Player player)
         {

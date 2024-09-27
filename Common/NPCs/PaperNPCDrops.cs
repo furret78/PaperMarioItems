@@ -19,6 +19,7 @@ namespace PaperMarioItems.Common.NPCs
                 npcLoot.Add(ItemDropRule.NormalvsExpert(PMItemID.MysteryBox, 54, 50));
                 npcLoot.Add(ItemDropRule.NormalvsExpert(PMItemID.MrSoftener, 64, 60));
                 npcLoot.Add(ItemDropRule.NormalvsExpert(PMItemID.POWBlock, 100, 98));
+                npcLoot.Add(ItemDropRule.NormalvsExpert(PMItemID.PackageBox, 370, 320));
                 if (npc.type != NPCID.Harpy && npc.type != NPCID.Vulture && npc.type != NPCID.Raven)
                     npcLoot.Add(ItemDropRule.NormalvsExpert(PMItemID.MysticEgg, 580, 480));
             }

@@ -262,7 +262,7 @@ namespace PaperMarioItems.Common.Players
                 if (softEffect) r *= 0.20f;
                 if (electrifiedEffect)
                 {
-                    Lighting.AddLight(Player.Center, Color.WhiteSmoke.ToVector3() * 0.9f * Main.essScale);
+                    Lighting.AddLight(Player.Center, Color.WhiteSmoke.ToVector3() * 0.9f);
                     if (wte == 0)
                     {
                         Vector2 dustRotation = Main.rand.NextVector2Unit();
@@ -335,13 +335,6 @@ namespace PaperMarioItems.Common.Players
                 return true;
             }
             return false;
-        }
-        public void RepelDodge()
-        {
-            if (Player.whoAmI != Main.myPlayer) return;
-            Player.NinjaDodge();
-            SoundEngine.PlaySound(PMSoundID.lucky, Player.Center);
-            CombatText.NewText(Player.getRect(), LuckyTextColor, LuckyEvade);
         }
         public static void HandleDodgeMessage(BinaryReader reader, int whoAmI)
         {

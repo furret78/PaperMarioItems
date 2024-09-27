@@ -23,12 +23,11 @@ namespace PaperMarioItems.Content.Items.Consumables
 
         public override bool? UseItem(Player player)
         {
-            int range = 11, resultItem;
-            switch (Main.rand.Next(range))
+            int resultItem = PMItemID.Mushroom;
+            switch (Main.rand.Next(11))
             {
                 case 0:
                     {
-                        resultItem = PMItemID.Mushroom;
                         if (NPC.downedBoss3) resultItem = PMItemID.SuperMushroom;
                         if (NPC.downedMechBossAny) resultItem = PMItemID.UltraMushroom;
                         break;
@@ -42,7 +41,8 @@ namespace PaperMarioItems.Content.Items.Consumables
                     }
                 case 2:
                     {
-                        resultItem = PMItemID.Stopwatch;
+                        resultItem = ItemID.GoldWatch;
+                        if (NPC.downedMoonlord) resultItem = PMItemID.Stopwatch;
                         break;
                     }
                 case 3:
@@ -57,7 +57,8 @@ namespace PaperMarioItems.Content.Items.Consumables
                     }
                 case 5:
                     {
-                        resultItem = PMItemID.ShootingStar;
+                        resultItem = ItemID.ManaCrystal;
+                        if (Main.hardMode) resultItem = PMItemID.ShootingStar;
                         break;
                     }
                 case 6:

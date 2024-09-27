@@ -36,16 +36,16 @@ namespace PaperMarioItems.Common.NPCs
                     else setDirection = false;
                     sleepOn = true;
                 }
-                else if (PaperNPCList.EnemiesRotateWhileAsleep.Exists(x => x == npc.type))
+                /* else if (PaperNPCList.EnemiesRotateWhileAsleep.Exists(x => x == npc.type))
                 {
                     npc.rotation = (float)(Math.PI / 2f * (-npc.direction));
                     npc.gfxOffY = npc.height / 2;
-                }
+                } */
                 doNotRunAI = true;
             }
             else
             {
-                if (PaperNPCList.EnemiesRotateWhileAsleep.Exists(x => x == npc.type)) npc.rotation = 0f;
+                //if (PaperNPCList.EnemiesRotateWhileAsleep.Exists(x => x == npc.type)) npc.rotation = 0f;
                 if (sleepOn)
                 {
                     if (hadNoGravitySleep)

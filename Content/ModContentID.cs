@@ -3,6 +3,7 @@ using PaperMarioItems.Content.Dusts;
 using PaperMarioItems.Content.Items;
 using PaperMarioItems.Content.Items.Consumables;
 using PaperMarioItems.Content.Items.Cooking;
+using PaperMarioItems.Content.Items.Treasure;
 using PaperMarioItems.Content.Items.Weapons;
 using PaperMarioItems.Content.Projectiles;
 using Terraria.Audio;
@@ -57,7 +58,17 @@ namespace PaperMarioItems.Content
             WhackaBump = ModContent.ItemType<WhackaBump>(),
             CakeMix = ModContent.ItemType<CakeMix>(),
             Cookbook = ModContent.ItemType<Cookbook>(),
-
+            //key items
+            PackageBox = ModContent.ItemType<PackageBox>(),
+            SkullGem = ModContent.ItemType<SkullGem>(),
+            Necklace = ModContent.ItemType<Necklace>(),
+            MoonStone = ModContent.ItemType<MoonStone>(),
+            StarStone = ModContent.ItemType<StarStone>(),
+            SunStone = ModContent.ItemType<SunStone>(),
+            PuniOrb = ModContent.ItemType<PuniOrb>(),
+            ShellEarrings = ModContent.ItemType<ShellEarrings>(),
+            GoldRing = ModContent.ItemType<GoldRing>(),
+            //cooking
             ChocoCake = ModContent.ItemType<ChocoCake>(),
             CocoCandy = ModContent.ItemType<CocoCandy>(),
             CouplesCake = ModContent.ItemType<CouplesCake>(),

@@ -5,6 +5,7 @@ ADDED
 - Added Sleep debuff
 - Added glowing effects to certain items when they are outside of the player's inventory
 - Added lighting effects to the player when the Electrified! buff is present
+- Added "Treasure"/Important Things items: Battle Trunks, Necklace, Puni Orb, Shell Earrings, Skull Gem, Star Stone, Sun Stone, Moon Stone, Wedding Ring, Package, Gold Ring. (Important Things items can be acquired by opening a Package. Packages may rarely drop as common enemy loot)
 
 CHANGED
 - Reduced the volume of all custom sounds by half

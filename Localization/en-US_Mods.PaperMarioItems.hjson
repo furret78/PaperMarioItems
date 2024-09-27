@@ -651,6 +651,75 @@ Items: {
 			Does not work against bosses
 			'''
 	}
+
+	BattleTrunks: {
+		DisplayName: Battle Trunks
+		Tooltip: Trunks some wrestlers wore to tatters. Boy, they stink!
+	}
+
+	MoonStone: {
+		DisplayName: Moon Stone
+		Tooltip: A mystical stone shaped like the moon
+	}
+
+	Necklace: {
+		DisplayName: Necklace
+		Tooltip: Flurrie's favorite necklace
+	}
+
+	PackageBox: {
+		DisplayName: Package
+		Tooltip:
+			'''
+			A cardboard box that arrived from another world that somebody got a hold of
+			Might contain a valuable item when opened
+			'''
+	}
+
+	PuniOrb: {
+		DisplayName: Puni Orb
+		Tooltip:
+			'''
+			The emblem of a Puni leader
+			The Punies will gather when it is placed within a pedestal
+			However, there is a strange lack of Punies around...
+			'''
+	}
+
+	SkullGem: {
+		DisplayName: Skull Gem
+		Tooltip: The pride of Flavio's family
+	}
+
+	StarStone: {
+		DisplayName: Star Stone
+		Tooltip: A strange star-shaped stone
+	}
+
+	SunStone: {
+		DisplayName: Sun Stone
+		Tooltip: A mystical stone shaped like the sun
+	}
+
+	Blanket: {
+		DisplayName: Blanket
+		Tooltip: ""
+	}
+
+	ShellEarrings: {
+		DisplayName: Shell Earrings
+		Tooltip: ""
+	}
+
+	WeddingRing: {
+		DisplayName: Wedding Ring
+		Tooltip: ""
+	}
+
+	GoldRing: {
+		DisplayName: Gold Ring
+		Tooltip: ""
+	}
 }
 
 Buffs: {

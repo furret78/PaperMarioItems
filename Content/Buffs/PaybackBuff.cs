@@ -1,7 +1,6 @@
 ﻿using Terraria;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using PaperMarioItems.Common.Players;
 
 namespace PaperMarioItems.Content.Buffs
 {

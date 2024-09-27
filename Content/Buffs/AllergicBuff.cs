@@ -1,7 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Content;
 using Terraria.DataStructures;
-using Terraria.Localization;
 using Terraria;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
