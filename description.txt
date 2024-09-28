@@ -10,7 +10,7 @@ The mod currently features items from Paper Mario: The Thousand-Year Door. Futur
 To see which recipes correspond to which item, please reference the list of recipes in TTYD. Certain ingredients may be substituted by vanilla counterparts (Mango instead of Keel Mango).
 
 [c/4DBF60:Attributes]
-Massive thanks to Jopojelly, Cube Root, Blobwin, stormytuna, direwolf420 and TModLoader server's #mod-development-help channel! Couldn't have made the mod without them.
+Massive thanks to Jopojelly, Cube Root, Blobwin, stormytuna, direwolf420, davidfdev and TModLoader server's #mod-development-help channel! Couldn't have made the mod without them.
 
 All Paper Mario assets used in the mod belongs to Intelligent Systems and Nintendo.
 

@@ -16,7 +16,7 @@ namespace PaperMarioItems.Common.Players
         //targeting IDs
         private const int shootingCase = 0, dizzyCase = 1, frightCase = 2, thunderCase = 3, timeCase = 4, hpCase = 5, quakeCase = 6, powCase = 7, ruinCase = 8, softCase = 9, sleepyCase = 10;
         //targeting conditions
-        private bool TargetConditionCheck(Player player, NPC npc, Player vsplayer, int condition)
+        public bool TargetConditionCheck(Player player, NPC npc, Player vsplayer, int condition)
         {
             if (Main.myPlayer != player.whoAmI || player == null) return false;
             if (npc != null &&
@@ -79,17 +79,17 @@ namespace PaperMarioItems.Common.Players
             }
             else return false;
         }
-        private int GetDirection(Entity target, Player player)
+        public int GetDirection(Entity target, Player player)
         {
             if (target.position.X < player.position.X) return -1;
             return 1;
         }
-        private bool DifferentTeamCheck(Player player, Player otherplayer)
+        public bool DifferentTeamCheck(Player player, Player otherplayer)
         {
             if (player.team == (int)Team.None || otherplayer.team == (int)Team.None) return true;
             return player.team == otherplayer.team;
         }
-        private bool IsWithinScreenRange(Player player, Entity target) => (target.Center - player.Center).Length() < (Main.screenWidth / 2);
+        public bool IsWithinScreenRange(Player player, Entity target) => (target.Center - player.Center).Length() < (Main.screenWidth / 2);
         public void SetShakeTime(int time)
         {
             if (ScreenShakeSystem.screenShakeTime < time) ScreenShakeSystem.screenShakeTime = time;
@@ -124,6 +124,11 @@ namespace PaperMarioItems.Common.Players
             Player.NinjaDodge();
             SoundEngine.PlaySound(PMSoundID.lucky, Player.Center);
             CombatText.NewText(Player.getRect(), LuckyTextColor, LuckyEvade);
+        }
+        //hot sauce effect
+        public void DrinkHotSauce(Player player)
+        {
+            if (!player.HasBuff(PMBuffID.Allergic) && !player.buffImmune[PMBuffID.Charged]) chargedStack++;
         }
         //shooting star loopable
         private void ShootingStarAttack(Player player)
@@ -207,6 +212,7 @@ namespace PaperMarioItems.Common.Players
                 }
             }
             if (!empty) SoundEngine.PlaySound(PMSoundID.causeStatus, player.Center);
+            else SoundEngine.PlaySound(PMSoundID.wrong, player.Center);
         }
         //fright mask
         private void InflictFrightOnAll(Player player)
@@ -234,6 +240,7 @@ namespace PaperMarioItems.Common.Players
             Player closestPlayer = null;
             float closestDist = 0;
             float distSq = 0;
+            bool empty = true;
             foreach (var vsplayer in Main.ActivePlayers)
             {
                 if (TargetConditionCheck(player, null, vsplayer, thunderCase))
@@ -264,14 +271,17 @@ namespace PaperMarioItems.Common.Players
             {
                 if (closestNPC != null && closestPlayer == null)
                 {
+                    empty = false;
                     StrikeLightning(player, closestNPC, null);
                     SoundEngine.PlaySound(PMSoundID.thunder, closestNPC.Center);
                 }
                 if (closestPlayer != null)
                 {
+                    empty = false;
                     StrikeLightning(player, null, closestPlayer);
                     SoundEngine.PlaySound(PMSoundID.thunder, closestPlayer.Center);
                 }
+                if (empty) SoundEngine.PlaySound(PMSoundID.wrong, player.Center);
             }
         }
         private void StrikeAllEnemies(Player player)
@@ -294,12 +304,14 @@ namespace PaperMarioItems.Common.Players
                 }
             }
             if (!empty) SoundEngine.PlaySound(PMSoundID.thunder, player.Center);
+            else SoundEngine.PlaySound(PMSoundID.wrong, player.Center);
         }
         public void StrikeLightning(Player player, NPC npc, Player vsplayer)
         {
             Dust.NewDustDirect(npc.Center, 2, 2, PMDustID.LightningDust);
             if (npc != null)
             {
+                //player.ApplyDamageToNPC(npc, 100, 0f, GetDirection(npc, player), Main.rand.Next(100) <= player.GetTotalCritChance(DamageClass.Generic));
                 npc.SimpleStrikeNPC(100, GetDirection(npc, player), Main.rand.Next(100) <= player.GetTotalCritChance(DamageClass.Generic));
                 npc.AddBuff(BuffID.Electrified, 1800);
             }
@@ -365,6 +377,7 @@ namespace PaperMarioItems.Common.Players
                 }
             }
             if (!empty) SoundEngine.PlaySound(PMSoundID.stopwatch);
+            else SoundEngine.PlaySound(PMSoundID.wrong, player.Center);
         }
         //hp drain
         public void HPDrain(Player player, int healAmount)
@@ -425,8 +438,9 @@ namespace PaperMarioItems.Common.Players
             if (exist)
             {
                 player.Heal(finalDamage);
-                //SoundEngine.PlaySound(PMSoundID.heal, player.Center);
+                SoundEngine.PlaySound(PMSoundID.heal, player.Center);
             }
+            else SoundEngine.PlaySound(PMSoundID.wrong, player.Center);
         }
         //earthquake
         private void CauseEarthquake(Player player, int damage)
@@ -490,6 +504,7 @@ namespace PaperMarioItems.Common.Players
                 }
             }
             if (!empty) SoundEngine.PlaySound(PMSoundID.causeStatus, player.Center);
+            else SoundEngine.PlaySound(PMSoundID.wrong, player.Center);
         }
         //mr softener
         public void SoftenEveryone(Player player)
@@ -511,6 +526,7 @@ namespace PaperMarioItems.Common.Players
                     vsplayer.AddBuff(PMBuffID.Soft, 7200, false);
                 }
             }
+            if (empty) SoundEngine.PlaySound(PMSoundID.wrong, player.Center);
         }
         //sleepy sheep
         private void EveryoneSleepNow(Player player)
@@ -533,6 +549,7 @@ namespace PaperMarioItems.Common.Players
                 }
             }
             if (!empty) SoundEngine.PlaySound(PMSoundID.causeStatus, player.Center);
+            else SoundEngine.PlaySound(PMSoundID.wrong, player.Center);
         }
     }
 }

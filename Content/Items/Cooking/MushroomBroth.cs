@@ -1,4 +1,3 @@
-using PaperMarioItems.Content.Buffs;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -29,7 +28,7 @@ namespace PaperMarioItems.Content.Items.Cooking
         public override void OnConsumeItem(Player player)
 		{
             player.AddBuff(BuffID.Regeneration, healTime*60*60);
-            player.AddBuff(ModContent.BuffType<SoftDebuff>(), healTime*60*60);
+            player.AddBuff(PMBuffID.Soft, healTime*60*60);
             player.TryToResetHungerToNeutral();
         }
         public override void Load()

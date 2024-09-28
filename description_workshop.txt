@@ -15,7 +15,7 @@ To see which recipes correspond to which item in TTYD, please reference the [url
 
 [hr][/hr]
 [h1] Attributes [/h1]
-Massive thanks to Jopojelly, Cube Root, Blobwin, stormytuna, direwolf420 and TModLoader server's #mod-development-help channel! Couldn't have made the mod without them.
+Massive thanks to Jopojelly, Cube Root, Blobwin, stormytuna, direwolf420, davidfdev and TModLoader server's #mod-development-help channel! Couldn't have made the mod without them.
 
 
 All Paper Mario assets used in the mod belongs to Intelligent Systems and Nintendo.

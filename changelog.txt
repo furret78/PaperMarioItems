@@ -5,7 +5,8 @@ ADDED
 - Added Sleep debuff
 - Added glowing effects to certain items when they are outside of the player's inventory
 - Added lighting effects to the player when the Electrified! buff is present
-- Added "Treasure"/Important Things items: Battle Trunks, Necklace, Puni Orb, Shell Earrings, Skull Gem, Star Stone, Sun Stone, Moon Stone, Wedding Ring, Package, Gold Ring. (Important Things items can be acquired by opening a Package. Packages may rarely drop as common enemy loot)
+- Added Important Things items: Package, Battle Trunks, Necklace, Puni Orb, Shell Earrings, Skull Gem, Star Stone, Sun Stone, Moon Stone, Wedding Ring, Gold Ring, Blanket, Blimp Ticket, Train Ticket, Wrestling Magazine, Lottery Ticket (Important Things items can be acquired by opening a Package. Packages may rarely drop as common enemy loot)
+- Added 3 sound effects
 
 CHANGED
 - Reduced the volume of all custom sounds by half
@@ -14,3 +15,8 @@ CHANGED
 - Fixed PvP-only and enemy-only buffs and debuffs applying to self on use
 - Fixed PvP-only buffs not applying properly
 - Readjusted Couple's Cake functionality
+- Changed the image of Hot Sauce
+- Changed how the Charged! buff works:
+  + The buff now operates on stacks. More Hot Sauces consumed means more stacks
+  + The buff only applies its damage multiplier for the first hit on an NPC
+  + How many stacks a player can have at a time is dependent on the world's boss progression

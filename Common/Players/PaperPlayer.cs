@@ -17,13 +17,14 @@ namespace PaperMarioItems.Common.Players
     partial class PaperPlayer : ModPlayer
     {
         //setup
-        public bool dodgyEffect, hugeEffect, softEffect, electrifiedEffect, lifeShroomRevive, thunderOnce, thunderAll, earthquakeEffect, dizzyEffect, causeSoften, causeEarthquake;
+        public bool chargedEffect, dodgyEffect, hugeEffect, softEffect, electrifiedEffect, lifeShroomRevive, thunderOnce, thunderAll, earthquakeEffect, dizzyEffect, causeSoften, causeEarthquake;
         public bool shootingStarActive, inflictDizzyActive, thunderEffectActive, frightMaskActive, stopwatchActive, fireFlowerActive, ruinPowderActive, sleepySheepActive;
-        public int shootingStar = 0, screenSpinTimer = 0, frightMaskCooldown = 0, stopwatchCooldown = 0, fireFlower = 0, ruinPowderCooldown = 0, sleepySheepCooldown = 0;
-        private int wte = 0, ssmd, sst = 0, wtt = 0, bgFlashTime = 0, swt = 0, fft = 0, eqt = 0, dyt = 0, sleept = 0;
+        public int chargedStack = 0, shootingStar = 0, screenSpinTimer = 0, frightMaskCooldown = 0, stopwatchCooldown = 0, fireFlower = 0, ruinPowderCooldown = 0, sleepySheepCooldown = 0;
+        private int chargeCap, wte, ssmd, sst, wtt, bgFlashTime, swt = 0, fft = 0, eqt = 0, dyt = 0, sleept = 0;
         private bool bgFlash;
         private static readonly Color LuckyTextColor = new(255, 255, 0, 255);
         public const int postReviveProtect = 1, postReviveRegen = 2, fireFlowerDamage = 25, earthquakeDamage = 75;
+        public readonly int preHardChargeCap = 10, skellyChargeCap = 12, hardChargeCap = 15, mechChargeCap = 18, mechAllChargeCap = 20, planteraChargeCap = 25, cultistChargeCap = 40;
         //localized text
         public readonly string LuckyEvade = Language.GetTextValue($"Mods.PaperMarioItems.Common.Players.LuckyEvade"),
             MoonLordStopwatch = Language.GetTextValue($"Mods.PaperMarioItems.Common.Players.MoonLordStopwatch"),
@@ -41,11 +42,11 @@ namespace PaperMarioItems.Common.Players
             lifeShroomRevive = false;
             dizzyEffect = false;
             if (electrifiedEffect == false) Player.buffImmune[BuffID.Electrified] = false;
+            chargedEffect = false;
         }
         //on enter world
         public override void OnEnterWorld()
         {
-            base.OnEnterWorld();
             if (Main.dedServ)
             {
                 return;
@@ -68,9 +69,12 @@ namespace PaperMarioItems.Common.Players
             int buffTime = timeToAdd;
             if (self.HasBuff(PMBuffID.Allergic) && !NotAllergicToBuffs.notAllergicToBuffs.Contains(type))
             {
-                buffType = 0;
-                buffTime = 0;
-                //return;
+                if (chargedStack <= 0)
+                {
+                    buffType = 0;
+                    buffTime = 0;
+                    //return;
+                }
             }
             orig(self, buffType, buffTime, quiet, foodHack);
         }
@@ -251,6 +255,32 @@ namespace PaperMarioItems.Common.Players
                         sleepySheepCooldown = 0;
                     }
                 }
+                //charged
+                if (chargedStack > 0)
+                {
+                    chargedEffect = true;
+                    if (!NPC.downedMoonlord)
+                    {
+                        if (!Main.hardMode)
+                        {
+                            chargeCap = preHardChargeCap;
+                            if (NPC.downedBoss3) chargeCap = skellyChargeCap;
+                        }
+                        else
+                        {
+                            chargeCap = hardChargeCap;
+                            if (NPC.downedMechBossAny) chargeCap = mechChargeCap;
+                            if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3) chargeCap = mechAllChargeCap;
+                            if (NPC.downedPlantBoss) chargeCap = planteraChargeCap;
+                            if (NPC.downedAncientCultist) chargeCap = cultistChargeCap;
+                        }
+                        if (chargedStack > chargeCap) chargedStack = chargeCap;
+                    }
+                }
+                if (chargedEffect)
+                {
+                    Player.AddBuff(PMBuffID.Charged, 2);
+                }
             }
         }
 
@@ -368,6 +398,11 @@ namespace PaperMarioItems.Common.Players
                 ref StatModifier finalDamage = ref modifiers.FinalDamage;
                 finalDamage *= 0f;
             }
+        }
+        //deplete charged count
+        public override void OnHitAnything(float x, float y, Entity victim)
+        {
+            chargedStack = 0;
         }
     }
 }

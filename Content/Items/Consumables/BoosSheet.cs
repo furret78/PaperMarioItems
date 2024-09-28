@@ -1,4 +1,5 @@
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -22,6 +23,15 @@ namespace PaperMarioItems.Content.Items.Consumables
 			Item.buffType = BuffID.Invisibility;
 			Item.buffTime = 7200;
         }
+
+        public override void OnConsumeItem(Player player)
+        {
+            if (!player.HasBuff(PMBuffID.Allergic) && !player.buffImmune[BuffID.Invisibility])
+            {
+                SoundEngine.PlaySound(PMSoundID.invisible, player.Center);
+            }
+        }
+
         public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe(2)

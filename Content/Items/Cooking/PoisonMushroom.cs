@@ -39,12 +39,13 @@ namespace PaperMarioItems.Content.Items.Cooking
 			}
 			else
 			{
-				player.Hurt(
-					PlayerDeathReason.ByCustomReason(player.name + " " + PoisonDeath),
-					(player.statLife / 2), player.direction * (-1), false, false, -1, false, player.statDefense);
-				SoundEngine.PlaySound(PMSoundID.causeStatus, player.Center);
-				player.AddBuff(BuffID.Poisoned, 3600);
-			}
+				player.Hurt(PlayerDeathReason.ByCustomReason(player.name + " " + PoisonDeath), (player.statLife / 2), player.direction * (-1), false, false, -1, false, player.statDefense);
+				if (!player.HasBuff(PMBuffID.Allergic) && !player.buffImmune[BuffID.Poisoned])
+				{
+					SoundEngine.PlaySound(PMSoundID.causeStatus, player.Center);
+				}
+                player.AddBuff(BuffID.Poisoned, 3600);
+            }
 			return true;
         }
 	}

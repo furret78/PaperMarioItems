@@ -2,6 +2,7 @@ using PaperMarioItems.Common.Players;
 using System.Collections.Generic;
 using System.Linq;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -41,6 +42,7 @@ namespace PaperMarioItems.Content.Items.Cooking
         {
             int missingHealth = player.statLifeMax2 - player.statLife;
             int missingMana = player.statManaMax2 - player.statMana;
+            bool notEmpty = false;
             player.Heal(missingHealth);
             player.statMana = player.statManaMax2;
             player.ManaEffect(missingMana);
@@ -50,10 +52,12 @@ namespace PaperMarioItems.Content.Items.Cooking
                 int num25 = player.buffType[l];
                 if (Main.debuff[num25] && player.buffTime[l] > 0 && (num25 < 0 || num25 >= BuffID.Count || !BuffID.Sets.NurseCannotRemoveDebuff[num25]))
                 {
+                    notEmpty = true;
                     player.DelBuff(l);
                     l = -1;
                 }
             }
+            if (notEmpty) SoundEngine.PlaySound(PMSoundID.recover, player.Center);
             player.AddBuff(BuffID.Regeneration, 36000);
             player.AddBuff(BuffID.ManaRegeneration, 36000);
             player.AddBuff(BuffID.WellFed3, 36000);

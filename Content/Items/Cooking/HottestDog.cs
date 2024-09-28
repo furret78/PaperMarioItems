@@ -2,6 +2,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using PaperMarioItems.Content.Items.Consumables;
+using PaperMarioItems.Common.Players;
 
 namespace PaperMarioItems.Content.Items.Cooking
 { 
@@ -26,11 +27,13 @@ namespace PaperMarioItems.Content.Items.Cooking
             Item.healMana = Item.healLife;
             Item.potion = true;
         }
+
         public override void OnConsumeItem(Player player)
 		{
-            player.AddBuff(PMBuffID.Charged, 7200);
+            player.GetModPlayer<PaperPlayer>().DrinkHotSauce(player);
             player.TryToResetHungerToNeutral();
         }
+
         public override void Load()
         {
             On_Player.ApplyPotionDelay += On_Player_ApplyPotionDelay;

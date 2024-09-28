@@ -1,4 +1,4 @@
-﻿using PaperMarioItems.Content.Buffs;
+﻿using PaperMarioItems.Content;
 using Terraria.ModLoader;
 
 namespace PaperMarioItems.Common.Buffs
@@ -6,7 +6,8 @@ namespace PaperMarioItems.Common.Buffs
 	public class PaperBuffs : GlobalBuff
 	{
 		public override bool RightClick(int type, int buffIndex) {
-			if (type == ModContent.BuffType<RevivedBuff>()) return false;
+			if (type == PMBuffID.Revived ||
+                type == PMBuffID.Charged) return false;
 			return base.RightClick(type, buffIndex);
 		}
 	}

@@ -68,6 +68,11 @@ namespace PaperMarioItems.Content
             PuniOrb = ModContent.ItemType<PuniOrb>(),
             ShellEarrings = ModContent.ItemType<ShellEarrings>(),
             GoldRing = ModContent.ItemType<GoldRing>(),
+            Blanket = ModContent.ItemType<Blanket>(),
+            BlimpTicket = ModContent.ItemType<BlimpTicket>(),
+            TrainTicket = ModContent.ItemType<TrainTicket>(),
+            LotteryTicket = ModContent.ItemType<LotteryTicket>(),
+            WrestlingMagazine = ModContent.ItemType<WrestlingMagazine>(),
             //cooking
             ChocoCake = ModContent.ItemType<ChocoCake>(),
             CocoCandy = ModContent.ItemType<CocoCandy>(),
@@ -179,6 +184,9 @@ namespace PaperMarioItems.Content
             thunder = PaperMarioItems.thunderPM with { Volume = soundVolume },
             useItem = PaperMarioItems.useItemPM with { Volume = soundVolume },
             stopwatch = PaperMarioItems.watchPM with { Volume = soundVolume },
+            invisible = PaperMarioItems.invisPM with { Volume = soundVolume },
+            recover = PaperMarioItems.recoverPM with { Volume = soundVolume },
+            wrong = PaperMarioItems.wrongPM with { Volume = soundVolume },
             charged = PaperMarioItems.chargedPM with { Volume = soundVolume };
     }
 }

@@ -1,4 +1,5 @@
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -24,15 +25,18 @@ namespace PaperMarioItems.Content.Items.Cooking
 
         public override bool? UseItem(Player player)
         {
+            bool empty = true;
             for (int l = 0; l < Player.MaxBuffs; l++)
             {
                 int num25 = player.buffType[l];
                 if (Main.debuff[num25] && player.buffTime[l] > 0 && (num25 < 0 || num25 >= BuffID.Count || !BuffID.Sets.NurseCannotRemoveDebuff[num25]))
                 {
+                    empty = false;
                     player.DelBuff(l);
                     l = -1;
                 }
             }
+            if (!empty) SoundEngine.PlaySound(PMSoundID.recover, player.Center);
             return true;
         }
 

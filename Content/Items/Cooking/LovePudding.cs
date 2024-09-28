@@ -1,4 +1,5 @@
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -29,6 +30,7 @@ namespace PaperMarioItems.Content.Items.Cooking
 			{
 				case 0:
 					player.AddBuff(BuffID.Invisibility, buffTime*60*60);
+					if (!player.HasBuff(PMBuffID.Allergic) && !player.buffImmune[BuffID.Invisibility]) SoundEngine.PlaySound(PMSoundID.invisible, player.Center);
                     return true;
                 case 1:
 					player.AddBuff(PMBuffID.Electrified, buffTime*60*60);

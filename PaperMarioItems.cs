@@ -1,6 +1,4 @@
 using PaperMarioItems.Content;
-using PaperMarioItems.Content.Items.Consumables;
-using Steamworks;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -22,6 +20,9 @@ namespace PaperMarioItems
             fireFlowerPM = new("PaperMarioItems/Assets/Sounds/fireFlowerPM"),
             causeStatusPM = new("PaperMarioItems/Assets/Sounds/causeStatusPM"),
             chargedPM = new("PaperMarioItems/Assets/Sounds/chargedPM"),
+            invisPM = new("PaperMarioItems/Assets/Sounds/invisPM"),
+            recoverPM = new("PaperMarioItems/Assets/Sounds/recoverPM"),
+            wrongPM = new("PaperMarioItems/Assets/Sounds/wrongPM"),
             damagePM = new("PaperMarioItems/Assets/Sounds/damagePM");
         //custom recipe groups
         public override void AddRecipeGroups()

@@ -18,12 +18,17 @@ namespace PaperMarioItems.Content.Items.Treasure
 
         public override void UpdateEquip(Player player)
         {
-            if (!player.HasBuff(BuffID.Stinky)) player.AddBuff(BuffID.Stinky, 60);
+            StinkyTrunks(player);
         }
 
         public override void UpdateVanity(Player player)
         {
-            if (!player.HasBuff(BuffID.Stinky)) player.AddBuff(BuffID.Stinky, 60);
+            StinkyTrunks(player);
+        }
+
+        private void StinkyTrunks(Player player)
+        {
+            if (!player.HasBuff(BuffID.Stinky)) player.AddBuff(BuffID.Stinky, 30);
         }
     }
 }
