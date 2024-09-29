@@ -80,8 +80,9 @@ namespace PaperMarioItems.Content.Items.Treasure
 
         public override void OnCreated(ItemCreationContext context)
         {
-            if (context is RecipeItemCreationContext ||
-                context is BuyItemCreationContext) lottoNumber = DetermineLottery();
+            if ((context is RecipeItemCreationContext ||
+                context is BuyItemCreationContext)
+                && lottoNumber == string.Empty) lottoNumber = DetermineLottery();
         }
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)

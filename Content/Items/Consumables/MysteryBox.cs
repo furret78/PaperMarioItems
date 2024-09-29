@@ -14,14 +14,21 @@ namespace PaperMarioItems.Content.Items.Consumables
             Item.useTime = 17;
             Item.useAnimation = Item.useTime;
             Item.consumable = true;
-            Item.useStyle = ItemUseStyleID.HoldUp;
+            Item.noUseGraphic = true;
             Item.UseSound = SoundID.Grab;
             Item.maxStack = 64;
             Item.rare = ItemRarityID.White;
             Item.value = Item.buyPrice(silver: 3);
         }
 
-        public override bool? UseItem(Player player)
+        public override bool CanRightClick() => true;
+
+        public override void RightClick(Player player)
+        {
+            player.QuickSpawnItem(player.GetSource_ItemUse(Item), ChooseItem());
+        }
+
+        private int ChooseItem()
         {
             int resultItem = PMItemID.Mushroom;
             switch (Main.rand.Next(11))
@@ -42,7 +49,7 @@ namespace PaperMarioItems.Content.Items.Consumables
                 case 2:
                     {
                         resultItem = ItemID.GoldWatch;
-                        if (NPC.downedMoonlord) resultItem = PMItemID.Stopwatch;
+                        if (NPC.downedPlantBoss) resultItem = PMItemID.Stopwatch;
                         break;
                     }
                 case 3:
@@ -94,8 +101,7 @@ namespace PaperMarioItems.Content.Items.Consumables
                         break;
                     }
             }
-            player.QuickSpawnItem(player.GetSource_ItemUse(Item), resultItem);
-            return true;
+            return resultItem;
         }
     }
 }

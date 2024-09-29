@@ -5,7 +5,7 @@ ADDED
 - Added Sleep debuff
 - Added glowing effects to certain items when they are outside of the player's inventory
 - Added lighting effects to the player when the Electrified! buff is present
-- Added Important Things items: Package, Battle Trunks, Necklace, Puni Orb, Shell Earrings, Skull Gem, Star Stone, Sun Stone, Moon Stone, Wedding Ring, Gold Ring, Blanket, Blimp Ticket, Train Ticket, Wrestling Magazine, Lottery Ticket (Important Things items can be acquired by opening a Package. Packages may rarely drop as common enemy loot)
+- Added Important Things items: Package, Battle Trunks, Necklace, Puni Orb, Shell Earrings, Skull Gem, Star Stone, Sun Stone, Moon Stone, Wedding Ring, Gold Ring, Blanket, Blimp Ticket, Train Ticket, Wrestling Magazine, Lottery Ticket, Champ's Belt, Vital Paper, Goldbob's Pass, Dubious Paper, Bub's Present, Broken Superbombomb, Data Disk, Silver Card, Gold Card, Platinum Card, Special Card, Briefcase, Vintage Red (Important Things items can be acquired by opening a Package. Packages may rarely drop as common enemy loot)
 - Added 3 sound effects
 
 CHANGED

@@ -6,13 +6,15 @@ using PaperMarioItems.Content.Items.Cooking;
 using PaperMarioItems.Content.Items.Treasure;
 using PaperMarioItems.Content.Items.Weapons;
 using PaperMarioItems.Content.Projectiles;
+using System.Collections.Generic;
 using Terraria.Audio;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace PaperMarioItems.Content
 {
     //items
-    public class PMItemID : ModSystem
+    public class PMItemID
     {
         public static readonly int Mistake = ModContent.ItemType<Mistake>(),
             BoosSheet = ModContent.ItemType<BoosSheet>(),
@@ -73,6 +75,21 @@ namespace PaperMarioItems.Content
             TrainTicket = ModContent.ItemType<TrainTicket>(),
             LotteryTicket = ModContent.ItemType<LotteryTicket>(),
             WrestlingMagazine = ModContent.ItemType<WrestlingMagazine>(),
+            ChampsBelt = ModContent.ItemType<ChampsBelt>(),
+            VitalPaper = ModContent.ItemType<VitalPaper>(),
+            GoldbobsPass = ModContent.ItemType<GoldbobsPass>(),
+            DubiousPaper = ModContent.ItemType<DubiousPaper>(),
+            PresentPaper = ModContent.ItemType<PresentPaper>(),
+            PresentBox = ModContent.ItemType<PresentBox>(),
+            Superbombomb = ModContent.ItemType<Superbombomb>(),
+            DataDisk = ModContent.ItemType<DataDisk>(),
+            UltraStone = ModContent.ItemType<UltraStone>(),
+            SilverCard = ModContent.ItemType<SilverCard>(),
+            GoldCard = ModContent.ItemType<GoldCard>(),
+            PlatinumCard = ModContent.ItemType<PlatinumCard>(),
+            SpecialCard = ModContent.ItemType<SpecialCard>(),
+            Briefcase = ModContent.ItemType<Briefcase>(),
+            VintageRed = ModContent.ItemType<VintageRed>(),
             //cooking
             ChocoCake = ModContent.ItemType<ChocoCake>(),
             CocoCandy = ModContent.ItemType<CocoCandy>(),

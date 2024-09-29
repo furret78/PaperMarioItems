@@ -22,11 +22,14 @@ namespace PaperMarioItems.Common.UI
         private List<ItemSlotWrapper> itemSlots;
         private readonly float itemSlotSize = 52 * 0.65f;
         private readonly int[] itemSlotsL = [20, 20 + (int)(2.5f * (52 * 0.65f))];
+        public readonly string CookItem = Language.GetTextValue($"Mods.PaperMarioItems.Common.UI.CookItem");
         public override void OnInitialize()
         {
             DraggablePanel = new PanelUI();
             DraggablePanel.SetPadding(0);
             float panelWidth = itemSlotsL[itemSlotsL.Length - 1] + itemSlotSize + 30f;
+            //Vector2 InitPos2 = new(-1000, Main.screenHeight / 5);
+            //SetRect(DraggablePanel, InitPos2.X, InitPos2.Y, panelWidth, 96f);
             Vector2 InitPos = new((Main.screenWidth / 2) - (panelWidth / 2), Main.screenHeight / 5);
             SetRect(DraggablePanel, InitPos.X, InitPos.Y, panelWidth, 96f);
             DraggablePanel.BackgroundColor = new(73, 94, 171, 200);
@@ -46,7 +49,7 @@ namespace PaperMarioItems.Common.UI
             }
 
             Asset<Texture2D> buttonPlayTexture = ModContent.Request<Texture2D>("Terraria/Images/UI/ButtonFavoriteActive");
-            HoverImageButton cookButton = new(buttonPlayTexture, "Cook these items!");
+            HoverImageButton cookButton = new(buttonPlayTexture, "Cook");
             SetRect(cookButton, 20f, 10f, 22f, 22f);
             cookButton.OnLeftClick += new MouseEvent(PlayButtonClicked);
             DraggablePanel.Append(cookButton);
@@ -111,7 +114,7 @@ namespace PaperMarioItems.Common.UI
             CloseCookingUI();
         }
 
-        private void CloseCookingUI()
+        private static void CloseCookingUI()
         {
             ModContent.GetInstance<PaperCookingSystem>().NearestCookingPotPosition = null;
             ModContent.GetInstance<PaperCookingSystem>().HideUI();
@@ -139,7 +142,7 @@ namespace PaperMarioItems.Common.UI
             return false;
         }
 
-        private int ItemAmountFinalize(int amount1 = 0, int amount2 = 0)
+        private static int ItemAmountFinalize(int amount1 = 0, int amount2 = 0)
         {
             int itemAmount = amount1;
             if (amount1 > amount2) itemAmount = amount2;

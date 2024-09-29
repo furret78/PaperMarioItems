@@ -7,6 +7,8 @@ Common: {
 		EarthquakeDeath: was struck by an earthquake.
 		PowDeath: rumbled too hard.
 	}
+
+	UI.CookItem: Cook
 }
 
 Content: {
@@ -247,7 +249,11 @@ Items: {
 
 	MysteryBox: {
 		DisplayName: Mystery Box
-		Tooltip: Who knows what this does? Take a chance and find out!
+		Tooltip:
+			'''
+			Who knows what this does? Take a chance and find out!
+			{$CommonItemTooltip.RightClickToOpen}
+			'''
 	}
 
 	HPDrain: {
@@ -761,6 +767,113 @@ Items: {
 		Tooltip: A lottery ticket from a big Bob-omb’s booth
 		LottoEmpty: Your number is... well, you can write a four-digit one in if you wish
 		LottoFilled: Your number is {0}
+	}
+
+	ChampsBelt: {
+		DisplayName: Champ's Belt
+		Tooltip:
+			'''
+			The champion's belt of Glitz Pit
+			Comes with a faux-Crystal Star as well
+			'''
+	}
+
+	Briefcase: {
+		BriefcaseContain: Currently has {0} {^0:sheet;sheets} of paper out of {1}
+		BriefcaseFull:
+			'''
+			Currently reached its max capacity of {0} sheets of paper
+			You can't stuff more in
+			'''
+		BriefcaseEmpty: It's an empty briefcase
+		DisplayName: Briefcase
+		Tooltip:
+			'''
+			A heavy briefcase with documents inside
+			Right click to take a page out
+			Right click while the cursor has a {$Mods.PaperMarioItems.Items.VitalPaper.DisplayName} to put it in
+			'''
+	}
+
+	DataDisk: {
+		DisplayName: Data Disk
+		Tooltip:
+			'''
+			A disk from Grodus’s room
+			What kind of data is on it?
+			'''
+	}
+
+	DubiousPaper: {
+		DisplayName: Dubious Documents
+		Tooltip: A set of documents that go into detail about a lot of important stuff
+	}
+
+	GoldbobsPass: {
+		DisplayName: Goldbob's Pass
+		Tooltip: Goldbob's written permission to use the Fahr Outpost cannon
+	}
+
+	GoldCard: {
+		DisplayName: Golden Card
+		Tooltip: A plastic card painted in a golden sheen
+	}
+
+	PlatinumCard: {
+		DisplayName: Platinum Card
+		Tooltip: A plastic card painted in a platinum sheen
+	}
+
+	PresentBox: {
+		DisplayName: Present
+		Tooltip:
+			'''
+			A lovely present box
+			{$CommonItemTooltip.RightClickToOpen}
+			'''
+	}
+
+	PresentPaper: {
+		DisplayName: Bub's Letter
+		Tooltip:
+			'''
+			Bub's letter to his mom
+			It's written in a strange script
+			'''
+	}
+
+	SilverCard: {
+		DisplayName: Silver Card
+		Tooltip: A plastic card painted in a silvery sheen
+	}
+
+	SpecialCard: {
+		DisplayName: Special Card
+		Tooltip: A plastic card painted in a blue sheen
+	}
+
+	Superbombomb: {
+		DisplayName: Superbombomb
+		Tooltip: '''"Won't Vivian be punished if she doesn't find this?"'''
+	}
+
+	UltraStone: {
+		DisplayName: Ultra Stone
+		Tooltip: A stone
+	}
+
+	VitalPaper: {
+		DisplayName: Vital Paper
+		Tooltip:
+			'''
+			This... looks like something very important and complicated
+			It's written in a strange script
+			'''
+	}
+
+	VintageRed: {
+		DisplayName: Chuckola Cola
+		Tooltip: The label says it's cola, but it looks like wine
 	}
 }
 
