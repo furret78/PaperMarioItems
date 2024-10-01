@@ -25,15 +25,7 @@ namespace PaperMarioItems.Content.Items.Cooking
 
         public override void SetDefaults()
 		{
-			Item.width = 39;
-			Item.height = 39;
-			Item.useTurn = true;
-			Item.useTime = 17;
-			Item.useAnimation = Item.useTime;
-			Item.useStyle = ItemUseStyleID.EatFood;
-			Item.UseSound = SoundID.Item2;
-			Item.consumable = true;
-			Item.maxStack = Item.CommonMaxStack;
+            Item.DefaultToFood(39, 39, 0, 0);
             Item.rare = ItemRarityID.Expert;
             Item.value = Item.sellPrice(gold: 50);
             Item.healLife = 1;

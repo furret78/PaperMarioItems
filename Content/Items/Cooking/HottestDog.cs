@@ -20,19 +20,9 @@ namespace PaperMarioItems.Content.Items.Cooking
         }
         public override void SetDefaults()
 		{
-			Item.width = 40;
-			Item.height = 40;
-			Item.useTurn = true;
-			Item.useTime = 17;
-			Item.useAnimation = Item.useTime;
-			Item.useStyle = ItemUseStyleID.EatFood;
-			Item.UseSound = SoundID.Item2;
-			Item.consumable = true;
-			Item.maxStack = Item.CommonMaxStack;
+            Item.DefaultToFood(40, 40, BuffID.WellFed3, 43200);
             Item.rare = ItemRarityID.Orange;
             Item.value = ContentSamples.ItemsByType[ItemID.Hotdog].value + Item.sellPrice(silver: 5);
-            Item.buffType = BuffID.WellFed3;
-			Item.buffTime = 43200;
             Item.healLife = 70;
             Item.healMana = Item.healLife;
             Item.potion = true;

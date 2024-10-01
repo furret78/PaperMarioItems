@@ -18,15 +18,7 @@ namespace PaperMarioItems.Content.Items.Consumables
 
         public override void SetDefaults()
 		{
-            Item.width = 39;
-            Item.height = 40;
-            Item.useTurn = true;
-            Item.useTime = 17;
-            Item.useAnimation = Item.useTime;
-            Item.consumable = true;
-            Item.UseSound = SoundID.Item2;
-            Item.useStyle = ItemUseStyleID.EatFood;
-            Item.maxStack = Item.CommonMaxStack;
+            Item.DefaultToFood(39, 40, 0, 0);
             Item.rare = ItemRarityID.White;
             Item.value = Item.buyPrice(silver: 3);
             Item.healMana = 25;
