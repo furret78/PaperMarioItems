@@ -9,7 +9,8 @@ namespace PaperMarioItems.Content.Items.Weapons
         public override void SetStaticDefaults()
         {
             ItemID.Sets.ItemsThatCountAsBombsForDemolitionistToSpawn[Type] = true;
-            Item.ResearchUnlockCount = 99;
+            ItemID.Sets.ShimmerTransformToItem[Type] = PMItemID.CourageMeal;
+            Item.ResearchUnlockCount = 200;
         }
         public override void SetDefaults()
 		{
