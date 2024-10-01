@@ -6,9 +6,9 @@ using PaperMarioItems.Content.Items.Cooking;
 using PaperMarioItems.Content.Items.Treasure;
 using PaperMarioItems.Content.Items.Weapons;
 using PaperMarioItems.Content.Projectiles;
+using System;
 using System.Collections.Generic;
 using Terraria.Audio;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace PaperMarioItems.Content
@@ -61,6 +61,7 @@ namespace PaperMarioItems.Content
             CakeMix = ModContent.ItemType<CakeMix>(),
             Cookbook = ModContent.ItemType<Cookbook>(),
             //key items
+            BattleTrunks = ModContent.ItemType<BattleTrunks>(),
             PackageBox = ModContent.ItemType<PackageBox>(),
             SkullGem = ModContent.ItemType<SkullGem>(),
             Necklace = ModContent.ItemType<Necklace>(),
@@ -205,5 +206,42 @@ namespace PaperMarioItems.Content
             recover = PaperMarioItems.recoverPM with { Volume = soundVolume },
             wrong = PaperMarioItems.wrongPM with { Volume = soundVolume },
             charged = PaperMarioItems.chargedPM with { Volume = soundVolume };
+    }
+
+    public class ImportantThings : ModSystem
+    {
+        public static readonly List<int> ImportantThingsList = new()
+        {
+            PMItemID.BattleTrunks,
+            PMItemID.PackageBox,
+            PMItemID.SkullGem,
+            PMItemID.Necklace,
+            PMItemID.MoonStone,
+            PMItemID.StarStone,
+            PMItemID.SunStone,
+            PMItemID.PuniOrb,
+            PMItemID.ShellEarrings,
+            PMItemID.GoldRing,
+            PMItemID.Blanket,
+            PMItemID.BlimpTicket,
+            PMItemID.TrainTicket,
+            PMItemID.LotteryTicket,
+            PMItemID.WrestlingMagazine,
+            PMItemID.ChampsBelt,
+            PMItemID.VitalPaper,
+            PMItemID.GoldbobsPass,
+            PMItemID.DubiousPaper,
+            PMItemID.PresentPaper,
+            PMItemID.PresentBox,
+            PMItemID.Superbombomb,
+            PMItemID.DataDisk,
+            PMItemID.UltraStone,
+            PMItemID.SilverCard,
+            PMItemID.GoldCard,
+            PMItemID.PlatinumCard,
+            PMItemID.SpecialCard,
+            PMItemID.Briefcase,
+            PMItemID.VintageRed,
+        };
     }
 }

@@ -43,10 +43,10 @@ namespace PaperMarioItems.Common.RecipeSystem
 
         public override void Unload()
         {
-            MainRecipeDictionary = null;
-            MysteryBoxRecipeList = null;
-            SpaceFoodList = null;
-            SpaceFoodBlacklist = null;
+            MainRecipeDictionary.Clear();
+            MysteryBoxRecipeList.Clear();
+            SpaceFoodList.Clear();
+            SpaceFoodBlacklist.Clear();
         }
     }
 }

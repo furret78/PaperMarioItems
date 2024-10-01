@@ -10,6 +10,7 @@ namespace PaperMarioItems.Content.Items.Treasure
 		{
 			Item.width = 38;
 			Item.height = 37;
+			Item.maxStack = Item.CommonMaxStack;
 			Item.value = Item.sellPrice(copper: 5);
 			Item.rare = ItemRarityID.White;
 		}

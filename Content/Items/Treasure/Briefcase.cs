@@ -53,8 +53,17 @@ namespace PaperMarioItems.Content.Items.Treasure
                 if (paperNumber < paperNumberMax)
                 {
                     SoundEngine.PlaySound(SoundID.Grab, player.Center);
-                    paperNumber++;
-                    Main.mouseItem.TurnToAir();
+                    int addAmountMax = paperNumberMax - paperNumber;
+                    if (Main.mouseItem.stack > addAmountMax)
+                    {
+                        Main.mouseItem.stack -= addAmountMax;
+                        paperNumber += addAmountMax;
+                    }
+                    else
+                    {
+                        paperNumber += Main.mouseItem.stack;
+                        Main.mouseItem.TurnToAir();
+                    }
                 }
                 else SoundEngine.PlaySound(PMSoundID.wrong, player.Center);
             }
