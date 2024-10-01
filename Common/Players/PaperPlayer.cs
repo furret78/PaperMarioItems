@@ -10,6 +10,7 @@ using Terraria.Localization;
 using Terraria.GameContent;
 using PaperMarioItems.Common.UI;
 using PaperMarioItems.Content;
+using PaperMarioItems.Common.Configs;
 
 namespace PaperMarioItems.Common.Players
 {
@@ -20,7 +21,7 @@ namespace PaperMarioItems.Common.Players
         public bool chargedEffect, dodgyEffect, hugeEffect, softEffect, electrifiedEffect, lifeShroomRevive, thunderOnce, thunderAll, earthquakeEffect, dizzyEffect, causeSoften, causeEarthquake;
         public bool shootingStarActive, inflictDizzyActive, thunderEffectActive, frightMaskActive, stopwatchActive, fireFlowerActive, ruinPowderActive, sleepySheepActive;
         public int chargedStack = 0, shootingStar = 0, screenSpinTimer = 0, frightMaskCooldown = 0, stopwatchCooldown = 0, fireFlower = 0, ruinPowderCooldown = 0, sleepySheepCooldown = 0;
-        private int chargeCap, wte, ssmd, sst, wtt, bgFlashTime, swt = 0, fft = 0, eqt = 0, dyt = 0, sleept = 0;
+        private int chargeCap, wte, ssmd, sst, wtt, bgFlashTime, swt, fft, eqt, dyt, sleept, alertTimer = -10;
         private bool bgFlash;
         private static readonly Color LuckyTextColor = new(255, 255, 0, 255);
         public const int postReviveProtect = 1, postReviveRegen = 2, fireFlowerDamage = 25, earthquakeDamage = 75;
@@ -280,6 +281,27 @@ namespace PaperMarioItems.Common.Players
                 if (chargedEffect)
                 {
                     Player.AddBuff(PMBuffID.Charged, 2);
+                }
+            }
+        }
+
+        public override void PostUpdate()
+        {
+            if (Main.myPlayer == Player.whoAmI)
+            {
+                if (ModContent.GetInstance<PaperClientConfigs>().HealthAlert)
+                {
+                    if (Player.statLife < 50)
+                    {
+                        if (alertTimer % 60 == 0)
+                        {
+                            if (Player.statLife > 10) SoundEngine.PlaySound(PMSoundID.danger, Player.Center);
+                            else SoundEngine.PlaySound(PMSoundID.peril, Player.Center);
+                            alertTimer = 1;
+                        }
+                        else alertTimer++;
+                    }
+                    else if (alertTimer > -10) alertTimer = -10;
                 }
             }
         }

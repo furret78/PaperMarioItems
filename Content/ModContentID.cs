@@ -191,14 +191,14 @@ namespace PaperMarioItems.Content
     //sounds
     public class PMSoundID : ModSystem
     {
-        private const float soundVolume = 0.5f;
+        private const float soundVolume = 0.5f, soundVolume2 = soundVolume / 2;
         public static readonly SoundStyle causeStatus = PaperMarioItems.causeStatusPM with { Volume = soundVolume },
             damage = PaperMarioItems.damagePM with { Volume = soundVolume },
             dizzy = PaperMarioItems.dizzyPM with { Volume = soundVolume },
             fireFlower = PaperMarioItems.fireFlowerPM with { Volume = soundVolume },
             heal = PaperMarioItems.healPM with { Volume = soundVolume },
             lucky = PaperMarioItems.luckyPM with { Volume = soundVolume },
-            star = PaperMarioItems.starPM with { Volume = soundVolume },
+            star = PaperMarioItems.starPM with { Volume = soundVolume, PlayOnlyIfFocused = true },
             thunder = PaperMarioItems.thunderPM with { Volume = soundVolume },
             useItem = PaperMarioItems.useItemPM with { Volume = soundVolume },
             stopwatch = PaperMarioItems.watchPM with { Volume = soundVolume },
@@ -207,6 +207,8 @@ namespace PaperMarioItems.Content
             wrong = PaperMarioItems.wrongPM with { Volume = soundVolume },
             fullHeal = PaperMarioItems.fullHealPM with { Volume = soundVolume },
             fullMana = PaperMarioItems.fullManaPM with { Volume = soundVolume },
+            danger = PaperMarioItems.dangerPM with { Volume = soundVolume2, PlayOnlyIfFocused = true },
+            peril = PaperMarioItems.perilPM with { Volume = soundVolume2, PlayOnlyIfFocused = true },
             charged = PaperMarioItems.chargedPM with { Volume = soundVolume };
     }
 

@@ -10,6 +10,7 @@ ADDED
 - Added additional cooking recipes utilizing certain vanilla food items
 - Added custom Journey Mode research unlock counts for items
 - Added food and drink particles for certain consumable items
+- Added an optional client-side config to toggle alert/warning sound effects when at low health
 
 CHANGED
 - Reduced the volume of all custom sounds by half

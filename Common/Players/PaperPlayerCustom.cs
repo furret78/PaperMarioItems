@@ -128,7 +128,11 @@ namespace PaperMarioItems.Common.Players
         //hot sauce effect
         public void DrinkHotSauce(Player player)
         {
-            if (!player.HasBuff(PMBuffID.Allergic) && !player.buffImmune[PMBuffID.Charged]) chargedStack++;
+            if (!player.HasBuff(PMBuffID.Allergic) && !player.buffImmune[PMBuffID.Charged])
+            {
+                chargedStack++;
+                SoundEngine.PlaySound(PMSoundID.charged, player.Center);
+            }
         }
         //shooting star loopable
         private void ShootingStarAttack(Player player)

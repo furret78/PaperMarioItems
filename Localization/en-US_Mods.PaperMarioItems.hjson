@@ -946,3 +946,19 @@ Projectiles: {
 	CourageMealProjectile.DisplayName: "{$Mods.PaperMarioItems.Items.CourageMeal.DisplayName}"
 	ZessDynamiteProjectile.DisplayName: "{$Mods.PaperMarioItems.Items.ZessDynamite.DisplayName}"
 }
+
+Configs: {
+	PaperClientConfigs: {
+		DisplayName: Configurations
+		Headers.AudiovisualTweaks: Audiovisual Tweaks
+
+		HealthAlert: {
+			Label: Paper Mario-style Audio Health Alert (Client-side)
+			Tooltip:
+				'''
+				Setting this to 'On' allows the Danger and Peril sounds to be played at low health.
+				This will not change whether other players in Multiplayer can hear those sounds.
+				'''
+		}
+	}
+}
