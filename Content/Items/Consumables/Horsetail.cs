@@ -7,6 +7,17 @@ namespace PaperMarioItems.Content.Items.Consumables
 { 
 	public class Horsetail : ModItem
 	{
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.FoodParticleColors[Type] = [
+                new(255, 186, 49),
+                new(165, 81, 41),
+                new(206, 101, 49),
+                new(255, 207, 99)
+            ];
+            Item.ResearchUnlockCount = 200;
+        }
+
         public override void SetDefaults()
         {
             Item.width = 40;

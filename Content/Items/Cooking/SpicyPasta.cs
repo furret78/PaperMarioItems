@@ -1,3 +1,4 @@
+using PaperMarioItems.Common.Players;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -6,30 +7,33 @@ namespace PaperMarioItems.Content.Items.Cooking
 { 
 	public class SpicyPasta : ModItem
 	{
-		public override void SetDefaults()
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.ShimmerTransformToItem[Type] = PMItemID.FreshPasta;
+            ItemID.Sets.FoodParticleColors[Type] = [
+                new(115, 16, 0),
+                new(206, 117, 90),
+                new(156, 79, 56)
+            ];
+            Item.ResearchUnlockCount = 50;
+        }
+
+        public override void SetDefaults()
 		{
-			Item.width = 40;
-			Item.height = 33;
-			Item.useTurn = true;
-			Item.useTime = 17;
-			Item.useAnimation = Item.useTime;
-			Item.useStyle = ItemUseStyleID.EatFood;
-			Item.UseSound = SoundID.Item2;
-			Item.consumable = true;
-			Item.maxStack = Item.CommonMaxStack;
+            Item.DefaultToFood(40, 33, BuffID.WellFed2, 7200);
             Item.rare = ItemRarityID.Orange;
             Item.value = Item.sellPrice(silver: 30);
-			Item.buffType = BuffID.WellFed2;
-			Item.buffTime = 7200;
             Item.healLife = 50;
             Item.healMana = 50;
             Item.potion = true;
         }
+
         public override void OnConsumeItem(Player player)
 		{
-            player.AddBuff(PMBuffID.Charged, 7200);
+            player.GetModPlayer<PaperPlayer>().DrinkHotSauce(player);
             player.TryToResetHungerToNeutral();
         }
+
         public override void Load()
         {
             On_Player.ApplyPotionDelay += On_Player_ApplyPotionDelay;
@@ -41,6 +45,7 @@ namespace PaperMarioItems.Content.Items.Cooking
             if (sItem.type == Type) return;
             else orig(player, sItem);
         }
+
         private void On_Player_ApplyLifeAndOrMana(On_Player.orig_ApplyLifeAndOrMana orig, Player player, Item sItem)
         {
             if (sItem.type == Type)

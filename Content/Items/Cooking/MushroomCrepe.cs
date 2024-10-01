@@ -6,21 +6,21 @@ namespace PaperMarioItems.Content.Items.Cooking
 { 
 	public class MushroomCrepe : ModItem
 	{
-		public override void SetDefaults()
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.ShimmerTransformToItem[Type] = PMItemID.UltraMushroom;
+            ItemID.Sets.FoodParticleColors[Type] = [
+                new(222, 162, 0),
+                new(255, 251, 156),
+                new(166, 109, 6)
+            ];
+            Item.ResearchUnlockCount = 30;
+        }
+        public override void SetDefaults()
 		{
-			Item.width = 38;
-			Item.height = 39;
-			Item.useTurn = true;
-			Item.useTime = 17;
-			Item.useAnimation = Item.useTime;
-			Item.useStyle = ItemUseStyleID.EatFood;
-			Item.UseSound = SoundID.Item2;
-			Item.consumable = true;
-			Item.maxStack = Item.CommonMaxStack;
+            Item.DefaultToFood(38, 39, BuffID.WellFed3, 18000);
             Item.rare = ItemRarityID.Orange;
             Item.value = Item.sellPrice(gold: 1);
-			Item.buffType = BuffID.WellFed3;
-			Item.buffTime = 21000;
             Item.healLife = 150;
             Item.healMana = 100;
             Item.potion = true;

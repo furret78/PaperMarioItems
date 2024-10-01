@@ -7,7 +7,13 @@ namespace PaperMarioItems.Content.Items.Cooking
 { 
 	public class FreshJuice : ModItem
 	{
-		public override void SetDefaults()
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.ShimmerTransformToItem[Type] = ItemID.Mango;
+            ItemID.Sets.DrinkParticleColors[Type] = [new(255, 198, 20)];
+            Item.ResearchUnlockCount = 100;
+        }
+        public override void SetDefaults()
 		{
 			Item.width = 39;
 			Item.height = 40;

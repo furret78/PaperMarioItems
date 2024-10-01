@@ -1,27 +1,25 @@
-using PaperMarioItems.Common.Players;
-using System.Collections.Generic;
-using System.Linq;
 using Terraria;
-using Terraria.GameContent.Biomes;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace PaperMarioItems.Content.Items.Cooking
 { 
 	public class SpaceFood : ModItem
 	{
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.ShimmerTransformToItem[Type] = PMItemID.DriedBouquet;
+            ItemID.Sets.FoodParticleColors[Type] = [
+                new(208, 150, 41),
+                new(255, 186, 49),
+                new(140, 101, 24)
+            ];
+            Item.ResearchUnlockCount = 300;
+        }
+
         public override void SetDefaults()
 		{
-			Item.width = 35;
-			Item.height = 28;
-			Item.useTurn = true;
-			Item.useTime = 17;
-			Item.useAnimation = Item.useTime;
-			Item.useStyle = ItemUseStyleID.EatFood;
-			Item.UseSound = SoundID.Item2;
-			Item.consumable = true;
-			Item.maxStack = Item.CommonMaxStack;
+            Item.DefaultToFood(35, 28, 0, 0);
             Item.rare = ItemRarityID.Orange;
             Item.value = Item.sellPrice(silver: 10);
             Item.healLife = 25;

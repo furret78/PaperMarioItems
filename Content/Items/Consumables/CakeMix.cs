@@ -6,7 +6,15 @@ namespace PaperMarioItems.Content.Items.Consumables
 { 
 	public class CakeMix : ModItem
 	{
-		public override void SetDefaults()
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.FoodParticleColors[Type] = [
+                new(255, 255, 156)
+            ];
+            Item.ResearchUnlockCount = 500;
+        }
+
+        public override void SetDefaults()
 		{
             Item.width = 40;
             Item.height = 37;

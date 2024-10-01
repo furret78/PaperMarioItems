@@ -1,3 +1,4 @@
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -6,7 +7,19 @@ namespace PaperMarioItems.Content.Items.Cooking
 { 
 	public class FruitParfait : ModItem
 	{
-		public override void SetDefaults()
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.ShimmerTransformToItem[Type] = ItemID.Peach;
+            ItemID.Sets.FoodParticleColors[Type] = [
+                Color.White,
+                new(255, 154, 0),
+                new(115, 195, 90),
+                new(255, 255, 106)
+            ];
+            Item.ResearchUnlockCount = 25;
+        }
+
+        public override void SetDefaults()
 		{
 			Item.width = 40;
 			Item.height = 40;

@@ -6,29 +6,30 @@ namespace PaperMarioItems.Content.Items.Cooking
 { 
 	public class SnowBunny : ModItem
 	{
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.ShimmerTransformToItem[Type] = ItemID.SnowBlock;
+            ItemID.Sets.FoodParticleColors[Type] = [
+                new(231, 227, 231),
+                new(255, 255, 255),
+            ];
+            Item.ResearchUnlockCount = 30;
+        }
+
         public override void SetDefaults()
 		{
-			Item.width = 40;
-			Item.height = 32;
-			Item.useTurn = true;
-			Item.useTime = 17;
-			Item.useAnimation = Item.useTime;
-			Item.useStyle = ItemUseStyleID.EatFood;
-			Item.UseSound = SoundID.Item2;
-			Item.consumable = true;
-			Item.maxStack = Item.CommonMaxStack;
-            Item.rare = ItemRarityID.Blue;
+            Item.DefaultToFood(40, 32, BuffID.WellFed, 3600);
             Item.value = Item.sellPrice(silver: 10);
-            Item.buffType = BuffID.WellFed;
-            Item.buffTime = 3600;
             Item.healLife = 75;
             Item.potion = true;
         }
+
         public override void OnConsumeItem(Player player)
 		{
             player.AddBuff(BuffID.Frozen, 300);
             player.TryToResetHungerToNeutral();
         }
+
         public override void Load()
         {
             On_Player.ApplyPotionDelay += On_Player_ApplyPotionDelay;

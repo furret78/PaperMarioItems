@@ -19,7 +19,7 @@ namespace PaperMarioItems.Common.Players
                 PMBuffID.Allergic, PMBuffID.Revived, BuffID.CoolWhipPlayerBuff, BuffID.WindPushed,
                 BuffID.Sunflower, BuffID.WaterCandle, BuffID.ShadowCandle, BuffID.MonsterBanner,
                 BuffID.Horrified, BuffID.TheTongue, BuffID.BallistaPanic, BuffID.Shimmer,
-                BuffID.Campfire, BuffID.HeartLamp,
+                BuffID.Campfire, BuffID.HeartLamp, PMBuffID.Charged,
                 //summons
                 BuffID.AbigailMinion, BuffID.BabyBird, BuffID.BabySlime, BuffID.DeadlySphere, BuffID.StormTiger,
                 BuffID.Smolstar, BuffID.FlinxMinion, BuffID.HornetMinion, BuffID.ImpMinion, BuffID.PirateMinion,

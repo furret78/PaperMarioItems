@@ -10,23 +10,22 @@ namespace PaperMarioItems.Content.Items.Cooking
 	public class PoisonMushroom : ModItem
     {
         public static LocalizedText PoisonDeath { get; private set; }
+
         public override void SetStaticDefaults()
         {
             PoisonDeath = this.GetLocalization(nameof(PoisonDeath));
-            Item.ResearchUnlockCount = 1;
-			ItemID.Sets.ShimmerTransformToItem[Type] = PMItemID.SlowMushroom;
+            ItemID.Sets.ShimmerTransformToItem[Type] = PMItemID.SlowMushroom;
+            ItemID.Sets.FoodParticleColors[Type] = [
+                new(57, 101, 41),
+                new(198, 125, 148),
+                new(148, 170, 140)
+            ];
+            Item.ResearchUnlockCount = 10;
         }
+
         public override void SetDefaults()
 		{
-			Item.width = 36;
-			Item.height = 39;
-			Item.useTurn = true;
-			Item.useTime = 17;
-			Item.useAnimation = Item.useTime;
-			Item.useStyle = ItemUseStyleID.EatFood;
-			Item.UseSound = SoundID.Item2;
-			Item.consumable = true;
-			Item.maxStack = Item.CommonMaxStack;
+			Item.DefaultToFood(36, 39, 0, 0);
             Item.rare = ItemRarityID.Green;
             Item.value = Item.sellPrice(silver: 20);
         }

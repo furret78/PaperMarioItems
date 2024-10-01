@@ -6,6 +6,12 @@ namespace PaperMarioItems.Content.Items.Cooking
 { 
 	public class IciclePop : ModItem
 	{
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.ShimmerTransformToItem[Type] = ItemID.SnowBlock;
+            ItemID.Sets.FoodParticleColors[Type] = [new(255, 195, 66)];
+            Item.ResearchUnlockCount = 50;
+        }
         public override void SetDefaults()
 		{
 			Item.width = 33;
@@ -48,5 +54,5 @@ namespace PaperMarioItems.Content.Items.Cooking
             }
             else orig(player, sItem);
         }
-	}
+    }
 }

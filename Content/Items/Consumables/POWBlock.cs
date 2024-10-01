@@ -1,6 +1,5 @@
 using PaperMarioItems.Common.Players;
 using Terraria;
-using Terraria.Audio;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -10,7 +9,14 @@ namespace PaperMarioItems.Content.Items.Consumables
 	public class POWBlock : ModItem
 	{
         public const int powDamage = 20;
+
         public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(powDamage);
+
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 20;
+        }
+
         public override void SetDefaults()
 		{
             Item.width = 40;

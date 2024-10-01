@@ -6,7 +6,13 @@ namespace PaperMarioItems.Content.Items.Cooking
 { 
 	public class InkySauce : ModItem
 	{
-		public override void SetDefaults()
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.ShimmerTransformToItem[Type] = PMItemID.HotSauce;
+            ItemID.Sets.DrinkParticleColors[Type] = [new(107, 89, 90)];
+            Item.ResearchUnlockCount = 25;
+        }
+        public override void SetDefaults()
 		{
 			Item.width = 38;
 			Item.height = 37;

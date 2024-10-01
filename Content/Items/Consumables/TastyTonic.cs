@@ -10,6 +10,8 @@ namespace PaperMarioItems.Content.Items.Consumables
         public override void SetStaticDefaults()
         {
             ItemID.Sets.ShimmerTransformToItem[Type] = PMItemID.SleepySheep;
+            ItemID.Sets.DrinkParticleColors[Type] = [new(99, 186, 247)];
+            Item.ResearchUnlockCount = 300;
         }
 
         public override void SetDefaults()

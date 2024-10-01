@@ -8,6 +8,8 @@ ADDED
 - Added Important Things items: Package, Battle Trunks, Necklace, Puni Orb, Shell Earrings, Skull Gem, Star Stone, Sun Stone, Moon Stone, Wedding Ring, Gold Ring, Blanket, Blimp Ticket, Train Ticket, Wrestling Magazine, Lottery Ticket, Champ's Belt, Vital Paper, Goldbob's Pass, Dubious Paper, Bub's Present, Broken Superbombomb, Data Disk, Silver Card, Gold Card, Platinum Card, Special Card, Briefcase, Vintage Red (Important Things items can be acquired by opening a Package. Packages may rarely drop as common enemy loot)
 - Added 3 sound effects
 - Added additional cooking recipes utilizing certain vanilla food items
+- Added custom Journey Mode research unlock counts for items
+- Added food and drink particles for certain consumable items
 
 CHANGED
 - Reduced the volume of all custom sounds by half
@@ -22,3 +24,5 @@ CHANGED
   + The buff only applies its damage multiplier for the first hit on an NPC
   + How many stacks a player can have at a time is dependent on the world's boss progression
 - Shimmering can now be used when cooking certain items if the recipe calls for a Point Swap
+- Lowered the number of gold coins needed to craft Inn Coupons to 20
+- Inn Coupon's value has been reduced to 5 silver

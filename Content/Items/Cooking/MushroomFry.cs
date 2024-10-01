@@ -7,21 +7,20 @@ namespace PaperMarioItems.Content.Items.Cooking
 { 
 	public class MushroomFry : ModItem
 	{
-		public override void SetDefaults()
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.FoodParticleColors[Type] = [
+                new(255, 190, 90),
+                new(206, 101, 49),
+                new(115, 69, 0)
+            ];
+            Item.ResearchUnlockCount = 200;
+        }
+        public override void SetDefaults()
 		{
-			Item.width = 40;
-			Item.height = 32;
-			Item.useTurn = true;
-			Item.useTime = 17;
-			Item.useAnimation = Item.useTime;
-			Item.useStyle = ItemUseStyleID.EatFood;
-			Item.UseSound = SoundID.Item2;
-			Item.consumable = true;
-			Item.maxStack = Item.CommonMaxStack;
+            Item.DefaultToFood(40, 32, BuffID.WellFed, 7200);
             Item.rare = ItemRarityID.Orange;
             Item.value = Item.sellPrice(silver: 5);
-			Item.buffType = BuffID.WellFed;
-			Item.buffTime = 7200;
             Item.healLife = 30;
             Item.healMana = 10;
             Item.potion = true;

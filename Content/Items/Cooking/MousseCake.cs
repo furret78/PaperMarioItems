@@ -7,21 +7,20 @@ namespace PaperMarioItems.Content.Items.Cooking
 { 
 	public class MousseCake : ModItem
 	{
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.FoodParticleColors[Type] = [
+                new(255, 154, 156),
+                new(255, 255, 206),
+                new(239, 113, 82)
+            ];
+            Item.ResearchUnlockCount = 50;
+        }
         public override void SetDefaults()
 		{
-			Item.width = 38;
-			Item.height = 40;
-			Item.useTurn = true;
-			Item.useTime = 17;
-			Item.useAnimation = Item.useTime;
-			Item.useStyle = ItemUseStyleID.EatFood;
-			Item.UseSound = SoundID.Item2;
-			Item.consumable = true;
-			Item.maxStack = Item.CommonMaxStack;
+            Item.DefaultToFood(38, 40, BuffID.WellFed, 3600);
             Item.rare = ItemRarityID.Orange;
             Item.value = Item.sellPrice(silver: 10);
-            Item.buffType = BuffID.WellFed;
-            Item.buffTime = 3600;
             Item.healMana = 75;
         }
         public override void OnConsumeItem(Player player)

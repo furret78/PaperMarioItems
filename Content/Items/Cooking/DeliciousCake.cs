@@ -1,3 +1,4 @@
+using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.Audio;
@@ -11,12 +12,21 @@ namespace PaperMarioItems.Content.Items.Cooking
         public override void SetStaticDefaults()
         {
             ItemID.Sets.ShimmerTransformToItem[Type] = PMItemID.PoisonedCake;
+            ItemID.Sets.FoodParticleColors[Type] = [
+                Color.White,
+                new(255, 231, 148),
+                new(156, 44, 41),
+                new(255, 166, 0),
+                new(255, 211, 74),
+                new(165, 0, 0)
+            ];
+            Item.ResearchUnlockCount = Item.CommonMaxStack;
         }
 
         public override void SetDefaults()
 		{
-			Item.width = 40;
-			Item.height = 40;
+			Item.width = 39;
+			Item.height = 39;
 			Item.useTurn = true;
 			Item.useTime = 17;
 			Item.useAnimation = Item.useTime;
@@ -29,7 +39,6 @@ namespace PaperMarioItems.Content.Items.Cooking
             Item.healLife = 1;
             Item.healMana = 1;
             Item.potion = true;
-            Item.expertOnly = true;
         }
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
@@ -42,12 +51,8 @@ namespace PaperMarioItems.Content.Items.Cooking
 
         public override bool? UseItem(Player player)
         {
-            int missingHealth = player.statLifeMax2 - player.statLife;
-            int missingMana = player.statManaMax2 - player.statMana;
+            int foodBuff = BuffID.WellFed;
             bool notEmpty = false;
-            player.Heal(missingHealth);
-            player.statMana = player.statManaMax2;
-            player.ManaEffect(missingMana);
             player.TryToResetHungerToNeutral();
             for (int l = 0; l < Player.MaxBuffs; l++)
             {
@@ -62,7 +67,9 @@ namespace PaperMarioItems.Content.Items.Cooking
             if (notEmpty) SoundEngine.PlaySound(PMSoundID.recover, player.Center);
             player.AddBuff(BuffID.Regeneration, 36000);
             player.AddBuff(BuffID.ManaRegeneration, 36000);
-            player.AddBuff(BuffID.WellFed3, 36000);
+            if (Main.expertMode) foodBuff = BuffID.WellFed2;
+            if (Main.masterMode) foodBuff = BuffID.WellFed3;
+            player.AddBuff(foodBuff, 36000);
             return true;
         }
 
@@ -81,14 +88,17 @@ namespace PaperMarioItems.Content.Items.Cooking
         {
             if (sItem.type == Type)
             {
-                int num = sItem.healLife; int num2 = sItem.healMana;
-                player.statLife += num; player.statMana += num2;
-                if (player.statLife > player.statLifeMax2) player.statLife = player.statLifeMax2;
-                if (player.statMana > player.statManaMax2) player.statMana = player.statManaMax2;
-                if (num > 0 && Main.myPlayer == player.whoAmI) player.HealEffect(num);
-                if (num2 > 0)
+                if (player.statLife < player.statLifeMax2)
                 {
-                    if (Main.myPlayer == player.whoAmI) player.ManaEffect(num2);
+                    SoundEngine.PlaySound(PMSoundID.fullHeal, player.Center);
+                    CombatText.NewText(player.getRect(), CombatText.HealLife, "MAX");
+                    player.statLife = player.statLifeMax2;
+                }
+                if (player.statMana < player.statManaMax2)
+                {
+                    SoundEngine.PlaySound(PMSoundID.fullMana, player.Center);
+                    CombatText.NewText(player.getRect(), CombatText.HealMana, "MAX");
+                    player.statMana = player.statManaMax2;
                 }
             }
             else orig(player, sItem);

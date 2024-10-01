@@ -9,6 +9,7 @@ namespace PaperMarioItems.Content.Items.Consumables
         public override void SetStaticDefaults()
         {
             ItemID.Sets.ShimmerTransformToItem[Type] = PMItemID.RuinPowder;
+			Item.ResearchUnlockCount = 10;
         }
 
         public override void SetDefaults()

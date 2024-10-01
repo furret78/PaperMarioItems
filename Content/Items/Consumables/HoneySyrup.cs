@@ -9,6 +9,8 @@ namespace PaperMarioItems.Content.Items.Consumables
         public override void SetStaticDefaults()
         {
             ItemID.Sets.ShimmerTransformToItem[Type] = PMItemID.Mushroom;
+            ItemID.Sets.DrinkParticleColors[Type] = [new(255, 224, 0)];
+            Item.ResearchUnlockCount = 50;
         }
 
         public override void SetDefaults()

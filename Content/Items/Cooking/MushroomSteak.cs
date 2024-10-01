@@ -7,25 +7,25 @@ namespace PaperMarioItems.Content.Items.Cooking
 { 
 	public class MushroomSteak : ModItem
 	{
-		public override void SetDefaults()
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.FoodParticleColors[Type] = [
+                new(193, 134, 22),
+                new(255, 203, 99)
+            ];
+            Item.ResearchUnlockCount = 50;
+        }
+
+        public override void SetDefaults()
 		{
-			Item.width = 40;
-			Item.height = 36;
-			Item.useTurn = true;
-			Item.useTime = 17;
-			Item.useAnimation = Item.useTime;
-			Item.useStyle = ItemUseStyleID.EatFood;
-			Item.UseSound = SoundID.Item2;
-			Item.consumable = true;
-			Item.maxStack = Item.CommonMaxStack;
+            Item.DefaultToFood(40, 36, BuffID.WellFed2, 21600);
             Item.rare = ItemRarityID.Orange;
             Item.value = Item.sellPrice(silver: 45);
-			Item.buffType = BuffID.WellFed3;
-			Item.buffTime = 21600;
             Item.healLife = 150;
             Item.healMana = 50;
             Item.potion = true;
         }
+
         public override void OnConsumeItem(Player player)
 		{
             player.TryToResetHungerToNeutral();

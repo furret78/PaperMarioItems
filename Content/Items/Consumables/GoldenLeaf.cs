@@ -6,7 +6,17 @@ namespace PaperMarioItems.Content.Items.Consumables
 { 
 	public class GoldenLeaf : ModItem
 	{
-		public override void SetDefaults()
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.FoodParticleColors[Type] = [
+                new(255, 190, 0),
+                new(206, 150, 0),
+                new(165, 116, 0)
+            ];
+            Item.ResearchUnlockCount = 350;
+        }
+
+        public override void SetDefaults()
 		{
             Item.width = 39;
             Item.height = 40;

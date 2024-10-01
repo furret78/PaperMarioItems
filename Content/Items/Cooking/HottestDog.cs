@@ -8,7 +8,17 @@ namespace PaperMarioItems.Content.Items.Cooking
 { 
 	public class HottestDog : ModItem
 	{
-		public override void SetDefaults()
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.FoodParticleColors[Type] = [
+                new(158, 0, 27),
+                new(255, 66, 0),
+                new(178, 73, 31),
+                new(96, 16, 0)
+            ];
+            Item.ResearchUnlockCount = 10;
+        }
+        public override void SetDefaults()
 		{
 			Item.width = 40;
 			Item.height = 40;

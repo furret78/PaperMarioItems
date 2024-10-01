@@ -10,6 +10,16 @@ namespace PaperMarioItems.Content.Items.Cooking
 	{
         private int effectTime = 3;
         public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(effectTime);
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.ShimmerTransformToItem[Type] = PMItemID.VoltMushroom;
+            ItemID.Sets.FoodParticleColors[Type] = [
+                new(255, 195, 0),
+                new(99, 101, 99),
+                new(49, 48, 49)
+            ];
+            Item.ResearchUnlockCount = 30;
+        }
         public override void SetDefaults()
 		{
 			Item.width = 40;

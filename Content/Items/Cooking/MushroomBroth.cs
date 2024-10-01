@@ -9,21 +9,18 @@ namespace PaperMarioItems.Content.Items.Cooking
 	{
         public const int healTime = 5;
         public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(healTime);
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.ShimmerTransformToItem[Type] = PMItemID.SlowMushroom;
+            ItemID.Sets.DrinkParticleColors[Type] = [new(198, 105, 74)];
+            ItemID.Sets.FoodParticleColors[Type] = [new(74, 52, 0), new(214, 166, 82)];
+            Item.ResearchUnlockCount = 50;
+        }
         public override void SetDefaults()
 		{
-			Item.width = 34;
-			Item.height = 39;
-			Item.useTurn = true;
-			Item.useTime = 17;
-			Item.useAnimation = Item.useTime;
-			Item.useStyle = ItemUseStyleID.DrinkLiquid;
-			Item.UseSound = SoundID.Item3;
-			Item.consumable = true;
-			Item.maxStack = Item.CommonMaxStack;
+            Item.DefaultToFood(34, 39, BuffID.WellFed, 3600, true);
             Item.rare = ItemRarityID.Orange;
             Item.value = Item.sellPrice(silver: 26);
-            Item.buffType = BuffID.WellFed;
-            Item.buffTime = 3600;
         }
         public override void OnConsumeItem(Player player)
 		{

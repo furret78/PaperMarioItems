@@ -9,6 +9,12 @@ namespace PaperMarioItems.Content.Items.Consumables
         public override void SetStaticDefaults()
         {
             ItemID.Sets.ShimmerTransformToItem[Type] = PMItemID.HoneySyrup;
+            ItemID.Sets.FoodParticleColors[Type] = [
+                new(231, 56, 57),
+                new(231, 227, 231),
+                new(255, 215, 132)
+            ];
+            Item.ResearchUnlockCount = 200;
         }
 
         public override void SetDefaults()

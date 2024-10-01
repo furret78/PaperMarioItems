@@ -6,21 +6,19 @@ namespace PaperMarioItems.Content.Items.Cooking
 { 
 	public class MangoDelight : ModItem
 	{
-		public override void SetDefaults()
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.ShimmerTransformToItem[Type] = ItemID.Mango;
+            ItemID.Sets.FoodParticleColors[Type] = [new(255, 170, 8)];
+            Item.ResearchUnlockCount = 25;
+        }
+        public override void SetDefaults()
 		{
-			Item.width = 40;
-			Item.height = 39;
-			Item.useTurn = true;
-			Item.useTime = 17;
-			Item.useAnimation = Item.useTime;
+            Item.DefaultToFood(40, 39, BuffID.WellFed, 7200, true);
 			Item.useStyle = ItemUseStyleID.EatFood;
-			Item.UseSound = SoundID.Item2;
-			Item.consumable = true;
 			Item.maxStack = Item.CommonMaxStack;
             Item.rare = ItemRarityID.Orange;
             Item.value = Item.sellPrice(silver: 10);
-			Item.buffType = BuffID.WellFed;
-			Item.buffTime = 7200;
             Item.healLife = 50;
             Item.healMana = 15;
             Item.potion = true;

@@ -12,6 +12,7 @@ namespace PaperMarioItems.Content.Items.Consumables
         public override void SetStaticDefaults()
         {
             ItemID.Sets.ShimmerTransformToItem[Type] = PMItemID.ThunderRage;
+            Item.ResearchUnlockCount = 100;
         }
 
         public override void SetDefaults()

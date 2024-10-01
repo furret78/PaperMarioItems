@@ -5,6 +5,9 @@ using Terraria.ModLoader;
 
 namespace PaperMarioItems.Content.Buffs
 {
+    /// <summary>
+    /// ChargedBuff is only for show. Use <see cref="PaperPlayer.DrinkHotSauce(Player)"/> to apply the status.
+    /// </summary>
 	public class ChargedBuff : ModBuff
 	{
 		private const int DamageBonus = 5;

@@ -7,21 +7,19 @@ namespace PaperMarioItems.Content.Items.Cooking
 { 
 	public class MushroomRoast : ModItem
 	{
-		public override void SetDefaults()
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.FoodParticleColors[Type] = [
+                new(207, 151, 75),
+                new(121, 75, 21)
+            ];
+            Item.ResearchUnlockCount = 120;
+        }
+        public override void SetDefaults()
 		{
-			Item.width = 40;
-			Item.height = 38;
-			Item.useTurn = true;
-			Item.useTime = 17;
-			Item.useAnimation = Item.useTime;
-			Item.useStyle = ItemUseStyleID.EatFood;
-			Item.UseSound = SoundID.Item2;
-			Item.consumable = true;
-			Item.maxStack = Item.CommonMaxStack;
+            Item.DefaultToFood(40, 38, BuffID.WellFed2, 14400);
             Item.rare = ItemRarityID.Orange;
             Item.value = Item.sellPrice(silver: 15);
-			Item.buffType = BuffID.WellFed2;
-			Item.buffTime = 14400;
             Item.healLife = 75;
             Item.healMana = 25;
             Item.potion = true;
@@ -60,11 +58,11 @@ namespace PaperMarioItems.Content.Items.Cooking
         public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe()
-                .AddIngredient<LifeMushroom>()
+                .AddIngredient<SlowMushroom>()
                 .AddTile(TileID.CookingPots)
                 .Register();
             recipe = CreateRecipe()
-                .AddIngredient<SlowMushroom>()
+                .AddIngredient<LifeMushroom>()
                 .AddTile(TileID.CookingPots)
                 .Register();
         }

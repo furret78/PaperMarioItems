@@ -6,7 +6,16 @@ namespace PaperMarioItems.Content.Items.Consumables
 { 
 	public class FreshPasta : ModItem
 	{
-		public override void SetDefaults()
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.FoodParticleColors[Type] = [
+                new(255, 190, 0),
+                new(187, 139, 0)
+            ];
+            Item.ResearchUnlockCount = 350;
+        }
+
+        public override void SetDefaults()
 		{
             Item.width = 38;
             Item.height = 35;

@@ -6,6 +6,11 @@ namespace PaperMarioItems.Content.Items.Consumables
 { 
 	public class MysteryBox : ModItem
 	{
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 500;
+        }
+
         public override void SetDefaults()
         {
             Item.width = 34;

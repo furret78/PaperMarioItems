@@ -6,21 +6,23 @@ namespace PaperMarioItems.Content.Items.Cooking
 { 
 	public class OmeletteMeal : ModItem
 	{
-		public override void SetDefaults()
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.ShimmerTransformToItem[Type] = PMItemID.MysticEgg;
+            ItemID.Sets.FoodParticleColors[Type] = [
+                new(115, 16, 0),
+                new(255, 219, 24),
+                new(255, 170, 181),
+                new(40, 207, 49)
+            ];
+            Item.ResearchUnlockCount = 180;
+        }
+
+        public override void SetDefaults()
 		{
-			Item.width = 40;
-			Item.height = 33;
-			Item.useTurn = true;
-			Item.useTime = 17;
-			Item.useAnimation = Item.useTime;
-			Item.useStyle = ItemUseStyleID.EatFood;
-			Item.UseSound = SoundID.Item2;
-			Item.consumable = true;
-			Item.maxStack = Item.CommonMaxStack;
+            Item.DefaultToFood(40, 33, BuffID.WellFed2, 10800);
             Item.rare = ItemRarityID.Orange;
             Item.value = Item.sellPrice(silver: 10);
-			Item.buffType = BuffID.WellFed2;
-			Item.buffTime = 10800;
             Item.healLife = 25;
             Item.healMana = 25;
             Item.potion = true;

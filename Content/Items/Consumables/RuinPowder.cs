@@ -10,6 +10,7 @@ namespace PaperMarioItems.Content.Items.Consumables
         public override void SetStaticDefaults()
         {
             ItemID.Sets.ShimmerTransformToItem[Type] = PMItemID.SpitePouch;
+			Item.ResearchUnlockCount = 10;
         }
 
         public override void SetDefaults()

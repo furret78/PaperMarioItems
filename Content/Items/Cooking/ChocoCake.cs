@@ -6,7 +6,19 @@ namespace PaperMarioItems.Content.Items.Cooking
 { 
 	public class ChocoCake : ModItem
 	{
-		public override void SetDefaults()
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.ShimmerTransformToItem[Type] = PMItemID.InkySauce;
+            ItemID.Sets.FoodParticleColors[Type] = [
+                new(66, 20, 8),
+                new(231, 190, 140),
+                new(198, 142, 74),
+                new(123, 85, 90)
+            ];
+            Item.ResearchUnlockCount = 10;
+        }
+
+        public override void SetDefaults()
 		{
             Item.DefaultToFood(38, 34, BuffID.WellFed, 7200);
             Item.rare = ItemRarityID.Orange;
@@ -15,10 +27,12 @@ namespace PaperMarioItems.Content.Items.Cooking
             Item.healMana = 75;
             Item.potion = true;
         }
+
         public override void OnConsumeItem(Player player)
 		{
             player.TryToResetHungerToNeutral();
         }
+
         public override void Load()
         {
             On_Player.ApplyPotionDelay += On_Player_ApplyPotionDelay;

@@ -7,21 +7,22 @@ namespace PaperMarioItems.Content.Items.Cooking
 { 
 	public class SpaghettiPlate : ModItem
 	{
-		public override void SetDefaults()
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.ShimmerTransformToItem[Type] = PMItemID.FreshPasta;
+            ItemID.Sets.FoodParticleColors[Type] = [
+                new(115, 24, 0),
+                new(255, 219, 0),
+                new(57, 182, 74)
+            ];
+            Item.ResearchUnlockCount = 450;
+        }
+
+        public override void SetDefaults()
 		{
-			Item.width = 40;
-			Item.height = 34;
-			Item.useTurn = true;
-			Item.useTime = 17;
-			Item.useAnimation = Item.useTime;
-			Item.useStyle = ItemUseStyleID.EatFood;
-			Item.UseSound = SoundID.Item2;
-			Item.consumable = true;
-			Item.maxStack = Item.CommonMaxStack;
+            Item.DefaultToFood(40, 34, BuffID.WellFed, 7200);
             Item.rare = ItemRarityID.Orange;
             Item.value = Item.sellPrice(silver: 15);
-			Item.buffType = BuffID.WellFed2;
-			Item.buffTime = 7200;
             Item.healLife = 30;
             Item.healMana = 20;
             Item.potion = true;

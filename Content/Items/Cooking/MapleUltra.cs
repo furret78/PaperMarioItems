@@ -6,7 +6,18 @@ namespace PaperMarioItems.Content.Items.Cooking
 { 
 	public class MapleUltra : ModItem
 	{
-		public override void SetDefaults()
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.ShimmerTransformToItem[Type] = PMItemID.UltraMushroom;
+            ItemID.Sets.FoodParticleColors[Type] = [
+                new(206, 101, 49),
+                new(255, 207, 99),
+                new(255, 255, 156),
+                new(0, 154, 0)
+            ];
+            Item.ResearchUnlockCount = 100;
+        }
+        public override void SetDefaults()
 		{
 			Item.width = 33;
 			Item.height = 39;

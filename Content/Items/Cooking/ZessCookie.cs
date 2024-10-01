@@ -6,29 +6,32 @@ namespace PaperMarioItems.Content.Items.Cooking
 { 
 	public class ZessCookie : ModItem
 	{
-		public override void SetDefaults()
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.ShimmerTransformToItem[Type] = PMItemID.CakeMix;
+            ItemID.Sets.FoodParticleColors[Type] = [
+                new(132, 89, 33),
+                new(255, 227, 123),
+                new(255, 239, 206)
+            ];
+            Item.ResearchUnlockCount = 200;
+        }
+
+        public override void SetDefaults()
 		{
-			Item.width = 40;
-			Item.height = 40;
-			Item.useTurn = true;
-			Item.useTime = 17;
-			Item.useAnimation = Item.useTime;
-			Item.useStyle = ItemUseStyleID.EatFood;
-			Item.UseSound = SoundID.Item2;
-			Item.consumable = true;
-			Item.maxStack = Item.CommonMaxStack;
+            Item.DefaultToFood(40, 40, BuffID.WellFed, 3600);
             Item.rare = ItemRarityID.Orange;
             Item.value = Item.sellPrice(silver: 10);
-			Item.buffType = BuffID.WellFed;
-			Item.buffTime = 3600;
             Item.healLife = 75;
             Item.healMana = 75;
             Item.potion = true;
         }
+
         public override void OnConsumeItem(Player player)
 		{
             player.TryToResetHungerToNeutral();
         }
+
         public override void Load()
         {
             On_Player.ApplyPotionDelay += On_Player_ApplyPotionDelay;

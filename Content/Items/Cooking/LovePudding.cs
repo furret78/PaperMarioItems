@@ -7,8 +7,18 @@ namespace PaperMarioItems.Content.Items.Cooking
 { 
 	public class LovePudding : ModItem
 	{
-		private int buffTime = 3;
-		public override void SetDefaults()
+		private const int buffTime = 3;
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.ShimmerTransformToItem[Type] = PMItemID.MysticEgg;
+            ItemID.Sets.FoodParticleColors[Type] = [
+                new(255, 219, 24),
+                new(255, 170, 0),
+                new(255, 255, 206)
+            ];
+            Item.ResearchUnlockCount = 40;
+        }
+        public override void SetDefaults()
 		{
 			Item.width = 36;
 			Item.height = 40;

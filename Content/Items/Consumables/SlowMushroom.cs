@@ -6,7 +6,18 @@ namespace PaperMarioItems.Content.Items.Consumables
 { 
 	public class SlowMushroom : ModItem
 	{
-		public override void SetDefaults()
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.FoodParticleColors[Type] = [
+                new(255, 138, 156),
+                new(90, 36, 66),
+                new(224, 89, 109),
+                new(255, 215, 132)
+            ];
+            Item.ResearchUnlockCount = 200;
+        }
+
+        public override void SetDefaults()
 		{
 			Item.width = 40;
 			Item.height = 40;
@@ -22,10 +33,12 @@ namespace PaperMarioItems.Content.Items.Consumables
 			Item.buffType = BuffID.Regeneration;
 			Item.buffTime = 36000;
         }
+
         public override void OnConsumeItem(Player player)
         {
             player.TryToResetHungerToNeutral();
         }
+
         public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe()

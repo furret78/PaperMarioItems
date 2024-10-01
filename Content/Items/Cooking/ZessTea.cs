@@ -7,17 +7,14 @@ namespace PaperMarioItems.Content.Items.Cooking
 { 
 	public class ZessTea : ModItem
 	{
-		public override void SetDefaults()
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.DrinkParticleColors[Type] = [new(255, 186, 0)];
+            Item.ResearchUnlockCount = 300;
+        }
+        public override void SetDefaults()
 		{
-			Item.width = 37;
-			Item.height = 37;
-			Item.useTurn = true;
-			Item.useTime = 17;
-			Item.useAnimation = Item.useTime;
-			Item.useStyle = ItemUseStyleID.DrinkLiquid;
-			Item.UseSound = SoundID.Item3;
-			Item.consumable = true;
-			Item.maxStack = Item.CommonMaxStack;
+            Item.DefaultToFood(37, 37, 0, 0, true);
             Item.rare = ItemRarityID.LightPurple;
             Item.value = Item.sellPrice(silver: 10);
             Item.healMana = 100;

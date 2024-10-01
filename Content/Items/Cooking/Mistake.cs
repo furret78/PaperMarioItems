@@ -6,7 +6,18 @@ namespace PaperMarioItems.Content.Items.Cooking
 { 
 	public class Mistake : ModItem
 	{
-		public override void SetDefaults()
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.ShimmerTransformToItem[Type] = PMItemID.TrialStew;
+            ItemID.Sets.FoodParticleColors[Type] = [
+                new(247, 162, 181),
+                new(255, 154, 0),
+                new(0, 142, 0),
+                new(0, 60, 0)
+            ];
+            Item.ResearchUnlockCount = 3000;
+        }
+        public override void SetDefaults()
 		{
 			Item.width = 40;
 			Item.height = 39;

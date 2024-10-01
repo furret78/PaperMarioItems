@@ -23,6 +23,8 @@ namespace PaperMarioItems
             invisPM = new("PaperMarioItems/Assets/Sounds/invisPM"),
             recoverPM = new("PaperMarioItems/Assets/Sounds/recoverPM"),
             wrongPM = new("PaperMarioItems/Assets/Sounds/wrongPM"),
+            fullHealPM = new("PaperMarioItems/Assets/Sounds/fullHealPM"),
+            fullManaPM = new("PaperMarioItems/Assets/Sounds/fullManaPM"),
             damagePM = new("PaperMarioItems/Assets/Sounds/damagePM");
         //custom recipe groups
         public override void AddRecipeGroups()

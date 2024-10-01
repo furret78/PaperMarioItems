@@ -12,6 +12,7 @@ namespace PaperMarioItems.Content.Items.Consumables
         public override void SetStaticDefaults()
         {
             ItemID.Sets.ShimmerTransformToItem[Type] = PMItemID.ShootingStar;
+            Item.ResearchUnlockCount = 50;
         }
 
         public override void SetDefaults()

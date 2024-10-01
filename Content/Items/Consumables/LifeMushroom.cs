@@ -10,12 +10,17 @@ namespace PaperMarioItems.Content.Items.Consumables
 { 
 	public class LifeMushroom : ModItem
 	{
-        readonly static int customPotionTime = 5;
+        public const int customPotionTime = 5;
         public static LocalizedText RestoreText { get; private set; }
         public override void SetStaticDefaults()
         {
             RestoreText = this.GetLocalization(nameof(RestoreText));
-            Item.ResearchUnlockCount = 5;
+            Item.ResearchUnlockCount = 10;
+            ItemID.Sets.FoodParticleColors[Type] = [
+                new(231, 227, 231),
+                new(231, 56, 57),
+                new(255, 251, 132)
+            ];
         }
         public override void SetDefaults()
         {

@@ -6,7 +6,17 @@ namespace PaperMarioItems.Content.Items.Cooking
 { 
 	public class KoopaBun : ModItem
 	{
-		public override void SetDefaults()
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.ShimmerTransformToItem[Type] = PMItemID.TurtleyLeaf;
+            ItemID.Sets.FoodParticleColors[Type] = [
+                new(74, 162, 49),
+                new(255, 207, 99),
+                new(24, 113, 8)
+            ];
+            Item.ResearchUnlockCount = 30;
+        }
+        public override void SetDefaults()
 		{
 			Item.width = 40;
 			Item.height = 40;

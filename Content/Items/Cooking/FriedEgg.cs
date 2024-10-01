@@ -7,7 +7,17 @@ namespace PaperMarioItems.Content.Items.Cooking
 { 
 	public class FriedEgg : ModItem
 	{
-		public override void SetDefaults()
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.ShimmerTransformToItem[Type] = PMItemID.MysticEgg;
+            ItemID.Sets.FoodParticleColors[Type] = [
+                new(255, 186, 0),
+                new(231, 227, 231)
+            ];
+            Item.ResearchUnlockCount = 50;
+        }
+
+        public override void SetDefaults()
 		{
 			Item.width = 40;
 			Item.height = 29;

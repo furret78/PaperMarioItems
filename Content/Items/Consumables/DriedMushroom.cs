@@ -6,6 +6,16 @@ namespace PaperMarioItems.Content.Items.Consumables
 { 
 	public class DriedMushroom : ModItem
 	{
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.FoodParticleColors[Type] = [
+                new(231, 182, 181),
+                new(165, 81, 82),
+                new(255, 207, 99)
+            ];
+            Item.ResearchUnlockCount = 300;
+        }
+
         public override void SetDefaults()
         {
             Item.width = 33;

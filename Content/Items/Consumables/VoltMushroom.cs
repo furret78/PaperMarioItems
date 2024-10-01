@@ -10,6 +10,17 @@ namespace PaperMarioItems.Content.Items.Consumables
 	{
         private int effectTime = 3;
         public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(effectTime);
+
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.FoodParticleColors[Type] = [
+                new(8, 48, 74),
+                new(255, 190, 0),
+                new(255, 215, 132)
+            ];
+            Item.ResearchUnlockCount = 120;
+        }
+
         public override void SetDefaults()
 		{
 			Item.width = 40;
@@ -26,6 +37,7 @@ namespace PaperMarioItems.Content.Items.Consumables
 			Item.buffType = PMBuffID.Electrified;
 			Item.buffTime = effectTime*60*60;
         }
+
         public override void OnConsumeItem(Player player)
         {
             player.TryToResetHungerToNeutral();

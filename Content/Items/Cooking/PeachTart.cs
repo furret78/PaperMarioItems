@@ -6,18 +6,24 @@ namespace PaperMarioItems.Content.Items.Cooking
 { 
 	public class PeachTart : ModItem
 	{
-		private int buffTime = 3;
-		public override void SetDefaults()
+		private const int buffTime = 3;
+
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.ShimmerTransformToItem[Type] = PMItemID.CakeMix;
+            ItemID.Sets.FoodParticleColors[Type] = [
+                new(255, 219, 222),
+                new(255, 182, 189),
+                new(198, 65, 90),
+                new(231, 190, 140),
+                new(198, 142, 74)
+            ];
+            Item.ResearchUnlockCount = 25;
+        }
+
+        public override void SetDefaults()
 		{
-			Item.width = 38;
-			Item.height = 32;
-			Item.useTurn = true;
-			Item.useTime = 17;
-			Item.useAnimation = Item.useTime;
-			Item.useStyle = ItemUseStyleID.EatFood;
-			Item.UseSound = SoundID.Item2;
-			Item.consumable = true;
-			Item.maxStack = Item.CommonMaxStack;
+            Item.DefaultToFood(38, 32, 0, 0);
             Item.rare = ItemRarityID.Pink;
             Item.value = Item.buyPrice(silver: 10);
         }

@@ -6,6 +6,12 @@ namespace PaperMarioItems.Content.Items.Consumables
 { 
 	public class MysticEgg : ModItem
 	{
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.FoodParticleColors[Type] = [new(231, 227, 231)];
+            Item.ResearchUnlockCount = 50;
+        }
+
         public override void SetDefaults()
         {
             Item.width = 34;
@@ -22,6 +28,7 @@ namespace PaperMarioItems.Content.Items.Consumables
             Item.healLife = 25;
             Item.potion = true;
         }
+
         public override void OnConsumeItem(Player player)
         {
             player.TryToResetHungerToNeutral();

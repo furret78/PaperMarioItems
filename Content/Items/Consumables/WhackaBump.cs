@@ -6,7 +6,17 @@ namespace PaperMarioItems.Content.Items.Consumables
 { 
 	public class WhackaBump : ModItem
 	{
-		public override void SetDefaults()
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.FoodParticleColors[Type] = [
+                new(255, 158, 24),
+                new(183, 76, 9),
+                new(255, 215, 90)
+            ];
+            Item.ResearchUnlockCount = 5;
+        }
+
+        public override void SetDefaults()
 		{
             Item.DefaultToFood(37, 35, BuffID.WellFed2, 7200);
             Item.rare = ItemRarityID.Orange;
@@ -15,6 +25,7 @@ namespace PaperMarioItems.Content.Items.Consumables
             Item.healMana = 50;
             Item.potion = true;
         }
+
         public override void Load()
         {
             On_Player.ApplyPotionDelay += On_Player_ApplyPotionDelay;

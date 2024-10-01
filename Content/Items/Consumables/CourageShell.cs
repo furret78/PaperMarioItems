@@ -9,6 +9,7 @@ namespace PaperMarioItems.Content.Items.Consumables
         public override void SetStaticDefaults()
         {
             ItemID.Sets.ShimmerTransformToItem[Type] = PMItemID.MrSoftener;
+            Item.ResearchUnlockCount = 5;
         }
 
         public override void SetDefaults()

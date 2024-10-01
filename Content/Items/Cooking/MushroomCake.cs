@@ -6,21 +6,22 @@ namespace PaperMarioItems.Content.Items.Cooking
 { 
 	public class MushroomCake : ModItem
 	{
-		public override void SetDefaults()
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.ShimmerTransformToItem[Type] = PMItemID.Mushroom;
+            ItemID.Sets.FoodParticleColors[Type] = [
+                new(255, 219, 140),
+                new(198, 146, 99),
+                new(132, 77, 49),
+                new(255, 199, 99)
+            ];
+            Item.ResearchUnlockCount = 200;
+        }
+        public override void SetDefaults()
 		{
-			Item.width = 36;
-			Item.height = 38;
-			Item.useTurn = true;
-			Item.useTime = 17;
-			Item.useAnimation = Item.useTime;
-			Item.useStyle = ItemUseStyleID.EatFood;
-			Item.UseSound = SoundID.Item2;
-			Item.consumable = true;
-			Item.maxStack = Item.CommonMaxStack;
+            Item.DefaultToFood(36, 38, BuffID.WellFed, 14400);
             Item.rare = ItemRarityID.Orange;
             Item.value = Item.sellPrice(silver: 20);
-			Item.buffType = BuffID.WellFed2;
-			Item.buffTime = 14400;
             Item.healLife = 50;
             Item.healMana = 50;
             Item.potion = true;

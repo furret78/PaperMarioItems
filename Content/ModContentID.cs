@@ -205,6 +205,8 @@ namespace PaperMarioItems.Content
             invisible = PaperMarioItems.invisPM with { Volume = soundVolume },
             recover = PaperMarioItems.recoverPM with { Volume = soundVolume },
             wrong = PaperMarioItems.wrongPM with { Volume = soundVolume },
+            fullHeal = PaperMarioItems.fullHealPM with { Volume = soundVolume },
+            fullMana = PaperMarioItems.fullManaPM with { Volume = soundVolume },
             charged = PaperMarioItems.chargedPM with { Volume = soundVolume };
     }
 

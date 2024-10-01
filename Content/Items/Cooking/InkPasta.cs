@@ -6,7 +6,16 @@ namespace PaperMarioItems.Content.Items.Cooking
 { 
 	public class InkPasta : ModItem
 	{
-		public override void SetDefaults()
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.ShimmerTransformToItem[Type] = PMItemID.FreshPasta;
+            ItemID.Sets.FoodParticleColors[Type] = [
+                new(115, 97, 99),
+                new(68, 53, 52)
+            ];
+            Item.ResearchUnlockCount = 30;
+        }
+        public override void SetDefaults()
 		{
 			Item.width = 40;
 			Item.height = 33;

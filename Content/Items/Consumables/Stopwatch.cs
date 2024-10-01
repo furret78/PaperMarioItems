@@ -8,6 +8,11 @@ namespace PaperMarioItems.Content.Items.Consumables
 { 
 	public class Stopwatch : ModItem
 	{
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 7;
+        }
+
         public override void SetDefaults()
 		{
             Item.width = 36;

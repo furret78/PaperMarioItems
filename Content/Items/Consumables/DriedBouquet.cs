@@ -7,6 +7,16 @@ namespace PaperMarioItems.Content.Items.Consumables
 { 
 	public class DriedBouquet : ModItem
 	{
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.FoodParticleColors[Type] = [
+                new(255, 154, 0),
+                new(198, 109, 57),
+                new(66, 40, 24)
+            ];
+            Item.ResearchUnlockCount = 300;
+        }
+
         public override void SetDefaults()
         {
             Item.width = 39;

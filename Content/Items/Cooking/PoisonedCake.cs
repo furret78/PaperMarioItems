@@ -11,22 +11,21 @@ namespace PaperMarioItems.Content.Items.Cooking
         public override void SetStaticDefaults()
         {
             ItemID.Sets.ShimmerTransformToItem[Type] = PMItemID.DeliciousCake;
+            ItemID.Sets.FoodParticleColors[Type] = [
+                new(165, 0, 0),
+                new(255, 199, 198),
+                new(255, 166, 0)
+            ];
+            Item.ResearchUnlockCount = 200;
         }
 
         public override void SetDefaults()
 		{
-			Item.width = 40;
-			Item.height = 40;
-			Item.useTurn = true;
-			Item.useTime = 17;
-			Item.useAnimation = Item.useTime;
-			Item.useStyle = ItemUseStyleID.EatFood;
-			Item.UseSound = SoundID.Item2;
-			Item.consumable = true;
-			Item.maxStack = Item.CommonMaxStack;
+            Item.DefaultToFood(39, 39, 0, 0);
             Item.rare = ItemRarityID.Expert;
             Item.value = Item.sellPrice(silver: 1);
         }
+
         public override bool? UseItem(Player player)
         {
             player.AddBuff(BuffID.Poisoned, buffTime);

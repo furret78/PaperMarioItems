@@ -6,7 +6,18 @@ namespace PaperMarioItems.Content.Items.Cooking
 { 
 	public class HoneySuper : ModItem
 	{
-		public override void SetDefaults()
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.ShimmerTransformToItem[Type] = PMItemID.SuperMushroom;
+            ItemID.Sets.FoodParticleColors[Type] = [
+                new(255, 174, 0),
+                new(255, 207, 99),
+                new(255, 255, 156),
+                new(66, 121, 181)
+            ];
+            Item.ResearchUnlockCount = 150;
+        }
+        public override void SetDefaults()
 		{
 			Item.width = 33;
 			Item.height = 39;

@@ -6,7 +6,16 @@ namespace PaperMarioItems.Content.Items.Consumables
 { 
 	public class GradualSyrup : ModItem
 	{
-		public override void SetDefaults()
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.DrinkParticleColors[Type] = [
+                new(255, 138, 156),
+                new(255, 227, 231)
+            ];
+            Item.ResearchUnlockCount = 10;
+        }
+
+        public override void SetDefaults()
 		{
 			Item.width = 40;
 			Item.height = 40;

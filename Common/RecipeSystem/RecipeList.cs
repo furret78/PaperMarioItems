@@ -312,6 +312,7 @@ namespace PaperMarioItems.Common.RecipeSystem
                 new(ItemID.ApplePie, ItemID.Apple, PMItemID.CakeMix, true),
                 new(ItemID.ShrimpPoBoy, ItemID.Shrimp, PMItemID.CakeMix, true),
                 new(ItemID.SugarCookie, ItemID.BottledHoney, PMItemID.CakeMix, true),
+                new(ItemID.ChocolateChipCookie, PMItemID.InkySauce, ItemID.SugarCookie),
                 //switch item
                 new(PMItemID.HottestDog, PMItemID.HotSauce, ItemID.Hotdog)
             };

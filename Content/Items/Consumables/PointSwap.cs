@@ -13,7 +13,7 @@ namespace PaperMarioItems.Content.Items.Consumables
         public override void SetStaticDefaults()
 		{
             PointSwapDeath = this.GetLocalization(nameof(PointSwapDeath));
-            Item.ResearchUnlockCount = 5;
+            Item.ResearchUnlockCount = 15;
 		}
 
         public override void SetDefaults()

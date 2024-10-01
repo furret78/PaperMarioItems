@@ -23,6 +23,11 @@ namespace PaperMarioItems.Content.Items.Cooking
             PlayerNameEmpty = this.GetLocalization(nameof(PlayerNameEmpty));
             PlayerNameOther = this.GetLocalization(nameof(PlayerNameOther));
             PlayerNameCreator = this.GetLocalization(nameof(PlayerNameCreator));
+            ItemID.Sets.ShimmerTransformToItem[Type] = PMItemID.SnowBunny;
+            ItemID.Sets.FoodParticleColors[Type] = [
+                new(224, 116, 118),
+                new(231, 227, 231)
+            ];
             Item.ResearchUnlockCount = 50;
         }
         public override void SetDefaults()

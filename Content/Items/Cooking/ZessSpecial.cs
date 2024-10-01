@@ -6,21 +6,21 @@ namespace PaperMarioItems.Content.Items.Cooking
 { 
 	public class ZessSpecial : ModItem
 	{
-		public override void SetDefaults()
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.ShimmerTransformToItem[Type] = PMItemID.UltraMushroom;
+            ItemID.Sets.FoodParticleColors[Type] = [
+                new(231, 60, 0),
+                new(255, 186, 49),
+                new(148, 255, 156)
+            ];
+            Item.ResearchUnlockCount = 50;
+        }
+        public override void SetDefaults()
 		{
-			Item.width = 40;
-			Item.height = 40;
-			Item.useTurn = true;
-			Item.useTime = 17;
-			Item.useAnimation = Item.useTime;
-			Item.useStyle = ItemUseStyleID.EatFood;
-			Item.UseSound = SoundID.Item2;
-			Item.consumable = true;
-			Item.maxStack = Item.CommonMaxStack;
+            Item.DefaultToFood(40, 40, BuffID.WellFed2, 25200);
             Item.rare = ItemRarityID.Orange;
             Item.value = Item.sellPrice(silver: 15);
-			Item.buffType = BuffID.WellFed2;
-			Item.buffTime = 25200;
             Item.healLife = 100;
             Item.healMana = 100;
             Item.potion = true;

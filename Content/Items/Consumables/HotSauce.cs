@@ -7,7 +7,13 @@ namespace PaperMarioItems.Content.Items.Consumables
 { 
 	public class HotSauce : ModItem
 	{
-		public override void SetDefaults()
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.DrinkParticleColors[Type] = [new(255, 114, 69)];
+            Item.ResearchUnlockCount = 10;
+        }
+
+        public override void SetDefaults()
 		{
 			Item.width = 7;
 			Item.height = 24;

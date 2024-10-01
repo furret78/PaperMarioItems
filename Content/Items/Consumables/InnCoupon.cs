@@ -6,7 +6,12 @@ namespace PaperMarioItems.Content.Items.Consumables
 { 
 	public class InnCoupon : ModItem
 	{
-		public override void SetDefaults()
+        public override void SetStaticDefaults()
+        {
+			Item.ResearchUnlockCount = 100;
+        }
+
+        public override void SetDefaults()
 		{
 			Item.width = 39;
 			Item.height = 40;
@@ -18,10 +23,11 @@ namespace PaperMarioItems.Content.Items.Consumables
             Item.rare = ItemRarityID.White;
             Item.value = Item.sellPrice(silver: 5);
         }
+
         public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe()
-				.AddIngredient(ItemID.GoldCoin, 60)
+				.AddIngredient(ItemID.GoldCoin, 20)
 				.AddRecipeGroup(RecipeGroupID.Wood)
 				.AddTile(TileID.WorkBenches)
 				.Register();

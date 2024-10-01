@@ -10,6 +10,7 @@ namespace PaperMarioItems.Content.Items.Consumables
         public override void SetStaticDefaults()
         {
 			ItemID.Sets.ShimmerTransformToItem[Type] = PMItemID.RepelCape;
+			Item.ResearchUnlockCount = 3;
         }
 
         public override void SetDefaults()

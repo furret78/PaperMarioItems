@@ -9,6 +9,12 @@ namespace PaperMarioItems.Content.Items.Consumables
         public override void SetStaticDefaults()
         {
             ItemID.Sets.ShimmerTransformToItem[Type] = PMItemID.JamminJelly;
+            ItemID.Sets.FoodParticleColors[Type] = [
+                new(82, 199, 57),
+                new(231, 227, 231),
+                new(255, 215, 132)
+            ];
+            Item.ResearchUnlockCount = 100;
         }
 
         public override void SetDefaults()

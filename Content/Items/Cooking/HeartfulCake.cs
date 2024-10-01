@@ -6,6 +6,16 @@ namespace PaperMarioItems.Content.Items.Cooking
 { 
 	public class HeartfulCake : ModItem
 	{
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.ShimmerTransformToItem[Type] = PMItemID.CakeMix;
+            ItemID.Sets.FoodParticleColors[Type] = [
+                new(255, 154, 156),
+                new(255, 251, 247),
+                new(255, 101, 99)
+            ];
+            Item.ResearchUnlockCount = 20;
+        }
         public override void SetDefaults()
 		{
 			Item.width = 37;

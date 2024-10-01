@@ -7,29 +7,30 @@ namespace PaperMarioItems.Content.Items.Cooking
 { 
 	public class SpicySoup : ModItem
 	{
-		public override void SetDefaults()
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.FoodParticleColors[Type] = [
+                new(190, 145, 69),
+                new(255, 219, 207)
+            ];
+            Item.ResearchUnlockCount = 200;
+        }
+
+        public override void SetDefaults()
 		{
-			Item.width = 40;
-			Item.height = 29;
-			Item.useTurn = true;
-			Item.useTime = 17;
-			Item.useAnimation = Item.useTime;
-			Item.useStyle = ItemUseStyleID.DrinkLiquid;
-			Item.UseSound = SoundID.Item3;
-			Item.consumable = true;
-			Item.maxStack = Item.CommonMaxStack;
+            Item.DefaultToFood(40, 29, BuffID.WellFed, 7200, true);
             Item.rare = ItemRarityID.Orange;
             Item.value = Item.sellPrice(silver: 5);
-			Item.buffType = BuffID.WellFed;
-			Item.buffTime = 7200;
             Item.healLife = 20;
             Item.healMana = 20;
             Item.potion = true;
         }
+
         public override void OnConsumeItem(Player player)
 		{
             player.TryToResetHungerToNeutral();
         }
+
         public override void Load()
         {
             On_Player.ApplyPotionDelay += On_Player_ApplyPotionDelay;

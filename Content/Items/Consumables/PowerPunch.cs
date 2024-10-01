@@ -1,4 +1,3 @@
-using PaperMarioItems.Content.Buffs;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -7,7 +6,13 @@ namespace PaperMarioItems.Content.Items.Consumables
 { 
 	public class PowerPunch : ModItem
 	{
-		public override void SetDefaults()
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.DrinkParticleColors[Type] = [new(255, 243, 181)];
+            Item.ResearchUnlockCount = 50;
+        }
+
+        public override void SetDefaults()
 		{
 			Item.width = 25;
 			Item.height = 40;

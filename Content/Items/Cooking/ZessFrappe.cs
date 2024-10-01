@@ -6,21 +6,20 @@ namespace PaperMarioItems.Content.Items.Cooking
 { 
 	public class ZessFrappe : ModItem
 	{
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.ShimmerTransformToItem[Type] = ItemID.SnowBlock;
+            ItemID.Sets.FoodParticleColors[Type] = [
+                new(247, 146, 165),
+                new(255, 223, 231),
+                new(255, 89, 123)
+            ];
+            Item.ResearchUnlockCount = 50;
+        }
         public override void SetDefaults()
 		{
-			Item.width = 33;
-			Item.height = 40;
-			Item.useTurn = true;
-			Item.useTime = 17;
-			Item.useAnimation = Item.useTime;
-			Item.useStyle = ItemUseStyleID.EatFood;
-			Item.UseSound = SoundID.Item2;
-			Item.consumable = true;
-			Item.maxStack = Item.CommonMaxStack;
-            Item.rare = ItemRarityID.Blue;
+            Item.DefaultToFood(33, 40, BuffID.WellFed, 3600);
             Item.value = Item.sellPrice(silver: 30);
-            Item.buffType = BuffID.WellFed;
-            Item.buffTime = 3600;
             Item.healMana = 100;
         }
         public override void OnConsumeItem(Player player)

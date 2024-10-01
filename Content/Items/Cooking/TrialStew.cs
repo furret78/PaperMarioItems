@@ -1,14 +1,17 @@
 using Terraria;
 using Terraria.Audio;
-using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace PaperMarioItems.Content.Items.Cooking
 { 
 	public class TrialStew : ModItem
     {
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.ShimmerTransformToItem[Type] = PMItemID.PoisonMushroom;
+            Item.ResearchUnlockCount = 50;
+        }
         public override void SetDefaults()
 		{
 			Item.width = 36;

@@ -6,7 +6,13 @@ namespace PaperMarioItems.Content.Items.Consumables
 { 
 	public class TurtleyLeaf : ModItem
 	{
-		public override void SetDefaults()
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.FoodParticleColors[Type] = [new(74, 195, 74), new(24, 138, 24)];
+            Item.ResearchUnlockCount = 500;
+        }
+
+        public override void SetDefaults()
 		{
             Item.width = 40;
             Item.height = 38;

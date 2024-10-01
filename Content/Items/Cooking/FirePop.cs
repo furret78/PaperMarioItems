@@ -6,7 +6,17 @@ namespace PaperMarioItems.Content.Items.Cooking
 { 
 	public class FirePop : ModItem
 	{
-		public override void SetDefaults()
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.ShimmerTransformToItem[Type] = PMItemID.FireFlower;
+            ItemID.Sets.FoodParticleColors[Type] = [
+                new(255, 231, 148),
+                new(206, 60, 57),
+                new(159, 46, 38)
+            ];
+            Item.ResearchUnlockCount = 50;
+        }
+        public override void SetDefaults()
 		{
 			Item.width = 39;
 			Item.height = 39;

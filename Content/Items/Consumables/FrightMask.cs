@@ -8,6 +8,11 @@ namespace PaperMarioItems.Content.Items.Consumables
 { 
 	public class FrightMask : ModItem
 	{
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 5;
+        }
+
         public override void SetDefaults()
 		{
             Item.width = 38;

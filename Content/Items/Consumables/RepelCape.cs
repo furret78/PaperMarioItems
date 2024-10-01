@@ -7,12 +7,16 @@ namespace PaperMarioItems.Content.Items.Consumables
 { 
 	public class RepelCape : ModItem
 	{
-        private int effectTime = 5;
+        private const int effectTime = 5;
+		
         public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(effectTime);
+
         public override void SetStaticDefaults()
         {
 			ItemID.Sets.ShimmerTransformToItem[Type] = PMItemID.BoosSheet;
+			Item.ResearchUnlockCount = 100;
         }
+
         public override void SetDefaults()
 		{
 			Item.width = 40;

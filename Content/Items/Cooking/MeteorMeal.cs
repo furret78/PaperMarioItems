@@ -1,4 +1,3 @@
-using PaperMarioItems.Common.Players;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -8,8 +7,18 @@ namespace PaperMarioItems.Content.Items.Cooking
 { 
 	public class MeteorMeal : ModItem
 	{
-        private int effectTime = 2;
+        private const int effectTime = 2;
         public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(effectTime);
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.ShimmerTransformToItem[Type] = PMItemID.ShootingStar;
+            ItemID.Sets.FoodParticleColors[Type] = [
+                new(239, 182, 90),
+                new(255, 195, 0),
+                new(189, 134, 66)
+            ];
+            Item.ResearchUnlockCount = 50;
+        }
         public override void SetDefaults()
 		{
 			Item.width = 40;
