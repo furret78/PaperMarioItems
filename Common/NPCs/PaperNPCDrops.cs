@@ -12,14 +12,21 @@ namespace PaperMarioItems.Common.NPCs
         {
             if (!NPCID.Sets.CountsAsCritter[npc.type])
             {
-                npcLoot.Add(ItemDropRule.NormalvsExpert(PMItemID.PointSwap, 47, 44));
-                npcLoot.Add(ItemDropRule.NormalvsExpert(PMItemID.SpitePouch, 57, 55));
-                npcLoot.Add(ItemDropRule.NormalvsExpert(PMItemID.InnCoupon, 85, 78));
-                npcLoot.Add(ItemDropRule.NormalvsExpert(PMItemID.FrightMask, 60, 55));
-                npcLoot.Add(ItemDropRule.NormalvsExpert(PMItemID.MysteryBox, 54, 50));
-                npcLoot.Add(ItemDropRule.NormalvsExpert(PMItemID.MrSoftener, 64, 60));
-                npcLoot.Add(ItemDropRule.NormalvsExpert(PMItemID.POWBlock, 100, 98));
-                npcLoot.Add(ItemDropRule.NormalvsExpert(PMItemID.PackageBox, 370, 320));
+                if (!npc.boss && !NPCID.Sets.ShouldBeCountedAsBoss[npc.type])
+                {
+                    npcLoot.Add(ItemDropRule.NormalvsExpert(PMItemID.PointSwap, 47, 44));
+                    npcLoot.Add(ItemDropRule.NormalvsExpert(PMItemID.SpitePouch, 57, 55));
+                    npcLoot.Add(ItemDropRule.NormalvsExpert(PMItemID.InnCoupon, 85, 78));
+                    npcLoot.Add(ItemDropRule.NormalvsExpert(PMItemID.FrightMask, 60, 55));
+                    npcLoot.Add(ItemDropRule.NormalvsExpert(PMItemID.MysteryBox, 54, 50));
+                    npcLoot.Add(ItemDropRule.NormalvsExpert(PMItemID.MrSoftener, 64, 60));
+                    npcLoot.Add(ItemDropRule.NormalvsExpert(PMItemID.POWBlock, 100, 98));
+                    npcLoot.Add(ItemDropRule.NormalvsExpert(PMItemID.PackageBox, 370, 320));
+                }
+                else if (!NPCID.Sets.ShouldBeCountedAsBoss[npc.type])
+                {
+                    npcLoot.Add(ItemDropRule.NormalvsExpert(PMItemID.PackageBox, 250, 200));
+                }
                 if (npc.type != NPCID.Harpy && npc.type != NPCID.Vulture && npc.type != NPCID.Raven)
                     npcLoot.Add(ItemDropRule.NormalvsExpert(PMItemID.MysticEgg, 580, 480));
             }
@@ -53,13 +60,13 @@ namespace PaperMarioItems.Common.NPCs
             if (System.Array.IndexOf([NPCID.EaterofWorldsBody, NPCID.EaterofWorldsHead, NPCID.EaterofWorldsTail], npc.type) > -1)
             {
                 LeadingConditionRule leadingConditionRule = new(new Conditions.LegacyHack_IsABoss());
-                leadingConditionRule.OnSuccess(ItemDropRule.Common(PMItemID.DizzyDial, 2));
+                leadingConditionRule.OnSuccess(ItemDropRule.NormalvsExpert(PMItemID.DizzyDial, 3, 2));
                 npcLoot.Add(leadingConditionRule);
             }
             if (npc.type == NPCID.BrainofCthulhu)
             {
                 LeadingConditionRule leadingConditionRule = new(new Conditions.LegacyHack_IsABoss());
-                leadingConditionRule.OnSuccess(ItemDropRule.Common(PMItemID.DizzyDial, 2));
+                leadingConditionRule.OnSuccess(ItemDropRule.NormalvsExpert(PMItemID.DizzyDial, 3, 2));
                 npcLoot.Add(leadingConditionRule);
             }
         }
