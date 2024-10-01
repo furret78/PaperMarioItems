@@ -6,7 +6,12 @@ namespace PaperMarioItems.Content.Items.Consumables
 { 
 	public class MapleSyrup : ModItem
 	{
-		public override void SetDefaults()
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.ShimmerTransformToItem[Type] = PMItemID.SuperMushroom;
+        }
+
+        public override void SetDefaults()
 		{
             Item.width = 40;
             Item.height = 40;

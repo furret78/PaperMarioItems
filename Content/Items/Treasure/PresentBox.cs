@@ -21,7 +21,10 @@ namespace PaperMarioItems.Content.Items.Treasure
         public override void RightClick(Player player)
         {
             player.QuickSpawnItem(player.GetSource_ItemUse(Item), ChooseItem());
-            player.QuickSpawnItem(player.GetSource_ItemUse(Item), PMItemID.PresentPaper);
+            if (Main.rand.NextBool(5))
+            {
+                player.QuickSpawnItem(player.GetSource_ItemUse(Item), PMItemID.PresentPaper);
+            }
         }
 
 		private int ChooseItem()

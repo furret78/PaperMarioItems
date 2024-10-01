@@ -14,6 +14,7 @@ namespace PaperMarioItems.Content.Items.Cooking
         {
             PoisonDeath = this.GetLocalization(nameof(PoisonDeath));
             Item.ResearchUnlockCount = 1;
+			ItemID.Sets.ShimmerTransformToItem[Type] = PMItemID.SlowMushroom;
         }
         public override void SetDefaults()
 		{

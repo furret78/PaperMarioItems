@@ -9,6 +9,11 @@ namespace PaperMarioItems.Content.Items.Consumables
 {
 	public class ThunderRage : ModItem
 	{
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.ShimmerTransformToItem[Type] = PMItemID.ShootingStar;
+        }
+
         public override void SetDefaults()
 		{
             Item.width = 28;

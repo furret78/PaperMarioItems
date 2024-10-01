@@ -283,9 +283,35 @@ namespace PaperMarioItems.Common.RecipeSystem
                 new(PMItemID.FreshJuice, ItemID.SpicyPepper, ItemID.BottledWater),
                 new(PMItemID.DeliciousCake, PMItemID.PoisonedCake, ItemID.LunarOre),
                 new(PMItemID.PoisonedCake, PMItemID.CakeMix, ItemID.RedPotion),
-                new(PMItemID.PoisonedCake, PMItemID.PoisonMushroom, PMItemID.MousseCake),
+                new(PMItemID.PoisonedCake, PMItemID.DeliciousCake, ItemID.RedPotion),
+                new(PMItemID.PoisonedCake, PMItemID.MushroomCake, ItemID.RedPotion),
+                new(PMItemID.PoisonedCake, PMItemID.MousseCake, ItemID.RedPotion),
+                new(PMItemID.PoisonedCake, PMItemID.ChocoCake, ItemID.RedPotion),
+                new(PMItemID.PoisonedCake, PMItemID.CouplesCake, ItemID.RedPotion),
+                new(PMItemID.PoisonedCake, PMItemID.HeartfulCake, ItemID.RedPotion),
+                new(PMItemID.PoisonedCake, PMItemID.PoisonedCake, ItemID.RedPotion),
                 new(PMItemID.PoisonedCake, PMItemID.PoisonMushroom, PMItemID.CakeMix),
                 new(PMItemID.TrialStew, PMItemID.PoisonMushroom, ItemID.StrangeBrew),
+                new(PMItemID.SpicySoup, ItemID.BowlofSoup, PMItemID.FireFlower),
+                new(PMItemID.SpicySoup, ItemID.GrubSoup, PMItemID.FireFlower),
+                new(PMItemID.KoopaTea, PMItemID.TurtleyLeaf, ItemID.Teacup),
+                new(PMItemID.ZessTea, PMItemID.GoldenLeaf, ItemID.Teacup),
+                new(PMItemID.FreshJuice, ItemID.AppleJuice),
+                new(PMItemID.FreshJuice, ItemID.Lemonade),
+                new(PMItemID.FreshJuice, ItemID.FruitJuice),
+                new(PMItemID.FreshJuice, ItemID.GrapeJuice),
+                new(PMItemID.TastyTonic, ItemID.PeachSangria),
+                new(PMItemID.TastyTonic, ItemID.BananaDaiquiri),
+                new(PMItemID.TastyTonic, ItemID.BloodyMoscato),
+                new(PMItemID.TastyTonic, ItemID.PinaColada),
+                new(PMItemID.TastyTonic, ItemID.PrismaticPunch),
+                new(PMItemID.Koopasta, ItemID.Spaghetti, PMItemID.TurtleyLeaf),
+                new(PMItemID.SpicyPasta, ItemID.Spaghetti, PMItemID.HotSauce),
+                new(PMItemID.InkPasta, ItemID.Spaghetti, PMItemID.InkySauce),
+                new(ItemID.PumpkinPie, ItemID.Pumpkin, PMItemID.CakeMix, true),
+                new(ItemID.ApplePie, ItemID.Apple, PMItemID.CakeMix, true),
+                new(ItemID.ShrimpPoBoy, ItemID.Shrimp, PMItemID.CakeMix, true),
+                new(ItemID.SugarCookie, ItemID.BottledHoney, PMItemID.CakeMix, true),
                 //switch item
                 new(PMItemID.HottestDog, PMItemID.HotSauce, ItemID.Hotdog)
             };
@@ -314,23 +340,29 @@ namespace PaperMarioItems.Common.RecipeSystem
 
             for (int i = 0; i < IngredientList.Count; i++)
             {
-                RecipeRegister.MainRecipeDictionary.Add(i, IngredientList[i]);
+                PMRecipe toAdd = IngredientList[i];
+                if (toAdd.Hardmode && toAdd.Prehard)
+                {
+                    toAdd.Hardmode = false;
+                    toAdd.Prehard = false;
+                }
+                RecipeRegister.MainRecipeDictionary.Add(i, toAdd);
             }
 
             for (int j = 0; j < MysteryItemList.Count; j++)
             {
-                RecipeRegister.MysteryBoxRecipeList.Add(MysteryItemList[j]);
+                if (!RecipeRegister.MysteryBoxRecipeList.Exists(x => x == MysteryItemList[j])) RecipeRegister.MysteryBoxRecipeList.Add(MysteryItemList[j]);
             }
 
             //Space Food stuff
             for (int k = 0; k < SpaceFoodBlacklist.Count; k++)
             {
-                RecipeRegister.SpaceFoodBlacklist.Add(SpaceFoodBlacklist[k]);
+                if (!RecipeRegister.SpaceFoodBlacklist.Exists(x => x == SpaceFoodBlacklist[k])) RecipeRegister.SpaceFoodBlacklist.Add(SpaceFoodBlacklist[k]);
             }
 
             for (int l = 0; l < SpaceFoodList.Count; l++)
             {
-                RecipeRegister.SpaceFoodList.Add(SpaceFoodList[l]);
+                if (!RecipeRegister.SpaceFoodList.Exists(x => x == SpaceFoodList[l])) RecipeRegister.SpaceFoodList.Add(SpaceFoodList[l]);
             }
         }
 
@@ -339,7 +371,7 @@ namespace PaperMarioItems.Common.RecipeSystem
             foreach (var itemindex in ContentSamples.ItemsByType)
             {
                 Item item = itemindex.Value;
-                if ((item.healLife > 0 || (item.buffType == BuffID.Regeneration && item.buffTime > 0)) && RecipeRegister.SpaceFoodList.Exists(x => x == item.type))
+                if ((item.healLife > 0 || (item.buffType == BuffID.Regeneration && item.buffTime > 0)) && !RecipeRegister.SpaceFoodList.Exists(x => x == item.type))
                 {
                     RecipeRegister.SpaceFoodList.Add(item.type);
                 }

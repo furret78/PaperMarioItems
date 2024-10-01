@@ -6,7 +6,12 @@ namespace PaperMarioItems.Content.Items.Consumables
 { 
 	public class CourageShell : ModItem
 	{
-		public override void SetDefaults()
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.ShimmerTransformToItem[Type] = PMItemID.MrSoftener;
+        }
+
+        public override void SetDefaults()
 		{
 			Item.width = 39;
 			Item.height = 38;

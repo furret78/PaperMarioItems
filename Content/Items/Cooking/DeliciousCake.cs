@@ -1,16 +1,18 @@
-using PaperMarioItems.Common.Players;
 using System.Collections.Generic;
-using System.Linq;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace PaperMarioItems.Content.Items.Cooking
 { 
 	public class DeliciousCake : ModItem
 	{
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.ShimmerTransformToItem[Type] = PMItemID.PoisonedCake;
+        }
+
         public override void SetDefaults()
 		{
 			Item.width = 40;

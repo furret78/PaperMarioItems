@@ -9,6 +9,10 @@ namespace PaperMarioItems.Content.Items.Consumables
 	{
         private int effectTime = 5;
         public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(effectTime);
+        public override void SetStaticDefaults()
+        {
+			ItemID.Sets.ShimmerTransformToItem[Type] = PMItemID.BoosSheet;
+        }
         public override void SetDefaults()
 		{
 			Item.width = 40;

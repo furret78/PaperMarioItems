@@ -1,14 +1,18 @@
 using Terraria;
-using Terraria.Audio;
-using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace PaperMarioItems.Content.Items.Cooking
 { 
 	public class PoisonedCake : ModItem
     {
+        private const int buffTime = 216000;
+
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.ShimmerTransformToItem[Type] = PMItemID.DeliciousCake;
+        }
+
         public override void SetDefaults()
 		{
 			Item.width = 40;
@@ -25,26 +29,26 @@ namespace PaperMarioItems.Content.Items.Cooking
         }
         public override bool? UseItem(Player player)
         {
-            player.AddBuff(BuffID.Poisoned, 216000);
-            player.AddBuff(BuffID.Darkness, 216000);
-            player.AddBuff(BuffID.Cursed, 216000);
-            player.AddBuff(BuffID.OnFire, 216000);
-            player.AddBuff(BuffID.Bleeding, 216000);
-            player.AddBuff(BuffID.Confused, 216000);
-            player.AddBuff(BuffID.Slow, 216000);
-            player.AddBuff(BuffID.Weak, 216000);
-            player.AddBuff(BuffID.Silenced, 216000);
-            player.AddBuff(BuffID.BrokenArmor, 216000);
-            player.AddBuff(BuffID.Suffocation, 216000);
-            player.AddBuff(BuffID.ManaSickness, 216000);
-            player.AddBuff(BuffID.PotionSickness, 216000);
-            player.AddBuff(BuffID.Chilled, 216000);
-            player.AddBuff(BuffID.Frostburn, 216000);
-            player.AddBuff(BuffID.Frostburn2, 216000);
-            player.AddBuff(BuffID.Electrified, 216000);
-            player.AddBuff(BuffID.Blackout, 216000);
-            player.AddBuff(PMBuffID.Dizzy, 216000);
-            player.AddBuff(PMBuffID.Soft, 216000);
+            player.AddBuff(BuffID.Poisoned, buffTime);
+            player.AddBuff(BuffID.Darkness, buffTime);
+            player.AddBuff(BuffID.Cursed, buffTime);
+            player.AddBuff(BuffID.OnFire, buffTime);
+            player.AddBuff(BuffID.Bleeding, buffTime);
+            player.AddBuff(BuffID.Confused, buffTime);
+            player.AddBuff(BuffID.Slow, buffTime);
+            player.AddBuff(BuffID.Weak, buffTime);
+            player.AddBuff(BuffID.Silenced, buffTime);
+            player.AddBuff(BuffID.BrokenArmor, buffTime);
+            player.AddBuff(BuffID.Suffocation, buffTime);
+            player.AddBuff(BuffID.ManaSickness, buffTime);
+            player.AddBuff(BuffID.PotionSickness, buffTime / 60);
+            player.AddBuff(BuffID.Chilled, buffTime);
+            player.AddBuff(BuffID.Frostburn, buffTime);
+            player.AddBuff(BuffID.Frostburn2, buffTime);
+            player.AddBuff(BuffID.Electrified, buffTime);
+            player.AddBuff(BuffID.Blackout, buffTime);
+            player.AddBuff(PMBuffID.Dizzy, buffTime);
+            player.AddBuff(PMBuffID.Soft, buffTime);
             return true;
         }
 	}

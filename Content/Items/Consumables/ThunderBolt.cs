@@ -9,6 +9,11 @@ namespace PaperMarioItems.Content.Items.Consumables
 {
 	public class ThunderBolt : ModItem
 	{
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.ShimmerTransformToItem[Type] = PMItemID.EarthQuake;
+        }
+
         public override void SetDefaults()
 		{
             Item.width = 38;

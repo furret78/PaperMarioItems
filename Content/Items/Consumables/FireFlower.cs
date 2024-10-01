@@ -10,6 +10,12 @@ namespace PaperMarioItems.Content.Items.Consumables
 	public class FireFlower : ModItem
 	{
         public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(PaperPlayer.fireFlowerDamage);
+
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.ShimmerTransformToItem[Type] = PMItemID.SpicySoup;
+        }
+
         public override void SetDefaults()
 		{
             Item.width = 38;

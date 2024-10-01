@@ -7,7 +7,12 @@ namespace PaperMarioItems.Content.Items.Consumables
 { 
 	public class BoosSheet : ModItem
 	{
-		public override void SetDefaults()
+        public override void SetStaticDefaults()
+        {
+			ItemID.Sets.ShimmerTransformToItem[Type] = PMItemID.RepelCape;
+        }
+
+        public override void SetDefaults()
 		{
 			Item.width = 40;
 			Item.height = 39;

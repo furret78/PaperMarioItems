@@ -7,7 +7,12 @@ namespace PaperMarioItems.Content.Items.Consumables
 { 
 	public class TastyTonic : ModItem
 	{
-		public override void SetDefaults()
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.ShimmerTransformToItem[Type] = PMItemID.SleepySheep;
+        }
+
+        public override void SetDefaults()
 		{
             Item.width = 32;
             Item.height = 40;

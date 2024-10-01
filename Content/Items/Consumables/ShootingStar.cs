@@ -6,9 +6,14 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace PaperMarioItems.Content.Items.Consumables
-{ 
+{
 	public class ShootingStar : ModItem
 	{
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.ShimmerTransformToItem[Type] = PMItemID.ThunderRage;
+        }
+
         public override void SetDefaults()
 		{
             Item.width = 40;

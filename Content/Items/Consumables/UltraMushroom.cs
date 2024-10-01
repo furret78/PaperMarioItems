@@ -6,6 +6,11 @@ namespace PaperMarioItems.Content.Items.Consumables
 { 
 	public class UltraMushroom : ModItem
 	{
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.ShimmerTransformToItem[Type] = PMItemID.JamminJelly;
+        }
+
         public override void SetDefaults()
         {
             Item.width = 40;

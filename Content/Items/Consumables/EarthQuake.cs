@@ -10,6 +10,10 @@ namespace PaperMarioItems.Content.Items.Consumables
 	public class EarthQuake : ModItem
 	{
         public override LocalizedText Tooltip => base.Tooltip.WithFormatArgs(PaperPlayer.earthquakeDamage);
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.ShimmerTransformToItem[Type] = PMItemID.ThunderBolt;
+        }
         public override void SetDefaults()
 		{
             Item.width = 39;
