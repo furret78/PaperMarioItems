@@ -79,12 +79,12 @@ namespace PaperMarioItems.Common.Players
             }
             else return false;
         }
-        public int GetDirection(Entity target, Player player)
+        public static int GetDirection(Entity target, Player player)
         {
             if (target.position.X < player.position.X) return -1;
             return 1;
         }
-        public bool DifferentTeamCheck(Player player, Player otherplayer)
+        public static bool DifferentTeamCheck(Player player, Player otherplayer)
         {
             if (player.team == (int)Team.None || otherplayer.team == (int)Team.None) return true;
             return player.team == otherplayer.team;
@@ -211,7 +211,7 @@ namespace PaperMarioItems.Common.Players
                     if (TargetConditionCheck(player, null, vsplayer, dizzyCase))
                     {
                         empty = false;
-                        vsplayer?.AddBuff(PMBuffID.Dizzy, 10800);
+                        vsplayer?.AddBuff(PMBuffID.Dizzy, 10800, false);
                     }
                 }
             }
@@ -312,11 +312,15 @@ namespace PaperMarioItems.Common.Players
         }
         public void StrikeLightning(Player player, NPC npc, Player vsplayer)
         {
-            Dust.NewDustDirect(npc.Center, 2, 2, PMDustID.LightningDust);
+            int damage = 100;
+            float knockback = 0f;
+            bool crit = Main.rand.Next(100) <= player.GetTotalCritChance(DamageClass.Generic);
+            Dust.NewDust(npc.Center, 2, 2, PMDustID.LightningDust);
             if (npc != null)
             {
-                //player.ApplyDamageToNPC(npc, 100, 0f, GetDirection(npc, player), Main.rand.Next(100) <= player.GetTotalCritChance(DamageClass.Generic));
-                npc.SimpleStrikeNPC(100, GetDirection(npc, player), Main.rand.Next(100) <= player.GetTotalCritChance(DamageClass.Generic));
+                int direction = GetDirection(npc, player);
+                if (player.CanHit(npc)) player.ApplyDamageToNPC(npc, damage, knockback, direction, crit);
+                else npc.SimpleStrikeNPC(damage, direction, crit);
                 npc.AddBuff(BuffID.Electrified, 1800);
             }
             vsplayer?.Hurt(PlayerDeathReason.ByCustomReason(vsplayer.name + " " + LightningDeath), 100, GetDirection(vsplayer, player), true);

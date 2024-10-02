@@ -11,7 +11,7 @@ namespace PaperMarioItems.Content.Buffs
 	public class ChargedBuff : ModBuff
 	{
 		private const int DamageBonus = 5;
-        private int TotalExtraDamage = 0, DamageStack = 0, MaxStack = 0;
+        private int DamageStack = 0;
 
         public override LocalizedText Description => base.Description;
         public static LocalizedText StackAndDamageCount { get; private set; }

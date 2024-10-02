@@ -31,15 +31,15 @@ namespace PaperMarioItems
         //custom recipe groups
         public override void AddRecipeGroups()
         {
-            RecipeGroup mushgroup = new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {Lang.GetItemNameValue(ItemID.Mushroom)}", ItemID.Mushroom, ItemID.TealMushroom, ItemID.GlowingMushroom, ItemID.GreenMushroom);
+            RecipeGroup mushgroup = new(() => $"{Language.GetTextValue("LegacyMisc.37")} {Lang.GetItemNameValue(ItemID.Mushroom)}", ItemID.Mushroom, ItemID.TealMushroom, ItemID.GlowingMushroom, ItemID.GreenMushroom);
             RecipeGroup.RegisterGroup(nameof(ItemID.Mushroom), mushgroup);
-            RecipeGroup syrupgroup = new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {Language.GetTextValue($"Mods.PaperMarioItems.Content.SyrupGroup")}", PMItemID.HoneySyrup, PMItemID.MapleSyrup, PMItemID.JamminJelly);
+            RecipeGroup syrupgroup = new(() => $"{Language.GetTextValue("LegacyMisc.37")} {Language.GetTextValue($"Mods.PaperMarioItems.Content.SyrupGroup")}", PMItemID.HoneySyrup, PMItemID.MapleSyrup, PMItemID.JamminJelly);
             RecipeGroup.RegisterGroup(Language.GetTextValue($"Mods.PaperMarioItems.Content.SyrupGroup"), syrupgroup);
-            RecipeGroup flowergroup = new RecipeGroup(() => $"{Language.GetTextValue("LegacyMisc.37")} {Language.GetTextValue($"Mods.PaperMarioItems.Content.FlowerGroup")}", ItemID.Daybloom, ItemID.Blinkroot, ItemID.Fireblossom, ItemID.Moonglow, ItemID.Shiverthorn, ItemID.Sunflower, ItemID.SkyBlueFlower, ItemID.YellowMarigold);
+            RecipeGroup flowergroup = new(() => $"{Language.GetTextValue("LegacyMisc.37")} {Language.GetTextValue($"Mods.PaperMarioItems.Content.FlowerGroup")}", ItemID.Daybloom, ItemID.Blinkroot, ItemID.Fireblossom, ItemID.Moonglow, ItemID.Shiverthorn, ItemID.Sunflower, ItemID.SkyBlueFlower, ItemID.YellowMarigold);
             RecipeGroup.RegisterGroup(Language.GetTextValue($"Mods.PaperMarioItems.Content.FlowerGroup"), flowergroup);
         }
         //NPCID sets
-        public static SetFactory Factory = new SetFactory(NPCID.Count);
+        public static SetFactory Factory = new(NPCID.Count);
         public static bool[] IsGroundedBoss = Factory.CreateBoolSet(NPCID.KingSlime, NPCID.Deerclops, NPCID.WallofFlesh, NPCID.QueenSlimeBoss, NPCID.Plantera, NPCID.Golem, NPCID.DD2OgreT2, NPCID.DD2OgreT3, NPCID.MourningWood, NPCID.Everscream, NPCID.SantaNK1);
     }
 }
