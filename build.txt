@@ -1,6 +1,6 @@
 displayName = [c/EF4242:Paper Plumber] Items
 author = Furret78
-version = 0.6.0
+version = 0.5.2
 hideCode = true
 buildIgnore = *.csproj, *.user, *.sln, *.gitattributes, *.md, obj\*, bin\*, .vs\*, Old\*, .git\*, *.gitignore, icon_old.png
 homepage = https://steamcommunity.com/sharedfiles/filedetails/?id=3273893695

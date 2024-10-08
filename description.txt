@@ -25,3 +25,6 @@ Author: Furret78 / yuureiki
 Steam Workshop homepage: {ModHomepage}
 
 [c/FFFF83:LATEST CHANGELOG:]
+Paper Mario Items 0.5.2 -- Update notes
+- Fixed certain detour methods being non-static
+- Changes nothing otherwise

@@ -64,13 +64,13 @@ namespace PaperMarioItems.Common.Players
             On_Player.AddBuff += On_Player_AddBuff;
         }
         //space food detour
-        private void On_Player_AddBuff(On_Player.orig_AddBuff orig, Player self, int type, int timeToAdd, bool quiet, bool foodHack)
+        private static void On_Player_AddBuff(On_Player.orig_AddBuff orig, Player self, int type, int timeToAdd, bool quiet, bool foodHack)
         {
             int buffType = type;
             int buffTime = timeToAdd;
             if (self.HasBuff(PMBuffID.Allergic) && !NotAllergicToBuffs.notAllergicToBuffs.Contains(type))
             {
-                if (chargedStack <= 0)
+                if (self.GetModPlayer<PaperPlayer>().chargedStack <= 0)
                 {
                     buffType = 0;
                     buffTime = 0;
@@ -81,13 +81,13 @@ namespace PaperMarioItems.Common.Players
         }
 
         //life shroom detour
-        private void On_Player_KillMe(On_Player.orig_KillMe orig, Player self, PlayerDeathReason damageSource, double dmg, int hitDirection, bool pvp)
+        private static void On_Player_KillMe(On_Player.orig_KillMe orig, Player self, PlayerDeathReason damageSource, double dmg, int hitDirection, bool pvp)
         {
             if (self.creativeGodMode || self.dead || !self.HasItem(PMItemID.LifeMushroom)) orig(self, damageSource, dmg, hitDirection, pvp);
             else
             {
-                lifeShroomRevive = true;
-                LifeMushroomHeal(self, postReviveProtect * 60 * 60, postReviveRegen * 60 * 60);
+                self.GetModPlayer<PaperPlayer>().lifeShroomRevive = true;
+                self.GetModPlayer<PaperPlayer>().LifeMushroomHeal(self, postReviveProtect * 60 * 60, postReviveRegen * 60 * 60);
                 return;
             }
         }
