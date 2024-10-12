@@ -15,10 +15,12 @@ namespace PaperMarioItems.Common.UI
         public Vector2? NearestCookingPotPosition;
         internal MenuBar MenuBar;
         private UserInterface MenuBarUserInterface;
+        public bool AllowOpenCooking;
 
         public override void Load()
         {
             if (Main.dedServ) return;
+            AllowOpenCooking = false;
             MenuBar = new MenuBar();
             MenuBarUserInterface = new UserInterface();
             MenuBar.Activate();
@@ -27,12 +29,27 @@ namespace PaperMarioItems.Common.UI
         public override void Unload()
         {
             base.Unload();
+            MenuBar.Deactivate();
+            MenuBarUserInterface = null;
             MenuBar = null;
+        }
+
+        public override void PreUpdateTime()
+        {
+            if (NearestCookingPotPosition != null)
+            {
+                if (Main.LocalPlayer.Center.Distance((Vector2)NearestCookingPotPosition) <= 320f &&
+                    Main.LocalPlayer.HasItemInInventoryOrOpenVoidBag(PMItemID.Cookbook))
+                    AllowOpenCooking = true;
+            }
+            else AllowOpenCooking = false;
+
+            if (!AllowOpenCooking && MenuBarUserInterface != null && MenuBarUserInterface.CurrentState is MenuBar)
+                HideUI();
         }
 
         public override void PostUpdatePlayers()
         {
-            base.PostUpdatePlayers();
             if (NearestCookingPotPosition != null)
             {
                 if (MenuBarUserInterface.CurrentState == null)
@@ -41,16 +58,7 @@ namespace PaperMarioItems.Common.UI
                     return;
                 }
 
-                if (Main.LocalPlayer.Center.Distance((Vector2)NearestCookingPotPosition) > 320f
-                    || !Main.LocalPlayer.HasItemInInventoryOrOpenVoidBag(PMItemID.Cookbook)
-                    || !Main.playerInventory)
-                {
-                    HideUI();
-                }
-            }
-            else if (MenuBarUserInterface != null)
-            {
-                if (MenuBarUserInterface.CurrentState is MenuBar)
+                if (!AllowOpenCooking || !Main.playerInventory)
                 {
                     HideUI();
                 }
@@ -85,6 +93,7 @@ namespace PaperMarioItems.Common.UI
         public void ShowUI()
         {
             MenuBarUserInterface?.SetState(MenuBar);
+            AllowOpenCooking = true;
             SoundEngine.PlaySound(SoundID.MenuOpen);
             if (!Main.playerInventory)
             {

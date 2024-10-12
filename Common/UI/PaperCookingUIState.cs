@@ -23,6 +23,7 @@ namespace PaperMarioItems.Common.UI
         private readonly float itemSlotSize = 52 * 0.65f;
         private readonly int[] itemSlotsL = [20, 20 + (int)(2.5f * (52 * 0.65f))];
         public readonly string CookItem = Language.GetTextValue($"Mods.PaperMarioItems.Common.UI.CookItem");
+
         public override void OnInitialize()
         {
             DraggablePanel = new PanelUI();

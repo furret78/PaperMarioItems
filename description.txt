@@ -25,6 +25,5 @@ Author: Furret78 / yuureiki
 Steam Workshop homepage: {ModHomepage}
 
 [c/FFFF83:LATEST CHANGELOG:]
-Paper Mario Items 0.5.2 -- Update notes
-- Fixed certain detour methods being non-static
-- Changes nothing otherwise
+Paper Mario Items 0.5.3 -- Update notes
+- Minor fix for cooking UI showing up on world load when autopause is enabled
