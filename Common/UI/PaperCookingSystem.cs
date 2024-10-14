@@ -44,8 +44,10 @@ namespace PaperMarioItems.Common.UI
             }
             else AllowOpenCooking = false;
 
-            if (!AllowOpenCooking && MenuBarUserInterface != null && MenuBarUserInterface.CurrentState is MenuBar)
-                HideUI();
+            if ((Main.autoPause && Main.netMode == NetmodeID.SinglePlayer) &&
+                (!AllowOpenCooking || NearestCookingPotPosition == null) &&
+                MenuBarUserInterface != null && MenuBarUserInterface.CurrentState is MenuBar)
+                HideUITrue();
         }
 
         public override void PostUpdatePlayers()
@@ -58,7 +60,15 @@ namespace PaperMarioItems.Common.UI
                     return;
                 }
 
-                if (!AllowOpenCooking || !Main.playerInventory)
+                if (Main.LocalPlayer.Center.Distance((Vector2)NearestCookingPotPosition) > 320f ||
+                    !Main.LocalPlayer.HasItemInInventoryOrOpenVoidBag(PMItemID.Cookbook) || !Main.playerInventory)
+                {
+                    HideUI();
+                }
+            }
+            else if (MenuBarUserInterface != null)
+            {
+                if (MenuBarUserInterface.CurrentState is MenuBar)
                 {
                     HideUI();
                 }
@@ -93,7 +103,6 @@ namespace PaperMarioItems.Common.UI
         public void ShowUI()
         {
             MenuBarUserInterface?.SetState(MenuBar);
-            AllowOpenCooking = true;
             SoundEngine.PlaySound(SoundID.MenuOpen);
             if (!Main.playerInventory)
             {
@@ -101,10 +110,15 @@ namespace PaperMarioItems.Common.UI
             }
         }
 
-        public void HideUI()
+        private void HideUITrue()
         {
             NearestCookingPotPosition = null;
             MenuBarUserInterface?.SetState(null);
+        }
+
+        public void HideUI()
+        {
+            HideUITrue();
             SoundEngine.PlaySound(SoundID.MenuClose);
         }
     }

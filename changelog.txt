@@ -1,2 +1,2 @@
-Paper Mario Items 0.5.3 -- Update notes
-- Minor fix for cooking UI showing up on world load when autopause is enabled
+Paper Mario Items 0.5.4 -- Update notes
+- Minor fix, same as last time but better
