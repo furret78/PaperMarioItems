@@ -291,11 +291,14 @@ namespace PaperMarioItems.Common.Players
             {
                 if (ModContent.GetInstance<PaperClientConfigs>().HealthAlert)
                 {
-                    if (Player.statLife < 50)
+                    if ((!PaperMarioItems.isLoadedBadgeMod && Player.statLife < 50) ||
+                        (PaperMarioItems.isLoadedBadgeMod && Player.statLife <= Player.statLifeMax2 / 4))
                     {
                         if (alertTimer % 60 == 0)
                         {
-                            if (Player.statLife > 10) SoundEngine.PlaySound(PMSoundID.danger, Player.Center);
+                            if ((!PaperMarioItems.isLoadedBadgeMod && Player.statLife > 10) ||
+                                (PaperMarioItems.isLoadedBadgeMod && Player.statLife > Player.statLifeMax2 / 10))
+                                SoundEngine.PlaySound(PMSoundID.danger, Player.Center);
                             else SoundEngine.PlaySound(PMSoundID.peril, Player.Center);
                             alertTimer = 1;
                         }

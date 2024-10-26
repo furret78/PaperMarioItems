@@ -30,7 +30,7 @@ namespace PaperMarioItems.Content.Items.Treasure
 			for (int i = 0; i < 1000; i++)
 			{
 				resultItem = ImportantThings.ImportantThingsList[Main.rand.Next(ImportantThings.ImportantThingsList.Count)];
-				if (resultItem == PMItemID.PackageBox || resultItem == PMItemID.LotteryTicket)
+				if (resultItem == PMItemID.PackageBox)
 				{
 					return PMItemID.BattleTrunks;
 				}

@@ -41,5 +41,11 @@ namespace PaperMarioItems
         //NPCID sets
         public static SetFactory Factory = new(NPCID.Count);
         public static bool[] IsGroundedBoss = Factory.CreateBoolSet(NPCID.KingSlime, NPCID.Deerclops, NPCID.WallofFlesh, NPCID.QueenSlimeBoss, NPCID.Plantera, NPCID.Golem, NPCID.DD2OgreT2, NPCID.DD2OgreT3, NPCID.MourningWood, NPCID.Everscream, NPCID.SantaNK1);
+        //checking if PaperMarioBadgesMod is loaded
+        public static bool isLoadedBadgeMod;
+        public override void PostSetupContent()
+        {
+            isLoadedBadgeMod = ModLoader.TryGetMod("PaperMarioBadgeMod", out Mod badgeMod);
+        }
     }
 }
