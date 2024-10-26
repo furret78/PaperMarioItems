@@ -94,7 +94,7 @@ namespace PaperMarioItems.Content.Items.Treasure
             else tooltips.Add(new TooltipLine(Mod, "LottoEmpty", Language.GetTextValue(LottoEmpty.Format())));
         }
 
-        private string DetermineLottery()
+        public string DetermineLottery()
         {
             int num1 = Main.rand.Next(0, 10);
             int num2 = Main.rand.Next(0, 10);

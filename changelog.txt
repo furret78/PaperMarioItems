@@ -1,2 +1,2 @@
-Paper Mario Items 0.5.4 -- Update notes
-- Minor fix, same as last time but better
+Paper Mario Items 0.5.5 -- Update notes
+- Temporarily removed Lottery Ticket from the Package item's spawn pool
