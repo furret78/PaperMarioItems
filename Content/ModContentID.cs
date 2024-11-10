@@ -6,7 +6,6 @@ using PaperMarioItems.Content.Items.Cooking;
 using PaperMarioItems.Content.Items.Treasure;
 using PaperMarioItems.Content.Items.Weapons;
 using PaperMarioItems.Content.Projectiles;
-using System;
 using System.Collections.Generic;
 using Terraria.Audio;
 using Terraria.ModLoader;
@@ -168,6 +167,10 @@ namespace PaperMarioItems.Content
             Allergic = ModContent.BuffType<AllergicBuff>(),
             Sleep = ModContent.BuffType<SleepDebuff>(),
             Electrified = ModContent.BuffType<ElectrifiedBuff>();
+
+        public static readonly List<int> debuffList = [
+            Dizzy, Soft, Timestop, Sleep
+            ];
     }
     //projectiles
     public class PMProjID : ModSystem

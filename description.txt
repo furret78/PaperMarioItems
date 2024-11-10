@@ -25,6 +25,3 @@ Author: Furret78 / yuureiki
 Steam Workshop homepage: {ModHomepage}
 
 [c/FFFF83:LATEST CHANGELOG:]
-Paper Mario Items 0.5.6 -- Update notes
-- Minor change to the optional health alert sound function
-  + If Fargo's Paper Mario Badges mod is loaded, the sound effects will play when the player's health is at 25% or less and at 10% or less instead of when the player's health is below 50 or 10.
