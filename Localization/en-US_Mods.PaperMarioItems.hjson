@@ -119,7 +119,11 @@ Items: {
 
 	Cookbook: {
 		DisplayName: Cookbook
-		Tooltip: A rather old cookbook penned by Maître Delish
+		Tooltip:
+			'''
+			A rather old cookbook penned by Maître Delish
+			Requires a Cooking Pot to make use of
+			'''
 	}
 
 	SpitePouch: {
