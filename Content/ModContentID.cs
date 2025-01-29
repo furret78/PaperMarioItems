@@ -16,7 +16,7 @@ namespace PaperMarioItems.Content
     //items
     public class PMItemID
     {
-        public static readonly int Mistake = ModContent.ItemType<Mistake>(),
+        public static readonly int 
             //normal items - TTYD
             BoosSheet = ModContent.ItemType<BoosSheet>(),
             RepelCape = ModContent.ItemType<RepelCape>(),
@@ -157,11 +157,13 @@ namespace PaperMarioItems.Content
 
             //normal items - SPM
             MushroomShake = ModContent.ItemType<MushroomShake>(),
-            SuperMushroomShake = ModContent.ItemType<SuperMushroomShake>()
+            SuperMushroomShake = ModContent.ItemType<SuperMushroomShake>(),
+            UltraMushroomShake = ModContent.ItemType<UltraMushroomShake>(),
+            LongLastShake = ModContent.ItemType<LongLastShake>(),
             //cooking - SPM
 
             //key items - SPM
-            ;
+            Mistake = ModContent.ItemType<Mistake>();
     }
     //buffs
     public class PMBuffID : ModSystem

@@ -5,7 +5,7 @@ Created with vanilla Terraria gameplay in mind. The items included may either be
 
 [c/4DBF60:Obtaining Items]
 Items are either dropped as loot from enemies or crafted. Certain items will require the presence of a Cookbook and a suitable cooking environment in order to craft. The cooking system is inspired by Taco's Cooking Delight mod's.
-The mod currently features items from Paper Mario: The Thousand-Year Door. Future updates may introduce Paper Mario (N64) and Super Paper Mario variations and exclusives.
+The mod currently features items from Paper Mario: The Thousand-Year Door and Super Paper Mario. Future updates may introduce Paper Mario (N64) and more Super Paper Mario variations and exclusives.
 
 To see which recipes correspond to which item, please reference the list of recipes in TTYD. Certain ingredients may be substituted by vanilla counterparts (Mango instead of Keel Mango).
 
@@ -25,3 +25,10 @@ Author: Furret78 / yuureiki
 Steam Workshop homepage: {ModHomepage}
 
 [c/FFFF83:LATEST CHANGELOG:]
+Paper Mario Items 0.6.0 -- Update notes
+- Added Shine Sprite:
+ + This is a supplementary item that requires Ultra Stone to be useful.
+ + Can be obtained from defeating bosses (defeating bosses in Expert or higher difficulties guarantees a drop).
+ + Low chance of dropping from opening Package Boxes.
+- Ultra Stone functionality has been changed to support the Summon damage class.
+- Added Mushroom Shake, Super Mushroom Shake, Ultra Mushroom Shake, and Long-Last Shake.

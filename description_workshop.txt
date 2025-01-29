@@ -9,7 +9,7 @@ Items are either dropped as loot from enemies or crafted. Certain items will req
 
 The cooking system is inspired by Taco's [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3162050553] Cooking Delight [/url] mod.
 
-The mod currently features items from Paper Mario: The Thousand-Year Door. Future updates may introduce Paper Mario (N64) and Super Paper Mario variations and exclusives.
+The mod currently features items from Paper Mario: The Thousand-Year Door and Super Paper Mario. Future updates may introduce Paper Mario (N64) and more Super Paper Mario variations and exclusives.
 
 To see which recipes correspond to which item in TTYD, please reference the [url=https://www.mariowiki.com/List_of_recipes_in_Paper_Mario:_The_Thousand-Year_Door] list of recipes [/url] in TTYD. Certain ingredients may be substituted by vanilla counterparts (Mango instead of Keel Mango).
 

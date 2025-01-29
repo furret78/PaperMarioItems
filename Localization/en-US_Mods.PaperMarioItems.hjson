@@ -899,6 +899,16 @@ Items: {
 		DisplayName: Super Mushroom Shake
 		Tooltip: A feel-super drink that both restores health and cures poison
 	}
+
+	LongLastShake: {
+		DisplayName: Long-Last Shake
+		Tooltip: A fungal drink that regenerates your health over time
+	}
+
+	UltraMushroomShake: {
+		DisplayName: Ultra Mushroom Shake
+		Tooltip: A feel-mega drink that both restores health and cures poison
+	}
 }
 
 Buffs: {

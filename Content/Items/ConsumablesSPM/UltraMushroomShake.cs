@@ -4,24 +4,24 @@ using Terraria.ModLoader;
 
 namespace PaperMarioItems.Content.Items.ConsumablesSPM
 { 
-	public class SuperMushroomShake : ModItem
+	public class UltraMushroomShake : ModItem
 	{
         public override void SetStaticDefaults()
         {
             ItemID.Sets.FoodParticleColors[Type] = [
-                new(41, 138, 214),
+                new(82, 199, 57),
                 new(231, 227, 231),
                 new(255, 215, 132)
             ];
-            Item.ResearchUnlockCount = 150;
+            Item.ResearchUnlockCount = 100;
         }
 
         public override void SetDefaults()
         {
             Item.DefaultToFood(31, 39, 0, 0, true);
-            Item.rare = ItemRarityID.Blue;
-            Item.value = Item.sellPrice(silver: 5);
-            Item.healLife = 50;
+            Item.rare = ItemRarityID.Green;
+            Item.value = Item.buyPrice(gold: 2);
+            Item.healLife = 75;
             Item.potion = true;
         }
 
@@ -50,35 +50,40 @@ namespace PaperMarioItems.Content.Items.ConsumablesSPM
         public override void AddRecipes()
 		{
             Recipe recipe = CreateRecipe()
-                .AddIngredient(PMItemID.SuperMushroom)
+                .AddIngredient(PMItemID.UltraMushroom)
                 .AddIngredient(PMItemID.TastyTonic)
                 .AddTile(TileID.Bottles)
                 .Register();
             recipe = CreateRecipe()
-                .AddIngredient(PMItemID.SuperMushroom)
+                .AddIngredient(PMItemID.UltraMushroom)
                 .AddIngredient(PMItemID.FreshJuice)
                 .AddTile(TileID.Bottles)
                 .Register();
             recipe = CreateRecipe()
-                .AddIngredient(PMItemID.SuperMushroom)
+                .AddIngredient(PMItemID.UltraMushroom)
                 .AddIngredient(PMItemID.TastyTonic)
                 .AddIngredient(ItemID.Bottle)
                 .AddTile(TileID.WorkBenches)
                 .Register();
             recipe = CreateRecipe()
-                .AddIngredient(PMItemID.SuperMushroom)
+                .AddIngredient(PMItemID.UltraMushroom)
                 .AddIngredient(PMItemID.FreshJuice)
                 .AddIngredient(ItemID.Bottle)
                 .AddTile(TileID.WorkBenches)
                 .Register();
             recipe = CreateRecipe()
-                .AddIngredient(PMItemID.MushroomShake)
-                .AddIngredient(ItemID.LesserHealingPotion, 3)
+                .AddIngredient(PMItemID.SuperMushroomShake)
+                .AddIngredient(ItemID.HealingPotion, 2)
+                .AddTile(TileID.WorkBenches)
+                .Register();
+            recipe = CreateRecipe()
+                .AddIngredient(PMItemID.SuperMushroomShake)
+                .AddIngredient(ItemID.GreaterHealingPotion)
                 .AddTile(TileID.WorkBenches)
                 .Register();
             recipe = CreateRecipe()
                 .AddIngredient(PMItemID.MushroomShake)
-                .AddIngredient(ItemID.HealingPotion)
+                .AddIngredient(ItemID.SuperHealingPotion)
                 .AddTile(TileID.WorkBenches)
                 .Register();
         }

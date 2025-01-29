@@ -1,7 +1,7 @@
 Paper Mario Items 0.6.0 -- Update notes
 - Added Shine Sprite:
- + This is a supplementary item that requires Ultra Stone to be useful
- + Can be obtained from defeating bosses (defeating bosses in Expert or higher difficulties guarantees a drop)
- + Low chance of dropping from opening Package Boxes
-- Ultra Stone functionality has been changed to support the Summon damage class
-- Added Mushroom Shake, Super Mushroom Shake.
+ + This is a supplementary item that requires Ultra Stone to be useful.
+ + Can be obtained from defeating bosses (defeating bosses in Expert or higher difficulties guarantees a drop).
+ + Low chance of dropping from opening Package Boxes.
+- Ultra Stone functionality has been changed to support the Summon damage class.
+- Added Mushroom Shake, Super Mushroom Shake, Ultra Mushroom Shake, and Long-Last Shake.
