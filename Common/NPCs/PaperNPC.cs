@@ -1,7 +1,6 @@
 using Microsoft.Xna.Framework;
 using PaperMarioItems.Content;
 using PaperMarioItems.Content.Buffs;
-using System;
 using Terraria;
 using Terraria.ModLoader;
 

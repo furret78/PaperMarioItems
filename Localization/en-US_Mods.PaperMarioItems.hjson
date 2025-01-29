@@ -863,7 +863,12 @@ Items: {
 
 	UltraStone: {
 		DisplayName: Ultra Stone
-		Tooltip: A stone
+		Tooltip:
+			'''
+			A red stone that can enhance Summon damage and knockback
+			Scales with the total number of Shine Sprites currently in your inventory
+			However, this will only take 9999 Shine Sprites into account at most
+			'''
 	}
 
 	VitalPaper: {
@@ -878,6 +883,21 @@ Items: {
 	VintageRed: {
 		DisplayName: Chuckola Cola
 		Tooltip: The label says it's cola, but it looks like wine
+	}
+
+	ShineSprite: {
+		DisplayName: Shine Sprite
+		Tooltip: A mysterious, powerful object. Collecting these will help!
+	}
+
+	MushroomShake: {
+		DisplayName: Mushroom Shake
+		Tooltip: A canned good that both restores health and cures poison
+	}
+
+	SuperMushroomShake: {
+		DisplayName: Super Mushroom Shake
+		Tooltip: A feel-super drink that both restores health and cures poison
 	}
 }
 
@@ -940,6 +960,17 @@ Buffs: {
 	SleepDebuff: {
 		DisplayName: Sleepy
 		Description: It'll take time for the sleepiness to wear off!
+	}
+
+	PartnerBuff: {
+		DisplayName: Partner Upgrades
+		Description:
+			'''
+			The mysterious Shine Sprites empower the Ultra Stone in your grasp...
+			+{Damage1}% Summon damage
+			+{Damage2} flat base Summon dammage
+			+{Knockback}% Summon knockback
+			'''
 	}
 }
 

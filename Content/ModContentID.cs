@@ -2,6 +2,7 @@ using PaperMarioItems.Content.Buffs;
 using PaperMarioItems.Content.Dusts;
 using PaperMarioItems.Content.Items;
 using PaperMarioItems.Content.Items.Consumables;
+using PaperMarioItems.Content.Items.ConsumablesSPM;
 using PaperMarioItems.Content.Items.Cooking;
 using PaperMarioItems.Content.Items.Treasure;
 using PaperMarioItems.Content.Items.Weapons;
@@ -16,6 +17,7 @@ namespace PaperMarioItems.Content
     public class PMItemID
     {
         public static readonly int Mistake = ModContent.ItemType<Mistake>(),
+            //normal items - TTYD
             BoosSheet = ModContent.ItemType<BoosSheet>(),
             RepelCape = ModContent.ItemType<RepelCape>(),
             PointSwap = ModContent.ItemType<PointSwap>(),
@@ -59,7 +61,7 @@ namespace PaperMarioItems.Content
             WhackaBump = ModContent.ItemType<WhackaBump>(),
             CakeMix = ModContent.ItemType<CakeMix>(),
             Cookbook = ModContent.ItemType<Cookbook>(),
-            //key items
+            //key items - TTYD
             BattleTrunks = ModContent.ItemType<BattleTrunks>(),
             PackageBox = ModContent.ItemType<PackageBox>(),
             SkullGem = ModContent.ItemType<SkullGem>(),
@@ -90,7 +92,8 @@ namespace PaperMarioItems.Content
             SpecialCard = ModContent.ItemType<SpecialCard>(),
             Briefcase = ModContent.ItemType<Briefcase>(),
             VintageRed = ModContent.ItemType<VintageRed>(),
-            //cooking
+            ShineSprite = ModContent.ItemType<ShineSprite>(),
+            //cooking - TTYD
             ChocoCake = ModContent.ItemType<ChocoCake>(),
             CocoCandy = ModContent.ItemType<CocoCandy>(),
             CouplesCake = ModContent.ItemType<CouplesCake>(),
@@ -148,9 +151,17 @@ namespace PaperMarioItems.Content
             ZessFrappe = ModContent.ItemType<ZessFrappe>(),
             ZessTea = ModContent.ItemType<ZessTea>(),
             ZessDynamite = ModContent.ItemType<ZessDynamite>(),
-            
+
             DeliciousCake = ModContent.ItemType<DeliciousCake>(),
-            PoisonedCake = ModContent.ItemType<PoisonedCake>();
+            PoisonedCake = ModContent.ItemType<PoisonedCake>(),
+
+            //normal items - SPM
+            MushroomShake = ModContent.ItemType<MushroomShake>(),
+            SuperMushroomShake = ModContent.ItemType<SuperMushroomShake>()
+            //cooking - SPM
+
+            //key items - SPM
+            ;
     }
     //buffs
     public class PMBuffID : ModSystem
@@ -166,7 +177,8 @@ namespace PaperMarioItems.Content
             Soft = ModContent.BuffType<SoftDebuff>(),
             Allergic = ModContent.BuffType<AllergicBuff>(),
             Sleep = ModContent.BuffType<SleepDebuff>(),
-            Electrified = ModContent.BuffType<ElectrifiedBuff>();
+            Electrified = ModContent.BuffType<ElectrifiedBuff>(),
+            PartnerBuff = ModContent.BuffType<PartnerBuff>();
 
         public static readonly List<int> debuffList = [
             Dizzy, Soft, Timestop, Sleep
@@ -249,6 +261,7 @@ namespace PaperMarioItems.Content
             PMItemID.SpecialCard,
             PMItemID.Briefcase,
             PMItemID.VintageRed,
+            PMItemID.ShineSprite,
         };
     }
 }

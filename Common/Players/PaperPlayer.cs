@@ -20,6 +20,7 @@ namespace PaperMarioItems.Common.Players
         //setup
         public bool chargedEffect, dodgyEffect, hugeEffect, softEffect, electrifiedEffect, lifeShroomRevive, thunderOnce, thunderAll, earthquakeEffect, dizzyEffect, causeSoften, causeEarthquake;
         public bool shootingStarActive, inflictDizzyActive, thunderEffectActive, frightMaskActive, stopwatchActive, fireFlowerActive, ruinPowderActive, sleepySheepActive;
+        public bool ultraStoneAccessory;
         public int chargedStack = 0, shootingStar = 0, screenSpinTimer = 0, frightMaskCooldown = 0, stopwatchCooldown = 0, fireFlower = 0, ruinPowderCooldown = 0, sleepySheepCooldown = 0;
         private int chargeCap, wte, ssmd, sst, wtt, bgFlashTime, swt, fft, eqt, dyt, sleept, alertTimer = -10;
         private bool bgFlash;
@@ -44,6 +45,7 @@ namespace PaperMarioItems.Common.Players
             dizzyEffect = false;
             if (electrifiedEffect == false) Player.buffImmune[BuffID.Electrified] = false;
             chargedEffect = false;
+            ultraStoneAccessory = false;
         }
         //on enter world
         public override void OnEnterWorld()
@@ -282,6 +284,18 @@ namespace PaperMarioItems.Common.Players
                 {
                     Player.AddBuff(PMBuffID.Charged, 2);
                 }
+            }
+        }
+
+        public override void PostUpdateEquips()
+        {
+            if (ultraStoneAccessory)
+            {
+                if (!Player.HasBuff(PMBuffID.PartnerBuff))
+                {
+                    if (Player.HasItem(PMItemID.ShineSprite)) Player.AddBuff(PMBuffID.PartnerBuff, 2);
+                }
+                else if (!Player.HasItem(PMItemID.ShineSprite)) Player.ClearBuff(PMBuffID.PartnerBuff);
             }
         }
 

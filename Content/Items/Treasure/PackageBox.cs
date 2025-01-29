@@ -27,17 +27,17 @@ namespace PaperMarioItems.Content.Items.Treasure
 		private int RandomImportantThing(Player player)
 		{
 			int resultItem = PMItemID.BattleTrunks;
-			for (int i = 0; i < 1000; i++)
+			for (int i = 0; i < 101; i++)
 			{
 				resultItem = ImportantThings.ImportantThingsList[Main.rand.Next(ImportantThings.ImportantThingsList.Count)];
 				if (resultItem == PMItemID.PackageBox)
 				{
-					return PMItemID.BattleTrunks;
+                    return PMItemID.BattleTrunks;
 				}
 				else if (player.HasItemInAnyInventory(resultItem)) continue;
 				else return resultItem;
 			}
-			return resultItem;
+			return PMItemID.ShineSprite;
 		}
 	}
 }

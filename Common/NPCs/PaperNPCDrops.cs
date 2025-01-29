@@ -1,8 +1,12 @@
 using PaperMarioItems.Content;
 using Terraria;
+using Terraria.Chat;
+using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
+using Terraria.UI.Chat;
 
 namespace PaperMarioItems.Common.NPCs
 {
@@ -56,17 +60,32 @@ namespace PaperMarioItems.Common.NPCs
             }
             if (npc.type == NPCID.GraniteFlyer || npc.type == NPCID.GraniteGolem)
                 npcLoot.Add(ItemDropRule.NormalvsExpert(PMItemID.EarthQuake, 2, 1));
+
             //boss specific drops
             if (System.Array.IndexOf([NPCID.EaterofWorldsBody, NPCID.EaterofWorldsHead, NPCID.EaterofWorldsTail], npc.type) > -1)
             {
                 LeadingConditionRule leadingConditionRule = new(new Conditions.LegacyHack_IsABoss());
                 leadingConditionRule.OnSuccess(ItemDropRule.NormalvsExpert(PMItemID.DizzyDial, 3, 2));
+                leadingConditionRule.OnSuccess(ItemDropRule.BossBagByCondition(new Conditions.LegacyHack_IsBossAndExpert(), PMItemID.ShineSprite));
+                leadingConditionRule.OnSuccess(ItemDropRule.ByCondition(new Conditions.LegacyHack_IsBossAndNotExpert(), PMItemID.ShineSprite, 2));
                 npcLoot.Add(leadingConditionRule);
+            }
+            else
+            {
+                npcLoot.Add(ItemDropRule.BossBagByCondition(new Conditions.LegacyHack_IsBossAndExpert(), PMItemID.ShineSprite));
+                npcLoot.Add(ItemDropRule.ByCondition(new Conditions.LegacyHack_IsBossAndNotExpert(), PMItemID.ShineSprite, 2));
             }
             if (npc.type == NPCID.BrainofCthulhu)
             {
-                LeadingConditionRule leadingConditionRule = new(new Conditions.LegacyHack_IsABoss());
-                leadingConditionRule.OnSuccess(ItemDropRule.NormalvsExpert(PMItemID.DizzyDial, 3, 2));
+                npcLoot.Add(ItemDropRule.BossBagByCondition(new Conditions.LegacyHack_IsBossAndExpert(), PMItemID.DizzyDial));
+                npcLoot.Add(ItemDropRule.ByCondition(new Conditions.LegacyHack_IsBossAndNotExpert(), PMItemID.DizzyDial, 3));
+            }
+
+            //shine sprite drops
+            if (npc.type == NPCID.Retinazer || npc.type == NPCID.Spazmatism)
+            {
+                LeadingConditionRule leadingConditionRule = new(new Conditions.MissingTwin());
+                leadingConditionRule.OnSuccess(ItemDropRule.NormalvsExpert(PMItemID.ShineSprite, 2, 1));
                 npcLoot.Add(leadingConditionRule);
             }
         }
