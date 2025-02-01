@@ -909,6 +909,11 @@ Items: {
 		DisplayName: Ultra Mushroom Shake
 		Tooltip: A feel-mega drink that both restores health and cures poison
 	}
+
+	HPPlus: {
+		DisplayName: HP Plus
+		Tooltip: A heart that fortifies your body
+	}
 }
 
 Buffs: {

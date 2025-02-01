@@ -160,6 +160,7 @@ namespace PaperMarioItems.Content
             SuperMushroomShake = ModContent.ItemType<SuperMushroomShake>(),
             UltraMushroomShake = ModContent.ItemType<UltraMushroomShake>(),
             LongLastShake = ModContent.ItemType<LongLastShake>(),
+            HPPlus = ModContent.ItemType<HPPlus>(),
             //cooking - SPM
 
             //key items - SPM

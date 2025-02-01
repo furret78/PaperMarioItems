@@ -11,6 +11,8 @@ using Terraria.GameContent;
 using PaperMarioItems.Common.UI;
 using PaperMarioItems.Content;
 using PaperMarioItems.Common.Configs;
+using Terraria.ModLoader.IO;
+using PaperMarioItems.Content.Items.ConsumablesSPM;
 
 namespace PaperMarioItems.Common.Players
 {
@@ -21,7 +23,7 @@ namespace PaperMarioItems.Common.Players
         public bool chargedEffect, dodgyEffect, hugeEffect, softEffect, electrifiedEffect, lifeShroomRevive, thunderOnce, thunderAll, earthquakeEffect, dizzyEffect, causeSoften, causeEarthquake;
         public bool shootingStarActive, inflictDizzyActive, thunderEffectActive, frightMaskActive, stopwatchActive, fireFlowerActive, ruinPowderActive, sleepySheepActive;
         public bool ultraStoneAccessory;
-        public int chargedStack = 0, shootingStar = 0, screenSpinTimer = 0, frightMaskCooldown = 0, stopwatchCooldown = 0, fireFlower = 0, ruinPowderCooldown = 0, sleepySheepCooldown = 0;
+        public int chargedStack = 0, shootingStar = 0, screenSpinTimer = 0, frightMaskCooldown = 0, stopwatchCooldown = 0, fireFlower = 0, ruinPowderCooldown = 0, sleepySheepCooldown = 0, consumedHPPlus = 0, consumedPowerPlus = 0;
         private int chargeCap, wte, ssmd, sst, wtt, bgFlashTime, swt, fft, eqt, dyt, sleept, alertTimer = -10;
         private bool bgFlash;
         private static readonly Color LuckyTextColor = new(255, 255, 0, 255);
@@ -442,6 +444,52 @@ namespace PaperMarioItems.Common.Players
         public override void OnHitAnything(float x, float y, Entity victim)
         {
             chargedStack = 0;
+        }
+
+        //permanent stat boosts
+        public override void ModifyMaxStats(out StatModifier health, out StatModifier mana)
+        {
+            health = StatModifier.Default;
+            health.Base = consumedHPPlus * HPPlus.HPPlusValue;
+            mana = StatModifier.Default;
+        }
+
+        public override void SyncPlayer(int toWho, int fromWho, bool newPlayer)
+        {
+            ModPacket packet = Mod.GetPacket();
+            packet.Write((byte)PaperMarioItems.MessageType.StatIncreaseSync);
+            packet.Write((byte)Player.whoAmI);
+            packet.Write((byte)consumedHPPlus);
+            packet.Send(toWho, fromWho);
+        }
+
+        public void ReceivePlayerSync(BinaryReader reader)
+        {
+            consumedHPPlus = reader.ReadByte();
+        }
+
+        public override void CopyClientState(ModPlayer targetCopy)
+        {
+            PaperPlayer clone = (PaperPlayer)targetCopy;
+            clone.consumedHPPlus = consumedHPPlus;
+        }
+
+        public override void SendClientChanges(ModPlayer clientPlayer)
+        {
+            PaperPlayer clone = (PaperPlayer)clientPlayer;
+
+            if (consumedHPPlus != clone.consumedHPPlus)
+                SyncPlayer(toWho: -1, fromWho: Main.myPlayer, newPlayer: false);
+        }
+
+        public override void SaveData(TagCompound tag)
+        {
+            tag["consumedHPPlus"] = consumedHPPlus;
+        }
+
+        public override void LoadData(TagCompound tag)
+        {
+            consumedHPPlus = tag.GetInt("consumedHPPlus");
         }
     }
 }
