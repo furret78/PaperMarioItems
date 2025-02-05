@@ -156,11 +156,18 @@ namespace PaperMarioItems.Content
             PoisonedCake = ModContent.ItemType<PoisonedCake>(),
 
             //normal items - SPM
+            BlackApple = ModContent.ItemType<BlackApple>(),
+            BlueApple = ModContent.ItemType<BlueApple>(),
             MushroomShake = ModContent.ItemType<MushroomShake>(),
             SuperMushroomShake = ModContent.ItemType<SuperMushroomShake>(),
             UltraMushroomShake = ModContent.ItemType<UltraMushroomShake>(),
             LongLastShake = ModContent.ItemType<LongLastShake>(),
             HPPlus = ModContent.ItemType<HPPlus>(),
+            OrangeApple = ModContent.ItemType<OrangeApple>(),
+            PinkApple = ModContent.ItemType<PinkApple>(),
+            PowerPlus = ModContent.ItemType<PowerPlus>(),
+            PowerMinus = ModContent.ItemType<PowerMinus>(),
+            SapSoup = ModContent.ItemType<SapSoup>(),
             //cooking - SPM
 
             //key items - SPM

@@ -20,7 +20,7 @@ namespace PaperMarioItems.Content.Items.ConsumablesSPM
         {
             Item.DefaultToFood(31, 39, BuffID.Regeneration, 36000, true);
             Item.rare = ItemRarityID.White;
-            Item.value = Item.buyPrice(copper: 15);
+            Item.value = Item.sellPrice(copper: 50, silver: 11);
         }
 
         public override void OnConsumeItem(Player player)

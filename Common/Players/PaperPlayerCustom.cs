@@ -8,6 +8,8 @@ using Terraria.DataStructures;
 using PaperMarioItems.Common.NPCs;
 using PaperMarioItems.Content;
 using Terraria.Enums;
+using Terraria.Chat;
+using Terraria.Localization;
 
 namespace PaperMarioItems.Common.Players
 {
@@ -559,5 +561,22 @@ namespace PaperMarioItems.Common.Players
             if (!empty) SoundEngine.PlaySound(PMSoundID.causeStatus, player.Center);
             else SoundEngine.PlaySound(PMSoundID.wrong, player.Center);
         }
+
+        //power plus item
+        public int CheckPowerPlus(Player player) => consumedPowerPlus;
+        public void IncreasePowerPlus(Player player)
+        {
+            if (consumedPowerPlus < 500)
+            {
+                consumedPowerPlus++;
+                SoundEngine.PlaySound(SoundID.Item4, player.position);
+            }
+            else
+            {
+                ChatHelper.BroadcastChatMessage(NetworkText.From(PowerPlusMax), Color.IndianRed);
+                SoundEngine.PlaySound(PMSoundID.wrong, player.position);
+            }
+        }
+        public void ResetPowerPlus(Player player) => consumedPowerPlus = 0;
     }
 }

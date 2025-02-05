@@ -20,7 +20,7 @@ namespace PaperMarioItems.Content.Items.ConsumablesSPM
         {
             Item.DefaultToFood(31, 39, 0, 0, true);
             Item.rare = ItemRarityID.Green;
-            Item.value = Item.buyPrice(gold: 2);
+            Item.value = Item.sellPrice(gold: 1, silver: 50);
             Item.healLife = 75;
             Item.potion = true;
         }

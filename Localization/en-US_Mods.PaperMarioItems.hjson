@@ -6,6 +6,7 @@ Common: {
 		HPDrainDeath: had their HP drained.
 		EarthquakeDeath: was struck by an earthquake.
 		PowDeath: rumbled too hard.
+		PowerPlusMax: This item cannot empower you any further. (Maximum allowed reached)
 	}
 
 	UI.CookItem: Cook
@@ -913,6 +914,69 @@ Items: {
 	HPPlus: {
 		DisplayName: HP Plus
 		Tooltip: A heart that fortifies your body
+	}
+
+	PowerPlus: {
+		DisplayName: Power Plus
+		Tooltip:
+			'''
+			A get-burly-quick item!
+			Permanently raises damage in general by 5%
+			'''
+	}
+
+	PowerMinus: {
+		DisplayName: Power Minus (DEBUG)
+		Tooltip: Resets the Power Plus count to 0
+	}
+
+	SapSoup: {
+		DisplayName: Sap Soup
+		Tooltip:
+			'''
+			Concentrated syrup
+			Cures poison
+			'''
+	}
+
+	BlackApple: {
+		DisplayName: Black Apple
+		Tooltip:
+			'''
+			Cures poison
+			A black fruit from another dimension. It tastes very weird...
+			Most people notice no other effects
+			'''
+	}
+
+	BlueApple: {
+		DisplayName: Blue Apple
+		Tooltip:
+			'''
+			Cures poison
+			A blue fruit from another dimension. It tastes a little weird...
+			Most people notice no other effects
+			'''
+	}
+
+	OrangeApple: {
+		DisplayName: Orange Apple
+		Tooltip:
+			'''
+			Cures poison
+			An orange fruit from another dimension. It tastes weird...
+			Most people notice no other effects
+			'''
+	}
+
+	PinkApple: {
+		DisplayName: Pink Apple
+		Tooltip:
+			'''
+			Cures poison
+			A pink fruit from another dimension. It tastes sort of weird...
+			Most people notice no other effects
+			'''
 	}
 }
 

@@ -13,6 +13,7 @@ using PaperMarioItems.Content;
 using PaperMarioItems.Common.Configs;
 using Terraria.ModLoader.IO;
 using PaperMarioItems.Content.Items.ConsumablesSPM;
+using System.CodeDom;
 
 namespace PaperMarioItems.Common.Players
 {
@@ -23,19 +24,21 @@ namespace PaperMarioItems.Common.Players
         public bool chargedEffect, dodgyEffect, hugeEffect, softEffect, electrifiedEffect, lifeShroomRevive, thunderOnce, thunderAll, earthquakeEffect, dizzyEffect, causeSoften, causeEarthquake;
         public bool shootingStarActive, inflictDizzyActive, thunderEffectActive, frightMaskActive, stopwatchActive, fireFlowerActive, ruinPowderActive, sleepySheepActive;
         public bool ultraStoneAccessory;
-        public int chargedStack = 0, shootingStar = 0, screenSpinTimer = 0, frightMaskCooldown = 0, stopwatchCooldown = 0, fireFlower = 0, ruinPowderCooldown = 0, sleepySheepCooldown = 0, consumedHPPlus = 0, consumedPowerPlus = 0;
-        private int chargeCap, wte, ssmd, sst, wtt, bgFlashTime, swt, fft, eqt, dyt, sleept, alertTimer = -10;
+        public int chargedStack = 0, shootingStar = 0, screenSpinTimer = 0, frightMaskCooldown = 0, stopwatchCooldown = 0, fireFlower = 0, ruinPowderCooldown = 0, sleepySheepCooldown = 0, consumedHPPlus = 0;
+        private int chargeCap, wte, ssmd, sst, wtt, bgFlashTime, swt, fft, eqt, dyt, sleept, alertTimer = -10, consumedPowerPlus;
         private bool bgFlash;
         private static readonly Color LuckyTextColor = new(255, 255, 0, 255);
         public const int postReviveProtect = 1, postReviveRegen = 2, fireFlowerDamage = 25, earthquakeDamage = 75;
         public readonly int preHardChargeCap = 10, skellyChargeCap = 12, hardChargeCap = 15, mechChargeCap = 18, mechAllChargeCap = 20, planteraChargeCap = 25, cultistChargeCap = 40;
         //localized text
-        public readonly string LuckyEvade = Language.GetTextValue($"Mods.PaperMarioItems.Common.Players.LuckyEvade"),
-            MoonLordStopwatch = Language.GetTextValue($"Mods.PaperMarioItems.Common.Players.MoonLordStopwatch"),
-            LightningDeath = Language.GetTextValue($"Mods.PaperMarioItems.Common.Players.LightningDeath"),
-            HPDrainDeath = Language.GetTextValue($"Mods.PaperMarioItems.Common.Players.HPDrainDeath"),
-            EarthquakeDeath = Language.GetTextValue($"Mods.PaperMarioItems.Common.Players.EarthquakeDeath"),
-            PowDeath = Language.GetTextValue($"Mods.PaperMarioItems.Common.Players.PowDeath");
+        const string LocalTextPath = $"Mods.PaperMarioItems.Common.Players.";
+        public readonly string LuckyEvade = Language.GetTextValue(LocalTextPath + $"LuckyEvade"),
+            MoonLordStopwatch = Language.GetTextValue(LocalTextPath + $"MoonLordStopwatch"),
+            LightningDeath = Language.GetTextValue(LocalTextPath + $"LightningDeath"),
+            HPDrainDeath = Language.GetTextValue(LocalTextPath + $"HPDrainDeath"),
+            EarthquakeDeath = Language.GetTextValue(LocalTextPath + $"EarthquakeDeath"),
+            PowDeath = Language.GetTextValue(LocalTextPath + $"PowDeath"),
+            PowerPlusMax = Language.GetTextValue(LocalTextPath + $"PowerPlusMax");
         //reset
         public override void ResetEffects()
         {
@@ -299,6 +302,11 @@ namespace PaperMarioItems.Common.Players
                 }
                 else if (!Player.HasItem(PMItemID.ShineSprite)) Player.ClearBuff(PMBuffID.PartnerBuff);
             }
+
+            if (consumedPowerPlus > 0)
+            {
+                Player.GetDamage(DamageClass.Generic) += consumedPowerPlus * (5 / 100f);
+            }
         }
 
         public override void PostUpdate()
@@ -397,6 +405,7 @@ namespace PaperMarioItems.Common.Players
                 }
             }
         }
+
         //dodgy effects
         public override bool FreeDodge(Player.HurtInfo info)
         {
@@ -429,6 +438,7 @@ namespace PaperMarioItems.Common.Players
             packet.Write((byte)whoAmI);
             packet.Send(ignoreClient: whoAmI);
         }
+
         //on hit electrified
         public override void ModifyHitByNPC(NPC npc, ref Player.HurtModifiers modifiers)
         {
@@ -440,6 +450,7 @@ namespace PaperMarioItems.Common.Players
                 finalDamage *= 0f;
             }
         }
+
         //deplete charged count
         public override void OnHitAnything(float x, float y, Entity victim)
         {
@@ -447,6 +458,7 @@ namespace PaperMarioItems.Common.Players
         }
 
         //permanent stat boosts
+
         public override void ModifyMaxStats(out StatModifier health, out StatModifier mana)
         {
             health = StatModifier.Default;
@@ -460,36 +472,40 @@ namespace PaperMarioItems.Common.Players
             packet.Write((byte)PaperMarioItems.MessageType.StatIncreaseSync);
             packet.Write((byte)Player.whoAmI);
             packet.Write((byte)consumedHPPlus);
+            packet.Write((byte)consumedPowerPlus);
             packet.Send(toWho, fromWho);
         }
 
         public void ReceivePlayerSync(BinaryReader reader)
         {
             consumedHPPlus = reader.ReadByte();
+            consumedPowerPlus = reader.ReadByte();
         }
 
         public override void CopyClientState(ModPlayer targetCopy)
         {
-            PaperPlayer clone = (PaperPlayer)targetCopy;
+            var clone = (PaperPlayer)targetCopy;
             clone.consumedHPPlus = consumedHPPlus;
+            clone.consumedPowerPlus = consumedPowerPlus;
         }
 
         public override void SendClientChanges(ModPlayer clientPlayer)
         {
-            PaperPlayer clone = (PaperPlayer)clientPlayer;
-
-            if (consumedHPPlus != clone.consumedHPPlus)
+            var clone = (PaperPlayer)clientPlayer;
+            if (consumedHPPlus != clone.consumedHPPlus || consumedPowerPlus != clone.consumedPowerPlus)
                 SyncPlayer(toWho: -1, fromWho: Main.myPlayer, newPlayer: false);
         }
 
         public override void SaveData(TagCompound tag)
         {
             tag["consumedHPPlus"] = consumedHPPlus;
+            tag["consumedPowerPlus"] = consumedPowerPlus;
         }
 
         public override void LoadData(TagCompound tag)
         {
             consumedHPPlus = tag.GetInt("consumedHPPlus");
+            consumedPowerPlus = tag.GetInt("consumedPowerPlus");
         }
     }
 }

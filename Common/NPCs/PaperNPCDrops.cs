@@ -1,4 +1,5 @@
 using PaperMarioItems.Content;
+using System.Linq;
 using Terraria;
 using Terraria.Chat;
 using Terraria.GameContent.Bestiary;
@@ -60,6 +61,11 @@ namespace PaperMarioItems.Common.NPCs
             }
             if (npc.type == NPCID.GraniteFlyer || npc.type == NPCID.GraniteGolem)
                 npcLoot.Add(ItemDropRule.NormalvsExpert(PMItemID.EarthQuake, 2, 1));
+            if (npc.type == NPCID.Dandelion || npc.type == NPCID.Snatcher ||
+                npc.type == NPCID.AngryTrapper || npc.type == NPCID.Clinger ||
+                npc.type == NPCID.FungiBulb || npc.type == NPCID.GiantFungiBulb ||
+                npc.type == NPCID.ManEater)
+                npcLoot.Add(ItemDropRule.NormalvsExpert(PMItemID.SapSoup, 74, 70));
 
             //boss specific drops
             if (System.Array.IndexOf([NPCID.EaterofWorldsBody, NPCID.EaterofWorldsHead, NPCID.EaterofWorldsTail], npc.type) > -1)
@@ -79,6 +85,22 @@ namespace PaperMarioItems.Common.NPCs
             {
                 npcLoot.Add(ItemDropRule.BossBagByCondition(new Conditions.LegacyHack_IsBossAndExpert(), PMItemID.DizzyDial));
                 npcLoot.Add(ItemDropRule.ByCondition(new Conditions.LegacyHack_IsBossAndNotExpert(), PMItemID.DizzyDial, 3));
+            }
+            if (npc.type == NPCID.Plantera)
+            {
+                /*
+                foreach (var rule in npcLoot.Get())
+                {
+                    if (rule is DropBasedOnExpertMode dropBasedOnExpertMode && dropBasedOnExpertMode.ruleForNormalMode is OneFromOptionsNotScaledWithLuckDropRule oneFromOptionsDrop)
+                    {
+                        var original = oneFromOptionsDrop.dropIds.ToList();
+                        original.Add(PMItemID.SapSoup);
+                        oneFromOptionsDrop.dropIds = original.ToArray();
+                    }
+                }
+                */
+                npcLoot.Add(ItemDropRule.BossBagByCondition(new Conditions.LegacyHack_IsBossAndExpert(), PMItemID.SapSoup));
+                npcLoot.Add(ItemDropRule.ByCondition(new Conditions.LegacyHack_IsBossAndNotExpert(), PMItemID.SapSoup, 4));
             }
 
             //shine sprite drops

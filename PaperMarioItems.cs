@@ -9,25 +9,26 @@ namespace PaperMarioItems
 {
 	partial class PaperMarioItems : Mod
     {
+        const string PMSoundPath = "PaperMarioItems/Assets/Sounds/";
         //custom sounds
-        public readonly static SoundStyle useItemPM = new("PaperMarioItems/Assets/Sounds/useItemPM"),
-            luckyPM = new("PaperMarioItems/Assets/Sounds/luckyPM"),
-            healPM = new("PaperMarioItems/Assets/Sounds/healPM"),
-            starPM = new("PaperMarioItems/Assets/Sounds/starPM"),
-            thunderPM = new("PaperMarioItems/Assets/Sounds/thunderPM"),
-            watchPM = new("PaperMarioItems/Assets/Sounds/watchPM"),
-            dizzyPM = new("PaperMarioItems/Assets/Sounds/dizzyPM"),
-            fireFlowerPM = new("PaperMarioItems/Assets/Sounds/fireFlowerPM"),
-            causeStatusPM = new("PaperMarioItems/Assets/Sounds/causeStatusPM"),
-            chargedPM = new("PaperMarioItems/Assets/Sounds/chargedPM"),
-            invisPM = new("PaperMarioItems/Assets/Sounds/invisPM"),
-            recoverPM = new("PaperMarioItems/Assets/Sounds/recoverPM"),
-            wrongPM = new("PaperMarioItems/Assets/Sounds/wrongPM"),
-            fullHealPM = new("PaperMarioItems/Assets/Sounds/fullHealPM"),
-            fullManaPM = new("PaperMarioItems/Assets/Sounds/fullManaPM"),
-            dangerPM = new("PaperMarioItems/Assets/Sounds/dangerPM"),
-            perilPM = new("PaperMarioItems/Assets/Sounds/perilPM"),
-            damagePM = new("PaperMarioItems/Assets/Sounds/damagePM");
+        public readonly static SoundStyle useItemPM = new(PMSoundPath + "useItemPM"),
+            luckyPM = new(PMSoundPath + "luckyPM"),
+            healPM = new(PMSoundPath + "healPM"),
+            starPM = new(PMSoundPath + "starPM"),
+            thunderPM = new(PMSoundPath + "thunderPM"),
+            watchPM = new(PMSoundPath + "watchPM"),
+            dizzyPM = new(PMSoundPath + "dizzyPM"),
+            fireFlowerPM = new(PMSoundPath + "fireFlowerPM"),
+            causeStatusPM = new(PMSoundPath + "causeStatusPM"),
+            chargedPM = new(PMSoundPath + "chargedPM"),
+            invisPM = new(PMSoundPath + "invisPM"),
+            recoverPM = new(PMSoundPath + "recoverPM"),
+            wrongPM = new(PMSoundPath + "wrongPM"),
+            fullHealPM = new(PMSoundPath + "fullHealPM"),
+            fullManaPM = new(PMSoundPath + "fullManaPM"),
+            dangerPM = new(PMSoundPath + "dangerPM"),
+            perilPM = new(PMSoundPath + "perilPM"),
+            damagePM = new(PMSoundPath + "damagePM");
         //custom recipe groups
         public override void AddRecipeGroups()
         {
