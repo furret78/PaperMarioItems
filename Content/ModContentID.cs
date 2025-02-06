@@ -157,17 +157,22 @@ namespace PaperMarioItems.Content
 
             //normal items - SPM
             BlackApple = ModContent.ItemType<BlackApple>(),
+            BlockBlock = ModContent.ItemType<BlockBlock>(), //todo, not yet declared in changelog
             BlueApple = ModContent.ItemType<BlueApple>(),
-            MushroomShake = ModContent.ItemType<MushroomShake>(),
-            SuperMushroomShake = ModContent.ItemType<SuperMushroomShake>(),
-            UltraMushroomShake = ModContent.ItemType<UltraMushroomShake>(),
-            LongLastShake = ModContent.ItemType<LongLastShake>(),
+            DayzeeTear = ModContent.ItemType<DayzeeTear>(),
             HPPlus = ModContent.ItemType<HPPlus>(),
+            LongLastShake = ModContent.ItemType<LongLastShake>(),
+            MightyTonic = ModContent.ItemType<MightyTonic>(), //todo
+            MushroomShake = ModContent.ItemType<MushroomShake>(),
             OrangeApple = ModContent.ItemType<OrangeApple>(),
             PinkApple = ModContent.ItemType<PinkApple>(),
             PowerPlus = ModContent.ItemType<PowerPlus>(),
             PowerMinus = ModContent.ItemType<PowerMinus>(),
+            PrimordialFruit = ModContent.ItemType<PrimordialFruit>(),
             SapSoup = ModContent.ItemType<SapSoup>(),
+            SlimyMushroom = ModContent.ItemType<SlimyMushroom>(),
+            SuperMushroomShake = ModContent.ItemType<SuperMushroomShake>(),
+            UltraMushroomShake = ModContent.ItemType<UltraMushroomShake>(),
             //cooking - SPM
 
             //key items - SPM
