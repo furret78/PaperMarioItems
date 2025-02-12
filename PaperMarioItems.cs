@@ -12,6 +12,7 @@ namespace PaperMarioItems
         const string PMSoundPath = "PaperMarioItems/Assets/Sounds/";
         //custom sounds
         public readonly static SoundStyle useItemPM = new(PMSoundPath + "useItemPM"),
+            useItemSPM = new(PMSoundPath + "useItemSPM"),
             luckyPM = new(PMSoundPath + "luckyPM"),
             healPM = new(PMSoundPath + "healPM"),
             starPM = new(PMSoundPath + "starPM"),
@@ -28,6 +29,7 @@ namespace PaperMarioItems
             fullManaPM = new(PMSoundPath + "fullManaPM"),
             dangerPM = new(PMSoundPath + "dangerPM"),
             perilPM = new(PMSoundPath + "perilPM"),
+            returnPipeSPM = new(PMSoundPath + "returnPipeSPM"),
             damagePM = new(PMSoundPath + "damagePM");
         //custom recipe groups
         public override void AddRecipeGroups()

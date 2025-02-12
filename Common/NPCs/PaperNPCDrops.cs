@@ -1,13 +1,8 @@
 using PaperMarioItems.Content;
-using System.Linq;
 using Terraria;
-using Terraria.Chat;
-using Terraria.GameContent.Bestiary;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
-using Terraria.UI.Chat;
 
 namespace PaperMarioItems.Common.NPCs
 {
@@ -52,6 +47,10 @@ namespace PaperMarioItems.Common.NPCs
                 npcLoot.Add(ItemDropRule.NormalvsExpert(PMItemID.BoosSheet, 9, 8));
                 npcLoot.Add(ItemDropRule.NormalvsExpert(PMItemID.RepelCape, 11, 9));
             }
+            if (npc.type == NPCID.Ghost || npc.type == NPCID.PirateGhost)
+            {
+                npcLoot.Add(ItemDropRule.NormalvsExpert(PMItemID.PrimordialFruit, 136, 133));
+            }
             if (npc.type == NPCID.StardustSoldier)
                 npcLoot.Add(ItemDropRule.NormalvsExpert(PMItemID.ShootingStar, 12, 9));
             if (npc.type == NPCID.CaveBat || npc.type == NPCID.GiantBat || npc.type == NPCID.IceBat || npc.type == NPCID.IlluminantBat || npc.type == NPCID.JungleBat || npc.type == NPCID.SporeBat || npc.type == NPCID.VampireBat || npc.type == NPCID.Hellbat || npc.type == NPCID.Lavabat)
@@ -66,6 +65,34 @@ namespace PaperMarioItems.Common.NPCs
                 npc.type == NPCID.FungiBulb || npc.type == NPCID.GiantFungiBulb ||
                 npc.type == NPCID.ManEater)
                 npcLoot.Add(ItemDropRule.NormalvsExpert(PMItemID.SapSoup, 74, 70));
+            if (npc.type == NPCID.FungiBulb || npc.type == NPCID.GiantFungiBulb ||
+                npc.type == NPCID.AnomuraFungus || npc.type == NPCID.MushiLadybug ||
+                npc.type == NPCID.SporeBat || npc.type == NPCID.SporeSkeleton ||
+                npc.type == NPCID.ZombieMushroom || npc.type == NPCID.ZombieMushroomHat ||
+                npc.type == NPCID.FungoFish)
+            {
+                npcLoot.Add(ItemDropRule.NormalvsExpert(PMItemID.SlimyMushroom, 399, 380));
+            }
+            if (npc.type == NPCID.Truffle)
+            {
+                npcLoot.Add(ItemDropRule.NormalvsExpert(PMItemID.SlimyMushroom, 4, 2));
+            }
+            if (npc.type == NPCID.Dandelion)
+            {
+                npcLoot.Add(ItemDropRule.Common(PMItemID.DayzeeTear, 205, 1, 7));
+            }
+            if (npc.type == NPCID.SpikedJungleSlime || npc.type == NPCID.SpikedIceSlime)
+            {
+                npcLoot.Add(ItemDropRule.NormalvsExpert(PMItemID.MightyTonic, 470, 450));
+            }
+            if (npc.type == NPCID.SlimeSpiked)
+            {
+                npcLoot.Add(ItemDropRule.NormalvsExpert(PMItemID.MightyTonic, 750, 735));
+            }
+            if (npc.type == NPCID.PigronCorruption || npc.type == NPCID.PigronCrimson || npc.type == NPCID.PigronHallow)
+            {
+                npcLoot.Add(ItemDropRule.NormalvsExpert(PMItemID.BoneinCut, 640, 620));
+            }
 
             //boss specific drops
             if (System.Array.IndexOf([NPCID.EaterofWorldsBody, NPCID.EaterofWorldsHead, NPCID.EaterofWorldsTail], npc.type) > -1)

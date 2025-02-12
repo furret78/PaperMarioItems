@@ -128,11 +128,11 @@ namespace PaperMarioItems.Common.Players
             CombatText.NewText(Player.getRect(), LuckyTextColor, LuckyEvade);
         }
         //hot sauce effect
-        public void DrinkHotSauce(Player player)
+        public void DrinkHotSauce(Player player, int chargeCount = 1)
         {
             if (!player.HasBuff(PMBuffID.Allergic) && !player.buffImmune[PMBuffID.Charged])
             {
-                chargedStack++;
+                chargedStack += chargeCount;
                 SoundEngine.PlaySound(PMSoundID.charged, player.Center);
             }
         }

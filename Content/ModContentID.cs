@@ -159,12 +159,14 @@ namespace PaperMarioItems.Content
             BlackApple = ModContent.ItemType<BlackApple>(),
             BlockBlock = ModContent.ItemType<BlockBlock>(), //todo, not yet declared in changelog
             BlueApple = ModContent.ItemType<BlueApple>(),
+            BoneinCut = ModContent.ItemType<BoneinCut>(),
             DayzeeTear = ModContent.ItemType<DayzeeTear>(),
             HPPlus = ModContent.ItemType<HPPlus>(),
             LongLastShake = ModContent.ItemType<LongLastShake>(),
-            MightyTonic = ModContent.ItemType<MightyTonic>(), //todo
+            MightyTonic = ModContent.ItemType<MightyTonic>(),
             MushroomShake = ModContent.ItemType<MushroomShake>(),
             OrangeApple = ModContent.ItemType<OrangeApple>(),
+            MildCocoaBean = ModContent.ItemType<MildCocoaBean>(),
             PinkApple = ModContent.ItemType<PinkApple>(),
             PowerPlus = ModContent.ItemType<PowerPlus>(),
             PowerMinus = ModContent.ItemType<PowerMinus>(),
@@ -193,6 +195,7 @@ namespace PaperMarioItems.Content
             Allergic = ModContent.BuffType<AllergicBuff>(),
             Sleep = ModContent.BuffType<SleepDebuff>(),
             Electrified = ModContent.BuffType<ElectrifiedBuff>(),
+            PowerUpBuff = ModContent.BuffType<PowerUpBuff>(),
             PartnerBuff = ModContent.BuffType<PartnerBuff>();
 
         public static readonly List<int> debuffList = [
@@ -231,6 +234,7 @@ namespace PaperMarioItems.Content
             star = PaperMarioItems.starPM with { Volume = soundVolume, PlayOnlyIfFocused = true },
             thunder = PaperMarioItems.thunderPM with { Volume = soundVolume },
             useItem = PaperMarioItems.useItemPM with { Volume = soundVolume },
+            useItem2 = PaperMarioItems.useItemSPM with { Volume = soundVolume },
             stopwatch = PaperMarioItems.watchPM with { Volume = soundVolume },
             invisible = PaperMarioItems.invisPM with { Volume = soundVolume },
             recover = PaperMarioItems.recoverPM with { Volume = soundVolume },
@@ -239,6 +243,7 @@ namespace PaperMarioItems.Content
             fullMana = PaperMarioItems.fullManaPM with { Volume = soundVolume },
             danger = PaperMarioItems.dangerPM with { Volume = soundVolume2, PlayOnlyIfFocused = true },
             peril = PaperMarioItems.perilPM with { Volume = soundVolume2, PlayOnlyIfFocused = true },
+            returnPipe = PaperMarioItems.returnPipeSPM with { Volume = soundVolume },
             charged = PaperMarioItems.chargedPM with { Volume = soundVolume };
     }
 

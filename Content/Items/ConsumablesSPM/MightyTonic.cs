@@ -9,14 +9,13 @@ namespace PaperMarioItems.Content.Items.ConsumablesSPM
         public override void SetStaticDefaults()
         {
             ItemID.Sets.FoodParticleColors[Type] = [new(156, 107, 173)];
-            Item.ResearchUnlockCount = 100;
+            Item.ResearchUnlockCount = 150;
         }
 
         public override void SetDefaults()
         {
-            //todo: add status
-            Item.DefaultToFood(21, 38, 1500, 0, true);
-            Item.rare = ItemRarityID.Pink;
+            Item.DefaultToFood(21, 38, PMBuffID.PowerUpBuff, 300, true);
+            Item.rare = ItemRarityID.LightPurple;
             Item.value = Item.sellPrice(silver: 30);
         }
     }

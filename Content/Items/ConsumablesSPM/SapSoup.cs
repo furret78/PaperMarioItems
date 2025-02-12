@@ -35,10 +35,15 @@ namespace PaperMarioItems.Content.Items.ConsumablesSPM
             On_Player.ApplyPotionDelay += On_Player_ApplyPotionDelay;
         }
 
-        private void On_Player_ApplyPotionDelay(On_Player.orig_ApplyPotionDelay orig, Player player, Item sItem)
+        private void On_Player_ApplyPotionDelay(On_Player.orig_ApplyPotionDelay orig, Player self, Item sItem)
         {
-            if (sItem.type == Type) return;
-            else orig(player, sItem);
+            if (sItem.type == Type)
+            {
+                int delay = 300;
+                if (self.pStone) delay = (int)(delay * Player.PhilosopherStoneDurationMultiplier);
+                self.AddBuff(21, delay);
+            }
+            else orig(self, sItem);
         }
     }
 }

@@ -23,7 +23,7 @@ namespace PaperMarioItems.Content.Items.ConsumablesSPM
             Item.consumable = true;
             Item.useStyle = ItemUseStyleID.HoldUp;
             Item.rare = ItemRarityID.LightRed;
-            Item.UseSound = PMSoundID.damage;
+            Item.UseSound = PMSoundID.useItem2;
             Item.value = Item.buyPrice(copper: 1);
         }
 

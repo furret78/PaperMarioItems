@@ -1,31 +1,28 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace PaperMarioItems.Content.Items.ConsumablesSPM
-{
-    public class PrimordialFruit : ModItem
+{ 
+	public class MildCocoaBean : ModItem
 	{
         public override void SetStaticDefaults()
         {
-            ItemID.Sets.ShimmerTransformToItem[Type] = ItemID.Apple;
+            ItemID.Sets.ShimmerTransformToItem[Type] = PMItemID.InkySauce;
             ItemID.Sets.FoodParticleColors[Type] = [
-                new(255, 189, 0),
-                new(214, 16, 181),
-                new(66, 16, 214),
-                new(255, 123, 0),
-                Color.Red
+                new(255, 107, 107),
+                new(255, 165, 165),
+                new(231, 90, 132),
             ];
-            Item.ResearchUnlockCount = 75;
+            Item.ResearchUnlockCount = 300;
         }
 
         public override void SetDefaults()
         {
-            Item.DefaultToFood(34, 39, BuffID.WellFed, 1800);
+            Item.DefaultToFood(40, 40, BuffID.WellFed, 7200);
             Item.rare = ItemRarityID.Pink;
-            Item.value = Item.sellPrice(silver: 20);
-            Item.healLife = 100;
+            Item.value = Item.sellPrice(silver: 10);
+            Item.healLife = 25;
             Item.potion = true;
         }
 
@@ -43,7 +40,12 @@ namespace PaperMarioItems.Content.Items.ConsumablesSPM
 
         private void On_Player_ApplyPotionDelay(On_Player.orig_ApplyPotionDelay orig, Player self, Item sItem)
         {
-            if (sItem.type == Type) return;
+            if (sItem.type == Type)
+            {
+                int delay = 600;
+                if (self.pStone) delay = (int)(delay * Player.PhilosopherStoneDurationMultiplier);
+                self.AddBuff(21, delay);
+            }
             else orig(self, sItem);
         }
     }

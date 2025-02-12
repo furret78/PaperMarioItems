@@ -18,6 +18,8 @@ Content: {
 }
 
 Items: {
+	CanCurePoison: "[c/00FF21:This can cure poison]"
+
 	CakeMix: {
 		DisplayName: Cake Mix
 		Tooltip: An ingredient for making treats
@@ -893,12 +895,20 @@ Items: {
 
 	MushroomShake: {
 		DisplayName: Mushroom Shake
-		Tooltip: A canned good that both restores health and cures poison
+		Tooltip:
+			'''
+			A canned good
+			{$Mods.PaperMarioItems.Items.CanCurePoison}
+			'''
 	}
 
 	SuperMushroomShake: {
 		DisplayName: Super Mushroom Shake
-		Tooltip: A feel-super drink that both restores health and cures poison
+		Tooltip:
+			'''
+			A feel-super drink
+			{$Mods.PaperMarioItems.Items.CanCurePoison}
+			'''
 	}
 
 	LongLastShake: {
@@ -908,7 +918,11 @@ Items: {
 
 	UltraMushroomShake: {
 		DisplayName: Ultra Mushroom Shake
-		Tooltip: A feel-mega drink that both restores health and cures poison
+		Tooltip:
+			'''
+			A feel-mega drink
+			{$Mods.PaperMarioItems.Items.CanCurePoison}
+			'''
 	}
 
 	HPPlus: {
@@ -935,7 +949,7 @@ Items: {
 		Tooltip:
 			'''
 			Concentrated syrup
-			Cures poison
+			{$Mods.PaperMarioItems.Items.CanCurePoison}
 			'''
 	}
 
@@ -946,6 +960,7 @@ Items: {
 			Cures poison
 			A black fruit from another dimension. It tastes very weird...
 			Most people notice no other effects
+			{$Mods.PaperMarioItems.Items.CanCurePoison}
 			'''
 	}
 
@@ -956,6 +971,7 @@ Items: {
 			Cures poison
 			A blue fruit from another dimension. It tastes a little weird...
 			Most people notice no other effects
+			{$Mods.PaperMarioItems.Items.CanCurePoison}
 			'''
 	}
 
@@ -966,6 +982,7 @@ Items: {
 			Cures poison
 			An orange fruit from another dimension. It tastes weird...
 			Most people notice no other effects
+			{$Mods.PaperMarioItems.Items.CanCurePoison}
 			'''
 	}
 
@@ -976,6 +993,58 @@ Items: {
 			Cures poison
 			A pink fruit from another dimension. It tastes sort of weird...
 			Most people notice no other effects
+			{$Mods.PaperMarioItems.Items.CanCurePoison}
+			'''
+	}
+
+	BlockBlock: {
+		DisplayName: Block Block
+		Tooltip: A sweet barrier! Briefly makes you invincible
+	}
+
+	DayzeeTear: {
+		DisplayName: Dayzee Tear
+		Tooltip:
+			'''
+			Sad, sad liquid
+			{$Mods.PaperMarioItems.Items.CanCurePoison}
+			'''
+	}
+
+	MightyTonic: {
+		DisplayName: Mighty Tonic
+		Tooltip: A potent drink that briefly doubles your attack power
+	}
+
+	PrimordialFruit: {
+		DisplayName: Primordial Fruit
+		Tooltip:
+			'''
+			A Cragnon food
+			{$Mods.PaperMarioItems.Items.CanCurePoison}
+			'''
+	}
+
+	SlimyMushroom: {
+		DisplayName: Slimy Mushroom
+		Tooltip:
+			'''
+			A buttery mushroom
+			{$Mods.PaperMarioItems.Items.CanCurePoison}
+			'''
+	}
+
+	BoneinCut: {
+		DisplayName: Bone-in Cut
+		Tooltip: A legendary cut of meat that briefly doubles your attack power
+	}
+
+	MildCocoaBean: {
+		DisplayName: Mild Cocoa Bean
+		Tooltip:
+			'''
+			Delicious chocolate!
+			{$Mods.PaperMarioItems.Items.CanCurePoison}
 			'''
 	}
 }
@@ -1007,7 +1076,7 @@ Buffs: {
 	}
 
 	RevivedBuff: {
-		DisplayName: Revived by Life Mushroom
+		DisplayName: Revival by Life Mushroom
 		Description: A Life Mushroom came in handy
 	}
 
@@ -1050,6 +1119,11 @@ Buffs: {
 			+{Damage2} flat base Summon dammage
 			+{Knockback}% Summon knockback
 			'''
+	}
+
+	PowerUpBuff: {
+		DisplayName: Attack Power Up
+		Description: Damage output is doubled!
 	}
 }
 

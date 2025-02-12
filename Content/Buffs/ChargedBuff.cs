@@ -30,22 +30,22 @@ namespace PaperMarioItems.Content.Buffs
 
         public override void ModifyBuffText(ref string buffName, ref string tip, ref int rare)
         {
-            Player player = Main.LocalPlayer;
+            var modPlayer = Main.LocalPlayer.GetModPlayer<PaperPlayer>();
             string chargeCap = "Unlimited";
             if (!NPC.downedMoonlord)
             {
                 if (!Main.hardMode)
                 {
-                    chargeCap = player.GetModPlayer<PaperPlayer>().preHardChargeCap.ToString("0");
-                    if (NPC.downedBoss3) chargeCap = player.GetModPlayer<PaperPlayer>().skellyChargeCap.ToString("0");
+                    chargeCap = modPlayer.preHardChargeCap.ToString("0");
+                    if (NPC.downedBoss3) chargeCap = modPlayer.skellyChargeCap.ToString("0");
                 }
                 else
                 {
-                    chargeCap = player.GetModPlayer<PaperPlayer>().hardChargeCap.ToString("0");
-                    if (NPC.downedMechBossAny) chargeCap = player.GetModPlayer<PaperPlayer>().mechChargeCap.ToString("0");
-                    if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3) chargeCap = player.GetModPlayer<PaperPlayer>().mechAllChargeCap.ToString("0");
-                    if (NPC.downedPlantBoss) chargeCap = player.GetModPlayer<PaperPlayer>().planteraChargeCap.ToString("0");
-                    if (NPC.downedAncientCultist) chargeCap = player.GetModPlayer<PaperPlayer>().cultistChargeCap.ToString("0");
+                    chargeCap = modPlayer.hardChargeCap.ToString("0");
+                    if (NPC.downedMechBossAny) chargeCap = modPlayer.mechChargeCap.ToString("0");
+                    if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3) chargeCap = modPlayer.mechAllChargeCap.ToString("0");
+                    if (NPC.downedPlantBoss) chargeCap = modPlayer.planteraChargeCap.ToString("0");
+                    if (NPC.downedAncientCultist) chargeCap = modPlayer.cultistChargeCap.ToString("0");
                 }
             }
             string stackAndMax = new(DamageStack.ToString("0") + " / " + chargeCap);

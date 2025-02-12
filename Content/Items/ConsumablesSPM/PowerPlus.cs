@@ -1,6 +1,5 @@
 using PaperMarioItems.Common.Players;
 using Terraria;
-using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
