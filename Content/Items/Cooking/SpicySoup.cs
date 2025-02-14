@@ -1,4 +1,4 @@
-using PaperMarioItems.Content.Items.Consumables;
+using PaperMarioItems.Common;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -62,23 +62,23 @@ namespace PaperMarioItems.Content.Items.Cooking
         public override void AddRecipes()
         {
             Recipe recipe = CreateRecipe()
-                .AddIngredient<FireFlower>()
+                .AddIngredient(PMItemID.FireFlower)
                 .AddTile(TileID.CookingPots)
                 .Register();
             recipe = CreateRecipe()
-                .AddIngredient<Horsetail>()
+                .AddIngredient(PMItemID.Horsetail)
                 .AddCondition(PaperMarioConditions.HasCookbook)
                 .AddCondition(Condition.Hardmode)
                 .AddTile(TileID.CookingPots)
                 .Register();
             recipe = CreateRecipe()
-                .AddIngredient<DriedBouquet>()
+                .AddIngredient(PMItemID.DriedBouquet)
                 .AddCondition(PaperMarioConditions.HasCookbook)
                 .AddCondition(Condition.Hardmode)
                 .AddTile(TileID.CookingPots)
                 .Register();
             recipe = CreateRecipe()
-                .AddIngredient<SnowBunny>()
+                .AddIngredient(PMItemID.SnowBunny)
                 .AddCondition(PaperMarioConditions.HasCookbook)
                 .AddCondition(Condition.Hardmode)
                 .AddTile(TileID.CookingPots)

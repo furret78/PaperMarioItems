@@ -1,11 +1,12 @@
 Paper Mario Items 0.7.0 -- Update notes
-- Added items: HP Plus, Power Plus, Sap Soup, Black Apple, Blue Apple, Orange Apple, Pink Apple, Mighty Tonic, Primordial Fruit, Slimy Mushroom, Dayzee Tear, Bone-in Cut, Mild Cocoa Bean
+- Added items: HP Plus, Power Plus, Sap Soup, Black Apple, Blue Apple, Orange Apple, Pink Apple, Mighty Tonic, Primordial Fruit, Slimy Mushroom, Dayzee Tear, Bone-in Cut, Mild Cocoa Bean, Block Block
  + Primordial Fruit can sometimes be dropped from Ghosts
  + Sap Soup can drop from plant enemies (Angry Dandelions, Snatchers, etc.)
  + Dayzee Tears can drop from Angry Dandelions
  + Slimy Mushrooms can be either crafted or dropped from mushroom enemies (Fungi Bulbs, Anomura Fungus, etc.) and Truffle
  + Mighty Tonics can sometimes drop from Spiked Jungle Slimes, Spiked Ice Slimes, and Spiked Slimes (King Slime minion)
  + Mild Cocoa Beans are sold by the Merchant in the Jungle biome
+ + Block Blocks are sold by the Wizard in the Space biome
  + Bone-in Cuts can drop from Pigrons
 - Added buffs:
  + Attack Power Up - x2 damage output

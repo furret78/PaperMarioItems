@@ -13,6 +13,10 @@ namespace PaperMarioItems.Common.NPCs
             {
                 shop.Add(PMItemID.MildCocoaBean, Condition.InJungle);
             }
+            if (shop.NpcType == NPCID.Wizard)
+            {
+                shop.Add(PMItemID.BlockBlock, Condition.InSpace);
+            }
         }
     }
 }

@@ -3,6 +3,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using PaperMarioItems.Content.Items.Consumables;
 using PaperMarioItems.Common.Players;
+using PaperMarioItems.Common;
 
 namespace PaperMarioItems.Content.Items.Cooking
 { 
@@ -65,7 +66,7 @@ namespace PaperMarioItems.Content.Items.Cooking
 		{
 			Recipe recipe = CreateRecipe()
 				.AddIngredient(ItemID.Hotdog)
-                .AddIngredient<HotSauce>()
+                .AddIngredient(PMItemID.HotSauce)
                 .AddCondition(PaperMarioConditions.HasCookbook)
                 .AddTile(TileID.WorkBenches)
 				.Register();
