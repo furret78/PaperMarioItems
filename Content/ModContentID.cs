@@ -4,9 +4,11 @@ using PaperMarioItems.Content.Items;
 using PaperMarioItems.Content.Items.Consumables;
 using PaperMarioItems.Content.Items.ConsumablesSPM;
 using PaperMarioItems.Content.Items.Cooking;
+using PaperMarioItems.Content.Items.Placeable;
 using PaperMarioItems.Content.Items.Treasure;
 using PaperMarioItems.Content.Items.Weapons;
 using PaperMarioItems.Content.Projectiles;
+using PaperMarioItems.Content.Tiles;
 using System.Collections.Generic;
 using Terraria.Audio;
 using Terraria.ModLoader;
@@ -177,9 +179,12 @@ namespace PaperMarioItems.Content
             UltraMushroomShake = ModContent.ItemType<UltraMushroomShake>(),
             //cooking - SPM
 
+            //tiles - SPM
+            CastleBleckBrick = ModContent.ItemType<CastleBleckBrick>(),
             //key items - SPM
             Mistake = ModContent.ItemType<Mistake>();
     }
+
     //buffs
     public class PMBuffID : ModSystem
     {
@@ -203,6 +208,7 @@ namespace PaperMarioItems.Content
             Dizzy, Soft, Timestop, Sleep
             ];
     }
+
     //projectiles
     public class PMProjID : ModSystem
     {
@@ -212,6 +218,7 @@ namespace PaperMarioItems.Content
             ZessDynamite = ModContent.ProjectileType<ZessDynamiteProjectile>(),
             Fireball = ModContent.ProjectileType<CustomFireball>();
     }
+
     //dusts
     public class PMDustID : ModSystem
     {
@@ -222,6 +229,7 @@ namespace PaperMarioItems.Content
             LightningDust = ModContent.DustType<LightningDust>(),
             StopwatchDust = ModContent.DustType<StopwatchDust>();
     }
+
     //sounds
     public class PMSoundID : ModSystem
     {
@@ -246,6 +254,12 @@ namespace PaperMarioItems.Content
             peril = PaperMarioItems.perilPM with { Volume = soundVolume2, PlayOnlyIfFocused = true },
             returnPipe = PaperMarioItems.returnPipeSPM with { Volume = soundVolume },
             charged = PaperMarioItems.chargedPM with { Volume = soundVolume };
+    }
+
+    //tiles
+    public class PMTileID : ModSystem
+    {
+        public static readonly int CastleBleckBrick = ModContent.TileType<CastleBleckBrickTile>();
     }
 
     public class ImportantThings : ModSystem

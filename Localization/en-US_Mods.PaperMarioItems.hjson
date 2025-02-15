@@ -1047,6 +1047,11 @@ Items: {
 			{$Mods.PaperMarioItems.Items.CanCurePoison}
 			'''
 	}
+
+	CastleBleckBrick: {
+		DisplayName: Castle Bleck Brick
+		Tooltip: ""
+	}
 }
 
 Buffs: {

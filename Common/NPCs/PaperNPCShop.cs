@@ -15,7 +15,7 @@ namespace PaperMarioItems.Common.NPCs
             }
             if (shop.NpcType == NPCID.Wizard)
             {
-                shop.Add(PMItemID.BlockBlock, [Condition.InSpace, Condition.DownedMechBossAny]);
+                shop.Add(PMItemID.BlockBlock, [Condition.InSpace]);
             }
         }
     }
