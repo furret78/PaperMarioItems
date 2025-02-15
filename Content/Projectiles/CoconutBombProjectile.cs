@@ -96,7 +96,7 @@ namespace PaperMarioItems.Content.Projectiles
                 Projectile.velocity.Y = Projectile.velocity.Y + 0.2f;
             }
             Projectile.rotation += Projectile.velocity.X * 0.1f;
-
+            //collision check
             foreach (var npc in Main.ActiveNPCs)
             {
                 if (npc.friendly) continue;

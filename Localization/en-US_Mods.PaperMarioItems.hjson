@@ -1125,6 +1125,11 @@ Buffs: {
 		DisplayName: Attack Power Up
 		Description: Damage output is doubled!
 	}
+
+	BlockBlockBuff: {
+		DisplayName: Block Block
+		Description: You are invincible!
+	}
 }
 
 Projectiles: {
@@ -1149,4 +1154,9 @@ Configs: {
 				'''
 		}
 	}
+}
+
+Conditions: {
+	ExpertAndHardmode: Mods.PaperMarioItems.Conditions.ExpertAndHardmode
+	NormalAndHardmode: Mods.PaperMarioItems.Conditions.NormalAndHardmode
 }

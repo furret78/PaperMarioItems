@@ -195,7 +195,8 @@ namespace PaperMarioItems.Content
             Allergic = ModContent.BuffType<AllergicBuff>(),
             Sleep = ModContent.BuffType<SleepDebuff>(),
             Electrified = ModContent.BuffType<ElectrifiedBuff>(),
-            PowerUpBuff = ModContent.BuffType<PowerUpBuff>(),
+            PowerUp = ModContent.BuffType<PowerUpBuff>(),
+            BlockBlock = ModContent.BuffType<BlockBlockBuff>(),
             PartnerBuff = ModContent.BuffType<PartnerBuff>();
 
         public static readonly List<int> debuffList = [

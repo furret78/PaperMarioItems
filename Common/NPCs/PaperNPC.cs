@@ -141,6 +141,7 @@ namespace PaperMarioItems.Common.NPCs
                 tts++;
             }
         }
+
         public override void ModifyHitNPC(NPC npc, NPC target, ref NPC.HitModifiers modifiers)
         {
             if (npc.HasBuff<DizzyDebuff>())
@@ -151,6 +152,7 @@ namespace PaperMarioItems.Common.NPCs
                 knockback *= 0f;
             }
         }
+
         public override void ModifyHitPlayer(NPC npc, Player target, ref Player.HurtModifiers modifiers)
         {
             if (npc.HasBuff<DizzyDebuff>())

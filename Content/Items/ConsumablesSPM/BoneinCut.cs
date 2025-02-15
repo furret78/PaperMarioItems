@@ -19,7 +19,7 @@ namespace PaperMarioItems.Content.Items.ConsumablesSPM
 
         public override void SetDefaults()
         {
-            Item.DefaultToFood(40, 40, PMBuffID.PowerUpBuff, 1200);
+            Item.DefaultToFood(40, 40, PMBuffID.PowerUp, 1200);
             Item.rare = ItemRarityID.Pink;
             Item.value = Item.sellPrice(silver: 30);
         }

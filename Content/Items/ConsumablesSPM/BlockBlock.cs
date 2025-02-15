@@ -1,6 +1,4 @@
-using PaperMarioItems.Common.Players;
 using Terraria;
-using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -10,7 +8,7 @@ namespace PaperMarioItems.Content.Items.ConsumablesSPM
 	{
         public override void SetStaticDefaults()
         {
-            Item.ResearchUnlockCount = 100;
+            Item.ResearchUnlockCount = 500;
         }
 
         public override void SetDefaults()
@@ -24,14 +22,10 @@ namespace PaperMarioItems.Content.Items.ConsumablesSPM
             Item.useStyle = ItemUseStyleID.HoldUp;
             Item.maxStack = Item.CommonMaxStack;
             Item.UseSound = PMSoundID.useItem2;
-            Item.rare = ItemRarityID.LightRed;
+            Item.rare = ItemRarityID.White;
             Item.value = Item.sellPrice(silver: 35);
-        }
-
-        public override bool? UseItem(Player player)
-        {
-            //insert block block functionality
-            return true;
+            Item.buffType = PMBuffID.BlockBlock;
+            Item.buffTime = 900;
         }
 	}
 }

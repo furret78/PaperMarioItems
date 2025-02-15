@@ -22,7 +22,7 @@ namespace PaperMarioItems.Content.Items.ConsumablesSPM
 
         public override void SetDefaults()
         {
-            Item.DefaultToFood(34, 39, BuffID.WellFed, 1800);
+            Item.DefaultToFood(34, 39, 0, 0);
             Item.rare = ItemRarityID.Blue;
             Item.value = Item.sellPrice(silver: 20);
             Item.healLife = 100;

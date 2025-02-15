@@ -91,7 +91,7 @@ namespace PaperMarioItems.Common.NPCs
             }
             if (npc.type == NPCID.PigronCorruption || npc.type == NPCID.PigronCrimson || npc.type == NPCID.PigronHallow)
             {
-                npcLoot.Add(ItemDropRule.NormalvsExpert(PMItemID.BoneinCut, 640, 620));
+                npcLoot.Add(ItemDropRule.NormalvsExpert(PMItemID.BoneinCut, 90, 83));
             }
 
             //boss specific drops

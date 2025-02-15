@@ -21,7 +21,7 @@ namespace PaperMarioItems.Common.Players
     partial class PaperPlayer : ModPlayer
     {
         //setup
-        public bool chargedEffect, dodgyEffect, hugeEffect, softEffect, electrifiedEffect, lifeShroomRevive, thunderOnce, thunderAll, earthquakeEffect, dizzyEffect, causeSoften, causeEarthquake;
+        public bool chargedEffect, dodgyEffect, hugeEffect, softEffect, electrifiedEffect, lifeShroomRevive, thunderOnce, thunderAll, earthquakeEffect, dizzyEffect, causeSoften, causeEarthquake, blockBlockEffect;
         public bool shootingStarActive, inflictDizzyActive, thunderEffectActive, frightMaskActive, stopwatchActive, fireFlowerActive, ruinPowderActive, sleepySheepActive;
         public bool ultraStoneAccessory;
         public int chargedStack = 0, shootingStar = 0, screenSpinTimer = 0, frightMaskCooldown = 0, stopwatchCooldown = 0, fireFlower = 0, ruinPowderCooldown = 0, sleepySheepCooldown = 0, consumedHPPlus = 0;
@@ -38,6 +38,7 @@ namespace PaperMarioItems.Common.Players
             HPDrainDeath = Language.GetTextValue(LocalTextPath + $"HPDrainDeath"),
             EarthquakeDeath = Language.GetTextValue(LocalTextPath + $"EarthquakeDeath"),
             PowDeath = Language.GetTextValue(LocalTextPath + $"PowDeath"),
+            PlayerRamming = Language.GetTextValue(LocalTextPath + $"PlayerRamming"),
             PowerPlusMax = Language.GetTextValue(LocalTextPath + $"PowerPlusMax");
         //reset
         public override void ResetEffects()
@@ -51,6 +52,7 @@ namespace PaperMarioItems.Common.Players
             if (electrifiedEffect == false) Player.buffImmune[BuffID.Electrified] = false;
             chargedEffect = false;
             ultraStoneAccessory = false;
+            blockBlockEffect = false;
         }
         //on enter world
         public override void OnEnterWorld()
@@ -290,6 +292,31 @@ namespace PaperMarioItems.Common.Players
                     Player.AddBuff(PMBuffID.Charged, 2);
                 }
             }
+        }
+
+        public override void PostUpdateMiscEffects()
+        {
+            /* Come back when there's a special knockback-only system in place (aka copy that shit from vanilla)
+            if (blockBlockEffect)
+            {
+                foreach (var npc in Main.ActiveNPCs)
+                {
+                    if (npc.friendly) continue;
+                    if (Player.Hitbox.Intersects(npc.Hitbox))
+                    {
+                        Player.ApplyDamageToNPC(npc, 0, 20.5f + Player.velocity.Length(), Player.direction);
+                    }
+                }
+                foreach (var vsplayer in Main.ActivePlayers)
+                {
+                    if (!vsplayer.hostile) continue;
+                    if (Player.Hitbox.Intersects(vsplayer.Hitbox))
+                    {
+                        vsplayer.Hurt(PlayerDeathReason.ByCustomReason(PlayerRamming), 0, Player.direction, true, knockback: 20.5f + Player.velocity.Length());
+                    }
+                }
+            }
+            */
         }
 
         public override void PostUpdateEquips()
