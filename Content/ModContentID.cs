@@ -5,10 +5,12 @@ using PaperMarioItems.Content.Items.Consumables;
 using PaperMarioItems.Content.Items.ConsumablesSPM;
 using PaperMarioItems.Content.Items.Cooking;
 using PaperMarioItems.Content.Items.Placeable;
+using PaperMarioItems.Content.Items.Placeable.Furniture;
 using PaperMarioItems.Content.Items.Treasure;
 using PaperMarioItems.Content.Items.Weapons;
 using PaperMarioItems.Content.Projectiles;
 using PaperMarioItems.Content.Tiles;
+using PaperMarioItems.Content.Tiles.Furniture;
 using System.Collections.Generic;
 using Terraria.Audio;
 using Terraria.ModLoader;
@@ -181,6 +183,7 @@ namespace PaperMarioItems.Content
 
             //tiles - SPM
             CastleBleckBrick = ModContent.ItemType<CastleBleckBrick>(),
+            CastleBleckDoor = ModContent.ItemType<CastleBleckDoor>(),
             //key items - SPM
             Mistake = ModContent.ItemType<Mistake>();
     }
@@ -259,7 +262,9 @@ namespace PaperMarioItems.Content
     //tiles
     public class PMTileID : ModSystem
     {
-        public static readonly int CastleBleckBrick = ModContent.TileType<CastleBleckBrickTile>();
+        public static readonly int CastleBleckBrick = ModContent.TileType<CastleBleckBrickTile>(),
+            CastleBleckDoorClosed = ModContent.TileType<CastleBleckDoorClosed>(),
+            CastleBleckDoorOpen = ModContent.TileType<CastleBleckDoorOpen>();
     }
 
     public class ImportantThings : ModSystem

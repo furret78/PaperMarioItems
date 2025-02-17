@@ -10,12 +10,11 @@ namespace PaperMarioItems.Content.Tiles
 			Main.tileSolid[Type] = true;
 			Main.tileMergeDirt[Type] = true;
 			Main.tileBlockLight[Type] = true;
+			Main.tileBrick[Type] = true;
+
+			DustType = -1;
 
 			AddMapEntry(Color.Black);
-		}
-
-		public override void NumDust(int i, int j, bool fail, ref int num) {
-			num = fail ? 1 : 3;
 		}
 	}
 }
