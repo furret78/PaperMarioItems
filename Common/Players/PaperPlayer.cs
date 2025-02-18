@@ -28,7 +28,7 @@ namespace PaperMarioItems.Common.Players
         private int chargeCap, wte, ssmd, sst, wtt, bgFlashTime, swt, fft, eqt, dyt, sleept, alertTimer = -10, consumedPowerPlus;
         private bool bgFlash;
         private static readonly Color LuckyTextColor = new(255, 255, 0, 255);
-        public const int postReviveProtect = 30, postReviveRegen = 1, fireFlowerDamage = 25, earthquakeDamage = 75, postReviveHeal = 50;
+        public const int postReviveProtect = 30, postReviveRegen = 1, fireFlowerDamage = 25, earthquakeDamage = 75, postReviveHeal = 20;
         public readonly int preHardChargeCap = 10, skellyChargeCap = 12, hardChargeCap = 15, mechChargeCap = 18, mechAllChargeCap = 20, planteraChargeCap = 25, cultistChargeCap = 40;
         //localized text
         const string LocalTextPath = $"Mods.PaperMarioItems.Common.Players.";
