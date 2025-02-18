@@ -169,8 +169,9 @@ Items: {
 		RestoreText:
 			'''
 			Heals {0} life
-			At 0 health, automatically consumes the item with no cooldowns and clears all buffs
-			Grants {1} {^1:minute;minutes} of invincibility and {2} {^2:minute;minutes} of regeneration when that happens
+			However, at 0 health, this item is automatically consumed and heals {3} life
+			Clears all buffs and debuffs
+			Grants {1} {^1:second;seconds} of invincibility and {2} {^2:minute;minutes} of regeneration
 			Does not activate if this item is inside a Void Bag
 			'''
 	}

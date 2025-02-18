@@ -96,12 +96,14 @@ namespace PaperMarioItems.Common.Players
         {
             if (ScreenShakeSystem.screenShakeTime < time) ScreenShakeSystem.screenShakeTime = time;
         }
+
         //life mushroom effects
         private void LifeMushroomHeal(Player self, int num1, int num2)
         {
             if (self == null || !self.HasItem(PMItemID.LifeMushroom)) return;
             else
             {
+                self.SetImmuneTimeForAllTypes(num1);
                 if (self.HasBuff(BuffID.PotionSickness)) self.ClearBuff(BuffID.PotionSickness);
                 for (int l = 0; l < Player.MaxBuffs; l++)
                 {
@@ -111,14 +113,15 @@ namespace PaperMarioItems.Common.Players
                         l = -1;
                     }
                 }
-                self.statLife = 1;
+                self.statLife = 50;
+                self.HealEffect(50);
                 self.AddBuff(PMBuffID.Revived, num1);
-                self.SetImmuneTimeForAllTypes(num1);
                 self.AddBuff(BuffID.Regeneration, num2);
                 SoundEngine.PlaySound(PMSoundID.heal, self.Center);
                 self.ConsumeItem(PMItemID.LifeMushroom, true, true);
             }
         }
+
         //dodge
         private void RepelDodge()
         {

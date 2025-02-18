@@ -27,3 +27,6 @@ Steam Workshop homepage: {ModHomepage}
 [c/FFFF83:LATEST CHANGELOG:]
 Paper Mario Items 0.7.1 -- Update notes
 - Added Castle Bleck Brick, Castle Bleck Wall, Castle Bleck Door
+- Life Mushrooms now heal 50 health on consumption at 0 health. Additionally, invincibility timeframe (1 minute => 30 seconds) and health generation timeframe (2 minutes => 1 minute) given when revived has been nerfed.
+- Revival via Life Mushrooms now properly prevent On Fire from applying when revived in lava.
+- Nerfed Block Block's invincibility time (15 seconds => 10 seconds).

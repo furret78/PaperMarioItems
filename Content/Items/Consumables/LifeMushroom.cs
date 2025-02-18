@@ -36,7 +36,7 @@ namespace PaperMarioItems.Content.Items.Consumables
             TooltipLine line = tooltips.FirstOrDefault(x => x.Mod == "Terraria" && x.Name == "HealLife");
             if (line != null)
             {
-                line.Text = Language.GetTextValue(RestoreText.Format(Item.healLife, PaperPlayer.postReviveProtect, PaperPlayer.postReviveRegen));
+                line.Text = Language.GetTextValue(RestoreText.Format(Item.healLife, PaperPlayer.postReviveProtect, PaperPlayer.postReviveRegen, PaperPlayer.postReviveHeal));
             }
         }
         public override void OnConsumeItem(Player player)

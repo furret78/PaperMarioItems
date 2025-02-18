@@ -25,7 +25,7 @@ namespace PaperMarioItems.Content.Items.ConsumablesSPM
             Item.rare = ItemRarityID.White;
             Item.value = Item.sellPrice(silver: 35);
             Item.buffType = PMBuffID.BlockBlock;
-            Item.buffTime = 900;
+            Item.buffTime = 600;
         }
 	}
 }

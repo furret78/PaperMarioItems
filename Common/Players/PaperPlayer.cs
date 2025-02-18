@@ -28,7 +28,7 @@ namespace PaperMarioItems.Common.Players
         private int chargeCap, wte, ssmd, sst, wtt, bgFlashTime, swt, fft, eqt, dyt, sleept, alertTimer = -10, consumedPowerPlus;
         private bool bgFlash;
         private static readonly Color LuckyTextColor = new(255, 255, 0, 255);
-        public const int postReviveProtect = 1, postReviveRegen = 2, fireFlowerDamage = 25, earthquakeDamage = 75;
+        public const int postReviveProtect = 30, postReviveRegen = 1, fireFlowerDamage = 25, earthquakeDamage = 75, postReviveHeal = 50;
         public readonly int preHardChargeCap = 10, skellyChargeCap = 12, hardChargeCap = 15, mechChargeCap = 18, mechAllChargeCap = 20, planteraChargeCap = 25, cultistChargeCap = 40;
         //localized text
         const string LocalTextPath = $"Mods.PaperMarioItems.Common.Players.";
@@ -72,6 +72,7 @@ namespace PaperMarioItems.Common.Players
             On_Player.KillMe += On_Player_KillMe;
             On_Player.AddBuff += On_Player_AddBuff;
         }
+
         //space food detour
         private static void On_Player_AddBuff(On_Player.orig_AddBuff orig, Player self, int type, int timeToAdd, bool quiet, bool foodHack)
         {
@@ -95,11 +96,27 @@ namespace PaperMarioItems.Common.Players
             if (self.creativeGodMode || self.dead || !self.HasItem(PMItemID.LifeMushroom)) orig(self, damageSource, dmg, hitDirection, pvp);
             else
             {
-                self.GetModPlayer<PaperPlayer>().lifeShroomRevive = true;
-                self.GetModPlayer<PaperPlayer>().LifeMushroomHeal(self, postReviveProtect * 60 * 60, postReviveRegen * 60 * 60);
+                self.GetModPlayer<PaperPlayer>().LifeMushroomProcedure(self);
                 return;
             }
         }
+
+        public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genDust, ref PlayerDeathReason damageSource)
+        {
+            if (Player.HasItem(PMItemID.LifeMushroom))
+            {
+                LifeMushroomProcedure(Player);
+                return false;
+            }
+            else return base.PreKill(damage, hitDirection, pvp, ref playSound, ref genDust, ref damageSource);
+        }
+
+        private void LifeMushroomProcedure(Player player)
+        {
+            player.GetModPlayer<PaperPlayer>().lifeShroomRevive = true;
+            player.GetModPlayer<PaperPlayer>().LifeMushroomHeal(player, postReviveProtect * 60, postReviveRegen * 60 * 60);
+        }
+
         //npc (nurse) detour
         private static bool On_Player_BuyItem(On_Player.orig_BuyItem orig, Player self, long price, int customCurrency)
         {
@@ -110,6 +127,7 @@ namespace PaperMarioItems.Common.Players
             }
             else return orig(self, price, customCurrency);
         }
+
         public override void PreUpdate()
         {
             if (Main.myPlayer == Player.whoAmI)
