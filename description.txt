@@ -25,3 +25,5 @@ Author: Furret78 / yuureiki
 Steam Workshop homepage: {ModHomepage}
 
 [c/FFFF83:LATEST CHANGELOG:]
+Paper Mario Items 0.7.1 -- Update notes
+- Added Castle Bleck Brick, Castle Bleck Wall, Castle Bleck Door

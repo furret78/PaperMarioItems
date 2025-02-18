@@ -1,4 +1,5 @@
 ﻿using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace PaperMarioItems.Content.Items.Placeable
@@ -15,5 +16,13 @@ namespace PaperMarioItems.Content.Items.Placeable
 			Item.height = 12;
 			Item.value = Item.sellPrice(copper: 30);
 		}
-	}
+
+        public override void AddRecipes()
+        {
+			Recipe recipe = CreateRecipe(10)
+				.AddIngredient(ItemID.LunarOre)
+				.AddTile(TileID.WorkBenches)
+				.Register();
+        }
+    }
 }

@@ -1057,6 +1057,11 @@ Items: {
 		Tooltip: ""
 		DisplayName: Castle Bleck Door
 	}
+
+	CastleBleckWall: {
+		DisplayName: Castle Bleck Wall
+		Tooltip: ""
+	}
 }
 
 Buffs: {

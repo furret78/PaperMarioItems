@@ -14,7 +14,7 @@ namespace PaperMarioItems.Content.Tiles
 
 			DustType = -1;
 
-			AddMapEntry(Color.Black);
+			AddMapEntry(Color.White);
 		}
 	}
 }

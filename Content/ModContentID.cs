@@ -11,6 +11,7 @@ using PaperMarioItems.Content.Items.Weapons;
 using PaperMarioItems.Content.Projectiles;
 using PaperMarioItems.Content.Tiles;
 using PaperMarioItems.Content.Tiles.Furniture;
+using PaperMarioItems.Content.Walls;
 using System.Collections.Generic;
 using Terraria.Audio;
 using Terraria.ModLoader;
@@ -184,6 +185,7 @@ namespace PaperMarioItems.Content
             //tiles - SPM
             CastleBleckBrick = ModContent.ItemType<CastleBleckBrick>(),
             CastleBleckDoor = ModContent.ItemType<CastleBleckDoor>(),
+            CastleBleckWall = ModContent.ItemType<CastleBleckWall>(),
             //key items - SPM
             Mistake = ModContent.ItemType<Mistake>();
     }
@@ -265,6 +267,12 @@ namespace PaperMarioItems.Content
         public static readonly int CastleBleckBrick = ModContent.TileType<CastleBleckBrickTile>(),
             CastleBleckDoorClosed = ModContent.TileType<CastleBleckDoorClosed>(),
             CastleBleckDoorOpen = ModContent.TileType<CastleBleckDoorOpen>();
+    }
+
+    //walls
+    public class PMWallID : ModSystem
+    {
+        public static readonly int CastleBleckWall = ModContent.WallType<CastleBleckWallTile>();
     }
 
     public class ImportantThings : ModSystem

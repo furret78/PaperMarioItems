@@ -1,2 +1,2 @@
-Paper Mario Items 0.8.0 -- Update notes
-- Added Castle Bleck Brick, Castle Bleck Door
+Paper Mario Items 0.7.1 -- Update notes
+- Added Castle Bleck Brick, Castle Bleck Wall, Castle Bleck Door
