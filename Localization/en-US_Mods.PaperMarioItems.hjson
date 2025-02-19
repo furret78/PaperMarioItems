@@ -1131,8 +1131,8 @@ Buffs: {
 		Description:
 			'''
 			The mysterious Shine Sprites empower the Ultra Stone in your grasp...
-			+{Damage1}% Summon damage
-			+{Damage2} flat base Summon dammage
+			+{Damage1}% summon damage
+			+{Damage2} flat base summon dammage
 			+{Knockback}% Summon knockback
 			'''
 	}
