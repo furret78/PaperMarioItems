@@ -18,6 +18,7 @@ namespace PaperMarioItems.Content.Items.Consumables
                 new(255, 190, 0),
                 new(255, 215, 132)
             ];
+            ItemID.Sets.ShimmerTransformToItem[Type] = PMItemID.Mushroom;
             Item.ResearchUnlockCount = 120;
         }
 
@@ -46,17 +47,17 @@ namespace PaperMarioItems.Content.Items.Consumables
 				.AddTile(TileID.WorkBenches)
 				.Register();
 			recipe = CreateRecipe(2)
-				.AddIngredient<Mushroom>(2)
+				.AddIngredient(PMItemID.Mushroom, 2)
                 .AddIngredient(ItemID.Wire, 3)
                 .AddTile(TileID.WorkBenches)
                 .Register();
             recipe = CreateRecipe(3)
-                .AddIngredient<SuperMushroom>()
+                .AddIngredient(PMItemID.SuperMushroom)
                 .AddIngredient(ItemID.Wire, 3)
                 .AddTile(TileID.WorkBenches)
                 .Register();
             recipe = CreateRecipe(5)
-                .AddIngredient<UltraMushroom>()
+                .AddIngredient(PMItemID.UltraMushroom)
                 .AddIngredient(ItemID.Wire, 3)
                 .AddTile(TileID.WorkBenches)
                 .Register();

@@ -1,1 +1,2 @@
-Paper Mario Items 0.7.3 -- Update notes
+Paper Mario Items 0.7.4 -- Update notes
+- Added Ragged Diary

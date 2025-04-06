@@ -128,7 +128,7 @@ namespace PaperMarioItems.Common.Players
             if (Player.whoAmI != Main.myPlayer) return;
             Player.NinjaDodge();
             SoundEngine.PlaySound(PMSoundID.lucky, Player.Center);
-            CombatText.NewText(Player.getRect(), LuckyTextColor, LuckyEvade);
+            CombatText.NewText(Player.getRect(), LuckyTextColor, LuckyEvade.Value);
         }
         //hot sauce effect
         public void DrinkHotSauce(Player player, int chargeCount = 1)
@@ -328,7 +328,8 @@ namespace PaperMarioItems.Common.Players
                 else npc.SimpleStrikeNPC(damage, direction, crit);
                 npc.AddBuff(BuffID.Electrified, 1800);
             }
-            vsplayer?.Hurt(PlayerDeathReason.ByCustomReason(vsplayer.name + " " + LightningDeath), 100, GetDirection(vsplayer, player), true);
+            NetworkText lightningDeathMessage = NetworkText.FromKey(LightningDeath.Key, vsplayer.name);
+            vsplayer?.Hurt(PlayerDeathReason.ByCustomReason(lightningDeathMessage), 100, GetDirection(vsplayer, player), true);
         }
         public void BackgroundFlash()
         {
@@ -443,7 +444,8 @@ namespace PaperMarioItems.Common.Players
                 }
                 if (closestPlayer != null)
                 {
-                    closestPlayer.Hurt(PlayerDeathReason.ByCustomReason(closestPlayer.name + " " + HPDrainDeath), healAmount, GetDirection(closestPlayer, player), true, false, -1, false);
+                    NetworkText hpDrainMessage = NetworkText.FromKey(HPDrainDeath.Key, closestPlayer.name);
+                    closestPlayer.Hurt(PlayerDeathReason.ByCustomReason(hpDrainMessage), healAmount, GetDirection(closestPlayer, player), true, false, -1, false);
                     Dust.NewDustPerfect(closestPlayer.Center, PMDustID.HPDrainDust);
                     SoundEngine.PlaySound(SoundID.NPCDeath4, closestPlayer.Center);
                 }
@@ -470,8 +472,9 @@ namespace PaperMarioItems.Common.Players
             {
                 if (TargetConditionCheck(player, null, vsplayer, quakeCase))
                 {
+                    NetworkText earthquakeMessage = NetworkText.FromKey(EarthquakeDeath.Key, vsplayer.name);
                     SoundEngine.PlaySound(PMSoundID.damage, vsplayer.Center);
-                    vsplayer.Hurt(PlayerDeathReason.ByCustomReason(vsplayer.name + " " + EarthquakeDeath), damage, GetDirection(vsplayer, player), true);
+                    vsplayer.Hurt(PlayerDeathReason.ByCustomReason(earthquakeMessage), damage, GetDirection(vsplayer, player), true);
                 }
             }
         }
@@ -491,8 +494,9 @@ namespace PaperMarioItems.Common.Players
             {
                 if (TargetConditionCheck(player, null, vsplayer, powCase))
                 {
+                    NetworkText earthquakeMessage = NetworkText.FromKey(PowDeath.Key, vsplayer.name);
                     SoundEngine.PlaySound(PMSoundID.damage, vsplayer.Center);
-                    vsplayer.Hurt(PlayerDeathReason.ByCustomReason(vsplayer.name + " " + PowDeath), damage, GetDirection(vsplayer, player), true, false, -1, true, 0, 0, 0);
+                    vsplayer.Hurt(PlayerDeathReason.ByCustomReason(earthquakeMessage), damage, GetDirection(vsplayer, player), true, false, -1, true, 0, 0, 0);
                 }
             }
         }

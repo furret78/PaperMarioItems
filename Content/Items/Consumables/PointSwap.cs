@@ -36,7 +36,8 @@ namespace PaperMarioItems.Content.Items.Consumables
 			int TempLife = player.statLife;
 			if (player.statMana < player.statLifeMax2)
 			{
-				if (player.statMana <= 0) player.KillMe(PlayerDeathReason.ByCustomReason(player.name + " " + PointSwapDeath), 10, 1);
+				NetworkText pointSwapMessage = NetworkText.FromKey(PointSwapDeath.Key, player.name);
+				if (player.statMana <= 0) player.KillMe(PlayerDeathReason.ByCustomReason(pointSwapMessage), 10, 1);
 				else player.statLife = player.statMana;
 			}
 			else player.statLife = player.statLifeMax2;

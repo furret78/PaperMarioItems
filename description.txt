@@ -14,7 +14,7 @@ Massive thanks to Jopojelly, Cube Root, Blobwin, stormytuna, direwolf420, davidf
 
 All Paper Mario assets used in the mod belongs to Intelligent Systems and Nintendo.
 
-Playtesting is done by Cosmiikat.
+Early playtesting is done by Cosmiikat.
 
 [c/4DBF60:Have Feedback?]
 There is a form here: https://forms.gle/aXqeT4YoRUR6HtUb9
@@ -25,3 +25,4 @@ Author: Furret78 / yuureiki
 Steam Workshop homepage: {ModHomepage}
 
 [c/FFFF83:LATEST CHANGELOG:]
+Paper Mario Items 0.7.4 -- Update notes

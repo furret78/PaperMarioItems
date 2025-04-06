@@ -97,6 +97,7 @@ namespace PaperMarioItems.Content
             SpecialCard = ModContent.ItemType<SpecialCard>(),
             Briefcase = ModContent.ItemType<Briefcase>(),
             VintageRed = ModContent.ItemType<VintageRed>(),
+            RaggedDiary = ModContent.ItemType<RaggedDiary>(),
             ShineSprite = ModContent.ItemType<ShineSprite>(),
             //cooking - TTYD
             ChocoCake = ModContent.ItemType<ChocoCake>(),
@@ -162,7 +163,7 @@ namespace PaperMarioItems.Content
 
             //normal items - SPM
             BlackApple = ModContent.ItemType<BlackApple>(),
-            BlockBlock = ModContent.ItemType<BlockBlock>(), //todo, not yet declared in changelog
+            BlockBlock = ModContent.ItemType<BlockBlock>(), //basic functionality added
             BlueApple = ModContent.ItemType<BlueApple>(),
             BoneinCut = ModContent.ItemType<BoneinCut>(),
             DayzeeTear = ModContent.ItemType<DayzeeTear>(),
@@ -309,6 +310,7 @@ namespace PaperMarioItems.Content
             PMItemID.SpecialCard,
             PMItemID.Briefcase,
             PMItemID.VintageRed,
+            PMItemID.RaggedDiary,
             PMItemID.ShineSprite,
         };
     }

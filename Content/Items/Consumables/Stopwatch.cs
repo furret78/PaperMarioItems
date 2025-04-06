@@ -10,6 +10,7 @@ namespace PaperMarioItems.Content.Items.Consumables
 	{
         public override void SetStaticDefaults()
         {
+            ItemID.Sets.ShimmerTransformToItem[Type] = ItemID.TinWatch;
             Item.ResearchUnlockCount = 7;
         }
 

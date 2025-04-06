@@ -31,15 +31,29 @@ namespace PaperMarioItems.Common.Players
         public const int postReviveProtect = 30, postReviveRegen = 1, fireFlowerDamage = 25, earthquakeDamage = 75, postReviveHeal = 20;
         public readonly int preHardChargeCap = 10, skellyChargeCap = 12, hardChargeCap = 15, mechChargeCap = 18, mechAllChargeCap = 20, planteraChargeCap = 25, cultistChargeCap = 40;
         //localized text
+        public static LocalizedText LuckyEvade { get; private set; }
+        public static LocalizedText MoonLordStopwatch { get; private set; }
+        public static LocalizedText LightningDeath { get; private set; }
+        public static LocalizedText HPDrainDeath { get; private set; }
+        public static LocalizedText EarthquakeDeath { get; private set; }
+        public static LocalizedText PowDeath { get; private set; }
+        public static LocalizedText PlayerRamming { get; private set; }
+        public static LocalizedText PowerPlusMax { get; private set; }
+
         const string LocalTextPath = $"Mods.PaperMarioItems.Common.Players.";
-        public readonly string LuckyEvade = Language.GetTextValue(LocalTextPath + $"LuckyEvade"),
-            MoonLordStopwatch = Language.GetTextValue(LocalTextPath + $"MoonLordStopwatch"),
-            LightningDeath = Language.GetTextValue(LocalTextPath + $"LightningDeath"),
-            HPDrainDeath = Language.GetTextValue(LocalTextPath + $"HPDrainDeath"),
-            EarthquakeDeath = Language.GetTextValue(LocalTextPath + $"EarthquakeDeath"),
-            PowDeath = Language.GetTextValue(LocalTextPath + $"PowDeath"),
-            PlayerRamming = Language.GetTextValue(LocalTextPath + $"PlayerRamming"),
-            PowerPlusMax = Language.GetTextValue(LocalTextPath + $"PowerPlusMax");
+
+        public override void SetStaticDefaults()
+        {
+            LuckyEvade = Language.GetOrRegister(LocalTextPath + $"LuckyEvade");
+            MoonLordStopwatch = Language.GetOrRegister(LocalTextPath + $"MoonLordStopwatch");
+            LightningDeath = Language.GetOrRegister(LocalTextPath + $"LightningDeath");
+            HPDrainDeath = Language.GetOrRegister(LocalTextPath + $"HPDrainDeath");
+            EarthquakeDeath = Language.GetOrRegister(LocalTextPath + $"EarthquakeDeath");
+            PowDeath = Language.GetOrRegister(LocalTextPath + $"PowDeath");
+            PlayerRamming = Language.GetOrRegister(LocalTextPath + $"PlayerRamming");
+            PowerPlusMax = Language.GetOrRegister(LocalTextPath + $"PowerPlusMax");
+        }
+
         //reset
         public override void ResetEffects()
         {

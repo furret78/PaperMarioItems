@@ -2,11 +2,12 @@ Common: {
 	Players: {
 		LuckyEvade: Lucky!
 		MoonLordStopwatch: Moon Lord does not bend to the whims of time...
-		LightningDeath: got zapped by lightning.
-		HPDrainDeath: had their HP drained.
-		EarthquakeDeath: was struck by an earthquake.
-		PowDeath: rumbled too hard.
+		LightningDeath: "{0} got zapped by lightning."
+		HPDrainDeath: "{0} had their HP drained."
+		EarthquakeDeath: "{0} was struck by an earthquake."
+		PowDeath: "{0} rumbled too hard."
 		PowerPlusMax: This item cannot empower you any further. (Maximum allowed reached)
+		PlayerRamming: Unused
 	}
 
 	UI.CookItem: Cook
@@ -67,7 +68,7 @@ Items: {
 			Swaps your current health and mana stats (Cannot exceed max)
 			Usage at 0 mana may have side effects
 			'''
-		PointSwapDeath: tried to swap zero mana for health.
+		PointSwapDeath: "{0} tried to swap zero mana for health."
 	}
 
 	TurtleyLeaf: {
@@ -1062,6 +1063,16 @@ Items: {
 	CastleBleckWall: {
 		DisplayName: Castle Bleck Wall
 		Tooltip: ""
+	}
+
+	RaggedDiary: {
+		DiaryDeath: "{0} tried to read someone's diary."
+		DisplayName: Ragged Diary
+		Tooltip:
+			'''
+			"The diary the ghost kept. You shouldn't read it."
+			{$CommonItemTooltip.RightClickToOpen}
+			'''
 	}
 }
 
