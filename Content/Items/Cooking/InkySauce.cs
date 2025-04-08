@@ -12,6 +12,7 @@ namespace PaperMarioItems.Content.Items.Cooking
             ItemID.Sets.DrinkParticleColors[Type] = [new(107, 89, 90)];
             Item.ResearchUnlockCount = 25;
         }
+
         public override void SetDefaults()
 		{
             Item.DefaultToFood(38, 37, 0, 0, true);
@@ -19,17 +20,20 @@ namespace PaperMarioItems.Content.Items.Cooking
             Item.value = Item.sellPrice(silver: 10);
             Item.healMana = 150;
         }
+
         public override void OnConsumeItem(Player player)
 		{
             player.TryToResetHungerToNeutral();
         }
+
         public override void Load()
         {
             On_Player.ApplyLifeAndOrMana += On_Player_ApplyLifeAndOrMana;
         }
-        private void On_Player_ApplyLifeAndOrMana(On_Player.orig_ApplyLifeAndOrMana orig, Player player, Item sItem)
+
+        private static void On_Player_ApplyLifeAndOrMana(On_Player.orig_ApplyLifeAndOrMana orig, Player player, Item sItem)
         {
-            if (sItem.type == Type)
+            if (sItem.type == PMItemID.InkySauce)
             {
                 int num = sItem.healLife; int num2 = sItem.healMana;
                 player.statLife += num; player.statMana += num2;

@@ -262,6 +262,13 @@ namespace PaperMarioItems.Common.UI
             return result;
         }
 
+        /// <summary>
+        /// Checks whether the recipe's properties are valid at the time of checking.
+        /// </summary>
+        /// <param name="result">The result of the recipe.</param>
+        /// <param name="hardmode">Is this recipe Hardmode-only?</param>
+        /// <param name="prehard">Is this recipe pre-Hardmode-only?</param>
+        /// <returns></returns>
         private static bool IsLegalResult(int result, bool hardmode = false, bool prehard = false)
         {
             if (result != ItemID.None &&

@@ -44,18 +44,19 @@ namespace PaperMarioItems.Content.Items.Cooking
             return true;
         }
 
-
         public override void OnConsumeItem(Player player)
         {
             player.TryToResetHungerToNeutral();
         }
+
         public override void Load()
         {
             On_Player.ApplyLifeAndOrMana += On_Player_ApplyLifeAndOrMana;
         }
-        private void On_Player_ApplyLifeAndOrMana(On_Player.orig_ApplyLifeAndOrMana orig, Player player, Item sItem)
+
+        private static void On_Player_ApplyLifeAndOrMana(On_Player.orig_ApplyLifeAndOrMana orig, Player player, Item sItem)
         {
-            if (sItem.type == Type)
+            if (sItem.type == PMItemID.HealthySalad)
             {
                 int num = sItem.healLife; int num2 = sItem.healMana;
                 player.statLife += num; player.statMana += num2;

@@ -33,9 +33,9 @@ namespace PaperMarioItems.Content.Items.Consumables
         {
             On_Player.ApplyLifeAndOrMana += On_Player_ApplyLifeAndOrMana;
         }
-        private void On_Player_ApplyLifeAndOrMana(On_Player.orig_ApplyLifeAndOrMana orig, Player self, Item sItem)
+        private static void On_Player_ApplyLifeAndOrMana(On_Player.orig_ApplyLifeAndOrMana orig, Player self, Item sItem)
         {
-            if (sItem.type == Type)
+            if (sItem.type == PMItemID.GoldenLeaf)
             {
                 int healMana = sItem.healMana;
                 self.statMana += healMana;

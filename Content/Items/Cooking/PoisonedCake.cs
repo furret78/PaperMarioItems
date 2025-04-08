@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -7,6 +8,11 @@ namespace PaperMarioItems.Content.Items.Cooking
 	public class PoisonedCake : ModItem
     {
         private const int buffTime = 216000;
+
+        private static List<int> listOfAilments =
+            [BuffID.Poisoned, BuffID.Darkness, BuffID.Cursed, BuffID.OnFire, BuffID.Bleeding, BuffID.Confused,
+            BuffID.Slow, BuffID.Weak, BuffID.Silenced, BuffID.BrokenArmor, BuffID.Suffocation, BuffID.ManaSickness, BuffID.Chilled,
+            BuffID.Frostburn2, BuffID.Electrified, BuffID.Blackout, PMBuffID.Dizzy, PMBuffID.Soft];
 
         public override void SetStaticDefaults()
         {
@@ -28,26 +34,11 @@ namespace PaperMarioItems.Content.Items.Cooking
 
         public override bool? UseItem(Player player)
         {
-            player.AddBuff(BuffID.Poisoned, buffTime);
-            player.AddBuff(BuffID.Darkness, buffTime);
-            player.AddBuff(BuffID.Cursed, buffTime);
-            player.AddBuff(BuffID.OnFire, buffTime);
-            player.AddBuff(BuffID.Bleeding, buffTime);
-            player.AddBuff(BuffID.Confused, buffTime);
-            player.AddBuff(BuffID.Slow, buffTime);
-            player.AddBuff(BuffID.Weak, buffTime);
-            player.AddBuff(BuffID.Silenced, buffTime);
-            player.AddBuff(BuffID.BrokenArmor, buffTime);
-            player.AddBuff(BuffID.Suffocation, buffTime);
-            player.AddBuff(BuffID.ManaSickness, buffTime);
             player.AddBuff(BuffID.PotionSickness, buffTime / 60);
-            player.AddBuff(BuffID.Chilled, buffTime);
-            player.AddBuff(BuffID.Frostburn, buffTime);
-            player.AddBuff(BuffID.Frostburn2, buffTime);
-            player.AddBuff(BuffID.Electrified, buffTime);
-            player.AddBuff(BuffID.Blackout, buffTime);
-            player.AddBuff(PMBuffID.Dizzy, buffTime);
-            player.AddBuff(PMBuffID.Soft, buffTime);
+            for (int i = 0; i < listOfAilments.Count; i++)
+            {
+                player.AddBuff(listOfAilments[i], buffTime);
+            }
             return true;
         }
 	}

@@ -1,7 +1,6 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using PaperMarioItems.Content.Items.Consumables;
 using PaperMarioItems.Common.Players;
 using PaperMarioItems.Common;
 
@@ -19,6 +18,7 @@ namespace PaperMarioItems.Content.Items.Cooking
             ];
             Item.ResearchUnlockCount = 10;
         }
+
         public override void SetDefaults()
 		{
             Item.DefaultToFood(40, 40, BuffID.WellFed3, 43200);
@@ -41,14 +41,15 @@ namespace PaperMarioItems.Content.Items.Cooking
             On_Player.ApplyLifeAndOrMana += On_Player_ApplyLifeAndOrMana;
         }
 
-        private void On_Player_ApplyPotionDelay(On_Player.orig_ApplyPotionDelay orig, Player player, Item sItem)
+        private static void On_Player_ApplyPotionDelay(On_Player.orig_ApplyPotionDelay orig, Player player, Item sItem)
         {
-            if (sItem.type == Type) return;
+            if (sItem.type == PMItemID.HottestDog) return;
             else orig(player, sItem);
         }
-        private void On_Player_ApplyLifeAndOrMana(On_Player.orig_ApplyLifeAndOrMana orig, Player player, Item sItem)
+
+        private static void On_Player_ApplyLifeAndOrMana(On_Player.orig_ApplyLifeAndOrMana orig, Player player, Item sItem)
         {
-            if (sItem.type == Type)
+            if (sItem.type == PMItemID.HottestDog)
             {
                 int num = sItem.healLife; int num2 = sItem.healMana;
                 player.statLife += num; player.statMana += num2;
@@ -62,6 +63,7 @@ namespace PaperMarioItems.Content.Items.Cooking
             }
             else orig(player, sItem);
         }
+
         public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe()

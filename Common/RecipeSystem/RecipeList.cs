@@ -98,7 +98,7 @@ namespace PaperMarioItems.Common.RecipeSystem
                 new(PMItemID.ElectroPop, PMItemID.CakeMix, PMItemID.VoltMushroom),
                 new(PMItemID.EggBomb, PMItemID.DriedBouquet, PMItemID.ZessDynamite),
                 new(PMItemID.EggBomb, PMItemID.MysticEgg, PMItemID.FireFlower),
-                new(PMItemID.ChocoCake, PMItemID.InkySauce, PMItemID.CakeMix),
+                new(PMItemID.ChocoCake, PMItemID.InkySauce, PMItemID.CakeMix, true),
                 new(PMItemID.ChocoCake, PMItemID.InkySauce, PMItemID.MousseCake),
                 new(PMItemID.CocoCandy, PMItemID.CakeMix, ItemID.Coconut),
                 new(PMItemID.CouplesCake, PMItemID.SnowBunny, PMItemID.SpicySoup),
@@ -314,7 +314,34 @@ namespace PaperMarioItems.Common.RecipeSystem
                 new(ItemID.SugarCookie, ItemID.BottledHoney, PMItemID.CakeMix, true),
                 new(ItemID.ChocolateChipCookie, PMItemID.InkySauce, ItemID.SugarCookie),
                 //switch item
-                new(PMItemID.HottestDog, PMItemID.HotSauce, ItemID.Hotdog)
+                new(PMItemID.HottestDog, PMItemID.HotSauce, ItemID.Hotdog),
+                //additional recipes from Super Paper Mario
+                new(PMItemID.MousseCake, PMItemID.CakeMix, ItemID.BottledHoney),
+                new(PMItemID.MousseCake, PMItemID.CakeMix, PMItemID.MysticEgg),
+                new(PMItemID.MousseCake, PMItemID.MysticEgg, ItemID.BottledHoney),
+                new(PMItemID.MousseCake, PMItemID.AwesomeSnack, PMItemID.MysticEgg),
+                new(PMItemID.MousseCake, PMItemID.KoopaBun, PMItemID.MysticEgg),
+                new(PMItemID.MousseCake, PMItemID.MushroomBroth, PMItemID.MysticEgg),
+                new(PMItemID.MousseCake, PMItemID.ZessCookie, PMItemID.MysticEgg),
+                new(PMItemID.CouplesCake, PMItemID.SnowBunny, PMItemID.BerrySnowBunny),
+                //unique cooking (Super Paper Mario edition)
+                new(PMItemID.AwesomeSnack, PMItemID.CakeMix, PMItemID.InkySauce, false, true),
+                new(PMItemID.BerrySnowBunny, PMItemID.SnowBunny, PMItemID.PinkApple),
+                new(PMItemID.BlockMeal, PMItemID.BlockBlock),
+                new(PMItemID.BlockMeal, PMItemID.BlockBlock, PMItemID.BoneinCut),
+                new(PMItemID.BlockMeal, PMItemID.BlockBlock, PMItemID.FreshPasta),
+                new(PMItemID.BlockMeal, PMItemID.BlockBlock, PMItemID.LifeMushroom),
+                new(PMItemID.BlockMeal, PMItemID.BlockBlock, PMItemID.LongLastShake),
+                new(PMItemID.BlockMeal, PMItemID.BlockBlock, ItemID.Steak),
+                new(PMItemID.BlockMeal, PMItemID.BlockBlock, PMItemID.MushroomShake),
+                new(PMItemID.BlockMeal, PMItemID.BlockBlock, PMItemID.SuperMushroomShake),
+                new(PMItemID.BlockMeal, PMItemID.BlockBlock, PMItemID.UltraMushroomShake),
+                new(PMItemID.BlockMeal, PMItemID.BlockBlock, PMItemID.SlimyMushroom),
+                new(PMItemID.BlockMeal, PMItemID.BlockBlock, PMItemID.VoltMushroom),
+                //todo : add choco pasta recipes
+                //todo : add dangerous delight recipes
+                new(PMItemID.DayzeeSyrup, PMItemID.DayzeeTear),
+                new(PMItemID.EmergencyRation, PMItemID.MushroomShake, PMItemID.FireFlower),
             };
 
             var MysteryItemList = new List<int>()

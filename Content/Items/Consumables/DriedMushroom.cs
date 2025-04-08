@@ -33,9 +33,9 @@ namespace PaperMarioItems.Content.Items.Consumables
             On_Player.ApplyPotionDelay += On_Player_ApplyPotionDelay;
         }
 
-        private void On_Player_ApplyPotionDelay(On_Player.orig_ApplyPotionDelay orig, Player self, Item sItem)
+        private static void On_Player_ApplyPotionDelay(On_Player.orig_ApplyPotionDelay orig, Player self, Item sItem)
         {
-            if (sItem.type == Type)
+            if (sItem.type == PMItemID.DriedMushroom)
             {
                 int delay = 300;
                 if (self.pStone) delay = (int)((float)delay * Player.PhilosopherStoneDurationMultiplier);
@@ -43,6 +43,7 @@ namespace PaperMarioItems.Content.Items.Consumables
             }
             else orig(self, sItem);
         }
+
         public override void AddRecipes()
 		{
             //furnaces

@@ -1074,6 +1074,45 @@ Items: {
 			{$CommonItemTooltip.RightClickToOpen}
 			'''
 	}
+
+	AwesomeSnack: {
+		DisplayName: Awesome Snack
+		Tooltip:
+			'''
+			Flopside's favorite snack!
+			{$Mods.PaperMarioItems.Items.CanCurePoison}
+			'''
+	}
+
+	BerrySnowBunny: {
+		DisplayName: Berry Snow Bunny
+		Tooltip: ""
+	}
+
+	BlockMeal: {
+		DisplayName: Block Meal
+		Tooltip: ""
+	}
+
+	ChocoPastaDish: {
+		DisplayName: Choco Pasta Dish
+		Tooltip: ""
+	}
+
+	DangerousDelight: {
+		DisplayName: Dangerous Delight
+		Tooltip: ""
+	}
+
+	DayzeeSyrup: {
+		DisplayName: Dayzee Syrup
+		Tooltip: ""
+	}
+
+	EmergencyRation: {
+		DisplayName: Emergency Ration
+		Tooltip: ""
+	}
 }
 
 Buffs: {

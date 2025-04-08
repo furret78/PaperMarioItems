@@ -4,6 +4,7 @@ using PaperMarioItems.Content.Items;
 using PaperMarioItems.Content.Items.Consumables;
 using PaperMarioItems.Content.Items.ConsumablesSPM;
 using PaperMarioItems.Content.Items.Cooking;
+using PaperMarioItems.Content.Items.CookingSPM;
 using PaperMarioItems.Content.Items.Placeable;
 using PaperMarioItems.Content.Items.Placeable.Furniture;
 using PaperMarioItems.Content.Items.Treasure;
@@ -182,7 +183,13 @@ namespace PaperMarioItems.Content
             SuperMushroomShake = ModContent.ItemType<SuperMushroomShake>(),
             UltraMushroomShake = ModContent.ItemType<UltraMushroomShake>(),
             //cooking - SPM
-
+            AwesomeSnack = ModContent.ItemType<AwesomeSnack>(),
+            BerrySnowBunny = ModContent.ItemType<BerrySnowBunny>(),
+            BlockMeal = ModContent.ItemType<BlockMeal>(),
+            ChocoPasta = ModContent.ItemType<ChocoPastaDish>(),
+            DangerousDelight = ModContent.ItemType<DangerousDelight>(),
+            DayzeeSyrup = ModContent.ItemType<DayzeeSyrup>(),
+            EmergencyRation = ModContent.ItemType<EmergencyRation>(),
             //tiles - SPM
             CastleBleckBrick = ModContent.ItemType<CastleBleckBrick>(),
             CastleBleckDoor = ModContent.ItemType<CastleBleckDoor>(),

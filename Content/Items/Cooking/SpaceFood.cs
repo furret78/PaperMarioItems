@@ -37,9 +37,9 @@ namespace PaperMarioItems.Content.Items.Cooking
             On_Player.ApplyPotionDelay += On_Player_ApplyPotionDelay;
         }
 
-        private void On_Player_ApplyPotionDelay(On_Player.orig_ApplyPotionDelay orig, Player self, Item sItem)
+        private static void On_Player_ApplyPotionDelay(On_Player.orig_ApplyPotionDelay orig, Player self, Item sItem)
         {
-            if (sItem.type == Type) return;
+            if (sItem.type == PMItemID.SpaceFood) return;
             else orig(self, sItem);
         }
     }

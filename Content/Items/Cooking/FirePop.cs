@@ -16,6 +16,7 @@ namespace PaperMarioItems.Content.Items.Cooking
             ];
             Item.ResearchUnlockCount = 50;
         }
+
         public override void SetDefaults()
 		{
             Item.DefaultToFood(39, 39, 0, 0);
@@ -23,17 +24,20 @@ namespace PaperMarioItems.Content.Items.Cooking
             Item.value = Item.sellPrice(silver: 20);
             Item.healMana = 100;
         }
+
         public override void OnConsumeItem(Player player)
 		{
             player.TryToResetHungerToNeutral();
         }
+
         public override void Load()
         {
             On_Player.ApplyLifeAndOrMana += On_Player_ApplyLifeAndOrMana;
         }
-        private void On_Player_ApplyLifeAndOrMana(On_Player.orig_ApplyLifeAndOrMana orig, Player player, Item sItem)
+
+        private static void On_Player_ApplyLifeAndOrMana(On_Player.orig_ApplyLifeAndOrMana orig, Player player, Item sItem)
         {
-            if (sItem.type == Type)
+            if (sItem.type == PMItemID.FirePop)
             {
                 int num = sItem.healLife; int num2 = sItem.healMana;
                 player.statLife += num; player.statMana += num2;

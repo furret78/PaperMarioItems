@@ -30,9 +30,9 @@ namespace PaperMarioItems.Content.Items.Consumables
             On_Player.ApplyLifeAndOrMana += On_Player_ApplyLifeAndOrMana;
         }
 
-        private void On_Player_ApplyPotionDelay(On_Player.orig_ApplyPotionDelay orig, Player self, Item sItem)
+        private static void On_Player_ApplyPotionDelay(On_Player.orig_ApplyPotionDelay orig, Player self, Item sItem)
         {
-            if (sItem.type == Type)
+            if (sItem.type == PMItemID.FreshPasta)
             {
                 int delay = 120;
                 if (self.pStone) delay = (int)((float)delay * Player.PhilosopherStoneDurationMultiplier);
@@ -40,9 +40,9 @@ namespace PaperMarioItems.Content.Items.Consumables
             }
             else orig(self, sItem);
         }
-        private void On_Player_ApplyLifeAndOrMana(On_Player.orig_ApplyLifeAndOrMana orig, Player self, Item sItem)
+        private static void On_Player_ApplyLifeAndOrMana(On_Player.orig_ApplyLifeAndOrMana orig, Player self, Item sItem)
         {
-            if (sItem.type == Type)
+            if (sItem.type == PMItemID.FreshPasta)
             {
                 int healMana = sItem.healMana;
                 self.statMana += healMana;

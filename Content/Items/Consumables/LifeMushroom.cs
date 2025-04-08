@@ -48,9 +48,9 @@ namespace PaperMarioItems.Content.Items.Consumables
         {
             On_Player.ApplyPotionDelay += On_Player_ApplyPotionDelay;
         }
-        private void On_Player_ApplyPotionDelay(On_Player.orig_ApplyPotionDelay orig, Player self, Item sItem)
+        private static void On_Player_ApplyPotionDelay(On_Player.orig_ApplyPotionDelay orig, Player self, Item sItem)
         {
-            if (sItem.type == Type)
+            if (sItem.type == PMItemID.LifeMushroom)
             {
                 int delay = customPotionTime * 60;
                 if (self.pStone) delay = (int)(delay * Player.PhilosopherStoneDurationMultiplier);

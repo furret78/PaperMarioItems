@@ -15,6 +15,7 @@ namespace PaperMarioItems.Content.Items.Cooking
             ];
             Item.ResearchUnlockCount = 200;
         }
+
         public override void SetDefaults()
 		{
             Item.DefaultToFood(40, 40, 0, 0);
@@ -22,23 +23,24 @@ namespace PaperMarioItems.Content.Items.Cooking
             Item.value = Item.sellPrice(silver: 15);
             Item.healMana = 100;
         }
+
         public override void OnConsumeItem(Player player)
 		{
             player.TryToResetHungerToNeutral();
         }
+
         public override void Load()
         {
             On_Player.ApplyLifeAndOrMana += On_Player_ApplyLifeAndOrMana;
         }
-        private void On_Player_ApplyLifeAndOrMana(On_Player.orig_ApplyLifeAndOrMana orig, Player player, Item sItem)
+
+        private static void On_Player_ApplyLifeAndOrMana(On_Player.orig_ApplyLifeAndOrMana orig, Player player, Item sItem)
         {
-            if (sItem.type == Type)
+            if (sItem.type == PMItemID.HoneyCandy)
             {
-                int num = sItem.healLife; int num2 = sItem.healMana;
-                player.statLife += num; player.statMana += num2;
-                if (player.statLife > player.statLifeMax2) player.statLife = player.statLifeMax2;
+                int num2 = sItem.healMana;
+                player.statMana += num2;
                 if (player.statMana > player.statManaMax2) player.statMana = player.statManaMax2;
-                if (num > 0 && Main.myPlayer == player.whoAmI) player.HealEffect(num);
                 if (num2 > 0)
                 {
                     if (Main.myPlayer == player.whoAmI) player.ManaEffect(num2);

@@ -29,6 +29,7 @@ namespace PaperMarioItems.Content.Items.Cooking
             Item.rare = ItemRarityID.Green;
             Item.value = Item.sellPrice(silver: 20);
         }
+
         public override bool? UseItem(Player player)
         {
 			if (Main.rand.Next(0, 15) == 1)

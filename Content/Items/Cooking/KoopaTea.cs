@@ -13,6 +13,7 @@ namespace PaperMarioItems.Content.Items.Cooking
             ItemID.Sets.DrinkParticleColors[Type] = [new(255, 255, 156)];
             Item.ResearchUnlockCount = 200;
         }
+
         public override void SetDefaults()
 		{
             Item.DefaultToFood(38, 39, 0, 0, true);
@@ -20,17 +21,20 @@ namespace PaperMarioItems.Content.Items.Cooking
             Item.value = Item.sellPrice(silver: 3);
             Item.healMana = 35;
         }
+
         public override void OnConsumeItem(Player player)
 		{
             player.TryToResetHungerToNeutral();
         }
+
         public override void Load()
         {
             On_Player.ApplyLifeAndOrMana += On_Player_ApplyLifeAndOrMana;
         }
-        private void On_Player_ApplyLifeAndOrMana(On_Player.orig_ApplyLifeAndOrMana orig, Player player, Item sItem)
+
+        private static void On_Player_ApplyLifeAndOrMana(On_Player.orig_ApplyLifeAndOrMana orig, Player player, Item sItem)
         {
-            if (sItem.type == Type)
+            if (sItem.type == PMItemID.KoopaTea)
             {
                 int num = sItem.healLife; int num2 = sItem.healMana;
                 player.statLife += num; player.statMana += num2;
@@ -44,6 +48,7 @@ namespace PaperMarioItems.Content.Items.Cooking
             }
             else orig(player, sItem);
         }
+
         public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe()

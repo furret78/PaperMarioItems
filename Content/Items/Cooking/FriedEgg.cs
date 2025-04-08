@@ -34,11 +34,12 @@ namespace PaperMarioItems.Content.Items.Cooking
             On_Player.ApplyPotionDelay += On_Player_ApplyPotionDelay;
         }
 
-        private void On_Player_ApplyPotionDelay(On_Player.orig_ApplyPotionDelay orig, Player player, Item sItem)
+        private static void On_Player_ApplyPotionDelay(On_Player.orig_ApplyPotionDelay orig, Player player, Item sItem)
         {
-            if (sItem.type == Type) return;
+            if (sItem.type == PMItemID.FriedEgg) return;
             else orig(player, sItem);
         }
+
         public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe()

@@ -13,6 +13,7 @@ namespace PaperMarioItems.Content.Items.Cooking
             ItemID.Sets.FoodParticleColors[Type] = [new(255, 195, 66)];
             Item.ResearchUnlockCount = 50;
         }
+
         public override void SetDefaults()
 		{
             Item.DefaultToFood(33, 40, BuffID.WellFed, 3600, true);
@@ -21,18 +22,21 @@ namespace PaperMarioItems.Content.Items.Cooking
             Item.value = Item.sellPrice(silver: 15);
             Item.healMana = 75;
         }
+
         public override void OnConsumeItem(Player player)
 		{
             if (Main.rand.Next(0, 10) == 5) player.AddBuff(BuffID.Frozen, 300);
             player.TryToResetHungerToNeutral();
         }
+
         public override void Load()
         {
             On_Player.ApplyLifeAndOrMana += On_Player_ApplyLifeAndOrMana;
         }
-        private void On_Player_ApplyLifeAndOrMana(On_Player.orig_ApplyLifeAndOrMana orig, Player player, Item sItem)
+
+        private static void On_Player_ApplyLifeAndOrMana(On_Player.orig_ApplyLifeAndOrMana orig, Player player, Item sItem)
         {
-            if (sItem.type == Type)
+            if (sItem.type == PMItemID.IciclePop)
             {
                 int num = sItem.healLife; int num2 = sItem.healMana;
                 player.statLife += num; player.statMana += num2;
