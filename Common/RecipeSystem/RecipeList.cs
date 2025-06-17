@@ -159,7 +159,7 @@ namespace PaperMarioItems.Common.RecipeSystem
                 new(PMItemID.MushroomFry, PMItemID.Mushroom),
                 new(PMItemID.MushroomFry, PMItemID.SuperMushroom),
                 new(PMItemID.MushroomFry, PMItemID.DriedMushroom),
-                new(PMItemID.MushroomFry, PMItemID.PoisonMushroom),
+                new(PMItemID.MushroomFry, PMItemID.PoisonMushroom), //todo : remove when dangerous delight is added
                 new(PMItemID.MushroomFry, PMItemID.DriedMushroom, PMItemID.FireFlower),
                 new(PMItemID.MushroomFry, PMItemID.DriedMushroom, PMItemID.VoltMushroom),
                 new(PMItemID.MushroomFry, PMItemID.Mushroom, PMItemID.DriedMushroom),
@@ -290,7 +290,6 @@ namespace PaperMarioItems.Common.RecipeSystem
                 new(PMItemID.PoisonedCake, PMItemID.CouplesCake, ItemID.RedPotion),
                 new(PMItemID.PoisonedCake, PMItemID.HeartfulCake, ItemID.RedPotion),
                 new(PMItemID.PoisonedCake, PMItemID.PoisonedCake, ItemID.RedPotion),
-                new(PMItemID.PoisonedCake, PMItemID.PoisonMushroom, PMItemID.CakeMix),
                 new(PMItemID.TrialStew, PMItemID.PoisonMushroom, ItemID.StrangeBrew),
                 new(PMItemID.SpicySoup, ItemID.BowlofSoup, PMItemID.FireFlower),
                 new(PMItemID.SpicySoup, ItemID.GrubSoup, PMItemID.FireFlower),
@@ -339,7 +338,7 @@ namespace PaperMarioItems.Common.RecipeSystem
                 new(PMItemID.BlockMeal, PMItemID.BlockBlock, PMItemID.SlimyMushroom),
                 new(PMItemID.BlockMeal, PMItemID.BlockBlock, PMItemID.VoltMushroom),
                 //todo : add choco pasta recipes
-                //todo : add dangerous delight recipes
+                //todo : add special dangerous delight recipes, handle the rest automatically down there
                 new(PMItemID.DayzeeSyrup, PMItemID.DayzeeTear),
                 new(PMItemID.EmergencyRation, PMItemID.MushroomShake, PMItemID.FireFlower),
             };
@@ -364,6 +363,11 @@ namespace PaperMarioItems.Common.RecipeSystem
                 ItemID.Hotdog, PMItemID.JellyCandy, ItemID.Mango, PMItemID.KoopaBun, PMItemID.LovePudding,
                 PMItemID.MeteorMeal, PMItemID.MousseCake, PMItemID.PeachTart, ItemID.Peach,
                 PMItemID.PoisonMushroom, PMItemID.TurtleyLeaf
+            };
+
+            var DangerousDelightList = new List<int>()
+            {
+                PMItemID.BlackApple, PMItemID.PinkApple, PMItemID.OrangeApple, PMItemID.BlueApple,
             };
 
             for (int i = 0; i < IngredientList.Count; i++)
@@ -391,6 +395,13 @@ namespace PaperMarioItems.Common.RecipeSystem
             for (int l = 0; l < SpaceFoodList.Count; l++)
             {
                 if (!RecipeRegister.SpaceFoodList.Exists(x => x == SpaceFoodList[l])) RecipeRegister.SpaceFoodList.Add(SpaceFoodList[l]);
+            }
+            
+            //Dangerous Delight stuff
+            for (int k = 0; k < DangerousDelightList.Count; k++)
+            {
+                if (!RecipeRegister.DangerousDelightList.Exists(x => x == DangerousDelightList[k]))
+                    RecipeRegister.DangerousDelightList.Add(DangerousDelightList[k]);
             }
         }
 

@@ -41,12 +41,18 @@ namespace PaperMarioItems.Common.RecipeSystem
         /// </summary>
         public static List<int> SpaceFoodBlacklist = new();
 
+        /// <summary>
+        /// A recipe List specifying what items should go with Poison Mushroom to make Dangerous Delight
+        /// </summary>
+        public static List<int> DangerousDelightList = new();
+
         public override void Unload()
         {
             MainRecipeDictionary.Clear();
             MysteryBoxRecipeList.Clear();
             SpaceFoodList.Clear();
             SpaceFoodBlacklist.Clear();
+            DangerousDelightList.Clear();
         }
     }
 }

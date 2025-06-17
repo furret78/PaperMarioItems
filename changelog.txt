@@ -3,3 +3,4 @@ Paper Mario Items 0.7.4 -- Update notes
 - Added Awesome Snack, Berry Snow Bunny, Block Meal, Choco Pasta Dish, Dangerous Delight, Dayzee Syrup, Emergency Ration
 - Added cooking recipes for the above items
 - Added additional recipes for pre-existing items (Mousse Cake, Couple's Cake)
+- Added a line to Package's tooltip on how to open it

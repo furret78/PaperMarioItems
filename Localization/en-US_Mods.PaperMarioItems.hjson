@@ -692,6 +692,7 @@ Items: {
 			'''
 			A cardboard box originating from a distant realm
 			Might contain a valuable item when opened
+			{$CommonItemTooltip.RightClickToOpen}
 			'''
 	}
 
@@ -1086,32 +1087,45 @@ Items: {
 
 	BerrySnowBunny: {
 		DisplayName: Berry Snow Bunny
-		Tooltip: ""
+		Tooltip: It's snow bunny's girlfriend!
 	}
 
 	BlockMeal: {
 		DisplayName: Block Meal
-		Tooltip: ""
+		Tooltip: An eccentric dish said to contain a Block Block
 	}
 
 	ChocoPastaDish: {
 		DisplayName: Choco Pasta Dish
-		Tooltip: ""
+		Tooltip:
+			'''
+			This sounds... interesting
+			{$Mods.PaperMarioItems.Items.CanCurePoison}
+			'''
 	}
 
 	DangerousDelight: {
 		DisplayName: Dangerous Delight
-		Tooltip: ""
+		Tooltip: Dinner with a dash of danger! Not for the faint of heart.
 	}
 
 	DayzeeSyrup: {
 		DisplayName: Dayzee Syrup
-		Tooltip: ""
+		Tooltip:
+			'''
+			Pure Dayzee syrup!
+			Doubles attack power when consumed
+			{$Mods.PaperMarioItems.Items.CanCurePoison}
+			'''
 	}
 
 	EmergencyRation: {
 		DisplayName: Emergency Ration
-		Tooltip: ""
+		Tooltip:
+			'''
+			Chomp in case of emergency
+			{$Mods.PaperMarioItems.Items.CanCurePoison}
+			'''
 	}
 }
 
@@ -1223,6 +1237,6 @@ Configs: {
 }
 
 Conditions: {
-	ExpertAndHardmode: Mods.PaperMarioItems.Conditions.ExpertAndHardmode
-	NormalAndHardmode: Mods.PaperMarioItems.Conditions.NormalAndHardmode
+	ExpertAndHardmode: On an Expert world and in Hardmode
+	NormalAndHardmode: On a Normal world and in Hardmode
 }

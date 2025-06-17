@@ -138,10 +138,10 @@ namespace PaperMarioItems.Common.UI
         }
 
         private static bool SpaceFoodCheck(int item1 = ItemID.None, int item2 = ItemID.None)
-        {
-            if (item1 == PMItemID.DriedBouquet || item2 == PMItemID.DriedBouquet) return true;
-            return false;
-        }
+            => item1 == PMItemID.DriedBouquet || item2 == PMItemID.DriedBouquet;
+
+        private static bool DangerousDelightCheck(int item1 = ItemID.None, int item2 = ItemID.None)
+            => item1 == PMItemID.PoisonMushroom || item2 == PMItemID.PoisonMushroom;
 
         private static int ItemAmountFinalize(int amount1 = 0, int amount2 = 0)
         {
@@ -185,8 +185,15 @@ namespace PaperMarioItems.Common.UI
                 {
                     int currentItem = RecipeRegister.SpaceFoodList[i];
                     if (!RecipeRegister.SpaceFoodBlacklist.Contains(currentItem) &&
-                        ((itemslot1 == currentItem && itemslot2 == PMItemID.DriedBouquet) ||
-                        (itemslot1 == PMItemID.DriedBouquet && itemslot2 == currentItem))) result = PMItemID.SpaceFood;
+                        (itemslot1 == currentItem || itemslot2 == currentItem)) return result = PMItemID.SpaceFood;
+                }
+            }
+            if (DangerousDelightCheck(itemslot1, itemslot2))
+            {
+                for (int i = 0; i < RecipeRegister.DangerousDelightList.Count; i++)
+                {
+                    int currentRecipeItem = RecipeRegister.DangerousDelightList[i];
+                    if (itemslot1 == currentRecipeItem || itemslot2 == currentRecipeItem) return result = PMItemID.DangerousDelight;
                 }
             }
             for (int i = 0; i < RecipeRegister.MainRecipeDictionary.Count; i++)

@@ -1,3 +1,4 @@
+using System.Linq;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -45,7 +46,9 @@ namespace PaperMarioItems.Content.Items.CookingSPM
             {
                 int num = sItem.healLife;
 
-                if (player.ZoneUnderworldHeight) num += 50;
+                if (player.ZoneUnderworldHeight ||
+                    Main.npc.Take(Main.maxNPCs).Any(n => n.active && n.boss))
+                    num += 50;
 
                 player.statLife += num;
                 if (player.statLife > player.statLifeMax2) player.statLife = player.statLifeMax2;
