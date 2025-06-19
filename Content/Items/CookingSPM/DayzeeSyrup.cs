@@ -8,6 +8,7 @@ namespace PaperMarioItems.Content.Items.CookingSPM
 	{
         public override void SetStaticDefaults()
         {
+            ItemID.Sets.ShimmerTransformToItem[Type] = PMItemID.DayzeeTear;
             ItemID.Sets.FoodParticleColors[Type] = [new(90, 255, 255)];
             Item.ResearchUnlockCount = 80;
         }
@@ -16,7 +17,7 @@ namespace PaperMarioItems.Content.Items.CookingSPM
         {
             Item.DefaultToFood(39, 40, 0, 0, true);
             Item.rare = ItemRarityID.Blue;
-            Item.value = Item.sellPrice(silver: 25);
+            Item.value = Item.sellPrice(silver: 35);
             Item.buffType = PMBuffID.PowerUp;
             Item.buffTime = 2400;
         }

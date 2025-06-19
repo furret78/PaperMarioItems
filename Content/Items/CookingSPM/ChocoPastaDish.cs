@@ -22,7 +22,7 @@ namespace PaperMarioItems.Content.Items.CookingSPM
 		{
             Item.DefaultToFood(40, 32, BuffID.WellFed, 7200);
             Item.rare = ItemRarityID.Orange;
-            Item.value = Item.sellPrice(silver: 25);
+            Item.value = Item.sellPrice(silver: 60);
             Item.healLife = 25;
             Item.potion = true;
         }

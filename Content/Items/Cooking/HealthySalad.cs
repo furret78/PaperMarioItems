@@ -1,3 +1,4 @@
+using Microsoft.Xna.Framework;
 using PaperMarioItems.Common;
 using Terraria;
 using Terraria.Audio;
@@ -12,16 +13,15 @@ namespace PaperMarioItems.Content.Items.Cooking
         {
             ItemID.Sets.ShimmerTransformToItem[Type] = PMItemID.TurtleyLeaf;
             ItemID.Sets.FoodParticleColors[Type] = [
-                new(255, 255, 156),
-                new(49, 207, 49),
-                new(206, 101, 49)
+                Color.Green,
+                Color.OrangeRed
             ];
             Item.ResearchUnlockCount = 200;
         }
 
         public override void SetDefaults()
 		{
-            Item.DefaultToFood(40, 39, 0, 0);
+            Item.DefaultToFood(33, 30, 0, 0);
             Item.rare = ItemRarityID.Green;
             Item.value = Item.sellPrice(silver: 5);
             Item.healMana = 75;

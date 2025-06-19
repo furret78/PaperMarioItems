@@ -12,6 +12,7 @@ namespace PaperMarioItems.Common.RecipeSystem
         {
             var IngredientList = new List<PMRecipe>()
             {
+                //Recipes from TTYD
                 //Point Swap recipes
                 new(PMItemID.BoosSheet, PMItemID.PointSwap, PMItemID.RepelCape),
                 new(PMItemID.RepelCape, PMItemID.PointSwap, PMItemID.BoosSheet),
@@ -159,7 +160,7 @@ namespace PaperMarioItems.Common.RecipeSystem
                 new(PMItemID.MushroomFry, PMItemID.Mushroom),
                 new(PMItemID.MushroomFry, PMItemID.SuperMushroom),
                 new(PMItemID.MushroomFry, PMItemID.DriedMushroom),
-                new(PMItemID.MushroomFry, PMItemID.PoisonMushroom), //todo : remove when dangerous delight is added
+                new(PMItemID.MushroomFry, PMItemID.PoisonMushroom, 0, false, true),
                 new(PMItemID.MushroomFry, PMItemID.DriedMushroom, PMItemID.FireFlower),
                 new(PMItemID.MushroomFry, PMItemID.DriedMushroom, PMItemID.VoltMushroom),
                 new(PMItemID.MushroomFry, PMItemID.Mushroom, PMItemID.DriedMushroom),
@@ -207,7 +208,7 @@ namespace PaperMarioItems.Common.RecipeSystem
                 new(PMItemID.PeachTart, PMItemID.CakeMix, ItemID.Peach),
                 new(PMItemID.ThunderRage, PMItemID.DriedBouquet, PMItemID.VoltMushroom),
                 new(PMItemID.SpicySoup, PMItemID.FireFlower),
-                new(PMItemID.SpicySoup, PMItemID.Horsetail, ItemID.None, true),
+                new(PMItemID.SpicySoup, PMItemID.Horsetail, ItemID.None, true), //remove when roast horsetail is added
                 new(PMItemID.SpicySoup, PMItemID.SnowBunny),
                 new(PMItemID.SpicySoup, PMItemID.DriedBouquet, ItemID.None, true),
                 new(PMItemID.SpicySoup, PMItemID.FireFlower, PMItemID.HotSauce),
@@ -314,7 +315,8 @@ namespace PaperMarioItems.Common.RecipeSystem
                 new(ItemID.ChocolateChipCookie, PMItemID.InkySauce, ItemID.SugarCookie),
                 //switch item
                 new(PMItemID.HottestDog, PMItemID.HotSauce, ItemID.Hotdog),
-                //additional recipes from Super Paper Mario
+
+                //Recipes from Super Paper Mario
                 new(PMItemID.MousseCake, PMItemID.CakeMix, ItemID.BottledHoney),
                 new(PMItemID.MousseCake, PMItemID.CakeMix, PMItemID.MysticEgg),
                 new(PMItemID.MousseCake, PMItemID.MysticEgg, ItemID.BottledHoney),
@@ -337,8 +339,44 @@ namespace PaperMarioItems.Common.RecipeSystem
                 new(PMItemID.BlockMeal, PMItemID.BlockBlock, PMItemID.UltraMushroomShake),
                 new(PMItemID.BlockMeal, PMItemID.BlockBlock, PMItemID.SlimyMushroom),
                 new(PMItemID.BlockMeal, PMItemID.BlockBlock, PMItemID.VoltMushroom),
+                new(PMItemID.DyllisBreakfast, PMItemID.MushroomShake, PMItemID.SpicySoup),
+                new(PMItemID.DyllisBreakfast, PMItemID.MushroomFry, PMItemID.FriedEgg),
+                //new(PMItemID.DyllisBreakfast, PMItemID.MushroomFry, PMItemID.FriedEgg), //healthy salad here
+                new(PMItemID.DyllisBreakfast, PMItemID.MushroomFry, PMItemID.LifeMushroom),
+                new(PMItemID.DyllisBreakfast, PMItemID.MushroomFry, PMItemID.LifeMushroom),
+                //new(PMItemID.DyllisBreakfast, PMItemID.MushroomFry, PMItemID.FriedEgg), //roast horsetail here
+                new(PMItemID.DyllisBreakfast, PMItemID.MushroomFry, PMItemID.MushroomShake),
+                new(PMItemID.DyllisBreakfast, PMItemID.MushroomFry, PMItemID.SlimyMushroom),
+                new(PMItemID.DyllisBreakfast, PMItemID.MushroomFry, PMItemID.SpicySoup),
+                new(PMItemID.DyllisBreakfast, PMItemID.MushroomFry, PMItemID.VoltMushroom),
+                //new(PMItemID.DyllisDinner, PMItemID.MushroomFry, PMItemID.Spaghetti), //replace with Meat Pasta Dish later
+                //new(PMItemID.DyllisDinner, PMItemID.MushroomFry, PMItemID.Spaghetti), //fruity hamburger here
+                //new(PMItemID.DyllisDinner, PMItemID.MushroomFry, PMItemID.Spaghetti), //golden meal here
+                //new(PMItemID.DyllisDinner, PMItemID.MushroomFry, PMItemID.Spaghetti), //gorgeous steak here
+                new(PMItemID.DyllisDinner, PMItemID.MushroomFry, ItemID.Hotdog),
+                new(PMItemID.DyllisDinner, PMItemID.MushroomFry, PMItemID.InkPasta),
+                new(PMItemID.DyllisDinner, PMItemID.MushroomFry, PMItemID.Koopasta),
+                //new(PMItemID.DyllisDinner, PMItemID.MushroomFry, PMItemID.Spaghetti), //love noodle dish here
+                new(PMItemID.DyllisDinner, PMItemID.MushroomFry, PMItemID.MushroomRoast),
+                //new(PMItemID.DyllisDinner, PMItemID.MushroomFry, PMItemID.MushroomRoast), //roast whacka bump here
+                //new(PMItemID.DyllisDinner, PMItemID.MushroomFry, PMItemID.MushroomRoast), //spit roast here
+
+                new(PMItemID.DyllisLunch, PMItemID.MushroomFry, PMItemID.Spaghetti),
+                new(PMItemID.DyllisLunch, PMItemID.MushroomFry, PMItemID.BlockMeal),
+                new(PMItemID.DyllisLunch, PMItemID.MushroomFry, PMItemID.ChocoPasta),
+                //new(PMItemID.DyllisLunch, PMItemID.MushroomFry, PMItemID.Spaghetti), //hamburger here
+                //new(PMItemID.DyllisLunch, PMItemID.MushroomFry, PMItemID.Spaghetti), //inky soup here
+                //new(PMItemID.DyllisLunch, PMItemID.MushroomFry, PMItemID.Spaghetti), //koopa pilaf here
+                new(PMItemID.DyllisLunch, PMItemID.MushroomFry, PMItemID.OmeletteMeal),
+                //new(PMItemID.DyllisLunch, PMItemID.MushroomFry, PMItemID.Spaghetti), //primordial dinner here
+                //new(PMItemID.DyllisLunch, PMItemID.MushroomFry, PMItemID.Spaghetti), //shroom delicacy here
+                //new(PMItemID.DyllisLunch, PMItemID.MushroomFry, PMItemID.Spaghetti), //spicy dinner here
+                new(PMItemID.DyllisLunch, PMItemID.MushroomFry, PMItemID.UltraMushroomShake),
+                //new(PMItemID.DyllisLunch, PMItemID.MushroomFry, PMItemID.Spaghetti), //volcano shroom here
+                //new(PMItemID.DyllisLunch, PMItemID.MushroomFry, PMItemID.HealthySalad), //veggie set here
+
                 //todo : add choco pasta recipes
-                //todo : add special dangerous delight recipes, handle the rest automatically down there
+                //Dangerous Delight recipes handled automatically below
                 new(PMItemID.DayzeeSyrup, PMItemID.DayzeeTear),
                 new(PMItemID.EmergencyRation, PMItemID.MushroomShake, PMItemID.FireFlower),
             };
@@ -365,9 +403,20 @@ namespace PaperMarioItems.Common.RecipeSystem
                 PMItemID.PoisonMushroom, PMItemID.TurtleyLeaf
             };
 
+            //TODO: add Catch Card and its SP variant, Ice Storm, Medals, Smelly Herb, Fruity Shroom, Fire Burst
             var DangerousDelightList = new List<int>()
             {
                 PMItemID.BlackApple, PMItemID.PinkApple, PMItemID.OrangeApple, PMItemID.BlueApple,
+                PMItemID.PoisonMushroom, PMItemID.BlockBlock, PMItemID.BoneinCut, PMItemID.CakeMix,
+                PMItemID.CourageShell, PMItemID.DayzeeTear, PMItemID.DriedMushroom, PMItemID.EggBomb,
+                PMItemID.FreshPasta, ItemID.GoldBar, ItemID.GoldOre, PMItemID.GoldenLeaf,
+                ItemID.HoneyBucket, ItemID.BottledHoney, PMItemID.Horsetail, PMItemID.HotSauce,
+                PMItemID.HPPlus, PMItemID.InkySauce, ItemID.Mango, PMItemID.LifeMushroom,
+                PMItemID.LongLastShake, PMItemID.MightyTonic, ItemID.Peach, PMItemID.POWBlock,
+                PMItemID.PowerPlus, ItemID.Steak, PMItemID.PrimordialFruit, PMItemID.SapSoup,
+                PMItemID.ShootingStar, PMItemID.MushroomShake, PMItemID.SuperMushroomShake, PMItemID.UltraMushroomShake,
+                PMItemID.SlimyMushroom, PMItemID.Stopwatch, PMItemID.ThunderRage, PMItemID.TurtleyLeaf,
+                PMItemID.VoltMushroom, PMItemID.WhackaBump
             };
 
             for (int i = 0; i < IngredientList.Count; i++)
@@ -383,18 +432,21 @@ namespace PaperMarioItems.Common.RecipeSystem
 
             for (int j = 0; j < MysteryItemList.Count; j++)
             {
-                if (!RecipeRegister.MysteryBoxRecipeList.Exists(x => x == MysteryItemList[j])) RecipeRegister.MysteryBoxRecipeList.Add(MysteryItemList[j]);
+                if (!RecipeRegister.MysteryBoxRecipeList.Exists(x => x == MysteryItemList[j]))
+                    RecipeRegister.MysteryBoxRecipeList.Add(MysteryItemList[j]);
             }
 
             //Space Food stuff
             for (int k = 0; k < SpaceFoodBlacklist.Count; k++)
             {
-                if (!RecipeRegister.SpaceFoodBlacklist.Exists(x => x == SpaceFoodBlacklist[k])) RecipeRegister.SpaceFoodBlacklist.Add(SpaceFoodBlacklist[k]);
+                if (!RecipeRegister.SpaceFoodBlacklist.Exists(x => x == SpaceFoodBlacklist[k]))
+                    RecipeRegister.SpaceFoodBlacklist.Add(SpaceFoodBlacklist[k]);
             }
 
             for (int l = 0; l < SpaceFoodList.Count; l++)
             {
-                if (!RecipeRegister.SpaceFoodList.Exists(x => x == SpaceFoodList[l])) RecipeRegister.SpaceFoodList.Add(SpaceFoodList[l]);
+                if (!RecipeRegister.SpaceFoodList.Exists(x => x == SpaceFoodList[l]))
+                    RecipeRegister.SpaceFoodList.Add(SpaceFoodList[l]);
             }
             
             //Dangerous Delight stuff
@@ -410,11 +462,67 @@ namespace PaperMarioItems.Common.RecipeSystem
             foreach (var itemindex in ContentSamples.ItemsByType)
             {
                 Item item = itemindex.Value;
-                if ((item.healLife > 0 || (item.buffType == BuffID.Regeneration && item.buffTime > 0)) && !RecipeRegister.SpaceFoodList.Exists(x => x == item.type))
+                if ((item.healLife > 0 || (item.buffType == BuffID.Regeneration && item.buffTime > 0)) &&
+                    !RecipeRegister.SpaceFoodList.Exists(x => x == item.type))
                 {
                     RecipeRegister.SpaceFoodList.Add(item.type);
                 }
             }
         }
+
+        /// <summary>
+        /// Function that checks if there is a special recipe at play.
+        /// Recommended to call at the start of the cooking function before anything else occurs.
+        /// </summary>
+        /// <returns>Returns the ID int of the intended result (0 if none is found)</returns>
+        public static int SpecialRecipeCheck(int ItemSlot1 = ItemID.None, int ItemSlot2 = ItemID.None)
+        {
+            if (MysteryBoxCheck(ItemSlot1, ItemSlot2))
+            {
+                if (Main.rand.NextBool(2))
+                    return RecipeRegister.MysteryBoxRecipeList[Main.rand.Next(0, RecipeRegister.MysteryBoxRecipeList.Count)];
+            }
+            if (SpaceFoodCheck(ItemSlot1, ItemSlot2))
+            {
+                for (int i = 0; i < RecipeRegister.SpaceFoodList.Count; i++)
+                {
+                    int currentItem = RecipeRegister.SpaceFoodList[i];
+                    if (!RecipeRegister.SpaceFoodBlacklist.Contains(currentItem) &&
+                        (ItemSlot1 == currentItem || ItemSlot2 == currentItem)) return PMItemID.SpaceFood;
+                }
+            }
+            if (DangerousDelightCheck(ItemSlot1, ItemSlot2))
+            {
+                if ((ItemSlot1 == PMItemID.PoisonMushroom && ItemSlot2 != 0) ||
+                    (ItemSlot2 == PMItemID.PoisonMushroom && ItemSlot1 != 0))
+                {
+                    for (int i = 0; i < RecipeRegister.DangerousDelightList.Count; i++)
+                    {
+                        int currentRecipeItem = RecipeRegister.DangerousDelightList[i];
+                        if (ItemSlot1 == currentRecipeItem || ItemSlot2 == currentRecipeItem)
+                            return PMItemID.DangerousDelight;
+                    }
+                }
+            }
+            return ItemID.None;
+        }
+
+        /// <summary>
+        /// Checks if either of the two ingredients involved is a Mystery Box.
+        /// </summary>
+        public static bool MysteryBoxCheck(int item1 = ItemID.None, int item2 = ItemID.None)
+        {
+            if ((item1 == PMItemID.MysteryBox && item2 == ItemID.None) ||
+                (item1 == ItemID.None && item2 == PMItemID.MysteryBox) ||
+                (item1 == PMItemID.MysteryBox && item2 == PMItemID.MysteryBox)) return true;
+            else return false;
+        }
+
+        private static bool SpaceFoodCheck(int item1 = ItemID.None, int item2 = ItemID.None)
+            => (item1 == PMItemID.DriedBouquet && item2 != ItemID.None) ||
+            (item2 == PMItemID.DriedBouquet && item1 != ItemID.None);
+
+        private static bool DangerousDelightCheck(int item1 = ItemID.None, int item2 = ItemID.None)
+            => Main.hardMode && (item1 == PMItemID.PoisonMushroom || item2 == PMItemID.PoisonMushroom);
     }
 }

@@ -89,7 +89,7 @@ namespace PaperMarioItems.Common.UI
             if (CanCook(item1, amount1, item2, amount2) && Main.LocalPlayer.HasItemInInventoryOrOpenVoidBag(PMItemID.Cookbook))
             {
                 int maxDeduction = ItemAmountFinalize(amount1, amount2);
-                if (!MysteryBoxCheck(item1, item2))
+                if (!RecipeList.MysteryBoxCheck(item1, item2))
                 {
                     int resultItem = CookItems(item1, amount1, item2, amount2);
                     SpawnResultItem(resultItem, maxDeduction);
@@ -129,20 +129,6 @@ namespace PaperMarioItems.Common.UI
             else return false;
         }
 
-        private static bool MysteryBoxCheck(int item1 = ItemID.None, int item2 = ItemID.None)
-        {
-            if ((item1 == PMItemID.MysteryBox && item2 == ItemID.None) ||
-                (item1 == ItemID.None && item2 == PMItemID.MysteryBox) ||
-                (item1 == PMItemID.MysteryBox && item2 == PMItemID.MysteryBox)) return true;
-            else return false;
-        }
-
-        private static bool SpaceFoodCheck(int item1 = ItemID.None, int item2 = ItemID.None)
-            => item1 == PMItemID.DriedBouquet || item2 == PMItemID.DriedBouquet;
-
-        private static bool DangerousDelightCheck(int item1 = ItemID.None, int item2 = ItemID.None)
-            => item1 == PMItemID.PoisonMushroom || item2 == PMItemID.PoisonMushroom;
-
         private static int ItemAmountFinalize(int amount1 = 0, int amount2 = 0)
         {
             int itemAmount = amount1;
@@ -161,41 +147,19 @@ namespace PaperMarioItems.Common.UI
         }
 
         /// <summary>
-        /// This method handles the cooking part. Mystery Box check comes first, followed by Space Food check, then the standard recipe table last.
+        /// This method handles the cooking part. Special recipes come first, followed by the standard recipe table.
         /// </summary>
         /// <param name="itemslot1"></param>
         /// <param name="itemslot2"></param>
-        /// <returns></returns>
+        /// <returns>Returns what item comes out.</returns>
         private static int BeginCooking(int itemslot1 = ItemID.None, int itemslot2 = ItemID.None)
         {
             int result = PMItemID.Mistake;
+            int resultSpecial = RecipeList.SpecialRecipeCheck(itemslot1, itemslot2);
             var FirstRoundChosenList = new List<PMRecipe>();
             var SecondRoundChosenList = new List<PMRecipe>();
-            if (MysteryBoxCheck(itemslot1, itemslot2))
-            {
-                if (Main.rand.NextBool(2))
-                {
-                    result = RecipeRegister.MysteryBoxRecipeList[Main.rand.Next(0, RecipeRegister.MysteryBoxRecipeList.Count)];
-                }
-                return result;
-            }
-            if (SpaceFoodCheck(itemslot1, itemslot2))
-            {
-                for (int i = 0; i < RecipeRegister.SpaceFoodList.Count; i++)
-                {
-                    int currentItem = RecipeRegister.SpaceFoodList[i];
-                    if (!RecipeRegister.SpaceFoodBlacklist.Contains(currentItem) &&
-                        (itemslot1 == currentItem || itemslot2 == currentItem)) return result = PMItemID.SpaceFood;
-                }
-            }
-            if (DangerousDelightCheck(itemslot1, itemslot2))
-            {
-                for (int i = 0; i < RecipeRegister.DangerousDelightList.Count; i++)
-                {
-                    int currentRecipeItem = RecipeRegister.DangerousDelightList[i];
-                    if (itemslot1 == currentRecipeItem || itemslot2 == currentRecipeItem) return result = PMItemID.DangerousDelight;
-                }
-            }
+
+            if (resultSpecial != 0) return resultSpecial;
             for (int i = 0; i < RecipeRegister.MainRecipeDictionary.Count; i++)
             {
                 PMRecipe CurrentSelect = RecipeRegister.MainRecipeDictionary.GetValueOrDefault(i);

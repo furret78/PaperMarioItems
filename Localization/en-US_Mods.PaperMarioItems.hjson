@@ -316,8 +316,8 @@ Items: {
 	}
 
 	ZessTea: {
-		DisplayName: Zess Tea
-		Tooltip: Tea brewed by Zess T.
+		DisplayName: Herb Tea
+		Tooltip: A relaxing cup of tea
 	}
 
 	FreshJuice: {
@@ -351,7 +351,7 @@ Items: {
 
 	KoopaTea: {
 		DisplayName: Koopa Tea
-		Tooltip: Koopa... Tea? Brewed by Zess T.
+		Tooltip: Koopa... Tea?
 	}
 
 	MushroomBroth: {
@@ -588,7 +588,7 @@ Items: {
 	}
 
 	ZessCookie: {
-		DisplayName: Zess Cookie
+		DisplayName: Sweet Cookie Snack
 		Tooltip: Sweet cookie snacks made by Zess T.
 	}
 

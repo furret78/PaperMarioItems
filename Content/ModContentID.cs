@@ -20,7 +20,7 @@ using Terraria.ModLoader;
 namespace PaperMarioItems.Content
 {
     //items
-    public class PMItemID
+    public static class PMItemID
     {
         public static readonly int 
             //normal items - TTYD
@@ -164,7 +164,7 @@ namespace PaperMarioItems.Content
 
             //normal items - SPM
             BlackApple = ModContent.ItemType<BlackApple>(),
-            BlockBlock = ModContent.ItemType<BlockBlock>(), //basic functionality added
+            BlockBlock = ModContent.ItemType<BlockBlock>(), //TODO: add eyecandy
             BlueApple = ModContent.ItemType<BlueApple>(),
             BoneinCut = ModContent.ItemType<BoneinCut>(),
             DayzeeTear = ModContent.ItemType<DayzeeTear>(),
@@ -189,6 +189,9 @@ namespace PaperMarioItems.Content
             ChocoPasta = ModContent.ItemType<ChocoPastaDish>(),
             DangerousDelight = ModContent.ItemType<DangerousDelight>(),
             DayzeeSyrup = ModContent.ItemType<DayzeeSyrup>(),
+            DyllisBreakfast = ModContent.ItemType<DyllisBreakfast>(),
+            DyllisDinner = ModContent.ItemType<DyllisDinner>(),
+            DyllisLunch = ModContent.ItemType<DyllisLunch>(),
             EmergencyRation = ModContent.ItemType<EmergencyRation>(),
             //tiles - SPM
             CastleBleckBrick = ModContent.ItemType<CastleBleckBrick>(),
@@ -199,7 +202,7 @@ namespace PaperMarioItems.Content
     }
 
     //buffs
-    public class PMBuffID : ModSystem
+    public static class PMBuffID
     {
         public static readonly int Charged = ModContent.BuffType<ChargedBuff>(),
             Dizzy = ModContent.BuffType<DizzyDebuff>(),
@@ -223,7 +226,7 @@ namespace PaperMarioItems.Content
     }
 
     //projectiles
-    public class PMProjID : ModSystem
+    public static class PMProjID
     {
         public static readonly int CoconutBomb = ModContent.ProjectileType<CoconutBombProjectile>(),
             EggBomb = ModContent.ProjectileType<EggBombProjectile>(),
@@ -233,7 +236,7 @@ namespace PaperMarioItems.Content
     }
 
     //dusts
-    public class PMDustID : ModSystem
+    public static class PMDustID
     {
         public static readonly int BowserScare = ModContent.DustType<BowserScare>(),
             DizzyDust = ModContent.DustType<DizzyDust>(),
@@ -244,7 +247,7 @@ namespace PaperMarioItems.Content
     }
 
     //sounds
-    public class PMSoundID : ModSystem
+    public static class PMSoundID
     {
         private const float soundVolume = 0.5f, soundVolume2 = soundVolume / 2;
         public static readonly SoundStyle causeStatus = PaperMarioItems.causeStatusPM with { Volume = soundVolume },
@@ -270,7 +273,7 @@ namespace PaperMarioItems.Content
     }
 
     //tiles
-    public class PMTileID : ModSystem
+    public static class PMTileID
     {
         public static readonly int CastleBleckBrick = ModContent.TileType<CastleBleckBrickTile>(),
             CastleBleckDoorClosed = ModContent.TileType<CastleBleckDoorClosed>(),
@@ -278,12 +281,12 @@ namespace PaperMarioItems.Content
     }
 
     //walls
-    public class PMWallID : ModSystem
+    public static class PMWallID
     {
         public static readonly int CastleBleckWall = ModContent.WallType<CastleBleckWallTile>();
     }
 
-    public class ImportantThings : ModSystem
+    public static class ImportantThings
     {
         public static readonly List<int> ImportantThingsList = new()
         {

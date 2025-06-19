@@ -34,7 +34,7 @@ namespace PaperMarioItems.Content.Items.CookingSPM
             Item.maxStack = Item.CommonMaxStack;
             Item.UseSound = SoundID.Item2;
             Item.rare = ItemRarityID.White;
-            Item.value = Item.sellPrice(silver: 35);
+            Item.value = Item.sellPrice(silver: 3);
             Item.buffType = BuffID.Slow;
             Item.buffTime = effectTime;
         }

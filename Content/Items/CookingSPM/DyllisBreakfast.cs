@@ -4,25 +4,25 @@ using Terraria.ModLoader;
 
 namespace PaperMarioItems.Content.Items.CookingSPM
 { 
-	public class AwesomeSnack : ModItem
+	public class DyllisBreakfast : ModItem
 	{
         public override void SetStaticDefaults()
         {
-            ItemID.Sets.ShimmerTransformToItem[Type] = PMItemID.CakeMix;
+            ItemID.Sets.ShimmerTransformToItem[Type] = PMItemID.MushroomShake;
             ItemID.Sets.FoodParticleColors[Type] = [
-                new(255, 74, 0),
-                new(255, 156, 0)
+                new(181, 107, 24),
+                new(99, 222, 99)
             ];
-            Item.ResearchUnlockCount = 10;
+            Item.ResearchUnlockCount = 50;
         }
 
         public override void SetDefaults()
 		{
-            Item.DefaultToFood(38, 40, BuffID.WellFed, 7200);
-            Item.useStyle = ItemUseStyleID.DrinkLiquid;
-            Item.rare = ItemRarityID.Orange;
-            Item.value = Item.sellPrice(silver: 55);
-            Item.healLife = 25;
+            Item.DefaultToFood(40, 32, BuffID.WellFed, 7200);
+            Item.useStyle = ItemUseStyleID.EatFood;
+            Item.rare = ItemRarityID.Blue;
+            Item.value = Item.sellPrice(silver: 60);
+            Item.healLife = 40;
             Item.potion = true;
         }
 
@@ -39,7 +39,7 @@ namespace PaperMarioItems.Content.Items.CookingSPM
 
         private static void On_Player_ApplyPotionDelay(On_Player.orig_ApplyPotionDelay orig, Player player, Item sItem)
         {
-            if (sItem.type == PMItemID.AwesomeSnack) return;
+            if (sItem.type == PMItemID.DyllisBreakfast) return;
             else orig(player, sItem);
         }
 	}

@@ -1,1 +1,10 @@
 Paper Mario Items 0.7.5 -- Update notes
+* Additions
+- Added more recipe entries for Dangerous Delight
+- Added Dyllis Breakfast, Dyllis Dinner
+- Added cooking recipes for the above items
+* Adjustments
+- Changed the result of cooking Poison Mushroom in Hardmode
+- Dangerous Delight recipes are now locked behind Hardmode
+- Cooking only Dried Bouquet with no second item now gives Spicy Soup as intended instead of Space Food
+- Changed the sprite of Healthy Salad

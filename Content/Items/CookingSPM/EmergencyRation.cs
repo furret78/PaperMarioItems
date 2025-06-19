@@ -18,8 +18,8 @@ namespace PaperMarioItems.Content.Items.CookingSPM
             Item.DefaultToFood(34, 39, BuffID.WellFed, 7200);
             Item.useStyle = ItemUseStyleID.DrinkLiquid;
             Item.rare = ItemRarityID.Orange;
-            Item.value = Item.sellPrice(silver: 25);
-            Item.healLife = 50;
+            Item.value = Item.sellPrice(silver: 40);
+            Item.healLife = 20;
             Item.potion = true;
         }
 
@@ -48,7 +48,7 @@ namespace PaperMarioItems.Content.Items.CookingSPM
 
                 if (player.ZoneUnderworldHeight ||
                     Main.npc.Take(Main.maxNPCs).Any(n => n.active && n.boss))
-                    num += 50;
+                    num += 80;
 
                 player.statLife += num;
                 if (player.statLife > player.statLifeMax2) player.statLife = player.statLifeMax2;
