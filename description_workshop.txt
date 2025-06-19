@@ -11,7 +11,7 @@ The cooking system is inspired by Taco's [url=https://steamcommunity.com/sharedf
 
 The mod currently features items from Paper Mario: The Thousand-Year Door and Super Paper Mario. Future updates may introduce Paper Mario (N64) and more Super Paper Mario variations and exclusives.
 
-To see which recipes correspond to which item in TTYD, please reference the [url=https://www.mariowiki.com/List_of_recipes_in_Paper_Mario:_The_Thousand-Year_Door] list of recipes [/url] in TTYD. Certain ingredients may be substituted by vanilla counterparts (Mango instead of Keel Mango).
+To see which recipes correspond to which item in TTYD, please reference the [url=https://www.mariowiki.com/List_of_recipes_in_Paper_Mario:_The_Thousand-Year_Door] list of recipes [/url] in TTYD. Certain ingredients may be substituted by vanilla counterparts (Mango instead of Keel Mango). The SPM counterpart is at [url=https://www.mariowiki.com/List_of_recipes_in_Super_Paper_Mario#Recipes] this page [/url] instead.
 
 [hr][/hr]
 [h1] Attributes [/h1]
