@@ -376,6 +376,7 @@ namespace PaperMarioItems.Common.RecipeSystem
                 //new(PMItemID.DyllisLunch, PMItemID.MushroomFry, PMItemID.HealthySalad), //veggie set here
 
                 //todo : add choco pasta recipes
+                //Mistake (Sleepy Sheep) recipes handled automatically below
                 //Dangerous Delight recipes handled automatically below
                 new(PMItemID.DayzeeSyrup, PMItemID.DayzeeTear),
                 new(PMItemID.EmergencyRation, PMItemID.MushroomShake, PMItemID.FireFlower),
@@ -477,6 +478,16 @@ namespace PaperMarioItems.Common.RecipeSystem
         /// <returns>Returns the ID int of the intended result (0 if none is found)</returns>
         public static int SpecialRecipeCheck(int ItemSlot1 = ItemID.None, int ItemSlot2 = ItemID.None)
         {
+            if (DyllisMistakeCheck(ItemSlot1, ItemSlot2))
+            {
+                if (ItemSlot1 == ItemSlot2) return PMItemID.Mistake;
+                if (ItemSlot1 == PMItemID.MysteryBox || ItemSlot2 == PMItemID.MysteryBox)
+                {
+                    if (Main.rand.NextBool(2))
+                        return RecipeRegister.MysteryBoxRecipeList[Main.rand.Next(0, RecipeRegister.MysteryBoxRecipeList.Count)];
+                }
+                return PMItemID.DyllisMistake;
+            }
             if (MysteryBoxCheck(ItemSlot1, ItemSlot2))
             {
                 if (Main.rand.NextBool(2))
@@ -524,5 +535,9 @@ namespace PaperMarioItems.Common.RecipeSystem
 
         private static bool DangerousDelightCheck(int item1 = ItemID.None, int item2 = ItemID.None)
             => Main.hardMode && (item1 == PMItemID.PoisonMushroom || item2 == PMItemID.PoisonMushroom);
+
+        private static bool DyllisMistakeCheck(int item1 = ItemID.None, int item2 = ItemID.None)
+            => item1 == PMItemID.SleepySheep || item1 == PMItemID.DyllisMistake ||
+            item2 == PMItemID.SleepySheep || item2 == PMItemID.DyllisMistake;
     }
 }

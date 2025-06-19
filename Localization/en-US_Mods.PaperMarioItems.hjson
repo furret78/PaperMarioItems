@@ -1127,6 +1127,42 @@ Items: {
 			{$Mods.PaperMarioItems.Items.CanCurePoison}
 			'''
 	}
+
+	DyllisBreakfast: {
+		DisplayName: Dyllis Breakfast
+		Tooltip:
+			'''
+			Dyllis's signature breakfast
+			{$Mods.PaperMarioItems.Items.CanCurePoison}
+			'''
+	}
+
+	DyllisDinner: {
+		DisplayName: Dyllis Dinner
+		Tooltip:
+			'''
+			How Dyllis does dinner
+			{$Mods.PaperMarioItems.Items.CanCurePoison}
+			'''
+	}
+
+	DyllisLunch: {
+		DisplayName: Dyllis Lunch
+		Tooltip:
+			'''
+			Dyllis's lunch packs a punch!
+			{$Mods.PaperMarioItems.Items.CanCurePoison}
+			'''
+	}
+
+	DyllisMistake: {
+		DisplayName: Mistake
+		Tooltip:
+			'''
+			Send it back to the kitchen! The smell could KO you!
+			Functionally the same as {$Mods.PaperMarioItems.Items.SleepySheep.DisplayName}
+			'''
+	}
 }
 
 Buffs: {
@@ -1230,7 +1266,7 @@ Configs: {
 			Tooltip:
 				'''
 				Setting this to 'On' allows the Danger and Peril sounds to be played at low health.
-				This will not change whether other players in Multiplayer can hear those sounds.
+				This will not change whether other players in Multiplayer can hear these sounds.
 				'''
 		}
 	}

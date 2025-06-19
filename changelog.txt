@@ -1,7 +1,7 @@
 Paper Mario Items 0.7.5 -- Update notes
 * Additions
 - Added more recipe entries for Dangerous Delight
-- Added Dyllis Breakfast, Dyllis Dinner
+- Added Dyllis Breakfast, Dyllis Dinner, Mistake (Dyllis)
 - Added cooking recipes for the above items
 * Adjustments
 - Changed the result of cooking Poison Mushroom in Hardmode

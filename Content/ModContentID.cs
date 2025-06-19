@@ -192,6 +192,7 @@ namespace PaperMarioItems.Content
             DyllisBreakfast = ModContent.ItemType<DyllisBreakfast>(),
             DyllisDinner = ModContent.ItemType<DyllisDinner>(),
             DyllisLunch = ModContent.ItemType<DyllisLunch>(),
+            DyllisMistake = ModContent.ItemType<DyllisMistake>(),
             EmergencyRation = ModContent.ItemType<EmergencyRation>(),
             //tiles - SPM
             CastleBleckBrick = ModContent.ItemType<CastleBleckBrick>(),
